@@ -262,8 +262,10 @@ body {
 
 .mode-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .mode-card {
