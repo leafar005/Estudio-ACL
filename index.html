@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Exámenes | ACL 2026</title>
+  <meta name="description" content="Portal principal para acceder a los cuestionarios interactivos de ACL 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #111827;
+      --bg-card: #1a1f35;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --radius-lg: 16px;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(167, 139, 250, 0.15), transparent 25%);
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      padding: 40px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 50px;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .quiz-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 40px 30px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+
+    .quiz-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(99, 102, 241, 0.3);
+      background: rgba(26, 31, 53, 0.8);
+    }
+
+    .quiz-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: rgba(99, 102, 241, 0.1);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .quiz-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+    }
+
+    .quiz-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Portal de Exámenes ACL</h1>
+    <p class="subtitle">Selecciona el módulo que deseas estudiar hoy</p>
+    
+    <div class="quiz-grid">
+      <a href="quiz-iso9000/index.html" class="quiz-card">
+        <div class="icon">⚡</div>
+        <h2 class="quiz-title">Calidad e ISO 9000</h2>
+        <p class="quiz-desc">Cuestionario sobre Calidad del Software, normativa ISO 9001:2015 y procesos de Certificación.</p>
+      </a>
+      
+      <a href="quiz-cmmi/index.html" class="quiz-card">
+        <div class="icon">🏛️</div>
+        <h2 class="quiz-title">CMMI Modelo + Eval.</h2>
+        <p class="quiz-desc">Cuestionario sobre estructura del modelo CMMI, ciclo de vida de las PAs y SCAMPI.</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
