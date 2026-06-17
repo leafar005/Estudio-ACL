@@ -176,8 +176,59 @@
       container.appendChild(btn);
     });
 
-    $('#justification-panel').classList.add('hidden');
-    $('#question-actions').classList.add('hidden');
+    const pastAnswer = state.answers.find(a => a.questionIndex === state.currentIndex);
+    if (pastAnswer) {
+      state.answered = true;
+      container.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn answered';
+        if (i === q.correct) {
+          btn.classList.add('correct');
+        } else if (i === pastAnswer.selectedOption && !pastAnswer.isCorrect) {
+          btn.classList.add('wrong');
+        } else {
+          btn.classList.add('dimmed');
+        }
+        btn.innerHTML = `
+          <span class="option-letter">${letters[i]}</span>
+          <span class="option-text">${opt}</span>
+        `;
+        container.appendChild(btn);
+      });
+      
+      const isCorrect = pastAnswer.isCorrect;
+      
+      const panel = $('#justification-panel');
+      const header = $('#justification-header');
+      const icon = $('#justification-icon');
+      const label = $('#justification-label');
+      const text = $('#justification-text');
+
+      panel.classList.remove('hidden');
+      header.className = 'justification-header';
+
+      if (isCorrect) {
+        header.classList.add('correct-header');
+        icon.textContent = '✅';
+        label.textContent = '¡Correcto!';
+      } else {
+        header.classList.add('wrong-header');
+        icon.textContent = '❌';
+        const correctLetter = ['A', 'B', 'C', 'D', 'E', 'F'][q.correct];
+        label.textContent = `Incorrecto — La respuesta correcta es ${correctLetter}`;
+      }
+
+      text.innerHTML = formatJustification(q.justification);
+      $('#question-actions').classList.remove('hidden');
+      if ($('#btn-prev')) $('#btn-prev').style.display = state.currentIndex > 0 ? 'inline-block' : 'none';
+      
+      const pctDone = ((state.currentIndex + 1) / state.questions.length) * 100;
+      $('#progress-bar').style.width = `${pctDone}%`;
+    } else {
+      $('#justification-panel').classList.add('hidden');
+      $('#question-actions').classList.add('hidden');
+    }
 
     const card = $('#question-card');
     card.style.animation = 'none';
@@ -242,6 +293,7 @@
     text.innerHTML = formatJustification(q.justification);
 
     $('#question-actions').classList.remove('hidden');
+    if ($('#btn-prev')) $('#btn-prev').style.display = state.currentIndex > 0 ? 'inline-block' : 'none';
 
     const pctDone = ((state.currentIndex + 1) / state.questions.length) * 100;
     $('#progress-bar').style.width = `${pctDone}%`;
@@ -265,6 +317,15 @@
   // QUIZ NAVIGATION
   // ========================
   function bindQuizEvents() {
+    if ($('#btn-prev')) {
+      $('#btn-prev').addEventListener('click', () => {
+        if (state.currentIndex > 0) {
+          state.currentIndex--;
+          renderQuestion();
+        }
+      });
+    }
+
     $('#btn-next').addEventListener('click', () => {
       if (state.currentIndex < state.questions.length - 1) {
         state.currentIndex++;
