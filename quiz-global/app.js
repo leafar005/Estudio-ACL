@@ -279,6 +279,14 @@
 
     if (isCorrect) state.correctCount++;
     else state.wrongCount++;
+    
+    window.QuizStats?.addAnswer({ 
+      isCorrect, 
+      topic: 'global', 
+      text: q.question,
+      justification: q.justification,
+      correctAnswer: displayOptions[correctIndex].text
+    });
 
     // Update scores in header
     $('#score-correct').textContent = state.correctCount;
@@ -411,6 +419,26 @@
     const wrong = state.wrongCount;
     const pct = Math.round((correct / total) * 100);
     const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
+    let quizName = 'Simulacro Global';
+    if (state.mode === 'all') quizName = 'Global Completo';
+    else if (state.mode === 'random') quizName = 'Global Aleatorio';
+
+    const questionsList = state.answers.map(ans => {
+      const q = state.questions[ans.questionIndex];
+      return {
+        text: q.question,
+        isCorrect: ans.isCorrect,
+        justification: q.justification,
+        correctAnswer: ans.displayOptions.find(o => o.isCorrect).text
+      };
+    });
+
+    window.QuizStats?.addQuizCompleted({ 
+      pct, correct, total, elapsed, 
+      topic: 'global',
+      quizName: quizName,
+      questions: questionsList
+    });
 
     // Add SVG gradient if needed
     addRingGradient();

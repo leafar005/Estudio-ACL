@@ -254,6 +254,14 @@
 
     if (isCorrect) state.correctCount++;
     else state.wrongCount++;
+    
+    window.QuizStats?.addAnswer({ 
+      isCorrect, 
+      topic: 'otros', 
+      text: q.question,
+      justification: q.justification,
+      correctAnswer: displayOptions[correctIndex].text
+    });
 
     $('#score-correct').textContent = state.correctCount;
     $('#score-wrong').textContent = state.wrongCount;
@@ -377,6 +385,31 @@
     const wrong = state.wrongCount;
     const pct = Math.round((correct / total) * 100);
     const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
+    let quizName = 'Simulacro';
+    if (state.mode === 'all') quizName = 'Completo';
+    else if (state.mode === 'traps') quizName = 'Solo Trampas';
+    else if (state.mode === 'random') quizName = 'Aleatorio';
+    else if (state.mode === 'category') {
+      const cat = typeof CATEGORIES !== 'undefined' ? CATEGORIES.find(c => c.id === state.categoryId) : null;
+      quizName = cat ? 'Categoría: ' + cat.name : 'Categoría';
+    }
+
+    const questionsList = state.answers.map(ans => {
+      const q = state.questions[ans.questionIndex];
+      return {
+        text: q.question,
+        isCorrect: ans.isCorrect,
+        justification: q.justification,
+        correctAnswer: ans.displayOptions.find(o => o.isCorrect).text
+      };
+    });
+
+    window.QuizStats?.addQuizCompleted({ 
+      pct, correct, total, elapsed, 
+      topic: 'otros',
+      quizName: quizName,
+      questions: questionsList
+    });
 
     addRingGradient();
 
