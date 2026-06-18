@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas | ACL 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/shared.css">
+  <script src="../shared/shared.js"></script>
+  <style>
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #111827;
+      --bg-card: #1a1f35;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --accent: #6366f1;
+      --radius-lg: 16px;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --correct: #10b981;
+      --wrong: #ef4444;
+    }
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+    }
+    .top-bar {
+      position: sticky;
+      top: 0;
+      background: rgba(17, 24, 39, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .back-btn {
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--text-primary); }
+    .tabs {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    
+    /* Historial items */
+    .history-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .history-card.correct-border { border-left: 4px solid var(--correct); }
+    .history-card.wrong-border { border-left: 4px solid var(--wrong); }
+    
+    .history-info { display: flex; flex-direction: column; gap: 5px; }
+    .history-date { font-size: 0.8rem; color: var(--text-secondary); }
+    .history-title { font-weight: 600; font-size: 1.1rem; }
+    
+    .history-stats { text-align: right; }
+    .history-pct { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+    
+    /* Logros */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .ach-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      transition: opacity 0.3s;
+    }
+    .ach-card.locked {
+      opacity: 0.5;
+      filter: grayscale(1);
+    }
+    .ach-icon { font-size: 3rem; margin-bottom: 10px; }
+    .ach-title { font-weight: 700; margin-bottom: 5px; }
+    .ach-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+    .empty-state { text-align: center; color: var(--text-secondary); padding: 50px; font-style: italic; }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="../index.html" class="back-btn">← Volver al portal</a>
+    <h2 style="margin:0; font-size: 1.2rem;">Mi Rendimiento</h2>
+    <div style="width: 100px;"></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-target="tests">Tests</button>
+    <button class="tab-btn" data-target="preguntas">Preguntas</button>
+    <button class="tab-btn" data-target="logros">Logros</button>
+  </div>
+
+  <div class="container">
+    <div id="tests" class="tab-content active">
+      <h2 style="margin-bottom: 20px;">Últimos Simulacros</h2>
+      <div id="tests-list"></div>
+    </div>
+
+    <div id="preguntas" class="tab-content">
+      <h2 style="margin-bottom: 20px;">Últimas Preguntas</h2>
+      <div id="preguntas-list"></div>
+    </div>
+
+    <div id="logros" class="tab-content">
+      <h2 style="margin-bottom: 20px;">Tus Trofeos</h2>
+      <div id="logros-list" class="achievements-grid"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
