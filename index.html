@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/shared.css">
   <style>
     :root {
       --bg-primary: #0a0e1a;
@@ -165,6 +166,8 @@
     <h1>Portal de Encuestas ACL</h1>
     <p class="subtitle">Selecciona el módulo que deseas estudiar hoy</p>
     
+    <div id="stats-container"></div>
+    
     <div class="quiz-grid">
       <a href="quiz-iso9000/index.html" class="quiz-card">
         <div class="icon">⚡</div>
@@ -216,6 +219,7 @@
     </div>
   </div>
 
+  <script src="shared/shared.js"></script>
   <script>
     const globalNum = document.getElementById('global-num');
     const globalLink = document.getElementById('global-link');
@@ -224,6 +228,13 @@
         globalLink.href = 'quiz-global/index.html?num=' + e.target.value;
       });
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Small timeout to ensure QuizStats is fully loaded
+      setTimeout(() => {
+        window.QuizStats.renderIndexWidget('stats-container');
+      }, 50);
+    });
   </script>
 </body>
 </html>
