@@ -119,7 +119,9 @@
     pool = shuffle(pool);
 
     if (mode === 'random') {
-      pool = pool.slice(0, 50);
+      const urlParams = new URLSearchParams(window.location.search);
+      const numQuestions = parseInt(urlParams.get('num')) || 50;
+      pool = pool.slice(0, numQuestions);
     }
 
     state.questions = pool;

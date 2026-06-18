@@ -185,16 +185,34 @@
         <p class="quiz-desc">Cuestionario sobre Verificaciones de Fase, Auditorías Generales y No Conformidades.</p>
       </a>
 
-      <a href="quiz-global/index.html" class="quiz-card" style="border-color: rgba(99, 102, 241, 0.5); box-shadow: 0 0 20px rgba(99,102,241,0.2);">
-        <div class="icon">🌍</div>
-        <h2 class="quiz-title">Encuesta Global</h2>
-        <p class="quiz-desc">Simulacro de 50 preguntas elegidas aleatoriamente de todos los temas.</p>
-      </a>
+      <div class="quiz-card" style="border-color: rgba(99, 102, 241, 0.5); box-shadow: 0 0 20px rgba(99,102,241,0.2); position: relative;">
+        <a id="global-link" href="quiz-global/index.html?num=50" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; border-radius: var(--radius-lg);"></a>
+        <div class="icon" style="position: relative; z-index: 0;">🌍</div>
+        <h2 class="quiz-title" style="position: relative; z-index: 0;">Encuesta Global</h2>
+        <p class="quiz-desc" style="position: relative; z-index: 0; margin-bottom: 20px;">Simulacro de preguntas elegidas aleatoriamente de todos los temas.</p>
+        
+        <select id="global-num" style="width: 100%; padding: 10px; border-radius: 8px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); color: var(--text-primary); font-family: inherit; font-size: 0.95rem; cursor: pointer; outline: none; margin-top: auto; position: relative; z-index: 2;">
+          <option value="10">10 preguntas</option>
+          <option value="20">20 preguntas</option>
+          <option value="50" selected>50 preguntas</option>
+          <option value="100">100 preguntas</option>
+        </select>
+      </div>
     </div>
 
     <div class="github-link">
       <a href="https://github.com/leafar005" target="_blank" rel="noopener noreferrer">github.com/leafar005</a>
     </div>
   </div>
+
+  <script>
+    const globalNum = document.getElementById('global-num');
+    const globalLink = document.getElementById('global-link');
+    if (globalNum && globalLink) {
+      globalNum.addEventListener('change', (e) => {
+        globalLink.href = 'quiz-global/index.html?num=' + e.target.value;
+      });
+    }
+  </script>
 </body>
 </html>
