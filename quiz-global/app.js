@@ -375,6 +375,15 @@
     document.addEventListener('keydown', (e) => {
       if (!screens.quiz.classList.contains('active')) return;
 
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        if (state.currentIndex > 0) {
+          state.currentIndex--;
+          renderQuestion();
+        }
+        return;
+      }
+
       if (!state.answered) {
         const keyMap = { '1': 0, '2': 1, '3': 2, '4': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3 };
         const idx = keyMap[e.key.toLowerCase()];

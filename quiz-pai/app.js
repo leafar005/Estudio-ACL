@@ -1,5 +1,5 @@
 /**
- * QUIZ APP — Calidad e ISO 9000
+ * QUIZ APP — Auditorías Internas PAI-001
  * Interactive quiz engine with justifications
  */
 
@@ -14,8 +14,7 @@
     categoryId: null,
     questions: [],
     currentIndex: 0,
-    answers: [],          // { questionIndex, selectedOption, isCorrect, displayOptions }
-    currentDisplayOptions: [],
+    answers: [],          // { questionIndex, selectedOption, isCorrect }
     correctCount: 0,
     wrongCount: 0,
     startTime: null,
@@ -49,6 +48,7 @@
     $('#count-all').textContent = `${QUESTIONS.length} preguntas`;
     const trapCount = QUESTIONS.filter(q => q.trap).length;
     $('#count-traps').textContent = `${trapCount} preguntas`;
+    $('#count-categories').textContent = `${CATEGORIES.length} categorías`;
   }
 
   // ========================
@@ -171,25 +171,13 @@
     container.innerHTML = '';
     const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
 
-    let displayOptions = q.options.map((opt, i) => ({
-      text: opt,
-      originalIndex: i,
-      isCorrect: i === q.correct
-    }));
-
-    // Shuffle options if it's multiple choice
-    if (q.type === 'multi') {
-      displayOptions = shuffle(displayOptions);
-    }
-    state.currentDisplayOptions = displayOptions;
-
-    displayOptions.forEach((optObj, i) => {
+    q.options.forEach((opt, i) => {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
       btn.dataset.index = i;
       btn.innerHTML = `
         <span class="option-letter">${letters[i]}</span>
-        <span class="option-text">${optObj.text}</span>
+        <span class="option-text">${opt}</span>
       `;
       btn.addEventListener('click', () => handleAnswer(i));
       container.appendChild(btn);
@@ -198,27 +186,19 @@
     const pastAnswer = state.answers.find(a => a.questionIndex === state.currentIndex);
     if (pastAnswer) {
       state.answered = true;
-      state.currentDisplayOptions = pastAnswer.displayOptions;
-      container.innerHTML = '';
-      state.currentDisplayOptions.forEach((optObj, i) => {
-        const btn = document.createElement('button');
-        btn.className = 'option-btn answered';
-        if (i === pastAnswer.displayOptions.findIndex(o => o.isCorrect)) {
+      const optionBtns = document.querySelectorAll('.option-btn');
+      optionBtns.forEach((btn, i) => {
+        btn.classList.add('answered');
+        if (i === q.correct) {
           btn.classList.add('correct');
         } else if (i === pastAnswer.selectedOption && !pastAnswer.isCorrect) {
           btn.classList.add('wrong');
         } else {
           btn.classList.add('dimmed');
         }
-        btn.innerHTML = `
-          <span class="option-letter">${letters[i]}</span>
-          <span class="option-text">${optObj.text}</span>
-        `;
-        container.appendChild(btn);
       });
       
       const isCorrect = pastAnswer.isCorrect;
-      const correctIndex = pastAnswer.displayOptions.findIndex(o => o.isCorrect);
       
       const panel = $('#justification-panel');
       const header = $('#justification-header');
@@ -236,16 +216,13 @@
       } else {
         header.classList.add('wrong-header');
         icon.textContent = '❌';
-        const correctLetter = ['A', 'B', 'C', 'D', 'E', 'F'][correctIndex];
+        const correctLetter = ['A', 'B', 'C', 'D', 'E', 'F'][q.correct];
         label.textContent = `Incorrecto — La respuesta correcta es ${correctLetter}`;
       }
 
       text.innerHTML = formatJustification(q.justification);
       $('#question-actions').classList.remove('hidden');
       if ($('#btn-prev')) $('#btn-prev').style.display = state.currentIndex > 0 ? 'inline-block' : 'none';
-      
-      const pctDone = ((state.currentIndex + 1) / state.questions.length) * 100;
-      $('#progress-bar').style.width = `${pctDone}%`;
     } else {
       $('#justification-panel').classList.add('hidden');
       $('#question-actions').classList.add('hidden');
@@ -266,15 +243,12 @@
     state.answered = true;
 
     const q = state.questions[state.currentIndex];
-    const displayOptions = state.currentDisplayOptions;
-    const isCorrect = displayOptions[selectedIndex].isCorrect;
-    const correctIndex = displayOptions.findIndex(o => o.isCorrect);
+    const isCorrect = selectedIndex === q.correct;
 
     // Record
     state.answers.push({
       questionIndex: state.currentIndex,
       selectedOption: selectedIndex,
-      displayOptions: displayOptions,
       isCorrect
     });
 
@@ -289,7 +263,7 @@
     const optionBtns = $$('.option-btn');
     optionBtns.forEach((btn, i) => {
       btn.classList.add('answered');
-      if (i === correctIndex) {
+      if (i === q.correct) {
         btn.classList.add('correct');
       } else if (i === selectedIndex && !isCorrect) {
         btn.classList.add('wrong');
@@ -315,7 +289,7 @@
     } else {
       header.classList.add('wrong-header');
       icon.textContent = '❌';
-      const correctLetter = ['A', 'B', 'C', 'D', 'E', 'F'][correctIndex];
+      const correctLetter = ['A', 'B', 'C', 'D', 'E', 'F'][q.correct];
       label.textContent = `Incorrecto — La respuesta correcta es ${correctLetter}`;
     }
 
@@ -340,8 +314,8 @@
     return text
       .replace(/FALSO/g, '<strong style="color:#ef4444">FALSO</strong>')
       .replace(/VERDADERO/g, '<strong style="color:#10b981">VERDADERO</strong>')
-      .replace(/(ISO \d{4,5}(?::\d{4})?)/g, '<strong>$1</strong>')
-      .replace(/(QA|QC|PDCA|SGC|CMMI|CMM|SPICE|TQM|ENAC|AENOR|KLOC|MTBF|ROI|DoD)/g, '<strong>$1</strong>');
+      .replace(/(ISO ?\d{4,5}(?::\d{4})?)/g, '<strong>$1</strong>')
+      .replace(/(QA|QC|SGC|PDCA|PAI|VF|AG|NC|RC|JP|RRHH)/g, '<strong>$1</strong>');
   }
 
   // ========================
@@ -458,10 +432,10 @@
 
     const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop1.setAttribute('offset', '0%');
-    stop1.setAttribute('stop-color', '#6366f1');
+    stop1.setAttribute('stop-color', '#14b8a6');
     const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop2.setAttribute('offset', '100%');
-    stop2.setAttribute('stop-color', '#a78bfa');
+    stop2.setAttribute('stop-color', '#2dd4bf');
 
     gradient.appendChild(stop1);
     gradient.appendChild(stop2);
@@ -493,7 +467,6 @@
       const q = state.questions[ans.questionIndex];
       const cat = CATEGORIES.find(c => c.id === q.category);
       const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
-      const correctIndex = ans.displayOptions.findIndex(o => o.isCorrect);
 
       const item = document.createElement('div');
       item.className = 'review-item';
@@ -508,12 +481,12 @@
           ${!ans.isCorrect ? `
             <div class="review-detail-row">
               <span class="review-detail-label wrong">Tu respuesta:</span>
-              <span class="review-detail-value">${letters[ans.selectedOption]}. ${ans.displayOptions[ans.selectedOption].text}</span>
+              <span class="review-detail-value">${letters[ans.selectedOption]}. ${q.options[ans.selectedOption]}</span>
             </div>
           ` : ''}
           <div class="review-detail-row">
             <span class="review-detail-label correct">Correcta:</span>
-            <span class="review-detail-value">${letters[correctIndex]}. ${ans.displayOptions[correctIndex].text}</span>
+            <span class="review-detail-value">${letters[q.correct]}. ${q.options[q.correct]}</span>
           </div>
           <div class="review-detail-justification">${formatJustification(q.justification)}</div>
         </div>

@@ -145,6 +145,14 @@
     .github-link a:hover {
       opacity: 0.8;
     }
+
+    @media (min-width: 664px) {
+      .quiz-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc(50% - 12px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -169,6 +177,12 @@
         <div class="icon">📐</div>
         <h2 class="quiz-title">Otros Modelos + Medición</h2>
         <p class="quiz-desc">Cuestionario sobre SPICE, MMIS, ITmark, SwTQM, Métricas, GQM y PSM.</p>
+      </a>
+
+      <a href="quiz-pai/index.html" class="quiz-card">
+        <div class="icon">📋</div>
+        <h2 class="quiz-title">Auditorías Internas (PAI)</h2>
+        <p class="quiz-desc">Cuestionario sobre Verificaciones de Fase, Auditorías Generales y No Conformidades.</p>
       </a>
 
       <a href="quiz-global/index.html" class="quiz-card" style="border-color: rgba(99, 102, 241, 0.5); box-shadow: 0 0 20px rgba(99,102,241,0.2);">
