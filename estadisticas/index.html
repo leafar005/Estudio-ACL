@@ -121,6 +121,64 @@
     .ach-desc { font-size: 0.85rem; color: var(--text-secondary); }
 
     .empty-state { text-align: center; color: var(--text-secondary); padding: 50px; font-style: italic; }
+
+    @media (max-width: 600px) {
+      .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .ach-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: 4px 15px;
+        align-items: center;
+        padding: 16px;
+        text-align: left;
+      }
+      .ach-icon {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        font-size: 2rem;
+        margin-bottom: 0;
+        background: rgba(255,255,255,0.05);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      .ach-title {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 1rem;
+        margin-bottom: 0;
+        align-self: end;
+      }
+      .ach-desc {
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 0.8rem;
+        align-self: start;
+      }
+      .history-card {
+        padding: 15px;
+      }
+      .history-title {
+        font-size: 0.95rem;
+      }
+      .history-pct {
+        font-size: 1.2rem;
+      }
+      .tabs {
+        gap: 10px;
+      }
+      .tab-btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+      }
+    }
   </style>
 </head>
 <body>

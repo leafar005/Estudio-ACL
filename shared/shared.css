@@ -155,3 +155,143 @@ body.light-theme .option-item.incorrect {
   color: #111827;
   border-color: #e5e7eb;
 }
+
+/* ====================================================
+   MOBILE RESPONSIVE OVERRIDES
+   ==================================================== */
+@media (max-width: 600px) {
+  /* Fix Stats Widget on Mobile */
+  .stats-widget {
+    padding: 12px !important;
+    gap: 15px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: space-around !important;
+  }
+  .stat-value {
+    font-size: 1.2rem !important;
+  }
+  .stat-label {
+    font-size: 0.65rem !important;
+  }
+  
+  /* Fix .back-to-portal overlapping with logo in quizzes & banco */
+  .back-to-portal {
+    top: 15px !important;
+    left: 15px !important;
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(5px) !important;
+    z-index: 999 !important;
+  }
+  
+  /* Landing contents inside quizzes */
+  .landing-content {
+    padding-top: 80px !important;
+    padding-bottom: 30px !important;
+  }
+  .logo-badge {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 15px !important;
+  }
+  .logo-icon {
+    font-size: 28px !important;
+  }
+  .landing-title {
+    font-size: 1.8rem !important;
+  }
+  .landing-subtitle {
+    font-size: 0.95rem !important;
+    margin-bottom: 20px !important;
+  }
+  
+  /* Mode cards (Completo, Por tema, etc) */
+  .mode-cards {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .mode-card {
+    padding: 15px 12px !important;
+  }
+  .mode-card-icon {
+    font-size: 1.5rem !important;
+    margin-bottom: 8px !important;
+  }
+  .mode-card-title {
+    font-size: 1rem !important;
+    margin-bottom: 4px !important;
+  }
+  .mode-card-desc {
+    font-size: 0.8rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Question Options */
+  .quiz-body {
+    padding: 20px 15px 40px !important;
+  }
+  .question-text {
+    font-size: 1.1rem !important;
+    margin-bottom: 20px !important;
+  }
+  .option-btn {
+    padding: 12px 15px !important;
+    font-size: 0.85rem !important;
+    gap: 10px !important;
+  }
+  .option-letter {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Quiz header */
+  .quiz-header {
+    padding: 12px 15px !important;
+    gap: 10px !important;
+  }
+  .quiz-progress-info, .score-display {
+    font-size: 0.8rem !important;
+  }
+  
+  /* Fixed Question Actions (Next/Prev) */
+  .question-actions:not(.hidden) {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 15px 20px !important;
+    background: rgba(26, 31, 53, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    z-index: 100 !important;
+    margin-top: 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 15px !important;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.3) !important;
+  }
+  .question-actions .btn-primary, 
+  .question-actions .btn-secondary {
+    flex: 1 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    padding: 14px 20px !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Banco de preguntas UI */
+  .question-card {
+    padding: 16px !important;
+  }
+  .question-header {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .options-list .option-item {
+    padding: 10px 12px !important;
+    font-size: 0.85rem !important;
+  }
+}
