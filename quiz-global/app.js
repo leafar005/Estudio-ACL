@@ -756,5 +756,17 @@
   // ========================
   // START
   // ========================
+  // Auto-save on page unload
+  window.addEventListener('beforeunload', () => {
+    if (state && state.questions && state.questions.length > 0 && typeof screens !== 'undefined' && screens.quiz && screens.quiz.classList.contains('active')) {
+      const elapsed = Date.now() - (state.startTime || Date.now());
+      const progress = {
+        path: window.location.pathname,
+        state: { ...state, accumulatedTime: (state.accumulatedTime || 0) + elapsed }
+      };
+      localStorage.setItem('paused_test', JSON.stringify(progress));
+    }
+  });
+
   document.addEventListener('DOMContentLoaded', init);
 })();

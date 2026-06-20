@@ -315,8 +315,58 @@ function initResumeButton() {
   }
 }
 
+function checkPausedTestOnLoad() {
+  const saved = localStorage.getItem('paused_test');
+  if (saved && !sessionStorage.getItem('prompted_resume') && !window.location.search.includes('resume=true')) {
+    sessionStorage.setItem('prompted_resume', 'true');
+    try {
+      const progress = JSON.parse(saved);
+      window.showCustomModal({
+        title: 'Test en progreso',
+        desc: 'Tienes un test guardado. ¿Deseas reanudarlo ahora?',
+        buttons: [
+          {
+            text: 'Sí, reanudar',
+            style: 'primary',
+            action: () => {
+              let basePath = window.location.pathname;
+              if (basePath.endsWith('index.html')) basePath = basePath.substring(0, basePath.lastIndexOf('/index.html'));
+              else if (basePath.endsWith('/')) basePath = basePath.substring(0, basePath.length - 1);
+              let targetPath = progress.path;
+              if (targetPath.endsWith('index.html')) targetPath = targetPath.substring(0, targetPath.lastIndexOf('/index.html'));
+              else if (targetPath.endsWith('/')) targetPath = targetPath.substring(0, targetPath.length - 1);
+
+              if (basePath === targetPath && typeof window.resumePausedTest === 'function') {
+                window.resumePausedTest(progress.state);
+              } else {
+                window.location.href = progress.path + '?resume=true';
+              }
+            }
+          },
+          {
+            text: 'No, descartar',
+            style: 'danger',
+            action: () => {
+              localStorage.removeItem('paused_test');
+              const existing = document.querySelector('.resume-test-btn');
+              if (existing) existing.remove();
+            }
+          },
+          {
+            text: 'Más tarde',
+            style: 'secondary'
+          }
+        ]
+      });
+    } catch(e) {
+      console.error(e);
+    }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initResumeButton();
   initTheme();
   window.QuizStats.load();
+  checkPausedTestOnLoad();
 });
