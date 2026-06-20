@@ -1,3 +1,60 @@
+
+// --- CUSTOM MODALS ---
+window.showCustomModal = function(options) {
+  const overlay = document.createElement('div');
+  overlay.className = 'custom-modal-overlay';
+  
+  const box = document.createElement('div');
+  box.className = 'custom-modal-box';
+  
+  let html = '';
+  if (options.title) html += `<h3 class="custom-modal-title">${options.title}</h3>`;
+  if (options.desc) html += `<p class="custom-modal-desc">${options.desc}</p>`;
+  
+  html += `<div class="custom-modal-actions">`;
+  const uniqueId = Date.now() + Math.random().toString(36).substr(2, 9);
+  options.buttons.forEach((btn, i) => {
+    html += `<button class="custom-modal-btn ${btn.style || 'secondary'}" id="modal-btn-${uniqueId}-${i}">${btn.text}</button>`;
+  });
+  html += `</div>`;
+  
+  box.innerHTML = html;
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  
+  // Force reflow for animation
+  overlay.offsetHeight;
+  overlay.classList.add('show');
+  
+  const close = () => {
+    overlay.classList.remove('show');
+    document.removeEventListener('keydown', escapeHandler, true);
+    setTimeout(() => overlay.remove(), 300);
+  };
+  
+  let cancelAction = null;
+  options.buttons.forEach((btn, i) => {
+    if (btn.text.toLowerCase().includes('cancelar')) {
+      cancelAction = () => { close(); if (btn.action) btn.action(); };
+    }
+    document.getElementById(`modal-btn-${uniqueId}-${i}`).addEventListener('click', () => {
+      close();
+      if (btn.action) btn.action();
+    });
+  });
+
+  const escapeHandler = (e) => {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      if (cancelAction) cancelAction();
+      else close();
+    }
+  };
+  // Use capture to ensure modal grabs escape first
+  document.addEventListener('keydown', escapeHandler, true);
+};
+
 // --- THEME MANAGEMENT ---
 function initTheme() {
   const savedTheme = localStorage.getItem('theme');
@@ -208,7 +265,58 @@ window.QuizStats = {
 };
 
 // Initialize on load
+
+// --- PAUSED TEST MANAGEMENT ---
+function initResumeButton() {
+  const saved = localStorage.getItem('paused_test');
+  if (saved) {
+    try {
+      const progress = JSON.parse(saved);
+      // Remove existing if any
+      const existing = document.querySelector('.resume-test-btn');
+      if (existing) existing.remove();
+      
+      const btn = document.createElement('button');
+      btn.className = 'resume-test-btn';
+      btn.innerHTML = '▶️ Reanudar Test';
+      btn.title = 'Reanudar el test pausado';
+
+      
+      btn.onclick = () => {
+        let basePath = window.location.pathname;
+        if (basePath.endsWith('index.html')) {
+          basePath = basePath.substring(0, basePath.lastIndexOf('/index.html'));
+        } else if (basePath.endsWith('/')) {
+          basePath = basePath.substring(0, basePath.length - 1);
+        }
+        
+        let targetPath = progress.path;
+        if (targetPath.endsWith('index.html')) {
+          targetPath = targetPath.substring(0, targetPath.lastIndexOf('/index.html'));
+        } else if (targetPath.endsWith('/')) {
+          targetPath = targetPath.substring(0, targetPath.length - 1);
+        }
+
+        if (basePath === targetPath && typeof window.resumePausedTest === 'function') {
+          window.resumePausedTest(progress.state);
+        } else {
+          // Navigating to the paused test
+          window.location.href = progress.path + '?resume=true';
+        }
+      };
+      
+      document.body.appendChild(btn);
+    } catch (e) {
+      console.error(e);
+    }
+  } else {
+    const existing = document.querySelector('.resume-test-btn');
+    if (existing) existing.remove();
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initResumeButton();
   initTheme();
   window.QuizStats.load();
 });

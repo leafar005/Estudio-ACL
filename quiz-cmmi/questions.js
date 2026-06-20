@@ -563,12 +563,12 @@ const QUESTIONS = [
     question: '¿Qué riesgo principal tiene el modelo Staged según la profesora?',
     options: [
       'Es demasiado simple',
-      'La \titulitis\: mejorar áreas no críticas solo para subir de nivel',
+      'La \'titulitis\': mejorar áreas no críticas solo para subir de nivel',
       'No permite evaluación',
       'Es demasiado caro'
     ],
     correct: 1,
-    justification: 'El modelo Staged puede provocar \titulitis\: mejorar áreas no críticas solo para subir de nivel, ignorando los problemas reales. La profesora lo compara con \'tratar una pierna rota haciéndose la manicura\'.',
+    justification: 'El modelo Staged puede provocar \'titulitis\': mejorar áreas no críticas solo para subir de nivel, ignorando los problemas reales. La profesora lo compara con \'tratar una pierna rota haciéndose la manicura\'.',
     trap: false
   },
   {

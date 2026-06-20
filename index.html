@@ -276,6 +276,15 @@
       });
     }
 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!document.querySelector('.custom-modal-overlay.show')) {
+          e.preventDefault();
+          window.history.back();
+        }
+      }
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
       // Small timeout to ensure QuizStats is fully loaded
       setTimeout(() => {

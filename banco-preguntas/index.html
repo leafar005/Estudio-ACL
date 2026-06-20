@@ -283,6 +283,7 @@
       }
     }
   </style>
+  <style> .theme-toggle { display: none !important; } </style>
 </head>
 <body>
   <a href="../index.html" class="back-to-portal">← Volver al portal</a>
@@ -470,6 +471,46 @@
           tocContainer.style.display = '';
         }
       });
+    });
+
+    // --- Back to Top Button ---
+    const topBtn = document.createElement('button');
+    topBtn.innerHTML = '↑';
+    topBtn.title = 'Volver arriba';
+    topBtn.style.position = 'fixed';
+    topBtn.style.bottom = '24px';
+    topBtn.style.right = '24px';
+    topBtn.style.width = '50px';
+    topBtn.style.height = '50px';
+    topBtn.style.borderRadius = '50%';
+    topBtn.style.background = 'var(--accent, #6366f1)';
+    topBtn.style.color = '#fff';
+    topBtn.style.border = 'none';
+    topBtn.style.fontSize = '1.5rem';
+    topBtn.style.cursor = 'pointer';
+    topBtn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+    topBtn.style.opacity = '0';
+    topBtn.style.pointerEvents = 'none';
+    topBtn.style.transition = 'opacity 0.3s, transform 0.2s';
+    topBtn.style.zIndex = '9999';
+    topBtn.style.display = 'flex';
+    topBtn.style.alignItems = 'center';
+    topBtn.style.justifyContent = 'center';
+    
+    topBtn.onmouseover = () => topBtn.style.transform = 'translateY(-3px)';
+    topBtn.onmouseout = () => topBtn.style.transform = 'translateY(0)';
+    
+    topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.body.appendChild(topBtn);
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topBtn.style.opacity = '1';
+        topBtn.style.pointerEvents = 'auto';
+      } else {
+        topBtn.style.opacity = '0';
+        topBtn.style.pointerEvents = 'none';
+      }
     });
   </script>
 </body>

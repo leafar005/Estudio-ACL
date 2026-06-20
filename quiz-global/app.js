@@ -1,5 +1,5 @@
 /**
- * QUIZ APP — CMMI Modelo + Evaluación
+ * QUIZ APP — Repaso Global
  * Interactive quiz engine with justifications
  */
 
@@ -29,6 +29,7 @@
   const $$ = (sel) => document.querySelectorAll(sel);
 
   const screens = {
+    landing: $('#landing-screen'),
     quiz: $('#quiz-screen'),
     results: $('#results-screen')
   };
@@ -39,6 +40,14 @@
   function init() {
     bindQuizEvents();
     bindResultsEvents();
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('resume') === 'true' && localStorage.getItem('paused_test')) {
+      const saved = JSON.parse(localStorage.getItem('paused_test'));
+      window.resumePausedTest(saved.state);
+      window.history.replaceState({}, document.title, window.location.pathname);
+      return;
+    }
     startQuiz('random');
   }
 
@@ -52,9 +61,14 @@
   // NAVIGATION
   // ========================
   function showScreen(name) {
-    Object.values(screens).forEach(s => s.classList.remove('active'));
-    screens[name].classList.add('active');
+    Object.values(screens).forEach(s => { if (s) s.classList.remove('active') });
+    if (screens[name]) screens[name].classList.add('active');
     window.scrollTo(0, 0);
+
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+      themeToggle.style.display = (name === 'landing') ? 'flex' : 'none';
+    }
   }
 
   // ========================
@@ -98,37 +112,74 @@
   // QUIZ START
   // ========================
   function startQuiz(mode, categoryId) {
-    state.mode = mode;
-    state.categoryId = categoryId || null;
-    state.currentIndex = 0;
-    state.answers = [];
-    state.correctCount = 0;
-    state.wrongCount = 0;
-    state.answered = false;
-    state.startTime = Date.now();
+    const doStart = () => {
+      state.mode = mode;
+      state.categoryId = categoryId || null;
+      state.currentIndex = 0;
+      state.answers = [];
+      state.correctCount = 0;
+      state.wrongCount = 0;
+      state.answered = false;
+      state.startTime = Date.now();
 
-    // Select questions
-    let pool = [...QUESTIONS];
-    if (mode === 'category' && categoryId) {
-      pool = pool.filter(q => q.category === categoryId);
-    } else if (mode === 'traps') {
-      pool = pool.filter(q => q.trap);
+      // Select questions
+      let pool = [...QUESTIONS];
+      if (mode === 'category' && categoryId) {
+        pool = pool.filter(q => q.category === categoryId);
+      } else if (mode === 'traps') {
+        pool = pool.filter(q => q.trap);
+      }
+
+      // Shuffle
+      pool = shuffle(pool);
+
+      if (mode === 'random') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const numQuestions = parseInt(urlParams.get('num')) || 50;
+        pool = pool.slice(0, numQuestions);
+      }
+
+      state.questions = pool;
+      $('#quiz-total').textContent = pool.length;
+
+      showScreen('quiz');
+      if (document.getElementById('quiz-screen')) {
+        document.getElementById('quiz-screen').style.opacity = '1';
+      }
+      renderQuestion();
+    };
+
+    if (localStorage.getItem('paused_test')) {
+      if (!document.getElementById('landing-screen') && document.getElementById('quiz-screen')) {
+        document.getElementById('quiz-screen').style.opacity = '0';
+      }
+      window.showCustomModal({
+        title: 'Tienes un test pausado',
+        desc: 'Si empiezas uno nuevo, perderás el progreso del test anterior. ¿Deseas empezar uno nuevo de todas formas?',
+        buttons: [
+          {
+            text: 'Empezar nuevo',
+            style: 'danger',
+            action: () => {
+              localStorage.removeItem('paused_test');
+              if (typeof initResumeButton === 'function') initResumeButton();
+              doStart();
+            }
+          },
+          {
+            text: 'Cancelar',
+            style: 'secondary',
+            action: () => {
+              if (!document.getElementById('landing-screen')) {
+                window.location.href = '../index.html';
+              }
+            }
+          }
+        ]
+      });
+      return;
     }
-
-    // Shuffle
-    pool = shuffle(pool);
-
-    if (mode === 'random') {
-      const urlParams = new URLSearchParams(window.location.search);
-      const numQuestions = parseInt(urlParams.get('num')) || 50;
-      pool = pool.slice(0, numQuestions);
-    }
-
-    state.questions = pool;
-    $('#quiz-total').textContent = pool.length;
-
-    showScreen('quiz');
-    renderQuestion();
+    doStart();
   }
 
   // ========================
@@ -195,6 +246,16 @@
     });
 
     const pastAnswer = state.answers.find(a => a.questionIndex === state.currentIndex);
+
+    if ($('#btn-prev')) {
+      $('#btn-prev').style.display = state.currentIndex > 0 ? 'inline-block' : 'none';
+    }
+    if (!pastAnswer && state.currentIndex === 0) {
+      $('#question-actions').classList.add('hidden');
+    } else {
+      $('#question-actions').classList.remove('hidden');
+    }
+
     if (pastAnswer) {
       state.answered = true;
       state.currentDisplayOptions = pastAnswer.displayOptions;
@@ -240,14 +301,12 @@
       }
 
       text.innerHTML = formatJustification(q.justification);
-      $('#question-actions').classList.remove('hidden');
-      if ($('#btn-prev')) $('#btn-prev').style.display = state.currentIndex > 0 ? 'inline-block' : 'none';
-      
+      $('#btn-next').style.display = 'inline-block';
       const pctDone = ((state.currentIndex + 1) / state.questions.length) * 100;
       $('#progress-bar').style.width = `${pctDone}%`;
     } else {
       $('#justification-panel').classList.add('hidden');
-      $('#question-actions').classList.add('hidden');
+      $('#btn-next').style.display = 'none';
     }
 
     // Re-animate card
@@ -329,8 +388,8 @@
     text.innerHTML = formatJustification(q.justification);
 
     // Show next button
+    $('#btn-next').style.display = 'inline-block';
     $('#question-actions').classList.remove('hidden');
-    if ($('#btn-prev')) $('#btn-prev').style.display = state.currentIndex > 0 ? 'inline-block' : 'none';
 
     // Update progress
     const pctDone = ((state.currentIndex + 1) / state.questions.length) * 100;
@@ -377,13 +436,76 @@
     });
 
     $('#btn-quit').addEventListener('click', () => {
-      if (state.answers.length > 0 && !confirm('¿Seguro que quieres salir? Se perderá tu progreso.')) return;
-      resetToLanding();
+      if (state.answers.length > 0) {
+        window.showCustomModal({
+          title: '¿Guardar progreso?',
+          desc: '¿Deseas guardar tu progreso para reanudar este test más tarde?',
+          buttons: [
+            {
+              text: 'Guardar y Salir',
+              style: 'primary',
+              action: () => {
+                const elapsed = Date.now() - state.startTime;
+                const progress = {
+                  path: window.location.pathname,
+                  state: { ...state, accumulatedTime: (state.accumulatedTime || 0) + elapsed }
+                };
+                localStorage.setItem('paused_test', JSON.stringify(progress));
+                resetToLanding();
+              }
+            },
+            {
+              text: 'Salir sin guardar',
+              style: 'danger',
+              action: () => {
+                localStorage.removeItem('paused_test');
+                resetToLanding();
+              }
+            },
+            {
+              text: 'Cancelar',
+              style: 'secondary'
+            }
+          ]
+        });
+      } else {
+        resetToLanding();
+      }
     });
 
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
-      if (!screens.quiz.classList.contains('active')) return;
+      // Escape logic
+      if (e.key === 'Escape') {
+        // If a modal is open, it's handled by shared.js escapeHandler
+        if (document.querySelector('.custom-modal-overlay.show')) return;
+        
+        if (screens.quiz && screens.quiz.classList.contains('active')) {
+          e.preventDefault();
+          $('#btn-quit').click();
+          return;
+        } else if (screens.results && screens.results.classList.contains('active')) {
+           e.preventDefault();
+           resetToLanding();
+           return;
+        } else if (screens.landing && screens.landing.classList.contains('active')) {
+           // Go back to previous menu
+           e.preventDefault();
+           if (!$('#category-picker').classList.contains('hidden')) {
+              $('#btn-back-categories').click();
+           } else {
+              window.location.href = '../index.html';
+           }
+           return;
+        } else if (window.location.pathname.includes('quiz-global')) {
+           // Special case for quiz-global which doesn't have a landing screen
+           e.preventDefault();
+           window.location.href = '../index.html';
+           return;
+        }
+      }
+
+      if (!screens.quiz || !screens.quiz.classList.contains('active')) return;
 
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -419,9 +541,14 @@
     const wrong = state.wrongCount;
     const pct = Math.round((correct / total) * 100);
     const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
-    let quizName = 'Simulacro Global';
-    if (state.mode === 'all') quizName = 'Global Completo';
-    else if (state.mode === 'random') quizName = 'Global Aleatorio';
+    let quizName = 'Simulacro';
+    if (state.mode === 'all') quizName = 'Completo';
+    else if (state.mode === 'traps') quizName = 'Solo Trampas';
+    else if (state.mode === 'random') quizName = 'Aleatorio';
+    else if (state.mode === 'category') {
+      const cat = typeof CATEGORIES !== 'undefined' ? CATEGORIES.find(c => c.id === state.categoryId) : null;
+      quizName = cat ? 'Categoría: ' + cat.name : 'Categoría';
+    }
 
     const questionsList = state.answers.map(ans => {
       const q = state.questions[ans.questionIndex];
@@ -603,6 +730,28 @@
     const s = totalSeconds % 60;
     return `${m}:${s.toString().padStart(2, '0')}`;
   }
+
+  // ========================
+  // RESUME
+  // ========================
+
+  window.resumePausedTest = function(savedState) {
+    state = savedState;
+    state.startTime = Date.now();
+    
+    // Hide landing or other screens
+    Object.values(screens).forEach(s => s?.classList?.remove('active'));
+    if (screens.quiz) screens.quiz.classList.add('active');
+    
+    // Consume the paused test
+    localStorage.removeItem('paused_test');
+    const existingBtn = document.querySelector('.resume-test-btn');
+    if (existingBtn) existingBtn.remove();
+    
+    // Resume UI
+    $('#quiz-total').textContent = state.questions.length;
+    renderQuestion();
+  };
 
   // ========================
   // START
