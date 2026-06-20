@@ -64,7 +64,7 @@ const QUESTIONS = [
       'Falso'
     ],
     correct: 1,
-    justification: 'FALSO. CMMI fue desarrollado por el SEI (Software Engineering Institute) de Carnegie Mellon, NO por el IEEE. El SEI fue financiado por el Departamento de Defensa de EEUU.',
+    justification: 'VERDADERO. CMMI fue desarrollado por el SEI (Software Engineering Institute) de Carnegie Mellon, NO por el IEEE. El SEI fue financiado por el Departamento de Defensa de EEUU.',
     trap: true
   },
   {

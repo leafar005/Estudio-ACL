@@ -70,8 +70,8 @@ const QUESTIONS = [
       'Falso',
       'Verdadero'
     ],
-    correct: 0,
-    justification: 'FALSO. Las auditorías NUNCA son por sorpresa. Deben planificarse con antelación y comunicarse a los afectados. El auditado necesita preparar documentación y dedicar tiempo (3+ horas, entrevistas, etc.).',
+    correct: 1,
+    justification: 'VERDADERO. Las auditorías NUNCA son por sorpresa. Deben planificarse con antelación y comunicarse a los afectados. El auditado necesita preparar documentación y dedicar tiempo (3+ horas, entrevistas, etc.).',
     trap: true
   },
   {
@@ -994,7 +994,7 @@ const QUESTIONS = [
       'Falso',
       'Verdadero'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'VERDADERO. Los resultados de las auditorías y la efectividad de las acciones correctivas se agregan como información de entrada para la revisión periódica del SGC por la dirección.',
     trap: false
   },
@@ -1076,7 +1076,7 @@ const QUESTIONS = [
       'Falso',
       'Verdadero'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'VERDADERO. Este es el ÚNICO mecanismo de control: el RC agrega resultados de auditorías (VF + AG) y efectividad de acciones correctivas, y los presenta en la revisión anual del SGC por la dirección.',
     trap: false
   },
@@ -1135,7 +1135,7 @@ const QUESTIONS = [
       'Verdadero'
     ],
     correct: 0,
-    justification: 'VERDADERO. Las VF NO tienen reunión inicial ni final (frecuencia alta, el equipo ya conoce el proceso). Las AG SÍ tienen ambas reuniones (frecuencia menor, el personal puede no estar familiarizado).',
+    justification: 'FALSO. Las VF NO tienen reunión inicial ni final (frecuencia alta, el equipo ya conoce el proceso). Las AG SÍ tienen ambas reuniones (frecuencia menor, el personal puede no estar familiarizado).',
     trap: true
   },
   {
@@ -1175,7 +1175,7 @@ const QUESTIONS = [
       'Verdadero'
     ],
     correct: 0,
-    justification: 'VERDADERO. Son perfiles distintos: el Auditor Técnico (VF) necesita conocimientos en desarrollo software, mientras que el Auditor de Sistemas (AG) necesita conocimientos del área que audita. No son intercambiables.',
+    justification: 'FALSO. Son perfiles distintos: el Auditor Técnico (VF) necesita conocimientos en desarrollo software, mientras que el Auditor de Sistemas (AG) necesita conocimientos del área que audita. No son intercambiables.',
     trap: true
   },
   {
@@ -1198,7 +1198,7 @@ const QUESTIONS = [
       'Falso',
       'Verdadero'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'VERDADERO. Ni las VF ni las AG pueden ser por sorpresa. Siempre se planifican con antelación y se comunican a los afectados.',
     trap: false
   },
@@ -1225,7 +1225,7 @@ const QUESTIONS = [
       'Verdadero'
     ],
     correct: 0,
-    justification: 'VERDADERO. El acuerdo SE ASUME en el procedimiento. NO se debe documentar la opción de escalar a dirección. Si se pone, se ejecutará y desacredita al responsable de calidad.',
+    justification: 'FALSO. El acuerdo SE ASUME en el procedimiento. NO se debe documentar la opción de escalar a dirección. Si se pone, se ejecutará y desacredita al responsable de calidad.',
     trap: true
   },
   {
@@ -1236,7 +1236,7 @@ const QUESTIONS = [
       'Falso',
       'Verdadero'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'VERDADERO. El Auditor Técnico (VF) necesita conocimientos en desarrollo software. El Auditor de Sistemas (AG) necesita conocimientos del área que audita (RRHH, compras, etc.), no necesariamente de software.',
     trap: false
   },
@@ -1277,7 +1277,7 @@ const QUESTIONS = [
       'Verdadero'
     ],
     correct: 0,
-    justification: 'VERDADERO. Las plantillas obligan a usarlas, por lo tanto cuantas más pongas, más te atas. Se recomienda usar solo las plantillas mínimas necesarias (portada del informe).',
+    justification: 'FALSO. Las plantillas obligan a usarlas, por lo tanto cuantas más pongas, más te atas. Se recomienda usar solo las plantillas mínimas necesarias (portada del informe).',
     trap: true
   },
   {
@@ -1288,7 +1288,7 @@ const QUESTIONS = [
       'Falso',
       'Verdadero'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'VERDADERO. Cada NC se anota con su evidencia objetiva EN EL MOMENTO durante la ejecución de la auditoría. Si se espera al final, se corre el riesgo de perder evidencias.',
     trap: false
   },
@@ -1301,7 +1301,7 @@ const QUESTIONS = [
       'Verdadero'
     ],
     correct: 0,
-    justification: 'VERDADERO. Un registro de calidad NO se modifica NUNCA. Es histórico: aporta evidencia objetiva de actividades realizadas. Solo se puede anular y reemitir con trazabilidad.',
+    justification: 'FALSO. Un registro de calidad NO se modifica NUNCA. Es histórico: aporta evidencia objetiva de actividades realizadas. Solo se puede anular y reemitir con trazabilidad.',
     trap: true
   },
 ];
