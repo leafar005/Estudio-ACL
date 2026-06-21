@@ -13,9 +13,19 @@ El portal cuenta con cuestionarios específicos para los siguientes temas:
 - 📋 **Auditorías Internas (PAI)**: Cuestionario dedicado al Plan de Auditorías Internas, cubriendo Verificaciones de Fase, Auditorías Generales y gestión de No Conformidades.
 - 🌍 **Encuesta Global**: Un simulacro general configurable (10, 20, 50 o 100 preguntas) que extrae preguntas de forma aleatoria de todos los módulos anteriores, ideal para la preparación final.
 
-## 🚀 Nuevas Características (v2.3.0)
+## 🚀 Nuevas Características (v2.4.0 - Flashcards Premium)
 
-Esta última versión convierte la plataforma en una herramienta de estudio mucho más avanzada, justa y gamificada:
+Esta actualización incorpora un motor de memorización basado en **Flashcards dinámicas** con formato inteligente:
+
+- 🗂️ **Categorización Dinámica por Subtemas**: Dentro de cada módulo, ahora puedes alternar mediante un "Switch" entre el modo Cuestionario clásico y el modo Flashcards. Las cantidades se actualizan reactivamente.
+- ⏱️ **Flujo de Estudio Cronológico**: Si estudias un tema individual, las flashcards seguirán estrictamente el orden de los apuntes (narrativo) para que construyas el conocimiento paso a paso.
+- 🔀 **Modo Examen Aleatorio**: Si accedes a las flashcards desde el *Quiz Global*, se barajarán aleatoriamente todas las de la base de datos para ponerte a prueba sin contextos.
+- ✨ **Formateo Markdown Inteligente**: Las flashcards detectan y auto-formatean listas enumeradas, viñetas y resaltan en negrita palabras clave (`Verdadero`, `Falso`, etc.) para una lectura más rápida y visual.
+- 🏷️ **Insignias de Contexto**: Cada flashcard cuenta con dos insignias (badges) integradas en la esquina superior que te chivan a qué Tema y Subtema pertenece, especialmente útil en el modo aleatorio.
+
+## 📦 Características Previas (v2.3.0)
+
+Esta versión convirtió la plataforma en una herramienta de estudio mucho más avanzada, justa y gamificada:
 
 - 💾 **Autoguardado de Progreso**: Si te sales de un test a medias, la aplicación recordará dónde te quedaste y te permitirá reanudarlo desde el menú principal.
 - 🎲 **Sistema Anti-Predictibilidad**: Todas las respuestas de opción múltiple se barajan dinámicamente, y las trampas de V/F se han rebalanceado para que no puedas deducir la respuesta por inercia.
