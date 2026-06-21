@@ -12,21 +12,6 @@ const CATEGORIES = [
   { id: 'metricas',      name: 'Tipos de Métrica',             icon: '📊' },
   { id: 'gqm-psm',       name: 'GQM, PSM y Herramientas',     icon: '🎯' },
   { id: 'trampas',       name: 'Trampas de Examen',            icon: '⚠️' },
-  {
-    isDefinition: true,
-    category: 'medicion',
-    type: 'multi',
-    question: '¿Cómo se define una "Métrica" en Ingeniería del Software?',
-    options: [
-      'Una estimación del coste futuro de desarrollo de una aplicación web.',
-      'Un diagrama cualitativo de la estructura del software.',
-      'Una medida cuantitativa del grado en que un sistema, componente o proceso posee un atributo dado.',
-      'El peso en bytes del código fuente compilado exclusivamente.'
-    ],
-    correct: 2,
-    justification: 'Una métrica en IS es una medida siempre CUANTITATIVA que permite evaluar un atributo específico (esfuerzo, complejidad, densidad de defectos, etc.).',
-    trap: false
-  },
 ];
 
 const QUESTIONS = [

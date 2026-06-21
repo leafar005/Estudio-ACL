@@ -4,21 +4,6 @@ const CATEGORIES = [
   { id: 'ciclo-pruebas',  name: 'Ciclo Operativo y Pruebas',     icon: '♻️' },
   { id: 'colaterales',    name: 'Procesos Colaterales (Compras, Formación, Cliente)', icon: '🤝' },
   { id: 'conceptos',      name: 'Conceptos Generales SGCS',      icon: '🧠' },
-  {
-    isDefinition: true,
-    category: 'conceptos',
-    type: 'multi',
-    question: '¿Cuál es la definición formal de "Proyecto" en ingeniería?',
-    options: [
-      'Proceso de negocio que nunca tiene una fecha de finalización definida.',
-      'Esfuerzo temporal, discreto, no rutinario y complejo llevado a cabo para crear un producto, servicio o resultado único.',
-      'Actividad orientada a la reducción de costes de un producto existente.',
-      'Conjunto de tareas repetitivas que realiza una organización de manera continua.'
-    ],
-    correct: 1,
-    justification: 'Un proyecto tiene tres características fundamentales: es discreto (temporal, con inicio y fin), no rutinario (es único) y complejo.',
-    trap: false
-  },
 ];
 
 const QUESTIONS = [

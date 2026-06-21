@@ -1,4 +1,5 @@
 const CATEGORIES = [
+
   { id: 'calidad',        name: 'Qué es Calidad',               icon: '🎯' },
   { id: 'qa-qc',          name: 'QA vs QC / V&V',               icon: '🔍' },
   { id: 'crisis',         name: 'Crisis del Software',           icon: '💥' },
@@ -36,9 +37,14 @@ const CATEGORIES = [
   { id: 'ciclo-pruebas',  name: 'Ciclo Operativo y Pruebas',     icon: '♻️' },
   { id: 'colaterales',    name: 'Procesos Colaterales (Compras, Formación, Cliente)', icon: '🤝' },
   { id: 'conceptos',      name: 'Conceptos Generales SGCS',      icon: '🧠' },
+  { id: 'familia', name: 'Familia ISO 9000', icon: '📘' },
+  { id: 'seccion7', name: 'Soporte y Operación', icon: '🛠️' },
+  { id: 'seccion8', name: 'Evaluación y Mejora', icon: '📈' },
+  { id: 'pas', name: 'Áreas de Proceso (PAs)', icon: '🧩' },
 ];
 
 let QUESTIONS = [
+
   // =============================================
   // ===== CATEGORÍA: QUÉ ES CALIDAD =====
   // =============================================
@@ -6204,5 +6210,86 @@ let QUESTIONS = [
     correct: 1,
     justification: 'FALSO. Al no haber un problema o fallo (no conformidad), no cabe acción correctiva. Se trata de una mejora potencial, por lo que origina una Acción Preventiva o sugerencia de mejora.',
     trap: true
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'multi',
+    question: '¿Cuál es la definición oficial de "Calidad" según la norma ISO 9000?',
+    options: [
+      'El grado en que un conjunto de características inherentes de un objeto cumple con los requisitos.',
+      'La ausencia total de defectos en un producto final.',
+      'El cumplimiento exclusivo de los plazos y presupuestos del proyecto.',
+      'La satisfacción del cliente a cualquier coste.'
+    ],
+    correct: 0,
+    justification: 'La ISO 9000 define la calidad como el "grado en que un conjunto de características inherentes de un objeto cumple con los requisitos".',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'vf',
+    question: 'Según la terminología de ISO, el "Control de la Calidad (QC)" es la parte de la gestión orientada a proporcionar confianza en que se cumplirán los requisitos.',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. Proporcionar confianza es el Aseguramiento de la Calidad (QA). El Control (QC) está orientado al cumplimiento directo de los requisitos mediante actividades operativas y de inspección.',
+    trap: true
+  },
+  {
+    isDefinition: true,
+    category: 'ag',
+    type: 'multi',
+    question: '¿Cómo se define "Auditoría" en el contexto de los sistemas de gestión de calidad?',
+    options: [
+      'Proceso sistemático, independiente y documentado para obtener evidencias y evaluarlas de forma objetiva.',
+      'Revisión informal realizada por el jefe de proyecto para comprobar el estado de las tareas.',
+      'Inspección de código línea por línea por parte de un equipo externo.',
+      'Evaluación financiera obligatoria de los gastos de un proyecto informático.'
+    ],
+    correct: 0,
+    justification: 'La auditoría es un proceso sistemático, independiente y documentado diseñado para obtener evidencias objetivas y evaluar en qué medida se cumplen los criterios acordados.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'nc',
+    type: 'vf',
+    question: 'Una "Acción Preventiva" se define como la acción para eliminar la causa de una no conformidad detectada y evitar que vuelva a ocurrir.',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. Eliminar la causa de una no conformidad DETECTADA (que ya ha ocurrido) es una Acción Correctiva. La Acción Preventiva se adelanta a una no conformidad POTENCIAL.',
+    trap: true
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'multi',
+    question: '¿Cuál es la definición formal de "Proyecto" en ingeniería?',
+    options: [
+      'Esfuerzo temporal, discreto, no rutinario y complejo llevado a cabo para crear un producto, servicio o resultado único.',
+      'Conjunto de tareas repetitivas que realiza una organización de manera continua.',
+      'Actividad orientada a la reducción de costes de un producto existente.',
+      'Proceso de negocio que nunca tiene una fecha de finalización definida.'
+    ],
+    correct: 0,
+    justification: 'Un proyecto tiene tres características fundamentales: es discreto (temporal, con inicio y fin), no rutinario (es único) y complejo.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'medicion',
+    type: 'multi',
+    question: '¿Cómo se define una "Métrica" en Ingeniería del Software?',
+    options: [
+      'Una medida cuantitativa del grado en que un sistema, componente o proceso posee un atributo dado.',
+      'Un diagrama cualitativo de la estructura del software.',
+      'El peso en bytes del código fuente compilado exclusivamente.',
+      'Una estimación del coste futuro de desarrollo de una aplicación web.'
+    ],
+    correct: 0,
+    justification: 'Una métrica en IS es una medida siempre CUANTITATIVA que permite evaluar un atributo específico (esfuerzo, complejidad, densidad de defectos, etc.).',
+    trap: false
   }
+
 ];

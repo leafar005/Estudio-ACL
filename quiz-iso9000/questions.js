@@ -13,31 +13,6 @@ const CATEGORIES = [
   { id: 'iso-estructura', name: 'Estructura ISO 9001',           icon: '🏗️' },
   { id: 'certificacion',  name: 'Certificación y Auditorías',    icon: '✅' },
   { id: 'metricas',       name: 'Métricas de Calidad',           icon: '📊' },
-  {
-    isDefinition: true,
-    category: 'conceptos',
-    type: 'multi',
-    question: '¿Cuál es la definición oficial de "Calidad" según la norma ISO 9000?',
-    options: [
-      'El grado en que un conjunto de características inherentes de un objeto cumple con los requisitos.',
-      'El cumplimiento exclusivo de los plazos y presupuestos del proyecto.',
-      'La ausencia total de defectos en un producto final.',
-      'La satisfacción del cliente a cualquier coste.'
-    ],
-    correct: 0,
-    justification: 'La ISO 9000 define la calidad como el "grado en que un conjunto de características inherentes de un objeto cumple con los requisitos".',
-    trap: false
-  },
-  {
-    isDefinition: true,
-    category: 'conceptos',
-    type: 'vf',
-    question: 'Según la terminología de ISO, el "Control de la Calidad (QC)" es la parte de la gestión orientada a proporcionar confianza en que se cumplirán los requisitos.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. Proporcionar confianza es el Aseguramiento de la Calidad (QA). El Control (QC) está orientado al cumplimiento directo de los requisitos mediante actividades operativas y de inspección.',
-    trap: true
-  },
 ];
 
 const QUESTIONS = [

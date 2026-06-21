@@ -202,23 +202,39 @@
     const cat = CATEGORIES.find(c => c.id === q.category);
     $('#question-category').textContent = cat ? `${cat.icon} ${cat.name}` : q.category;
 
+    const metaContainer = document.querySelector('.question-meta');
+    metaContainer.querySelectorAll('.extra-badge').forEach(el => el.remove());
+
     let typeLabel = q.type === 'vf' ? 'V / F' : 'Opción múltiple';
     const typeEl = $('#question-type');
+    typeEl.textContent = typeLabel;
+    typeEl.style.background = '';
+    typeEl.style.color = '';
+
     if (q.trap) {
-      typeLabel += ' ⚠️ Trampa';
-      typeEl.style.background = 'rgba(239, 68, 68, 0.12)';
-      typeEl.style.color = '#ef4444';
-    } else {
-      typeEl.style.background = '';
-      typeEl.style.color = '';
+      const b = document.createElement('span');
+      b.className = 'question-type extra-badge';
+      b.textContent = '⚠️ Trampa';
+      b.style.background = 'rgba(239, 68, 68, 0.12)';
+      b.style.color = '#ef4444';
+      metaContainer.appendChild(b);
     }
     if (q.isEnumeration) {
-      typeLabel += ' 📋 Enumeración';
+      const b = document.createElement('span');
+      b.className = 'question-type extra-badge';
+      b.textContent = '📋 Enumeración';
+      b.style.background = 'rgba(139, 92, 246, 0.12)';
+      b.style.color = '#c4b5fd';
+      metaContainer.appendChild(b);
     }
     if (q.isDefinition) {
-      typeLabel += ' 📖 Definición';
+      const b = document.createElement('span');
+      b.className = 'question-type extra-badge';
+      b.textContent = '📖 Definición';
+      b.style.background = 'rgba(56, 189, 248, 0.12)';
+      b.style.color = '#7dd3fc';
+      metaContainer.appendChild(b);
     }
-    typeEl.textContent = typeLabel;
 
     // Question text
     $('#question-text').textContent = q.question;

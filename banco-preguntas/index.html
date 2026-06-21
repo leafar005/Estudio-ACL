@@ -342,12 +342,23 @@
       const searchData = [];
       const normalizeText = (text) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+      const isoIds = ['calidad', 'qa-qc', 'crisis', 'iso-familia', 'iso-estructura', 'certificacion', 'metricas', 'familia', 'seccion7', 'seccion8'];
+      const cmmiIds = ['cmmi-intro', 'versiones', 'estructura', 'staged-cont', 'pas-ciclo', 'scampi', 'evaluacion', 'trampas', 'pas'];
+      const otrosIds = ['spice', 'mmis', 'itmark', 'swtqm', 'medicion', 'gqm-psm'];
+      const sgcsIds = ['procedimientos', 'mapas', 'ciclo-pruebas', 'colaterales', 'conceptos'];
+      const paiIds = ['criterios', 'roles', 'vf', 'ag', 'nc', 'informes', 'entradas-salidas', 'diferencias'];
+
+      const getCats = (ids) => {
+         // Some IDs are duplicated in CATEGORIES, we just take the first matching one
+         return ids.map(id => CATEGORIES.find(c => c.id === id)).filter(Boolean);
+      };
+
       const modules = [
-        { name: "⚡ Calidad e ISO 9000", categories: CATEGORIES.slice(0, 7) },
-        { name: "🏛️ CMMI Modelo + Eval.", categories: CATEGORIES.slice(7, 15) },
-        { name: "📐 Otros Modelos + Medición", categories: CATEGORIES.slice(15, 23) },
-        { name: "⚙️ SGCS Práctica", categories: CATEGORIES.slice(32, 37) },
-        { name: "📋 Auditorías Internas (PAI)", categories: CATEGORIES.slice(23, 32) }
+        { name: "⚡ Calidad e ISO 9000", categories: getCats(isoIds) },
+        { name: "🏛️ CMMI Modelo + Eval.", categories: getCats(cmmiIds) },
+        { name: "📐 Otros Modelos + Medición", categories: getCats(otrosIds) },
+        { name: "⚙️ SGCS Práctica", categories: getCats(sgcsIds) },
+        { name: "📋 Auditorías Internas (PAI)", categories: getCats(paiIds) }
       ];
 
       // Because there are duplicate category IDs in the global file (like 'trampas'),
@@ -412,10 +423,17 @@
             card.className = 'question-card';
             
             let typeLabel = q.type === 'multi' ? 'Múltiple' : 'V/F';
-            if (q.trap) typeLabel += ' ⚠️ Trampa';
-            if (q.isEnumeration) typeLabel += ' 📋 Enumeración';
-            if (q.isDefinition) typeLabel += ' 📖 Definición';
             const typeClass = q.type === 'multi' ? 'badge-multi' : 'badge-vf';
+            let badgesHtml = `<span class="question-type-badge ${typeClass}">${typeLabel}</span>`;
+            if (q.trap) {
+              badgesHtml += `<span class="question-type-badge" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); ">⚠️ Trampa</span>`;
+            }
+            if (q.isEnumeration) {
+              badgesHtml += `<span class="question-type-badge" style="background: rgba(139, 92, 246, 0.12); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.3); ">📋 Enumeración</span>`;
+            }
+            if (q.isDefinition) {
+              badgesHtml += `<span class="question-type-badge" style="background: rgba(56, 189, 248, 0.12); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); ">📖 Definición</span>`;
+            }
             
             let optionsHtml = '';
             q.options.forEach((opt, i) => {
@@ -433,7 +451,7 @@
             card.innerHTML = `
               <div class="question-header">
                 <h3 class="question-text">${index + 1}. ${q.question}</h3>
-                <span class="question-type-badge ${typeClass}">${typeLabel}</span>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">${badgesHtml}</div>
               </div>
               <ul class="options-list">
                 ${optionsHtml}

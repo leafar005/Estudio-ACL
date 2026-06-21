@@ -15,31 +15,6 @@ const CATEGORIES = [
   { id: 'informes',        name: 'Informes y Documentación',      icon: '📋' },
   { id: 'entradas-salidas', name: 'Entradas, Salidas y Métricas', icon: '📊' },
   { id: 'diferencias',     name: 'Diferencias Clave (Examen)',    icon: '🎯' },
-  {
-    isDefinition: true,
-    category: 'auditorias-generales',
-    type: 'multi',
-    question: '¿Cómo se define "Auditoría" en el contexto de los sistemas de gestión de calidad?',
-    options: [
-      'Evaluación financiera obligatoria de los gastos de un proyecto informático.',
-      'Revisión informal realizada por el jefe de proyecto para comprobar el estado de las tareas.',
-      'Proceso sistemático, independiente y documentado para obtener evidencias y evaluarlas de forma objetiva.',
-      'Inspección de código línea por línea por parte de un equipo externo.'
-    ],
-    correct: 2,
-    justification: 'La auditoría es un proceso sistemático, independiente y documentado diseñado para obtener evidencias objetivas y evaluar en qué medida se cumplen los criterios acordados.',
-    trap: false
-  },
-  {
-    isDefinition: true,
-    category: 'nc',
-    type: 'vf',
-    question: 'Una "Acción Preventiva" se define como la acción para eliminar la causa de una no conformidad detectada y evitar que vuelva a ocurrir.',
-    options: ['Verdadero', 'Falso'],
-    correct: 1,
-    justification: 'FALSO. Eliminar la causa de una no conformidad DETECTADA (que ya ha ocurrido) es una Acción Correctiva. La Acción Preventiva se adelanta a una no conformidad POTENCIAL.',
-    trap: true
-  },
 ];
 
 const QUESTIONS = [
