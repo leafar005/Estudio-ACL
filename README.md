@@ -13,7 +13,7 @@ El portal cuenta con cuestionarios específicos para los siguientes temas:
 - 📋 **Auditorías Internas (PAI)**: Cuestionario dedicado al Plan de Auditorías Internas, cubriendo Verificaciones de Fase, Auditorías Generales y gestión de No Conformidades.
 - 🌍 **Encuesta Global**: Un simulacro general configurable (10, 20, 50 o 100 preguntas) que extrae preguntas de forma aleatoria de todos los módulos anteriores, ideal para la preparación final.
 
-## 🚀 Nuevas Características (v2.2.0)
+## 🚀 Nuevas Características (v2.3.0)
 
 Esta última versión convierte la plataforma en una herramienta de estudio mucho más avanzada, justa y gamificada:
 
