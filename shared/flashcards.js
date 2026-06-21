@@ -115,32 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ') {
+    if (e.key === 'ArrowRight' || e.key === 'd') {
+        currentIndex++;
+        renderCard();
+    }
     if (e.key === ' ') {
         cardEl.classList.toggle('flipped');
-        
-    // if space, and flipped, go next. I dont like it
-      /*if (e.key === ' ' && cardEl.classList.contains('flipped')) {
-        if (currentIndex < cards.length - 1) {
-          currentIndex++;
-          renderCard();
-        }
-      } else if (e.key === ' ') {
-         cardEl.classList.toggle('flipped');*/
-         
-      } else {
-        if (currentIndex < cards.length - 1) {
-          currentIndex++;
-          renderCard();
-        }
       }
       e.preventDefault();
-    } else if (e.key === 'ArrowLeft') {
+    if (e.key === 'ArrowLeft' || e.key === 'a') {
       if (currentIndex > 0) {
         currentIndex--;
         renderCard();
       }
-    } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    } else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'ArrowDown' || e.key === 's') {
       cardEl.classList.toggle('flipped');
       e.preventDefault();
     }
