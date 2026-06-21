@@ -18,15 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const catName = urlParams.get('catName');
   let cards = [];
   if (window.FlashcardsData && topic && window.FlashcardsData[topic]) {
-    cards = window.FlashcardsData[topic];
+    cards = window.FlashcardsData[topic].map(c => ({...c, topic: topic}));
     if (category) {
       cards = cards.filter(c => c.category === category);
       if(cards.length === 0) cards = [{q: `No hay flashcards para la categoría: ${catName || category}`, a: ""}];
       titleEl.textContent = `Flashcards: ${catName || category}`;
     }
   } else if (window.FlashcardsData && !topic) {
-    // combine all
-    cards = Object.values(window.FlashcardsData).flat();
+    cards = [];
+    Object.keys(window.FlashcardsData).forEach(t => {
+      window.FlashcardsData[t].forEach(c => cards.push({ ...c, topic: t }));
+    });
     titleEl.textContent = 'Flashcards: Todos los temas';
   } else {
     cards = [{q: "Cargando flashcards o no hay disponibles para este tema...", a: ""}];
@@ -52,8 +54,38 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderCard() {
     cardEl.classList.remove('flipped');
     setTimeout(() => {
-      qEl.textContent = cards[currentIndex].q;
-      aEl.textContent = cards[currentIndex].a;
+      const card = cards[currentIndex];
+      
+      const frontTopic = document.getElementById('front-topic');
+      const frontCategory = document.getElementById('front-category');
+      const backTopic = document.getElementById('back-topic');
+      const backCategory = document.getElementById('back-category');
+      
+      if (frontTopic) {
+        const tName = card.topic ? titles[card.topic] || card.topic : "";
+        const cName = card.category || "";
+        
+        frontTopic.textContent = tName;
+        backTopic.textContent = tName;
+        frontCategory.textContent = cName;
+        backCategory.textContent = cName;
+        
+        frontTopic.style.display = tName ? 'block' : 'none';
+        backTopic.style.display = tName ? 'block' : 'none';
+        frontCategory.style.display = cName ? 'block' : 'none';
+        backCategory.style.display = cName ? 'block' : 'none';
+      }
+      
+      function parseMarkdown(text) {
+        if (!text) return '';
+        return text
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>')
+          .replace(/\n/g, '<br>');
+      }
+      
+      qEl.innerHTML = parseMarkdown(card.q);
+      aEl.innerHTML = parseMarkdown(card.a);
       currEl.textContent = currentIndex + 1;
       
       btnPrev.disabled = currentIndex === 0;

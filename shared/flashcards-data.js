@@ -12,7 +12,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Da tres ejemplos de parámetros de calidad en software.",
-      "a": "1. Satisfacción del usuario (funcionalidad y facilidad de uso). 2. Número de errores incluidos. 3. Tiempo medio transcurrido entre fallos (MTBF).",
+      "a": "**1.** Satisfacción del usuario (funcionalidad y facilidad de uso).\n\n**2.** Número de errores incluidos.\n\n**3.** Tiempo medio transcurrido entre fallos (MTBF).",
       "category": "calidad"
     },
     {
@@ -52,7 +52,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Es cierta la creencia de que existe una relación de proporcionalidad inversa entre productividad y calidad?",
-      "a": "Falso. Productividad y calidad no son antagónicos, sino complementarios.",
+      "a": "**Falso.** Productividad y calidad no son antagónicos, sino complementarios.",
       "category": "crisis"
     },
     {
@@ -182,7 +182,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son los 7 principios de gestión de la calidad en ISO 9001:2015?",
-      "a": "1. Enfoque al cliente, 2. Liderazgo, 3. Compromiso de las personas, 4. Enfoque de procesos, 5. Mejora, 6. Toma de decisiones basada en la evidencia, 7. Gestión de las relaciones.",
+      "a": "**1.** Enfoque al cliente,\n\n**2.** Liderazgo,\n\n**3.** Compromiso de las personas,\n\n**4.** Enfoque de procesos,\n\n**5.** Mejora,\n\n**6.** Toma de decisiones basada en la evidencia,\n\n**7.** Gestión de las relaciones.",
       "category": "iso-estructura"
     },
     {
@@ -202,7 +202,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Nombra los 5 apartados de requisitos (del 4 al 8) de la norma ISO 9001:2000/2008.",
-      "a": "4. Sistema de gestión de la calidad; 5. Responsabilidad de la dirección; 6. Gestión de los recursos; 7. Realización del producto; 8. Medición, análisis y mejora.",
+      "a": "**4.** Sistema de gestión de la calidad;\n\n**5.** Responsabilidad de la dirección;\n\n**6.** Gestión de los recursos;\n\n**7.** Realización del producto;\n\n**8.** Medición, análisis y mejora.",
       "category": "iso-estructura"
     },
     {
@@ -292,7 +292,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿La certificación ISO 9001 certifica directamente la calidad del producto software?",
-      "a": "Falso. Certifica que la organización sigue un SGC que con alta probabilidad generará un producto de calidad. No certifica el producto final per se.",
+      "a": "**Falso.** Certifica que la organización sigue un SGC que con alta probabilidad generará un producto de calidad. No certifica el producto final per se.",
       "category": "calidad"
     },
     {
@@ -352,12 +352,12 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son las normas de la familia ISO 9000 vigente (2015/2018) y sus funciones?",
-      "a": "ISO 9000: Fundamentos y vocabulario.\nISO 9001: Requisitos del SGC (certificable, enfoque eficacia).\nISO 9004: Orientación para el éxito sostenido y mejora continua (NO certificable, enfoque eficiencia).",
+      "a": "**ISO 9000:** Fundamentos y vocabulario.\n**ISO 9001:** Requisitos del SGC (certificable, enfoque eficacia).\n**ISO 9004:** Orientación para el éxito sostenido y mejora continua (NO certificable, enfoque eficiencia).",
       "category": "iso-estructura"
     },
     {
       "q": "¿Cuáles son los 7 Principios de Gestión de la Calidad de la ISO 9000:2015?",
-      "a": "1. Enfoque al cliente\n2. Liderazgo\n3. Compromiso de las personas\n4. Enfoque de procesos\n5. Mejora\n6. Toma de decisiones basada en la evidencia\n7. Gestión de las relaciones",
+      "a": "**1.** Enfoque al cliente\n\n**2.** Liderazgo\n\n**3.** Compromiso de las personas\n\n**4.** Enfoque de procesos\n\n**5.** Mejora\n\n**6.** Toma de decisiones basada en la evidencia\n\n**7.** Gestión de las relaciones",
       "category": "iso-familia"
     },
     {
@@ -412,7 +412,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son las 3 fases del Proceso de Certificación ISO 9001?",
-      "a": "1. Auditoría de evaluación previa (opcional, 2-3 meses antes)\n2. Auditoría de certificación (con plazo de 6 meses para no-conformidades mayores)\n3. Auditorías de seguimiento (cada 6-12 meses durante 3 años).",
+      "a": "**1.** Auditoría de evaluación previa (opcional, 2-3 meses antes)\n\n**2.** Auditoría de certificación (con plazo de 6 meses para no-conformidades mayores)\n\n**3.** Auditorías de seguimiento (cada 6-12 meses durante 3 años).",
       "category": "certificacion"
     },
     {
@@ -422,12 +422,12 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son los 10 pasos para llegar a la certificación ISO 9001?",
-      "a": "1. Plan de trabajo\n2. Iniciar proyecto de mejora\n3. Dpto. de calidad\n4. Manuales\n5. Implantar (pilotos)\n6. Recoger datos\n7. Mejorar el sistema\n8. Certificación\n9. Comunicación\n10. Mejora continua.",
+      "a": "**1.** Plan de trabajo\n\n**2.** Iniciar proyecto de mejora\n\n**3.** Dpto. de calidad\n\n**4.** Manuales\n\n**5.** Implantar (pilotos)\n\n**6.** Recoger datos\n\n**7.** Mejorar el sistema\n\n**8.** Certificación\n\n**9.** Comunicación\n\n**10.** Mejora continua.",
       "category": "iso-estructura"
     },
     {
       "q": "¿Qué diferencia hay entre acciones correctivas y preventivas?",
-      "a": "Acciones correctivas: para problemas REALES.\nAcciones preventivas: para problemas POTENCIALES.",
+      "a": "**Acciones correctivas:** para problemas REALES.\n**Acciones preventivas:** para problemas POTENCIALES.",
       "category": "crisis"
     },
     {
@@ -437,27 +437,27 @@ window.FlashcardsData = {
     },
     {
       "q": "V/F: La ISO 9001 es la norma certificable; la 9004 no lo es.",
-      "a": "Verdadero.",
+      "a": "**Verdadero.**",
       "category": "iso-estructura"
     },
     {
       "q": "V/F: ISO 90003 puede usarse como criterio para certificar a una empresa.",
-      "a": "Falso.",
+      "a": "**Falso.**",
       "category": "iso-familia"
     },
     {
       "q": "V/F: En ISO 9001:2015 sigue siendo obligatorio el manual de calidad.",
-      "a": "Falso. Se exige 'información documentada'.",
+      "a": "**Falso.** Se exige 'información documentada'.",
       "category": "iso-estructura"
     },
     {
       "q": "V/F: La gestión de riesgos en ISO 9001:2015 reemplaza a las acciones preventivas.",
-      "a": "Verdadero.",
+      "a": "**Verdadero.**",
       "category": "iso-estructura"
     },
     {
       "q": "V/F: El apartado 8 cubre satisfacción del cliente, auditorías internas, seguimiento, no conformes y mejora continua.",
-      "a": "Verdadero.",
+      "a": "**Verdadero.**",
       "category": "certificacion"
     },
     {
@@ -537,22 +537,22 @@ window.FlashcardsData = {
     },
     {
       "q": "V/F: La norma ISO 9000 es descriptiva.",
-      "a": "Falso. Es prescriptiva.",
+      "a": "**Falso.** Es prescriptiva.",
       "category": "iso-familia"
     },
     {
       "q": "V/F: La norma ISO 9004 puede usarse para certificar una empresa.",
-      "a": "Falso.",
+      "a": "**Falso.**",
       "category": "calidad"
     },
     {
       "q": "V/F: ISO 9001 se centra en eficiencia e ISO 9004 en eficacia.",
-      "a": "Falso. ISO 9001 es eficacia e ISO 9004 es eficiencia.",
+      "a": "**Falso.** ISO 9001 es eficacia e ISO 9004 es eficiencia.",
       "category": "iso-estructura"
     },
     {
       "q": "V/F: 'Di lo que haces, haz lo que dices' es el lema de ISO 9000.",
-      "a": "Verdadero.",
+      "a": "**Verdadero.**",
       "category": "iso-familia"
     },
     {
@@ -609,12 +609,12 @@ window.FlashcardsData = {
     },
     {
       "q": "Enumera y define los 3 tipos de auditoría en CMMI.",
-      "a": "1. **Benchmark Appraisal:** Auditoría real y obligatoria para la certificación.\n2. **Sustainment Appraisal:** Mantenimiento que extiende el resultado 2 años (máx. 3 veces).\n3. **Evaluation Appraisal:** Evaluación de estado (opcional, NO emite certificado).",
+      "a": "**1.** **Benchmark Appraisal:** Auditoría real y obligatoria para la certificación.\n\n**2.** **Sustainment Appraisal:** Mantenimiento que extiende el resultado 2 años (máx. 3 veces).\n\n**3.** **Evaluation Appraisal:** Evaluación de estado (opcional, NO emite certificado).",
       "category": "cmmi-intro"
     },
     {
       "q": "¿Quiénes conforman el equipo de evaluación y los participantes en una auditoría CMMI?",
-      "a": "- **Sponsor:** Directivo responsable.\n- **Lead Appraiser:** Evaluador principal que emite el certificado.\n- **ATMs (Appraisal Team Members):** Ayudantes del auditor (4 a 8 personas).\n- **Coordinador:** Interfaz entre la empresa y los evaluadores.\n- **Participantes seleccionados:** Trabajadores entrevistados.",
+      "a": "- **Sponsor:** Directivo responsable.\n\n- **Lead Appraiser:** Evaluador principal que emite el certificado.\n\n- **ATMs (Appraisal Team Members):** Ayudantes del auditor (4 a 8 personas).\n\n- **Coordinador:** Interfaz entre la empresa y los evaluadores.\n\n- **Participantes seleccionados:** Trabajadores entrevistados.",
       "category": "evaluacion"
     },
     {
@@ -634,7 +634,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Cuáles son los 2 tipos de evidencias (SCAMPI) en la evaluación CMMI y en qué consisten?",
-      "a": "- **Artefactos:** Documentos o salidas directas/indirectas recopiladas en fase pre-onsite.\n- **Afirmaciones:** Resultados de entrevistas on-site, privadas del auditor, para corroborar que los artefactos reflejan la realidad.",
+      "a": "- **Artefactos:** Documentos o salidas directas/indirectas recopiladas en fase pre-onsite.\n\n- **Afirmaciones:** Resultados de entrevistas on-site, privadas del auditor, para corroborar que los artefactos reflejan la realidad.",
       "category": "cmmi-intro"
     },
     {
@@ -644,17 +644,17 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son las 3 fases principales de la auditoría CMMI (SCAMPI)?",
-      "a": "1. **Pre-onsite:** Preparación y planificación (aprox. 6 meses antes).\n2. **On-site:** Auditoría real con entrevistas (5-10 días).\n3. **Publicación:** Registro y anuncio de resultados (aprox. 2 semanas).",
+      "a": "**1.** **Pre-onsite:** Preparación y planificación (aprox. 6 meses antes).\n\n**2.** **On-site:** Auditoría real con entrevistas (5-10 días).\n\n**3.** **Publicación:** Registro y anuncio de resultados (aprox. 2 semanas).",
       "category": "pas-ciclo"
     },
     {
       "q": "¿Cuáles son las 3 subfases de la fase Pre-onsite en la auditoría CMMI?",
-      "a": "1. **Presentación:** Compromiso de gerencia.\n2. **Planificación:** Seleccionar unidad organizacional, muestra de proyectos y ATMs.\n3. **Preparación:** Formar ATMs, completar base de evidencias y convocar participantes.",
+      "a": "**1.** **Presentación:** Compromiso de gerencia.\n\n**2.** **Planificación:** Seleccionar unidad organizacional, muestra de proyectos y ATMs.\n\n**3.** **Preparación:** Formar ATMs, completar base de evidencias y convocar participantes.",
       "category": "pas-ciclo"
     },
     {
       "q": "¿Cuál es la escala de evaluación por práctica en CMMI?",
-      "a": "- **FI:** Fully Implemented (Totalmente implementada).\n- **LI:** Largely Implemented (Ampliamente implementada - zona gris).\n- **PI:** Partially Implemented (Parcialmente implementada - suspenso).\n- **NI:** Not Implemented (No implementada - suspenso).",
+      "a": "- **FI:** Fully Implemented (Totalmente implementada).\n\n- **LI:** Largely Implemented (Ampliamente implementada\n\n- zona gris).\n\n- **PI:** Partially Implemented (Parcialmente implementada\n\n- suspenso).\n\n- **NI:** Not Implemented (No implementada\n\n- suspenso).",
       "category": "estructura"
     },
     {
@@ -664,7 +664,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿A qué temáticas están dedicados los niveles 4 y 5 de madurez en CMMI?",
-      "a": "- **Nivel 4 (Predecible):** Dedicado a medición.\n- **Nivel 5 (Innovado):** Dedicado a innovación.",
+      "a": "- **Nivel 4 (Predecible):** Dedicado a medición.\n\n- **Nivel 5 (Innovado):** Dedicado a innovación.",
       "category": "staged-cont"
     },
     {
@@ -674,7 +674,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son las equivalencias generales de los niveles de ITmark con CMMI?",
-      "a": "- **ITmark Básico:** ≈ mitad del nivel 2 CMMI.\n- **ITmark Premium:** ≈ casi nivel 2 CMMI.\n- **ITmark Élite:** ≈ casi nivel 3 CMMI (a menudo aceptado como equivalente en concursos públicos).",
+      "a": "- **ITmark Básico:** ≈ mitad del nivel 2 CMMI.\n\n- **ITmark Premium:** ≈ casi nivel 2 CMMI.\n\n- **ITmark Élite:** ≈ casi nivel 3 CMMI (a menudo aceptado como equivalente en concursos públicos).",
       "category": "staged-cont"
     },
     {
@@ -719,7 +719,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Enumera los 3 tipos de auditorías en CMMI V2.0",
-      "a": "1. Benchmark appraisal\n2. Sustainment appraisal\n3. Evaluation appraisal",
+      "a": "**1.** Benchmark appraisal\n\n**2.** Sustainment appraisal\n\n**3.** Evaluation appraisal",
       "category": "cmmi-intro"
     },
     {
@@ -744,7 +744,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Enumera los participantes o roles en un Benchmark Appraisal de CMMI",
-      "a": "- Sponsor\n- Jefe del equipo de evaluación (Appraisal Team Leader / LA)\n- Miembros del equipo de evaluación (ATM)\n- Coordinador de la organización (OUC)\n- Participantes seleccionados",
+      "a": "- Sponsor\n\n- Jefe del equipo de evaluación (Appraisal Team Leader / LA)\n\n- Miembros del equipo de evaluación (ATM)\n\n- Coordinador de la organización (OUC)\n\n- Participantes seleccionados",
       "category": "cmmi-intro"
     },
     {
@@ -779,7 +779,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Qué es el PARS de CMMI?",
-      "a": "Published Appraisal Results: el sistema del SEI donde se aceptan y publican los resultados de las auditorías.",
+      "a": "**Published Appraisal Results:** el sistema del SEI donde se aceptan y publican los resultados de las auditorías.",
       "category": "cmmi-intro"
     },
     {
@@ -799,7 +799,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Nombra los 2 tipos de proyectos que forman parte de la muestra en CMMI",
-      "a": "1. Proyecto objetivo\n2. Proyecto no objetivo / Función de apoyo",
+      "a": "**1.** Proyecto objetivo\n\n**2.** Proyecto no objetivo / Función de apoyo",
       "category": "cmmi-intro"
     },
     {
@@ -829,7 +829,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Enumera los 2 tipos de evidencias objetivas en CMMI",
-      "a": "1. Artefacto\n2. Afirmación",
+      "a": "**1.** Artefacto\n\n**2.** Afirmación",
       "category": "cmmi-intro"
     },
     {
@@ -849,17 +849,17 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Qué regla general de evidencias se busca para dar por válida una práctica en CMMI?",
-      "a": "Se busca: Artefacto AND Afirmación (positiva).",
+      "a": "**Se busca:** Artefacto AND Afirmación (positiva).",
       "category": "cmmi-intro"
     },
     {
       "q": "Enumera las 3 fases del calendario de evaluación CMMI y su fecha aproximada",
-      "a": "1. Pre On-Site (aprox. 6 meses antes)\n2. On-Site (aprox. 5-10 días)\n3. Publicación (en las siguientes 2 semanas)",
+      "a": "**1.** Pre On-Site (aprox. 6 meses antes)\n\n**2.** On-Site (aprox. 5-10 días)\n\n**3.** Publicación (en las siguientes 2 semanas)",
       "category": "cmmi-intro"
     },
     {
       "q": "Enumera las 3 sub-fases de la fase Pre On-site en CMMI",
-      "a": "1. Presentar\n2. Planificar\n3. Preparar",
+      "a": "**1.** Presentar\n\n**2.** Planificar\n\n**3.** Preparar",
       "category": "cmmi-intro"
     },
     {
@@ -889,7 +889,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Enumera la escala de implementación por practice en CMMI",
-      "a": "- FI (Fully Implemented)\n- LI (Largely Implemented)\n- PI (Partially Implemented)\n- NI (Not Implemented)",
+      "a": "- FI (Fully Implemented)\n\n- LI (Largely Implemented)\n\n- PI (Partially Implemented)\n\n- NI (Not Implemented)",
       "category": "cmmi-intro"
     },
     {
@@ -929,7 +929,7 @@ window.FlashcardsData = {
     },
     {
       "q": "Enumera los pasos de la fase de Publicación de una evaluación CMMI",
-      "a": "1. Completar el registro de evaluación en el SAS.\n2. Anunciar los resultados a la organización.\n3. Anunciar los resultados en prensa y publicaciones del sector.",
+      "a": "**1.** Completar el registro de evaluación en el SAS.\n\n**2.** Anunciar los resultados a la organización.\n\n**3.** Anunciar los resultados en prensa y publicaciones del sector.",
       "category": "cmmi-intro"
     },
     {
@@ -939,7 +939,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuál es la correspondencia clásica (SCAMPI) para los tipos de auditoría Benchmark, Sustainment y Evaluation Appraisal de CMMI V2.0?",
-      "a": "- Benchmark Appraisal ≈ SCAMPI A\n- Sustainment Appraisal ≈ SCAMPI B\n- Evaluation Appraisal ≈ SCAMPI C",
+      "a": "- Benchmark Appraisal ≈ SCAMPI A\n\n- Sustainment Appraisal ≈ SCAMPI B\n\n- Evaluation Appraisal ≈ SCAMPI C",
       "category": "scampi"
     },
     {
@@ -959,12 +959,12 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son las tres constelaciones (o implementaciones para un tipo de negocio) originales de CMMI?",
-      "a": "1. CMMI-DEV (Development - Desarrollo)\n2. CMMI-ACQ (Acquisition - Adquisición/Subcontratación)\n3. CMMI-SVC (Services - Servicios)",
+      "a": "**1.** CMMI-DEV (Development\n\n- Desarrollo)\n\n**2.** CMMI-ACQ (Acquisition\n\n- Adquisición/Subcontratación)\n\n**3.** CMMI-SVC (Services\n\n- Servicios)",
       "category": "cmmi-intro"
     },
     {
       "q": "¿Cuáles son las 8 dimensiones o dominios definidos en CMMI V3.0?",
-      "a": "1. Datos\n2. Desarrollo\n3. Personas (People)\n4. Protección (Safety)\n5. Seguridad (Security)\n6. Servicios\n7. Gestión de proveedores\n8. Trabajo virtual",
+      "a": "**1.** Datos\n\n**2.** Desarrollo\n\n**3.** Personas (People)\n\n**4.** Protección (Safety)\n\n**5.** Seguridad (Security)\n\n**6.** Servicios\n\n**7.** Gestión de proveedores\n\n**8.** Trabajo virtual",
       "category": "cmmi-intro"
     },
     {
@@ -979,7 +979,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son los 5 niveles de madurez del modelo escalonado clásico?",
-      "a": "1. Inicial (ausencia de calidad)\n2. Gestionado\n3. Definido (calidad en la construcción del software)\n4. Gestionado cuantitativamente\n5. Optimizado / En optimización",
+      "a": "**1.** Inicial (ausencia de calidad)\n\n**2.** Gestionado\n\n**3.** Definido (calidad en la construcción del software)\n\n**4.** Gestionado cuantitativamente\n\n**5.** Optimizado / En optimización",
       "category": "staged-cont"
     },
     {
@@ -1004,12 +1004,12 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Qué significan los 5 niveles de capacidad por PA en el modelo continuo unificado (V2.0/V3.0)?",
-      "a": "1. Inicial: Concienciación (proceso rudimentario).\n2. Gestionado: A nivel de equipo/proyecto.\n3. Estandarizado: Proceso estándar en la organización con guías de adaptación.\n4. Cuantitativo: Uso de técnicas estadísticas.\n5. Optimización e innovación.",
+      "a": "**1.** Inicial: Concienciación (proceso rudimentario).\n\n**2.** Gestionado: A nivel de equipo/proyecto.\n\n**3.** Estandarizado: Proceso estándar en la organización con guías de adaptación.\n\n**4.** Cuantitativo: Uso de técnicas estadísticas.\n\n**5.** Optimización e innovación.",
       "category": "staged-cont"
     },
     {
       "q": "¿Qué 5 grandes diferencias existen entre los modelos ISO y CMMI?",
-      "a": "1. Alcance: ISO es propósito general, CMMI es solo para software.\n2. Calificación: ISO es binaria, CMMI tiene escala de grises (5 niveles).\n3. Comparabilidad: ISO es caja negra, CMMI es directa por nivel.\n4. Resultados: ISO son privados, CMMI son públicos (publicados en PARS).\n5. Desviaciones: En ISO es una excepción complicada, en CMMI es la norma mediante guías de adaptación.",
+      "a": "**1.** Alcance: ISO es propósito general, CMMI es solo para software.\n\n**2.** Calificación: ISO es binaria, CMMI tiene escala de grises (5 niveles).\n\n**3.** Comparabilidad: ISO es caja negra, CMMI es directa por nivel.\n\n**4.** Resultados: ISO son privados, CMMI son públicos (publicados en PARS).\n\n**5.** Desviaciones: En ISO es una excepción complicada, en CMMI es la norma mediante guías de adaptación.",
       "category": "cmmi-intro"
     },
     {
@@ -1593,17 +1593,17 @@ window.FlashcardsData = {
     },
     {
       "q": "V/F: ENAC y AENOR realizan exactamente lo mismo.",
-      "a": "Falso. ENAC acredita; AENOR normaliza y certifica.",
+      "a": "**Falso.** ENAC acredita; AENOR normaliza y certifica.",
       "category": "ciclo-pruebas"
     },
     {
       "q": "¿Cuáles son las 3 restricciones obligatorias para hablar de calidad?",
-      "a": "1. Establecer los parámetros por anticipado.\n2. Que sean cuantificables.\n3. Que sean verificables.",
+      "a": "**1.** Establecer los parámetros por anticipado.\n\n**2.** Que sean cuantificables.\n\n**3.** Que sean verificables.",
       "category": "conceptos"
     },
     {
       "q": "¿En qué consiste la 'esquizofrenia mental' del desarrollo de software referida a la calidad?",
-      "a": "En tener que llevar en la cabeza siempre dos caras del proyecto: el proceso (gestión: esfuerzo, tiempo, coste) y el producto (calidad).",
+      "a": "**En tener que llevar en la cabeza siempre dos caras del proyecto:** el proceso (gestión: esfuerzo, tiempo, coste) y el producto (calidad).",
       "category": "conceptos"
     },
     {
@@ -1618,7 +1618,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son las 4P de la evolución a la solución de la crisis del software?",
-      "a": "1. Producto (métricas y métodos)\n2. Proceso (CMMI, ISO 9000)\n3. Personas (formación y capacitación)\n4. Problema/Conceptualización (entender al usuario).",
+      "a": "**1.** Producto (métricas y métodos)\n\n**2.** Proceso (CMMI, ISO 9000)\n\n**3.** Personas (formación y capacitación)\n\n**4.** Problema/Conceptualización (entender al usuario).",
       "category": "conceptos"
     },
     {
@@ -1643,22 +1643,22 @@ window.FlashcardsData = {
     },
     {
       "q": "V/F: Para hablar de calidad es suficiente con que los parámetros sean cuantificables.",
-      "a": "Falso. También deben establecerse por anticipado y ser verificables.",
+      "a": "**Falso.** También deben establecerse por anticipado y ser verificables.",
       "category": "conceptos"
     },
     {
       "q": "V/F: Un programador experto tiene una tasa esperable de ~100 defectos por KLOC.",
-      "a": "Verdadero.",
+      "a": "**Verdadero.**",
       "category": "ciclo-pruebas"
     },
     {
       "q": "V/F: El concepto de 'proyecto exitoso' en el Chaos Report incluye haber acabado en el esfuerzo estimado.",
-      "a": "Falso. Queda fuera el esfuerzo.",
+      "a": "**Falso.** Queda fuera el esfuerzo.",
       "category": "colaterales"
     },
     {
       "q": "V/F: La crisis del software se acuñó en Garmisch (Alemania) en 1967.",
-      "a": "Verdadero.",
+      "a": "**Verdadero.**",
       "category": "procedimientos"
     },
     {
@@ -1678,27 +1678,27 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Qué es la Verificación?",
-      "a": "Responde a: '¿Se está desarrollando el producto CORRECTAMENTE?'. Se hace en cada fase para confirmar que salidas corresponden con las entradas (correcto, completo, consistente).",
+      "a": "**Responde a:** '¿Se está desarrollando el producto CORRECTAMENTE?'. Se hace en cada fase para confirmar que salidas corresponden con las entradas (correcto, completo, consistente).",
       "category": "mapas"
     },
     {
       "q": "¿Qué es la Validación?",
-      "a": "Responde a: '¿Se ha desarrollado el producto CORRECTO?'. Comprueba que el producto terminado responde a los requisitos del cliente. Solo las pruebas de aceptación validan.",
+      "a": "**Responde a:** '¿Se ha desarrollado el producto CORRECTO?'. Comprueba que el producto terminado responde a los requisitos del cliente. Solo las pruebas de aceptación validan.",
       "category": "colaterales"
     },
     {
       "q": "¿Cuál es la diferencia entre ser eficaz y ser eficiente?",
-      "a": "Eficaz: Hace lo que tiene que hacer. Eficiente: Hace lo que tiene que hacer con un uso óptimo de recursos, condiciones y tiempo.",
+      "a": "**Eficaz:** Hace lo que tiene que hacer. Eficiente: Hace lo que tiene que hacer con un uso óptimo de recursos, condiciones y tiempo.",
       "category": "ciclo-pruebas"
     },
     {
       "q": "¿Cuáles son los 4 niveles de pruebas del software?",
-      "a": "1. Unitarias\n2. De Integración\n3. De Sistema\n4. De Aceptación (única que valida y que realiza el usuario).",
+      "a": "**1.** Unitarias\n\n**2.** De Integración\n\n**3.** De Sistema\n\n**4.** De Aceptación (única que valida y que realiza el usuario).",
       "category": "ciclo-pruebas"
     },
     {
       "q": "¿Cuáles son las etapas en la evolución histórica de la calidad?",
-      "a": "1. Artesano (s. XVIII)\n2. Obrero / Rev. Industrial (Control de producto)\n3. Post-WWII en Japón\n4. Años 50 / Normas Militares USA (Aseguramiento, proceso)\n5. Años 60 / TQM (Toda la empresa responsable)\n6. Años 70 / Software (Aseguramiento con MIL-S-52779A).",
+      "a": "**1.** Artesano (s. XVIII)\n\n**2.** Obrero / Rev. Industrial (Control de producto)\n\n**3.** Post-WWII en Japón\n\n**4.** Años 50 / Normas Militares USA (Aseguramiento, proceso)\n\n**5.** Años 60 / TQM (Toda la empresa responsable)\n\n**6.** Años 70 / Software (Aseguramiento con MIL-S-52779A).",
       "category": "mapas"
     },
     {
@@ -1713,32 +1713,32 @@ window.FlashcardsData = {
     },
     {
       "q": "Comparativa ISO vs CMMI",
-      "a": "ISO: es binario (certificado o no), genérico para cualquier sector.\nCMMI: escala del 1 al 5, específico para TIC, permite benchmark (comparativa).",
+      "a": "**ISO:** es binario (certificado o no), genérico para cualquier sector.\n**CMMI:** escala del 1 al 5, específico para TIC, permite benchmark (comparativa).",
       "category": "conceptos"
     },
     {
       "q": "V/F: Una actividad de aseguramiento requiere un técnico especializado.",
-      "a": "Falso. Requiere checklist.",
+      "a": "**Falso.** Requiere checklist.",
       "category": "mapas"
     },
     {
       "q": "V/F: Una revisión peer-to-peer es una actividad de aseguramiento.",
-      "a": "Falso. Es una actividad de control (QC).",
+      "a": "**Falso.** Es una actividad de control (QC).",
       "category": "mapas"
     },
     {
       "q": "V/F: Las pruebas de aceptación son una actividad de validación.",
-      "a": "Verdadero.",
+      "a": "**Verdadero.**",
       "category": "mapas"
     },
     {
       "q": "V/F: La verificación responde a '¿se ha desarrollado el producto correcto?'.",
-      "a": "Falso. Esa es la validación. Verificación = ¿se está desarrollando correctamente?",
+      "a": "**Falso.** Esa es la validación. Verificación = ¿se está desarrollando correctamente?",
       "category": "ciclo-pruebas"
     },
     {
       "q": "V/F: CMMI sirve para cualquier sector empresarial.",
-      "a": "Falso. Solo TIC.",
+      "a": "**Falso.** Solo TIC.",
       "category": "procedimientos"
     },
     {
@@ -1748,7 +1748,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son los canales previos y los 3 canales NUEVOS de atención al cliente que hay que procedimentar?",
-      "a": "Previos: pide oferta, pide contrato, contacta durante proyecto. Nuevos: 1. Fallo técnico tras entrega (hotline). 2. Demanda de upgrade / ampliación. 3. Reclamación.",
+      "a": "**Previos:** pide oferta, pide contrato, contacta durante proyecto. Nuevos:\n\n**1.** Fallo técnico tras entrega (hotline).\n\n**2.** Demanda de upgrade / ampliación.\n\n**3.** Reclamación.",
       "category": "colaterales"
     },
     {
@@ -1828,37 +1828,37 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son los pasos del flujo de actuación en atención al cliente?",
-      "a": "1. Recopilar info (telefonista). 2. Pasar a dir. técnico. 3. Derivar reclamaciones a dir. técnico o general. 4. Decidir viabilidad. 5. Comunicar al cliente obligatoriamente. 6. Tramitar la reclamación. 7. Seguimiento. 8. Cierre y aviso.",
+      "a": "**1.** Recopilar info (telefonista).\n\n**2.** Pasar a dir. técnico.\n\n**3.** Derivar reclamaciones a dir. técnico o general.\n\n**4.** Decidir viabilidad.\n\n**5.** Comunicar al cliente obligatoriamente.\n\n**6.** Tramitar la reclamación.\n\n**7.** Seguimiento.\n\n**8.** Cierre y aviso.",
       "category": "colaterales"
     },
     {
       "q": "¿Cuáles son los pasos para gestionar los productos cedidos por el cliente?",
-      "a": "1. Cliente cede a jefe de proyecto. 2. Identificar, revisar estado, pedir manuales, verificar conservación y plazo. 3. Mantenimiento in-situ. 4. Devolución con informe final.",
+      "a": "**1.** Cliente cede a jefe de proyecto.\n\n**2.** Identificar, revisar estado, pedir manuales, verificar conservación y plazo.\n\n**3.** Mantenimiento in-situ.\n\n**4.** Devolución con informe final.",
       "category": "ciclo-pruebas"
     },
     {
       "q": "¿Cuáles son los pasos del procedimiento de formación del personal?",
-      "a": "1. Identificar necesidad. 2. Rellenar solicitud. 3. Recibe perfil concreto. 4. Acepta o rechaza (con justificación). 5. Ejecutar curso. 6. Actualizar registros (CV, diplomas). 7. Comprobar capacitación. 8. Reiniciar si no es competente.",
+      "a": "**1.** Identificar necesidad.\n\n**2.** Rellenar solicitud.\n\n**3.** Recibe perfil concreto.\n\n**4.** Acepta o rechaza (con justificación).\n\n**5.** Ejecutar curso.\n\n**6.** Actualizar registros (CV, diplomas).\n\n**7.** Comprobar capacitación.\n\n**8.** Reiniciar si no es competente.",
       "category": "procedimientos"
     },
     {
       "q": "¿Cuáles son los pasos del proceso de compras?",
-      "a": "1. Solicitar con hojas de req. técnicos y controles. 2. Envío a perfil aprobado. 3. Seleccionar de proveedores aceptados. 4. Orden de compra. 5. Recepción. 6. Ejecutar controles in situ. 7. Pago o devolución. 8. Actualizar BD proveedores.",
+      "a": "**1.** Solicitar con hojas de req. técnicos y controles.\n\n**2.** Envío a perfil aprobado.\n\n**3.** Seleccionar de proveedores aceptados.\n\n**4.** Orden de compra.\n\n**5.** Recepción.\n\n**6.** Ejecutar controles in situ.\n\n**7.** Pago o devolución.\n\n**8.** Actualizar BD proveedores.",
       "category": "mapas"
     },
     {
       "q": "¿Cuáles son los pasos del control de cambios de un documento del SGC?",
-      "a": "1-5. Acceder online. 6. Detectar mejora (acción preventiva). 7. Resp. calidad acepta/rechaza. 8. Mini plan (designar gente). 9. Revisión técnica. 10. Actualizar registros (manual). 11. Firmas: autor, revisor, aprobador. 12. Subir a online y archivar la vieja. 13. Avisar.",
+      "a": "1-5. Acceder online.\n\n**6.** Detectar mejora (acción preventiva).\n\n**7.** Resp. calidad acepta/rechaza.\n\n**8.** Mini plan (designar gente).\n\n**9.** Revisión técnica.\n\n**10.** Actualizar registros (manual).\n\n**11.** Firmas: autor, revisor, aprobador.\n\n**12.** Subir a online y archivar la vieja.\n\n**13.** Avisar.",
       "category": "conceptos"
     },
     {
       "q": "¿Cuáles son los pasos de revisión técnica de entregables VÍA A (sin reunión)?",
-      "a": "1. Acuerdan sin reunión. 2. Autor envía entregable por mail. 3. Revisor chequea. 4. Devuelve OK o cambios. 5. Autor los aplica o justifica su rechazo. 6. OK final. 7. Todos los mails al archivo de proyecto.",
+      "a": "**1.** Acuerdan sin reunión.\n\n**2.** Autor envía entregable por mail.\n\n**3.** Revisor chequea.\n\n**4.** Devuelve OK o cambios.\n\n**5.** Autor los aplica o justifica su rechazo.\n\n**6.** OK final.\n\n**7.** Todos los mails al archivo de proyecto.",
       "category": "conceptos"
     },
     {
       "q": "¿Cuáles son los pasos de revisión técnica de entregables VÍA B (con reunión)?",
-      "a": "1. Acordar cita. 2. Enviar convocatoria y material previo. 3. Reunión (explicar y aportar). 4. Levantar acta firmada. 5. Autor modifica (justificando rechazos). 6. Envío de material final y acta al representante. 7. Archivar.",
+      "a": "**1.** Acordar cita.\n\n**2.** Enviar convocatoria y material previo.\n\n**3.** Reunión (explicar y aportar).\n\n**4.** Levantar acta firmada.\n\n**5.** Autor modifica (justificando rechazos).\n\n**6.** Envío de material final y acta al representante.\n\n**7.** Archivar.",
       "category": "conceptos"
     },
     {
@@ -1960,7 +1960,7 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son las diferencias principales de planificación entre una Auditoría General y una Verificación de Fase?",
-      "a": "AG: Inicia el responsable de calidad en un calendario anual, requiere reunión inicial, auditor especializado en el área. VF: Inicia el jefe de proyecto en el plan del proyecto, auditor técnico SW.",
+      "a": "**AG:** Inicia el responsable de calidad en un calendario anual, requiere reunión inicial, auditor especializado en el área. VF: Inicia el jefe de proyecto en el plan del proyecto, auditor técnico SW.",
       "category": "vf"
     },
     {
@@ -1975,12 +1975,12 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son los 16 apartados estructurales del TGR (Procedimiento de auditorías internas)?",
-      "a": "1. Portada, 2. Cabeceras/pies, 3. Registro cambios, 4. Lista distribución, 5. Índice, 6. Objeto, 7. Alcance, 8. Proc. relacionados, 9. Aspectos relevantes, 10. Responsabilidades, 11. Aprobaciones, 12. Entradas, 13. Salidas, 14. Mecanismos control, 15. Cuerpo, 16. Anexos.",
+      "a": "**1.** Portada,\n\n**2.** Cabeceras/pies,\n\n**3.** Registro cambios,\n\n**4.** Lista distribución,\n\n**5.** Índice,\n\n**6.** Objeto,\n\n**7.** Alcance,\n\n**8.** Proc. relacionados,\n\n**9.** Aspectos relevantes,\n\n**10.** Responsabilidades,\n\n**11.** Aprobaciones,\n\n**12.** Entradas,\n\n**13.** Salidas,\n\n**14.** Mecanismos control,\n\n**15.** Cuerpo,\n\n**16.** Anexos.",
       "category": "entradas-salidas"
     },
     {
       "q": "¿Cuáles son las Entradas especificadas en el TGR de auditorías internas?",
-      "a": "VF: entregables, registros de calidad, plan de proyecto. AG: registros de oferta, formación, entregables, etc., propios del área auditada.",
+      "a": "**VF:** entregables, registros de calidad, plan de proyecto. AG: registros de oferta, formación, entregables, etc., propios del área auditada.",
       "category": "vf"
     },
     {
@@ -1990,22 +1990,22 @@ window.FlashcardsData = {
     },
     {
       "q": "¿Cuáles son los pasos ejecutivos de una Verificación de Fase?",
-      "a": "1. Plan en proyecto. 2. Aprobación. 3. Designación de auditor SW. 4. Notificación. 5. Auditoría in situ (NC+evidencia). 6. Reunión acuerdo y AC. 7. Informe. 8. Aprobación. 9. Seguimiento de las AC.",
+      "a": "**1.** Plan en proyecto.\n\n**2.** Aprobación.\n\n**3.** Designación de auditor SW.\n\n**4.** Notificación.\n\n**5.** Auditoría in situ (NC+evidencia).\n\n**6.** Reunión acuerdo y AC.\n\n**7.** Informe.\n\n**8.** Aprobación.\n\n**9.** Seguimiento de las AC.",
       "category": "conceptos"
     },
     {
       "q": "¿Cuáles son los pasos ejecutivos de una Auditoría General?",
-      "a": "1. Planificación anual. 2. Fecha acordada. 3. Designar auditor especialista. 4. Reunión inicial recomendada. 5. Auditoría in situ. 6. Reunión de cierre (acuerdos y AC). 7. Informe aprobado. 8. Seguimiento.",
+      "a": "**1.** Planificación anual.\n\n**2.** Fecha acordada.\n\n**3.** Designar auditor especialista.\n\n**4.** Reunión inicial recomendada.\n\n**5.** Auditoría in situ.\n\n**6.** Reunión de cierre (acuerdos y AC).\n\n**7.** Informe aprobado.\n\n**8.** Seguimiento.",
       "category": "ag"
     },
     {
       "q": "¿Cuál es el ciclo de vida o pasos de ejecución de una Acción Correctiva?",
-      "a": "1. Nace de NC en auditoría. 2. Especificación. 3. Asignación a responsable. 4. Ejecución. 5. Seguimiento por resp. calidad. 6. Replanificación en caso de demora. 7. Cierre tras verificar eliminación de NC. 8. Registro para revisión SGC.",
+      "a": "**1.** Nace de NC en auditoría.\n\n**2.** Especificación.\n\n**3.** Asignación a responsable.\n\n**4.** Ejecución.\n\n**5.** Seguimiento por resp. calidad.\n\n**6.** Replanificación en caso de demora.\n\n**7.** Cierre tras verificar eliminación de NC.\n\n**8.** Registro para revisión SGC.",
       "category": "nc"
     },
     {
       "q": "¿Cuál es el ciclo de vida o pasos de ejecución de una Acción Preventiva?",
-      "a": "1. Nace de hoja de sugerencia de mejora. 2. Se recibe por resp. calidad. 3. Decisión (aceptar/rechazar). 4. Mini-plan (quién y cuándo). 5. Ejecución y seguimiento. 6. Cierre y aviso obligatorio al solicitante.",
+      "a": "**1.** Nace de hoja de sugerencia de mejora.\n\n**2.** Se recibe por resp. calidad.\n\n**3.** Decisión (aceptar/rechazar).\n\n**4.** Mini-plan (quién y cuándo).\n\n**5.** Ejecución y seguimiento.\n\n**6.** Cierre y aviso obligatorio al solicitante.",
       "category": "nc"
     },
     {

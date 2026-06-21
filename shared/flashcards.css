@@ -285,3 +285,43 @@ button:disabled {
     flex: 1;
   }
 }
+
+/* Corner Badges */
+.card-badges {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  gap: 8px;
+  opacity: 0.85;
+}
+
+.card-badges .badge {
+  font-size: 0.65rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: var(--bg-card, rgba(255,255,255,0.1));
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
+  color: var(--text-secondary, #9ca3af);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-badges .topic-badge {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+body.light-theme .card-badges .badge {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.1);
+  color: #6b7280;
+}
+
+body.light-theme .card-badges .topic-badge {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4f46e5;
+  border-color: rgba(99, 102, 241, 0.2);
+}
