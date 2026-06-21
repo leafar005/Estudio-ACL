@@ -370,3 +370,18 @@ document.addEventListener('DOMContentLoaded', () => {
   window.QuizStats.load();
   checkPausedTestOnLoad();
 });
+
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('format-btn')) {
+    const parent = e.target.closest('.category-format-switch');
+    if (parent) {
+      parent.querySelectorAll('.format-btn').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      if (typeof window.buildCategoryGrid === 'function') {
+        window.buildCategoryGrid();
+      } else if (typeof buildCategoryGrid === 'function') {
+        buildCategoryGrid();
+      }
+    }
+  }
+});

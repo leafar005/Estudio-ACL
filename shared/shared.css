@@ -485,3 +485,49 @@ body.light-theme .back-to-portal:hover {
   background: rgba(0, 0, 0, 0.1) !important;
   color: var(--text-primary) !important;
 }
+
+/* Category Format Switch */
+.category-format-switch {
+  display: flex;
+  background: var(--bg-card, #1a1f35);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
+  border-radius: var(--radius-md, 12px);
+  padding: 4px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.format-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #9ca3af);
+  padding: 10px 15px;
+  border-radius: calc(var(--radius-md, 12px) - 4px);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.format-btn.active {
+  background: var(--accent-primary-soft, rgba(99,102,241,0.15));
+  color: var(--text-primary, #fff);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body.light-theme .category-format-switch {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+}
+body.light-theme .format-btn {
+  color: #6b7280;
+}
+body.light-theme .format-btn.active {
+  background: #fff;
+  color: #111827;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}

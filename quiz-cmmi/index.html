@@ -65,11 +65,20 @@
               <div class="mode-card-desc">20 preguntas al azar</div>
               <div class="mode-card-count">20 preguntas</div>
             </button>
+            <a href="../shared/flashcards.html?topic=cmmi" class="mode-card" style="text-decoration: none; color: inherit;">
+              <div class="mode-card-icon">📇</div>
+              <div class="mode-card-title">Flashcards</div>
+              <div class="mode-card-desc">Repasa con tarjetas de memoria</div>
+            </a>
           </div>
         </div>
 
         <!-- Category Picker (hidden by default) -->
         <div id="category-picker" class="category-picker hidden">
+          <div class="category-format-switch" id="category-format-switch">
+            <button class="format-btn active" data-format="quiz">📝 Cuestionario</button>
+            <button class="format-btn" data-format="flashcards">📇 Flashcards</button>
+          </div>
           <h2 class="mode-title">Elige una categoría</h2>
           <div class="category-grid" id="category-grid">
             <!-- Populated by JS -->
@@ -191,6 +200,7 @@
 
   </div>
 
+  <script src="../shared/flashcards-data.js"></script>
   <script src="questions.js"></script>
   <script src="app.js"></script>
 </body>

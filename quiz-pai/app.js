@@ -75,11 +75,24 @@
   // ========================
   // LANDING
   // ========================
-  function buildCategoryGrid() {
+  window.buildCategoryGrid = function buildCategoryGrid() {
     const grid = $('#category-grid');
     grid.innerHTML = '';
+    
+    const activeFormatBtn = document.querySelector('.category-format-switch .format-btn.active');
+    const format = activeFormatBtn ? activeFormatBtn.dataset.format : 'quiz';
+    
     CATEGORIES.forEach(cat => {
-      const count = QUESTIONS.filter(q => q.category === cat.id).length;
+      let countText = '';
+      if (format === 'flashcards') {
+         let cards = (window.FlashcardsData && window.FlashcardsData['pai']) ? window.FlashcardsData['pai'] : [];
+         let count = cards.filter(c => c.category === cat.id).length;
+         countText = count + (count === 1 ? ' flashcard' : ' flashcards');
+      } else {
+         let count = QUESTIONS.filter(q => q.category === cat.id).length;
+         countText = count + (count === 1 ? ' pregunta' : ' preguntas');
+      }
+      
       const btn = document.createElement('button');
       btn.className = 'category-btn';
       btn.dataset.categoryId = cat.id;
@@ -87,10 +100,18 @@
         <span class="category-btn-icon">${cat.icon}</span>
         <div class="category-btn-info">
           <div class="category-btn-name">${cat.name}</div>
-          <div class="category-btn-count">${count} preguntas</div>
+          <div class="category-btn-count">${countText}</div>
         </div>
       `;
-      btn.addEventListener('click', () => startQuiz('category', cat.id));
+      btn.addEventListener('click', () => {
+        const activeFormatBtn = document.querySelector('.category-format-switch .format-btn.active');
+        const format = activeFormatBtn ? activeFormatBtn.dataset.format : 'quiz';
+        if (format === 'flashcards') {
+          window.location.href = `../shared/flashcards.html?topic=pai&category=${encodeURIComponent(cat.id)}&catName=${encodeURIComponent(cat.name)}`;
+        } else {
+          startQuiz('category', cat.id);
+        }
+      });
       grid.appendChild(btn);
     });
   }

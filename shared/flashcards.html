@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards | ACL 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="flashcards.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div id="app">
+    <header class="quiz-header" style="justify-content: flex-start; padding: 20px;">
+      <a href="javascript:history.back()" class="btn-icon" title="Volver" style="text-decoration:none; color:white; display:flex; align-items:center; gap:10px; width: auto; padding: 0 15px; border-radius: 8px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Volver</span>
+      </a>
+      <h2 style="margin: 0; margin-left: 20px; font-size: 1.2rem; opacity: 0.8;" id="topic-title">Flashcards</h2>
+      <div style="margin-left: auto; font-size: 1.1rem; font-weight: bold;">
+        <span id="current-card">1</span> / <span id="total-cards">0</span>
+      </div>
+    </header>
+
+    <main class="quiz-body" style="display:flex; justify-content:center; align-items:center; height: calc(100vh - 80px); flex-direction: column; position: relative;">
+      <div class="flashcard-container" id="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-content" id="card-question">Cargando...</div>
+            <div class="flashcard-hint">Haz clic para voltear</div>
+          </div>
+          <div class="flashcard-back">
+            <div class="flashcard-content" id="card-answer"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flashcard-controls">
+        <button class="btn-secondary" id="btn-prev">← Anterior</button>
+        <button class="btn-primary" id="btn-next">Siguiente →</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="flashcards-data.js"></script>
+  <script src="flashcards.js"></script>
+</body>
+</html>
