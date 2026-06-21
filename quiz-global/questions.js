@@ -45,6 +45,9 @@ const CATEGORIES = [
 
 let QUESTIONS = [
 
+
+
+
   // =============================================
   // ===== CATEGORÍA: QUÉ ES CALIDAD =====
   // =============================================
@@ -53,9 +56,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la definición de calidad según ISO 9000:2015?',
     options: [
-      'La satisfacción subjetiva del cliente con el producto.',
-      'El grado en que un conjunto de características inherentes de un objeto cumple con los requisitos.',
       'El cumplimiento de todos los estándares internacionales aplicables.',
+      'El grado en que un conjunto de características inherentes de un objeto cumple con los requisitos.',
+      'La satisfacción subjetiva del cliente con el producto.',
       'La ausencia total de defectos en un producto.'
     ],
     correct: 1,
@@ -100,11 +103,11 @@ let QUESTIONS = [
     question: '¿Cuál de los siguientes NO es un ejemplo válido de parámetro de calidad en software?',
     options: [
       'Tiempo medio transcurrido entre fallos (MTBF).',
-      'Opinión personal del programador sobre la elegancia del código.',
       'Número de errores incluidos.',
+      'Opinión personal del programador sobre la elegancia del código.',
       'Satisfacción del usuario con la funcionalidad.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'La opinión personal del programador no es un parámetro cuantificable ni verificable. Los parámetros válidos incluyen satisfacción del usuario, número de errores y MTBF, que sí pueden medirse objetivamente.',
     trap: false
   },
@@ -113,12 +116,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cómo debe situarse la función de calidad dentro de una organización?',
     options: [
-      'Externalizada siempre a una empresa auditora.',
-      'Bajo el responsable de producción para mayor eficiencia.',
+      'Integrada dentro del equipo de desarrollo, sin independencia.',
       'Como un staff directamente vinculado a dirección, con visión independiente.',
-      'Integrada dentro del equipo de desarrollo, sin independencia.'
+      'Bajo el responsable de producción para mayor eficiencia.',
+      'Externalizada siempre a una empresa auditora.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'La función de calidad debe ser un staff directamente vinculado a dirección y dependiente exclusivamente de ella, con una visión independiente. Su función es velar por el buen hacer según el sistema de calidad.',
     trap: false
   },
@@ -136,12 +139,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Según ISO 8402, la calidad es:',
     options: [
+      'La capacidad de un producto para funcionar sin errores durante un año.',
       'Conjunto de propiedades y características que confieren aptitud para satisfacer necesidades explícitas o implícitas.',
       'La conformidad con los requisitos legales del país de producción.',
-      'La capacidad de un producto para funcionar sin errores durante un año.',
       'El nivel de satisfacción alcanzado por los usuarios finales.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'ISO 8402 define calidad como "conjunto de propiedades y características de un producto o servicio que le confieren aptitud para satisfacer unas necesidades explícitas o implícitas".',
     trap: false
   },
@@ -165,11 +168,11 @@ let QUESTIONS = [
     question: '¿Cuál es la diferencia entre "eficaz" y "eficiente"?',
     options: [
       'Eficiente logra el objetivo y eficaz optimiza recursos.',
-      'Eficaz se refiere a procesos y eficiente a productos.',
+      'Eficaz logra el objetivo (sin importar coste). Eficiente logra el objetivo con uso óptimo de recursos.',
       'Eficaz y eficiente significan lo mismo.',
-      'Eficaz logra el objetivo (sin importar coste). Eficiente logra el objetivo con uso óptimo de recursos.'
+      'Eficaz se refiere a procesos y eficiente a productos.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Eficaz = logra el objetivo (sin importar coste). Eficiente = eficaz + uso óptimo de recursos. ISO 9001 se centra en la eficacia, mientras que ISO 9004 se centra en la eficiencia.',
     trap: false
   },
@@ -200,12 +203,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la pregunta clave que define el Aseguramiento de Calidad (QA)?',
     options: [
-      '¿Se está siguiendo el proceso?',
-      '¿Se ha desarrollado el producto correcto?',
+      '¿Se han cumplido los plazos?',
       '¿El producto está bien hecho?',
-      '¿Se han cumplido los plazos?'
+      '¿Se está siguiendo el proceso?',
+      '¿Se ha desarrollado el producto correcto?'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'QA se pregunta "¿Se está siguiendo el proceso?". Asegura que se sigue el proceso definido y verifica que se usan los estándares y herramientas marcados. Es preventivo y no requiere técnico especializado (basta con checklist).',
     trap: false
   },
@@ -214,12 +217,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la pregunta clave que define el Control de Calidad (QC)?',
     options: [
-      '¿Se han respetado los estándares?',
       '¿El producto está bien hecho?',
       '¿El cliente está satisfecho?',
+      '¿Se han respetado los estándares?',
       '¿Se está siguiendo el proceso?'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'QC se pregunta "¿El producto está bien hecho?". Controla la calidad técnica de los productos obtenidos, revisando entregables. Es detectivo y SÍ requiere técnico especializado.',
     trap: false
   },
@@ -270,11 +273,11 @@ let QUESTIONS = [
     question: '¿Cuál es la pregunta clave de la verificación?',
     options: [
       '¿Se ha desarrollado el producto correcto?',
+      '¿Se están siguiendo los estándares?',
       '¿Se está desarrollando el producto correctamente?',
-      '¿El cliente está satisfecho con el producto?',
-      '¿Se están siguiendo los estándares?'
+      '¿El cliente está satisfecho con el producto?'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'Verificación: "¿Se está desarrollando el producto correctamente?". Garantiza consistencia interna: que el resultado de cada fase corresponde con las entradas. Ejemplo: revisión del diseño vs ERS.',
     trap: false
   },
@@ -284,11 +287,11 @@ let QUESTIONS = [
     question: '¿Cuál es la pregunta clave de la validación?',
     options: [
       '¿Se está desarrollando el producto correctamente?',
-      '¿Se han seguido todos los procedimientos?',
       '¿Se ha desarrollado el producto correcto?',
+      '¿Se han seguido todos los procedimientos?',
       '¿Se han documentado todos los requisitos?'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Validación: "¿Se ha desarrollado el producto correcto?". Asegura que el software corresponde con los requisitos del cliente. Se realiza sobre el producto terminado (pruebas de aceptación).',
     trap: false
   },
@@ -321,8 +324,8 @@ let QUESTIONS = [
     question: '¿Qué niveles de pruebas son verificación y cuáles validación?',
     options: [
       'Unitarias, integración y sistema = verificación. Aceptación = validación.',
-      'Todas las pruebas son validación.',
       'Todas las pruebas son verificación.',
+      'Todas las pruebas son validación.',
       'Unitarias = verificación. Integración, sistema y aceptación = validación.'
     ],
     correct: 0,
@@ -334,12 +337,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se insertan QA y QC en el ciclo de desarrollo?',
     options: [
+      'Ambas son transversales a todo el ciclo.',
       'QA se aplica solo al final. QC se aplica al principio.',
       'QA es transversal/horizontal (todo el ciclo). QC es vertical sobre cada salida de fase.',
-      'QA solo se aplica en las fases de pruebas.',
-      'Ambas son transversales a todo el ciclo.'
+      'QA solo se aplica en las fases de pruebas.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'QA es transversal/horizontal: abarca todo el ciclo de desarrollo. QC es vertical: se aplica sobre cada salida de fase (pruebas, inspecciones, revisiones de entregables).',
     trap: false
   },
@@ -348,12 +351,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Una auditoría de fin de fase es un ejemplo de:',
     options: [
-      'Aseguramiento de Calidad (QA).',
-      'Certificación.',
+      'Control de Calidad (QC).',
       'Validación.',
-      'Control de Calidad (QC).'
+      'Aseguramiento de Calidad (QA).',
+      'Certificación.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Una auditoría de fin de fase es QA. Regla de oro: "auditoría = aseguramiento de la calidad". Ejemplo de QA: ¿se usó Erwin?, ¿lo revisó el director técnico? Ejemplo de QC: revisión peer-to-peer, formas normales.',
     trap: false
   },
@@ -380,12 +383,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Según el informe Standish Chaos de 1994, ¿qué porcentaje de proyectos fueron exitosos?',
     options: [
-      '35%',
-      '5%',
       '28%',
-      '16%'
+      '5%',
+      '16%',
+      '35%'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Standish Chaos 1994: 16% exitosos, 31% completamente fallidos. Mejoró a 28% en 2000 y 35% en 2006.',
     trap: false
   },
@@ -394,9 +397,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos defectos comete un programador experto por cada KLOC?',
     options: [
-      '~10 defectos',
       '~200 defectos',
       '~50 defectos',
+      '~10 defectos',
       '~100 defectos'
     ],
     correct: 3,
@@ -426,12 +429,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las "4 Ps" para salir de la crisis del software?',
     options: [
-      'Proceso, Pruebas, Personas, Planificación.',
-      'Producto, Programación, Proceso, Pruebas.',
       'Producto, Proceso, Personas, Problema.',
-      'Planificación, Producción, Pruebas, Presupuesto.'
+      'Planificación, Producción, Pruebas, Presupuesto.',
+      'Proceso, Pruebas, Personas, Planificación.',
+      'Producto, Programación, Proceso, Pruebas.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Las 4 Ps: Producto (métricas, metodologías), Proceso (CMM/CMMI, SPICE, ISO 9000-3), Personas (formación, capacidad) y Problema (conceptualizar lo que hay que hacer). Apostar por el Proceso es la estrategia principal.',
     trap: false
   },
@@ -442,8 +445,8 @@ let QUESTIONS = [
     options: [
       'Proceso — un buen proceso implica un buen producto.',
       'Producto — centrarse en el software como producto.',
-      'Problema — entender perfectamente lo que hay que hacer.',
-      'Personas — la formación es lo más importante.'
+      'Personas — la formación es lo más importante.',
+      'Problema — entender perfectamente lo que hay que hacer.'
     ],
     correct: 0,
     justification: 'La estrategia principal es mejorar el Proceso. Hipótesis: un buen proceso → un buen producto (no demostrada pero asumida). De aquí surgieron CMM/CMMI, SPICE, ISO 9000-3.',
@@ -454,10 +457,10 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Según Herbsleb et al. (1994), ¿cuál era el ROI por cada dólar invertido en mejora?',
     options: [
+      '~1.5$ por cada 1$ invertido.',
       '~10$ por cada 1$ invertido.',
-      '~2$ por cada 1$ invertido.',
       '~5$ por cada 1$ invertido.',
-      '~1.5$ por cada 1$ invertido.'
+      '~2$ por cada 1$ invertido.'
     ],
     correct: 2,
     justification: 'ROI ~5:1. Incremento anual de productividad ~35%. Reducción "time to market" ~20%. Reducción de errores ~40%. Inversión por ingeniero ~1.300$. Años mejorando ~3.',
@@ -478,8 +481,8 @@ let QUESTIONS = [
     question: '¿Dónde y cuándo se acuñó el término "crisis del software"?',
     options: [
       'Garmisch (Alemania), conferencia de la OTAN, 1967-1968.',
-      'Tokio (Japón), conferencia ISO, 1980.',
       'Silicon Valley (EEUU), conferencia ACM, 1975.',
+      'Tokio (Japón), conferencia ISO, 1980.',
       'Londres (UK), conferencia IEEE, 1970.'
     ],
     correct: 0,
@@ -491,12 +494,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Según el Standish Chaos 2006, ¿qué porcentaje de proyectos fueron exitosos?',
     options: [
-      '50% exitosos, 30% challenged, 20% fallidos.',
-      '16% exitosos, 53% challenged, 31% fallidos.',
       '35% exitosos, 46% challenged, 19% fallidos.',
-      '28% exitosos, 49% challenged, 23% fallidos.'
+      '50% exitosos, 30% challenged, 20% fallidos.',
+      '28% exitosos, 49% challenged, 23% fallidos.',
+      '16% exitosos, 53% challenged, 31% fallidos.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Standish Chaos 2006: 35% exitosos, 46% challenged, 19% fallidos. Mejora progresiva desde 1994 (16%). Conclusión: "There is less chaos in software development today."',
     trap: false
   },
@@ -600,12 +603,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 7 principios de ISO 9001:2015?',
     options: [
+      'Eficiencia, Liderazgo, Compromiso, Procesos, Mejora, Evidencia, Comunicación.',
       'Planificación, Ejecución, Control, Mejora, Liderazgo, Documentación, Satisfacción.',
       'Enfoque al cliente, Liderazgo, Compromiso de las personas, Enfoque de procesos, Mejora, Toma de decisiones basada en evidencia, Gestión de relaciones.',
-      'Enfoque al cliente, Liderazgo, Trabajo en equipo, Enfoque de procesos, Mejora continua, Documentación, Gestión de relaciones.',
-      'Eficiencia, Liderazgo, Compromiso, Procesos, Mejora, Evidencia, Comunicación.'
+      'Enfoque al cliente, Liderazgo, Trabajo en equipo, Enfoque de procesos, Mejora continua, Documentación, Gestión de relaciones.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'Los 7 principios: (1) Enfoque al cliente, (2) Liderazgo, (3) Compromiso de las personas, (4) Enfoque de procesos, (5) Mejora, (6) Toma de decisiones basada en la evidencia, (7) Gestión de las relaciones.',
     trap: false
   },
@@ -615,9 +618,9 @@ let QUESTIONS = [
     question: '¿Qué principios se fusionaron en ISO 9001:2015?',
     options: [
       '"Enfoque basado en procesos" y "Enfoque de sistema para la gestión" → "Enfoque de procesos".',
-      '"Enfoque al cliente" y "Gestión de relaciones" → "Gestión de stakeholders".',
+      '"Mejora continua" y "Toma de decisiones" → "Mejora basada en evidencia".',
       '"Liderazgo" y "Compromiso de las personas" → "Liderazgo comprometido".',
-      '"Mejora continua" y "Toma de decisiones" → "Mejora basada en evidencia".'
+      '"Enfoque al cliente" y "Gestión de relaciones" → "Gestión de stakeholders".'
     ],
     correct: 0,
     justification: 'Se fusionaron los principios 4º ("Enfoque basado en procesos") y 5º ("Enfoque de sistema para la gestión") en uno: "Enfoque de procesos".',
@@ -628,12 +631,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál fue el cambio más importante de la revisión ISO 9001:2000?',
     options: [
-      'Incorporación de gestión de riesgos.',
       'Eliminación del Manual de Calidad.',
+      'Enfoque por procesos (PDCA).',
       'Reducción de 8 a 7 principios.',
-      'Enfoque por procesos (PDCA).'
+      'Incorporación de gestión de riesgos.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'La revisión 2000 introdujo el enfoque por procesos (PDCA). Los otros cambios corresponden a la versión 2015.',
     trap: false
   },
@@ -643,8 +646,8 @@ let QUESTIONS = [
     question: '¿En qué año se publicó la primera versión de la familia ISO 9000?',
     options: [
       '1994.',
-      '2000.',
       '1979.',
+      '2000.',
       '1987.'
     ],
     correct: 3,
@@ -656,12 +659,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué modelo de calidad fue la respuesta europea a CMM?',
     options: [
-      'TickIT.',
-      'SPICE / ISO 15504.',
       'Bootstrap.',
-      'ISO 90003.'
+      'ISO 90003.',
+      'SPICE / ISO 15504.',
+      'TickIT.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Bootstrap fue la respuesta europea a CMM, alineado con ISO 9000. SPICE/ISO 15504 surgió después para unificar CMM, Trillium, TickIT y Bootstrap.',
     trap: false
   },
@@ -671,11 +674,11 @@ let QUESTIONS = [
     question: '¿Cuál es la estrategia habitual para implantar modelos de calidad en Europa?',
     options: [
       'Solo SPICE.',
-      'Solo ISO 90003.',
       'Primero ISO 9000, luego CMMI.',
+      'Solo ISO 90003.',
       'Primero CMMI, luego ISO 9000.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Estrategia habitual: primero certificación ISO 9001 (binaria, ~8.000€) → luego progresar a CMMI (escala 1-5). ISO 9000 se usó más en Europa, CMMI más en EE.UU.',
     trap: false
   },
@@ -711,12 +714,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué época se asocia con el "Aseguramiento de calidad" como concepto?',
     options: [
-      '1900–1950: organización taylorista.',
-      'Años 60: Total Quality Management.',
       'Años 50: normas y estándares en el entorno militar de EE.UU.',
-      'Siglo XVIII: artesanos.'
+      'Siglo XVIII: artesanos.',
+      'Años 60: Total Quality Management.',
+      '1900–1950: organización taylorista.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'El aseguramiento de calidad surge en los años 50, con normas y estándares en el entorno militar de EE.UU. La calidad se centró en el proceso.',
     trap: false
   },
@@ -725,12 +728,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué caracteriza al TQM (Total Quality Management)?',
     options: [
-      'Se basa únicamente en el control estadístico.',
+      'Solo el departamento de calidad es responsable.',
       'Se centra exclusivamente en el producto final.',
-      'Todos los departamentos tienen responsabilidad en alcanzar la calidad; se centra en todo el sistema empresarial.',
-      'Solo el departamento de calidad es responsable.'
+      'Se basa únicamente en el control estadístico.',
+      'Todos los departamentos tienen responsabilidad en alcanzar la calidad; se centra en todo el sistema empresarial.'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'TQM (desde los años 60): todos los departamentos son responsables de la calidad. Se centra en todo el sistema empresarial para eliminar derroches y minimizar costes.',
     trap: false
   },
@@ -752,12 +755,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué exige el apartado 4 de ISO 9001 (Sistema de gestión de la calidad)?',
     options: [
-      'Recursos humanos, infraestructura y ambiente de trabajo.',
       'Identificar procesos del SGC, su secuencia e interacción, documentación y control de documentos/registros.',
+      'Recursos humanos, infraestructura y ambiente de trabajo.',
       'Auditorías internas y mejora continua.',
       'Compromiso de la dirección y política de calidad.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Apartado 4: procesos del SGC, mapa de procesos, documentación (política, manual, procedimientos, registros) y mecanismos de control de documentos y registros.',
     trap: false
   },
@@ -784,12 +787,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué apartado de ISO 9001 es el más importante?',
     options: [
-      'Apartado 5 — Responsabilidad de la dirección.',
       'Apartado 8 — Medición, análisis y mejora.',
+      'Apartado 7 — Realización del producto (el más extenso, pero no el más importante).',
       'Apartado 4 — Sistema de gestión de la calidad.',
-      'Apartado 7 — Realización del producto (el más extenso, pero no el más importante).'
+      'Apartado 5 — Responsabilidad de la dirección.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'El apartado 8 (Medición, análisis y mejora) es el más importante. El apartado 7 es el más extenso, pero no el más importante. Cuidado con esta trampa.',
     trap: true
   },
@@ -798,12 +801,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué exige el apartado 8 de ISO 9001?',
     options: [
-      'Auditorías internas, seguimiento/medición de procesos y productos, control de no conformidades, acciones correctivas/preventivas, mejora continua.',
       'Planificación y procesos con el cliente.',
-      'Documentación del SGC y política de calidad.',
-      'Recursos humanos con competencia adecuada.'
+      'Auditorías internas, seguimiento/medición de procesos y productos, control de no conformidades, acciones correctivas/preventivas, mejora continua.',
+      'Recursos humanos con competencia adecuada.',
+      'Documentación del SGC y política de calidad.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'Apartado 8: auditorías internas, seguimiento y medición, control de no conformidades, acciones correctivas y preventivas, satisfacción del cliente y mejora continua.',
     trap: false
   },
@@ -812,10 +815,10 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué es el ciclo PDCA (ciclo de Deming)?',
     options: [
-      'Produce-Document-Check-Archive.',
+      'Process-Design-Control-Audit.',
       'Plan-Do-Check-Act: planificar, realizar, comprobar y actuar para mejorar continuamente.',
-      'Plan-Develop-Certify-Approve.',
-      'Process-Design-Control-Audit.'
+      'Produce-Document-Check-Archive.',
+      'Plan-Develop-Certify-Approve.'
     ],
     correct: 1,
     justification: 'PDCA: Plan (planificar), Do (realizar), Check (comprobar resultados), Act (actuar para modificar y replanificar). Es la base de la mejora continua del SGC. Si se viola el principio, te quitan el certificado.',
@@ -890,12 +893,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Según ISO 9001, ¿cuáles son las únicas pruebas obligatorias?',
     options: [
-      'No se exigen pruebas específicas.',
       'Pruebas unitarias, de integración y de sistema.',
       'Solo las pruebas de aceptación.',
+      'No se exigen pruebas específicas.',
       'Todas las pruebas son obligatorias.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Las únicas pruebas obligatorias por ISO 9001 son las de aceptación. El resto de pruebas (unitarias, integración, sistema) se justifican por análisis de coste/beneficio.',
     trap: true
   },
@@ -922,12 +925,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Con qué se manejan las 3 opciones ante un producto no conforme (apartado 8.3)?',
     options: [
-      'Solo se puede desechar el producto.',
       'Se archiva y se ignora.',
       'Se devuelve automáticamente al proveedor.',
-      'Acciones correctivas para arreglarlo, entrega con autorización del cliente y empresa, o inhabilitar lo que da problemas.'
+      'Acciones correctivas para arreglarlo, entrega con autorización del cliente y empresa, o inhabilitar lo que da problemas.',
+      'Solo se puede desechar el producto.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Ante producto no conforme (8.3): (1) acciones correctivas para arreglarlo, (2) entrega/uso con autorización explícita del cliente Y la empresa, (3) inhabilitar lo que da problemas.',
     trap: false
   },
@@ -936,10 +939,10 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la diferencia entre acción correctiva y acción preventiva?',
     options: [
+      'Correctiva viene de auditorías, preventiva viene de pruebas.',
       'Correctiva: ataja la causa raíz. Preventiva: ataja la no conformidad.',
-      'Son lo mismo, solo cambia el momento de aplicación.',
       'Correctiva: ataja la no conformidad real. Preventiva: ataja la causa raíz / problema potencial.',
-      'Correctiva viene de auditorías, preventiva viene de pruebas.'
+      'Son lo mismo, solo cambia el momento de aplicación.'
     ],
     correct: 2,
     justification: 'Correctiva: origen en no conformidad REAL detectada en auditoría, ataja la NC en sí. Preventiva: origen en problema POTENCIAL (sugerencias, estadísticas, quejas), ataja la CAUSA RAÍZ. En 2015, la preventiva se sustituye por gestión de riesgos.',
@@ -1000,12 +1003,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las 3 fases del proceso de certificación ISO 9001?',
     options: [
-      'Auditoría de evaluación previa (opcional), auditoría de certificación (obligatoria), auditorías de seguimiento (obligatorias).',
-      'Evaluación interna, evaluación externa y renovación.',
       'Documentación, implementación y verificación.',
+      'Evaluación interna, evaluación externa y renovación.',
+      'Auditoría de evaluación previa (opcional), auditoría de certificación (obligatoria), auditorías de seguimiento (obligatorias).',
       'Planificación, ejecución y cierre.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Las 3 fases: (1) Auditoría de evaluación previa (OPCIONAL, 2-3 meses antes), (2) Auditoría de certificación (OBLIGATORIA, auditores externos), (3) Auditorías de seguimiento (OBLIGATORIAS, cada 6-12 meses, ciclo 3 años).',
     trap: false
   },
@@ -1032,12 +1035,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuánto dura el ciclo completo de certificación ISO 9001?',
     options: [
-      '3 años.',
-      '5 años.',
+      '1 año.',
       '2 años.',
-      '1 año.'
+      '5 años.',
+      '3 años.'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'Ciclo de 3 años con auditorías de seguimiento cada 6-12 meses. Tras 3 años: renovación completa o se pierde el certificado.',
     trap: false
   },
@@ -1046,12 +1049,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la misión de ENAC?',
     options: [
-      'Certificar directamente a las empresas con ISO 9001.',
       'Desarrollar las normas ISO para España.',
-      'Acreditar la competencia técnica de entidades para certificar o inspeccionar.',
-      'Formar auditores de calidad.'
+      'Certificar directamente a las empresas con ISO 9001.',
+      'Formar auditores de calidad.',
+      'Acreditar la competencia técnica de entidades para certificar o inspeccionar.'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'ENAC acredita certificadoras (no certifica empresas, no emite normas). Supervisada por la Administración según Ley de Industria 21/1992.',
     trap: false
   },
@@ -1078,12 +1081,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué entidades pueden certificar con ISO 9001? Ejemplos:',
     options: [
-      'Solo AENOR.',
-      'Solo ENAC puede certificar.',
+      'AENOR, Lloyd\'s Register (LRQA), Bureau Veritas (BVQI).',
       'El Ministerio de Industria.',
-      'AENOR, Lloyd\'s Register (LRQA), Bureau Veritas (BVQI).'
+      'Solo AENOR.',
+      'Solo ENAC puede certificar.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'Certifican: AENOR, LRQA, BVQI, entre otras. ENAC no certifica: acredita a las certificadoras. AENOR fue designada por el Ministerio de Industria y Energía.',
     trap: false
   },
@@ -1092,10 +1095,10 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántas fases tiene la auditoría de certificación?',
     options: [
+      '2 fases.',
       '4 fases.',
-      '3 fases.',
       '6 fases: plan, documentación, reunión inaugural, realización, reunión de clausura, informe.',
-      '2 fases.'
+      '3 fases.'
     ],
     correct: 2,
     justification: '6 fases: (1) Plan de auditoría, (2) Auditoría de documentación, (3) Reunión inaugural, (4) Realización (entrevistas, observación, evidencias), (5) Reunión de clausura, (6) Informe (2-4 semanas después).',
@@ -1106,12 +1109,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuándo se recibe el informe formal de la auditoría de certificación?',
     options: [
-      '6 meses después.',
-      'Inmediatamente al finalizar.',
       'Dentro de 24 horas.',
-      '2-4 semanas después de la reunión de clausura.'
+      '6 meses después.',
+      '2-4 semanas después de la reunión de clausura.',
+      'Inmediatamente al finalizar.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'El informe formal se recibe 2-4 semanas después de la reunión de clausura, con la decisión de certificación.',
     trap: false
   },
@@ -1120,12 +1123,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué plazo tiene una empresa para resolver no conformidades mayores?',
     options: [
-      '6 meses.',
       '1 mes.',
-      '3 meses.',
-      '12 meses.'
+      '12 meses.',
+      '6 meses.',
+      '3 meses.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Las no conformidades mayores deben resolverse en un plazo de 6 meses. Las menores se revisan en el próximo seguimiento.',
     trap: false
   },
@@ -1184,12 +1187,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué aspectos se auditan en TODAS las auditorías de seguimiento?',
     options: [
-      'Solo la documentación del SGC.',
-      'Solo la satisfacción del cliente.',
       'Revisiones por la dirección, auditorías internas, acciones correctivas/preventivas, reclamaciones del cliente, control de documentos, impacto de cambios, uso de certificados.',
-      'Solo las métricas de producto.'
+      'Solo la satisfacción del cliente.',
+      'Solo las métricas de producto.',
+      'Solo la documentación del SGC.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'En TODAS las auditorías de seguimiento se auditan: revisiones por la dirección, auditorías internas, acciones correctivas/preventivas, reclamaciones, control de documentos, impacto de cambios en SGC, uso adecuado de certificados.',
     trap: false
   },
@@ -1225,12 +1228,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué 5 áreas deben cubrir las métricas para una PYME con ISO 9000?',
     options: [
+      'Personal, Infraestructura, Documentación, Software y Hardware.',
       'Planificación, Diseño, Codificación, Pruebas y Entrega.',
       'Proyecto, Producto, Proceso, Cliente y Mantenimiento.',
-      'Coste, Tiempo, Alcance, Calidad y Riesgo.',
-      'Personal, Infraestructura, Documentación, Software y Hardware.'
+      'Coste, Tiempo, Alcance, Calidad y Riesgo.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'Las 5 áreas: Proyecto, Producto, Proceso, Cliente y Mantenimiento. Estrategia PYME: métricas baratas, automatizables, alineadas con el apartado 8.',
     trap: false
   },
@@ -1239,12 +1242,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué métrica mide la eficacia del SGC en resolución de hallazgos?',
     options: [
+      'Satisfacción del cliente.',
       '% de hitos cumplidos.',
       'Densidad de defectos.',
-      '% de no conformidades cerradas a tiempo.',
-      'Satisfacción del cliente.'
+      '% de no conformidades cerradas a tiempo.'
     ],
-    correct: 2,
+    correct: 3,
     justification: '% de NCs cerradas a tiempo: Nº NCs cerradas en plazo / Nº total × 100. Criterio: ≥ 90% eficaz, 70-89% revisar, < 70% problema sistémico → escalar a dirección.',
     trap: false
   },
@@ -1253,8 +1256,8 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Al recomendar métricas a una PYME para ISO 9000, ¿qué estrategia seguir?',
     options: [
-      'Métricas complejas y exhaustivas.',
       'Métricas exclusivamente técnicas sin relación con ISO.',
+      'Métricas complejas y exhaustivas.',
       'Solo métricas financieras.',
       'Métricas baratas de recoger, automatizables, alineadas con el apartado 8 de ISO 9001.'
     ],
@@ -1267,12 +1270,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Para la métrica "Tasa de defectos en pruebas de sistema", ¿cuál es el criterio?',
     options: [
-      '≤ 5 defectos/KLOC = aceptable; > 5 = fuera de control → análisis de causa raíz.',
-      '0 defectos/KLOC.',
       '≤ 10 defectos/KLOC = aceptable.',
+      '0 defectos/KLOC.',
+      '≤ 5 defectos/KLOC = aceptable; > 5 = fuera de control → análisis de causa raíz.',
       'No existe criterio estándar.'
     ],
-    correct: 0,
+    correct: 2,
     justification: '≤ 5 defectos/KLOC = aceptable. > 5 defectos/KLOC = fuera de control → análisis de causa raíz y revisión de fases previas.',
     trap: false
   },
@@ -1333,12 +1336,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el ROI medio reportado por las organizaciones que implementan CMMI?',
     options: [
-      '1:1',
-      '10:1',
       '4:1',
-      '2:1'
+      '1:1',
+      '2:1',
+      '10:1'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'El ROI medio de CMMI es de 4:1, con un incremento de productividad del 10-50%. Esto significa que por cada euro invertido en la mejora, se recuperan 4 euros.',
     trap: false
   },
@@ -1347,12 +1350,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué guía CMMI a las organizaciones a mejorar?',
     options: [
-      'Exclusivamente los procesos de recursos humanos',
-      'Los procesos de contabilidad y finanzas',
       'Los procesos asociados al desarrollo y mantenimiento de software',
+      'Los procesos de contabilidad y finanzas',
+      'Exclusivamente los procesos de recursos humanos',
       'Los procesos de marketing y ventas'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'CMMI guía a las organizaciones en cómo mejorar los procesos asociados al desarrollo y mantenimiento de software. Aunque existen vistas para servicios (SVC) y gestión de proveedores (SPM), su origen y foco principal es el desarrollo de software.',
     trap: false
   },
@@ -1413,12 +1416,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántas prácticas en total tiene CMMI V1.3?',
     options: [
-      '325',
       '196',
-      '500',
-      '431'
+      '325',
+      '431',
+      '500'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'CMMI V1.3 contiene 431 prácticas en total. La V2.0 redujo este número a 196 prácticas, simplificando significativamente el modelo.',
     trap: false
   },
@@ -1439,12 +1442,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién compró el CMMI Institute para crear la V2.0?',
     options: [
-      'ISACA',
       'Microsoft',
+      'IEEE',
       'ISO',
-      'IEEE'
+      'ISACA'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'ISACA (Information Systems Audit and Control Association) compró el CMMI Institute. Bajo ISACA se creó un modelo único con arquitectura flexible, eliminando las constelaciones separadas de V1.3.',
     trap: false
   },
@@ -1467,9 +1470,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PAs añade CMMI-DEV (V1.3) sobre las 16 PAs base?',
     options: [
-      'CAR, DAR, MPM, OT',
-      'PI, RD, SAM, TS, VAL, VER',
       'CM, MC, PQA, PR',
+      'PI, RD, SAM, TS, VAL, VER',
+      'CAR, DAR, MPM, OT',
       'GOV, II, EST, PLAN'
     ],
     correct: 1,
@@ -1483,8 +1486,8 @@ let QUESTIONS = [
     options: [
       '10',
       '16',
-      '22',
-      '20'
+      '20',
+      '22'
     ],
     correct: 1,
     justification: 'V1.3 tiene 16 PAs base compartidas por todas las constelaciones (DEV, ACQ, SVC). Cada constelación añade PAs específicas adicionales.',
@@ -1508,11 +1511,11 @@ let QUESTIONS = [
     question: '¿Qué dominios introduce CMMI V3.0?',
     options: [
       'DEV, ACQ, SVC (igual que V1.3)',
-      'DATA, DEV, PPL, SAF, SEC, SVC, SPM, VRT',
       'Solo DEV y SVC',
+      'DATA, DEV, PPL, SAF, SEC, SVC, SPM, VRT',
       'DEV, QA, PM, HR'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'V3.0 introduce 8 dominios o dimensiones: DATA (Data Management), DEV (Development), PPL (People), SAF (Safety), SEC (Security), SVC (Services), SPM (Supplier Management) y VRT (Virtual/Remote Work).',
     trap: false
   },
@@ -1521,12 +1524,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué nuevas PAs introduce el dominio DATA en V3.0?',
     options: [
+      'EVW y WE',
       'TS y PI',
       'ESEC y MST',
-      'DM y DQ',
-      'EVW y WE'
+      'DM y DQ'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'El dominio DATA introduce DM (Data Management) y DQ (Data Quality). SEC introduce ESEC y MST, SAF introduce ESAF, VRT introduce EVW, y PPL introduce WE.',
     trap: false
   },
@@ -1547,12 +1550,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las vistas predefinidas de V2.0 para evaluación?',
     options: [
-      'CMMI-DEV, CMMI-SVC, CMMI-SPM, CMMI-PPL',
       'Solo CMMI-DEV',
-      'DATA, SEC, SAF, VRT',
-      'DEV, ACQ, SVC (como V1.3)'
+      'CMMI-DEV, CMMI-SVC, CMMI-SPM, CMMI-PPL',
+      'DEV, ACQ, SVC (como V1.3)',
+      'DATA, SEC, SAF, VRT'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'V2.0 tiene vistas predefinidas: CMMI-DEV (desarrollo), CMMI-SVC (servicios), CMMI-SPM (gestión de proveedores) y CMMI-PPL (People Management). La vista CMMI-DEV contiene 20 PAs.',
     trap: false
   },
@@ -1573,12 +1576,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántas PAs contiene la vista CMMI-DEV en V2.0?',
     options: [
-      '25 PAs',
-      '20 PAs',
+      '16 PAs',
       '18 PAs',
-      '16 PAs'
+      '20 PAs',
+      '25 PAs'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'La vista CMMI-DEV en V2.0 contiene 20 PAs. Del total de 25 PAs, 18 son comunes (Core) a todas las vistas, y la vista DEV añade TS y PI.',
     trap: false
   },
@@ -1637,12 +1640,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué tipo de elemento es la \'Declaración del propósito\' de una PA?',
     options: [
-      'Obligatorio',
       'Requerido',
       'Esperado',
-      'Informativo'
+      'Informativo',
+      'Obligatorio'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'La Declaración del propósito es un elemento INFORMATIVO. Describe para qué sirve la PA pero no es obligatorio cumplirlo literalmente. Requeridos = metas, Esperados = prácticas, Informativos = todo lo demás.',
     trap: false
   },
@@ -1651,12 +1654,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En el diagrama de estructura de una PA, ¿qué formas geométricas representan cada tipo de elemento?',
     options: [
-      'Todos se representan con rectángulos',
-      'Requerido = elipse, Esperado = rectángulo, Informativo = diamante',
+      'Requerido = rectángulo, Esperado = diamante, Informativo = elipse',
       'Requerido = diamante, Esperado = elipse, Informativo = rectángulo',
-      'Requerido = rectángulo, Esperado = diamante, Informativo = elipse'
+      'Requerido = elipse, Esperado = rectángulo, Informativo = diamante',
+      'Todos se representan con rectángulos'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'La leyenda del diagrama es: Requerido = rectángulo, Esperado = diamante, Informativo = elipse. Esto ayuda a identificar visualmente la importancia de cada componente.',
     trap: false
   },
@@ -1691,12 +1694,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En V2.0/V3.0, ¿cómo se estructura internamente una PA?',
     options: [
-      'PA → GG → GP',
       'SG → SP → Subprácticas (igual que V1.3)',
+      'PA → Practice Group (PG) → Practice',
       'PA → Módulos → Tareas',
-      'PA → Practice Group (PG) → Practice'
+      'PA → GG → GP'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'En V2.0/V3.0, cada PA se divide en Practice Groups (PG) numerados del 1 al 5, y cada PG contiene Practices (prácticas concretas). Se eliminan SG/GG/SP/GP de V1.3, y las genéricas se centralizan en GOV e II.',
     trap: false
   },
@@ -1717,12 +1720,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos niveles de madurez tiene el modelo Staged?',
     options: [
-      '6 niveles (0-5)',
-      '3 niveles (1-3)',
       '4 niveles (1-4)',
-      '5 niveles (1-5)'
+      '5 niveles (1-5)',
+      '3 niveles (1-3)',
+      '6 niveles (0-5)'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'El modelo Staged tiene 5 niveles de madurez: 1-Inicial, 2-Gestionado, 3-Definido, 4-Gestionado Cuantitativamente, 5-Optimizado. No hay nivel 0 en Staged (eso es del modelo Continuous).',
     trap: false
   },
@@ -1743,12 +1746,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué resultado produce el modelo Staged?',
     options: [
-      'Un nivel de madurez global de la organización',
       'Un porcentaje de cumplimiento',
+      'Un nivel de madurez global de la organización',
       'Un perfil de CLs por PA',
       'Una lista de prácticas implementadas'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El modelo Staged produce un nivel de madurez GLOBAL de la organización (del 1 al 5). En cambio, el modelo Continuous produce un PERFIL de niveles de capacidad (CLs) por PA.',
     trap: false
   },
@@ -1769,12 +1772,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las PAs del Nivel 2 (Gestionado) en el modelo Staged?',
     options: [
-      'OPM, CAR',
       'DR, TS, VAL, VER, PI, IPM, DAR',
       'REQM, PP, PMC, PPQA, MA, CM, SAM',
+      'OPM, CAR',
       'OPP, QPM'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Nivel 2 (Gestionado): REQM (Requirements Management), PP (Project Planning), PMC (Project Monitoring and Control), PPQA (Process and Product Quality Assurance), MA (Measurement and Analysis), CM (Configuration Management), SAM (Supplier Agreement Management).',
     trap: false
   },
@@ -1783,12 +1786,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PAs corresponden al Nivel 4 (Gestionado Cuantitativamente) en Staged?',
     options: [
-      'REQM, PP, PMC',
       'OPP, QPM',
+      'OPM, CAR',
       'DR, TS, VAL, VER',
-      'OPM, CAR'
+      'REQM, PP, PMC'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Nivel 4 (Gestionado Cuantitativamente): OPP (Organizational Process Performance) y QPM (Quantitative Project Management). Son solo 2 PAs centradas en técnicas cuantitativas/estadísticas.',
     trap: false
   },
@@ -1797,12 +1800,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PAs corresponden al Nivel 5 (Optimizado) en Staged?',
     options: [
-      'REQM, PP, PMC',
       'OPP, QPM',
+      'OPM, CAR',
       'DR, TS, VAL, VER',
-      'OPM, CAR'
+      'REQM, PP, PMC'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Nivel 5 (Optimizado): OPM (Organizational Performance Management) y CAR (Causal Analysis and Resolution). Se centran en la mejora continua y la prevención de defectos.',
     trap: false
   },
@@ -1823,12 +1826,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué riesgo principal tiene el modelo Staged según la profesora?',
     options: [
+      'No permite evaluación',
       'La \'titulitis\': mejorar áreas no críticas solo para subir de nivel',
       'Es demasiado caro',
-      'Es demasiado simple',
-      'No permite evaluación'
+      'Es demasiado simple'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El modelo Staged puede provocar \'titulitis\': mejorar áreas no críticas solo para subir de nivel, ignorando los problemas reales. La profesora lo compara con \'tratar una pierna rota haciéndose la manicura\'.',
     trap: false
   },
@@ -1849,12 +1852,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué ventaja principal tiene el modelo Continuous sobre el Staged?',
     options: [
-      'Produce un nivel de madurez global',
+      'Permite elegir qué PAs mejorar según la necesidad real del negocio',
       'Es más barato de implementar',
-      'Tiene menos niveles',
-      'Permite elegir qué PAs mejorar según la necesidad real del negocio'
+      'Produce un nivel de madurez global',
+      'Tiene menos niveles'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'El modelo Continuous permite a la organización elegir qué PAs mejorar y hasta qué CL, según la necesidad real del negocio. Esto evita la \'titulitis\' del modelo Staged y ofrece un enfoque más flexible.',
     trap: false
   },
@@ -1875,9 +1878,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el primer nivel de madurez con reconocimiento de calidad (diploma)?',
     options: [
-      'Nivel 4 — Gestionado Cuantitativamente',
-      'Nivel 1 — Inicial',
       'Nivel 3 — Definido',
+      'Nivel 1 — Inicial',
+      'Nivel 4 — Gestionado Cuantitativamente',
       'Nivel 2 — Gestionado'
     ],
     correct: 3,
@@ -1901,9 +1904,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué cubre la PA \'RDM\' (Requirements Development & Management)?',
     options: [
-      'Supervisar resultados reales vs planes',
-      'Extracción, análisis, trazabilidad bidireccional y control de requisitos',
       'Control de versiones e integridad de productos',
+      'Extracción, análisis, trazabilidad bidireccional y control de requisitos',
+      'Supervisar resultados reales vs planes',
       'Diseño y construcción de la solución técnica'
     ],
     correct: 1,
@@ -1929,12 +1932,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia hay entre VER (Verification) y VAL (Validation)?',
     options: [
+      'VER es para documentos; VAL es para código',
       'Son sinónimos, no hay diferencia',
-      'VER comprueba que los requisitos se implementan correctamente; VAL que la solución funciona en su entorno de destino',
       'VER comprueba requisitos del cliente; VAL comprueba que funciona en su entorno',
-      'VER es para documentos; VAL es para código'
+      'VER comprueba que los requisitos se implementan correctamente; VAL que la solución funciona en su entorno de destino'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'VER (Verification) comprueba que los requisitos se implementan correctamente (\'¿estamos construyendo el producto correctamente?\'). VAL (Validation) verifica que la solución funciona en su entorno de destino (\'¿estamos construyendo el producto correcto?\'). En V2.0 se unificaron en VV.',
     trap: false
   },
@@ -1955,12 +1958,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA se encarga de \'Ensamblar componentes, gestionar interfaces y entregar la solución integrada\'?',
     options: [
-      'CM — Configuration Management',
       'VV — Verification and Validation',
       'PI — Product Integration',
-      'TS — Technical Solution'
+      'TS — Technical Solution',
+      'CM — Configuration Management'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'PI (Product Integration) se encarga de ensamblar componentes, gestionar interfaces y entregar la solución integrada al cliente. TS se ocupa del diseño y construcción, PI de la integración.',
     trap: false
   },
@@ -1983,12 +1986,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA se describe como \'la fábrica\' (crear y mantener activos de procesos organizacionales)?',
     options: [
-      'PAD — Process Asset Development',
       'PCM — Process Management',
+      'GOV — Governance',
       'OT — Organizational Training',
-      'GOV — Governance'
+      'PAD — Process Asset Development'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'PAD (Process Asset Development) es \la fábrica\: crea y mantiene los activos de procesos organizacionales. PCM (Process Management) es \la estrategia\: planificación e implementación de mejoras.',
     trap: false
   },
@@ -2010,11 +2013,11 @@ let QUESTIONS = [
     question: '¿Qué PA se encarga del \'Análisis Causal y Resolución\' (identificar causas raíz de defectos)?',
     options: [
       'PQA — Process Quality Assurance',
+      'DAR — Decision Analysis & Resolution',
       'CAR — Causal Analysis & Resolution',
-      'RSK — Risk Opportunity Management',
-      'DAR — Decision Analysis & Resolution'
+      'RSK — Risk Opportunity Management'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'CAR (Causal Analysis & Resolution) identifica causas raíz de defectos y problemas para prevenirlos en el futuro. DAR (Decision Analysis & Resolution) es para toma de decisiones formales con criterios y alternativas.',
     trap: false
   },
@@ -2023,8 +2026,8 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA cubre el \'Control de versiones, líneas base, control de cambios y auditorías de configuración\'?',
     options: [
-      'PQA — Process Quality Assurance',
       'MC — Monitor and Control',
+      'PQA — Process Quality Assurance',
       'GOV — Governance',
       'CM — Configuration Management'
     ],
@@ -2037,12 +2040,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA realiza \'Evaluaciones objetivas del cumplimiento de procesos y productos respecto a estándares\'?',
     options: [
-      'PQA — Process Quality Assurance',
-      'CM — Configuration Management',
+      'GOV — Governance',
       'PR — Peer Reviews',
-      'GOV — Governance'
+      'CM — Configuration Management',
+      'PQA — Process Quality Assurance'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'PQA (Process Quality Assurance) realiza evaluaciones objetivas del cumplimiento de procesos y productos respecto a los estándares establecidos. PQA es aseguramiento (QA), no control (QC).',
     trap: false
   },
@@ -2052,11 +2055,11 @@ let QUESTIONS = [
     question: '¿Qué PA cubre la \'Gestión de Riesgos y Oportunidades\' a lo largo de todo el proyecto?',
     options: [
       'PLAN — Planning',
+      'MC — Monitor and Control',
       'RSK — Risk Opportunity Management',
-      'DAR — Decision Analysis & Resolution',
-      'MC — Monitor and Control'
+      'DAR — Decision Analysis & Resolution'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'RSK (Risk Opportunity Management) identifica, registra, analiza y mitiga riesgos y oportunidades a lo largo de todo el proyecto.',
     trap: false
   },
@@ -2077,12 +2080,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA se encarga de la \'Responsabilidad y patrocinio de la alta dirección en los procesos de mejora\'?',
     options: [
+      'GOV — Governance',
       'II — Implementation Infrastructure',
       'PCM — Process Management',
-      'GOV — Governance',
       'MPM — Managing Performance & Measurement'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'GOV (Governance) se ocupa de la responsabilidad y patrocinio de la alta dirección en los procesos de mejora. II (Implementation Infrastructure) aporta herramientas y recursos para la implementación.',
     trap: false
   },
@@ -2103,12 +2106,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué significan las siglas SCAMPI?',
     options: [
-      'Software Capability Maturity Process Inspection',
+      'Standard CMMI Analysis Method for Process Integration',
       'Systematic Capability Assessment for Model Performance Indicators',
-      'Standard CMMI Appraisal Method for Process Improvement',
-      'Standard CMMI Analysis Method for Process Integration'
+      'Software Capability Maturity Process Inspection',
+      'Standard CMMI Appraisal Method for Process Improvement'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'SCAMPI = Standard CMMI Appraisal Method for Process Improvement. Es el método oficial de evaluación de CMMI. Existen 3 tipos (A, B, C) según el momento del programa de mejora.',
     trap: false
   },
@@ -2117,12 +2120,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos tipos de SCAMPI existen?',
     options: [
-      '2 tipos (A y B)',
-      '4 tipos (A, B, C, D)',
       '1 solo tipo',
-      '3 tipos (A, B, C)'
+      '3 tipos (A, B, C)',
+      '2 tipos (A y B)',
+      '4 tipos (A, B, C, D)'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Existen 3 tipos de SCAMPI: A (Benchmark), B (Sustainment) y C (Evaluation). Se aplican en diferentes momentos del programa de mejora y tienen diferente rigor y coste.',
     trap: false
   },
@@ -2171,12 +2174,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuánto tiempo es válido el diploma del SCAMPI A?',
     options: [
-      '3 años',
+      '1 año',
       '2 años',
-      '5 años',
-      '1 año'
+      '3 años',
+      '5 años'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'El diploma del SCAMPI A es válido 3 años. Se puede extender con SCAMPI B (Sustainment) que añade +2 años cada uno, con un máximo de 3 SCAMPI B antes de necesitar un nuevo SCAMPI A.',
     trap: false
   },
@@ -2197,10 +2200,10 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos SCAMPI B se pueden hacer como máximo antes de necesitar un nuevo SCAMPI A?',
     options: [
-      'Sin límite',
+      '1',
       '3',
       '2',
-      '1'
+      'Sin límite'
     ],
     correct: 1,
     justification: 'Se pueden hacer un máximo de 3 SCAMPI B antes de necesitar un nuevo SCAMPI A. Cada SCAMPI B extiende el resultado de A por +2 años.',
@@ -2271,12 +2274,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué es un \'Proyecto objetivo\' en la muestra de evaluación?',
     options: [
+      'Un proyecto que solo aporta evidencia de alguna PA',
       'Un proyecto que ha terminado satisfactoriamente',
-      'Un proyecto que proporciona evidencia para TODAS las PAs a evaluar',
       'Un proyecto que se creó específicamente para la evaluación',
-      'Un proyecto que solo aporta evidencia de alguna PA'
+      'Un proyecto que proporciona evidencia para TODAS las PAs a evaluar'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Un proyecto objetivo proporciona evidencia para TODAS las PAs a evaluar. No importa si ha terminado o no. Se requiere al menos 1 proyecto objetivo. Los proyectos no objetivos aportan evidencia de solo algunas PAs.',
     trap: false
   },
@@ -2287,10 +2290,10 @@ let QUESTIONS = [
     options: [
       'Documentos y entrevistas',
       'Métricas y certificados',
-      'Informes y auditorías',
-      'Artefactos y Afirmaciones'
+      'Artefactos y Afirmaciones',
+      'Informes y auditorías'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Los dos tipos de evidencia objetiva son: Artefactos (salidas directas o indirectas de la implementación de prácticas, recogidos pre on-site) y Afirmaciones (confirmaciones verbales o escritas en entrevistas, recogidas on-site).',
     trap: false
   },
@@ -2301,8 +2304,8 @@ let QUESTIONS = [
     options: [
       'Solo se necesita una Afirmación positiva',
       'Artefacto AND Afirmación positiva',
-      'Solo se necesita un Artefacto directo',
-      'Artefacto OR Afirmación positiva'
+      'Artefacto OR Afirmación positiva',
+      'Solo se necesita un Artefacto directo'
     ],
     correct: 1,
     justification: 'La regla de oro para validar una practice es: Artefacto AND Afirmación positiva. No basta con solo uno de los dos. Se necesitan ambos tipos de evidencia para confirmar la implementación.',
@@ -2337,12 +2340,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué significa FI (Fully Implemented) en la calificación de una practice?',
     options: [
-      'Sin evidencia alguna',
-      'Artefactos directos presentes con debilidades significativas',
       'Artefactos directos inadecuados o inexistentes',
-      'Artefactos directos presentes y adecuados, apoyados por evidencias, sin debilidades significativas'
+      'Artefactos directos presentes y adecuados, apoyados por evidencias, sin debilidades significativas',
+      'Sin evidencia alguna',
+      'Artefactos directos presentes con debilidades significativas'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'FI (Fully Implemented): Artefactos directos presentes y adecuados, apoyados por artefactos indirectos y/o afirmaciones. No se detectan debilidades significativas.',
     trap: false
   },
@@ -2351,9 +2354,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia hay entre FI y LI?',
     options: [
-      'No hay diferencia, son sinónimos',
       'FI es para artefactos; LI es para afirmaciones',
       'FI es parcial; LI es completo',
+      'No hay diferencia, son sinónimos',
       'FI no tiene debilidades significativas; LI tiene una o más debilidades'
     ],
     correct: 3,
@@ -2367,8 +2370,8 @@ let QUESTIONS = [
     options: [
       'Sin evidencia alguna',
       'Artefactos directos inadecuados o inexistentes, pero evidencia parcial de implementación',
-      'Artefactos directos presentes sin debilidades',
-      'Artefactos directos presentes con debilidades menores'
+      'Artefactos directos presentes con debilidades menores',
+      'Artefactos directos presentes sin debilidades'
     ],
     correct: 1,
     justification: 'PI (Partially Implemented): Artefactos directos inadecuados o inexistentes. Artefactos indirectos y/o afirmaciones indican que PARTE de la práctica ha sido implementada.',
@@ -2427,12 +2430,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuánto dura aproximadamente la fase Pre On-Site?',
     options: [
-      '1 mes',
-      '6 meses (aproximadamente)',
       '1 año',
-      '2 meses'
+      '1 mes',
+      '2 meses',
+      '6 meses (aproximadamente)'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'La fase Pre On-Site comienza al menos 6 meses antes de la evaluación. Incluye: Presentar (6m antes), Planificar (4m antes) y Preparar (4m a 2 semanas antes).',
     trap: false
   },
@@ -2467,12 +2470,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué es la BDEO?',
     options: [
+      'Base de Datos de Evaluadores Oficiales',
       'Base de Datos de Evaluación Organizacional',
       'Base de Datos de Estándares Operativos',
-      'Base de Datos de Evidencias Objetivas',
-      'Base de Datos de Evaluadores Oficiales'
+      'Base de Datos de Evidencias Objetivas'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'BDEO = Base de Datos de Evidencias Objetivas. Contiene los artefactos (directos e indirectos) que evidencian la implementación de las prácticas. Se completa durante el Pre On-Site y se copia a un repositorio aislado durante el On-Site.',
     trap: false
   },
@@ -2651,12 +2654,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Un evaluador encuentra que en un PG hay 8 practices: 5 son FI, 2 son LI y 1 es PI. ¿Está satisfecho el PG?',
     options: [
+      'No, porque hay practices en LI',
       'Sí, porque la mayoría (7 de 8) son FI o LI',
       'No, porque hay 1 practice en PI',
-      'Sí, porque al menos el 50% son FI',
-      'No, porque hay practices en LI'
+      'Sí, porque al menos el 50% son FI'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'NO está satisfecho. Si ALGUNA practice es PI o NI, el PG automáticamente no está satisfecho. No importa que 7 de 8 sean FI o LI: con solo 1 PI, el PG falla. TODAS deben ser FI o LI.',
     trap: true
   },
@@ -2665,12 +2668,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En una evaluación CMMI, la empresa presenta un documento creado el día anterior al On-Site para completar evidencias. ¿Es válido?',
     options: [
-      'Siempre es válido si existe antes del On-Site',
-      'No, si fue creado específicamente para la evaluación y no refleja la práctica real',
       'Sí, si el evaluador lo solicita',
-      'Sí, porque lo creó antes del On-Site'
+      'Siempre es válido si existe antes del On-Site',
+      'Sí, porque lo creó antes del On-Site',
+      'No, si fue creado específicamente para la evaluación y no refleja la práctica real'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Los artefactos deben ser salidas REALES de la implementación de las prácticas, no documentos creados ad hoc para la evaluación. Un documento creado el día anterior podría no ser válido si no refleja la práctica habitual de la organización.',
     trap: true
   },
@@ -2679,12 +2682,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué sucede si durante el On-Site se detecta que la empresa ha creado documentación nueva?',
     options: [
+      'Se ignora pero la evaluación continúa normalmente',
       'Se acepta como evidencia adicional',
       'Puede causar el FIN de la evaluación',
-      'Se ignora pero la evaluación continúa normalmente',
       'Se le da una advertencia sin consecuencias'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'El incumplimiento de la regla de \'no añadir nueva documentación durante el On-Site\' puede causar el FIN de la evaluación. Solo se puede añadir información que ya existía previamente.',
     trap: true
   },
@@ -2760,11 +2763,11 @@ let QUESTIONS = [
     question: '¿Qué PA aporta \'herramientas y recursos para soportar la implementación de los procesos\'?',
     options: [
       'GOV — Governance',
+      'PAD — Process Asset Development',
       'OT — Organizational Training',
-      'II — Implementation Infrastructure',
-      'PAD — Process Asset Development'
+      'II — Implementation Infrastructure'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'II (Implementation Infrastructure) aporta herramientas y recursos para soportar la implementación de los procesos. GOV se centra en la responsabilidad y patrocinio de la alta dirección.',
     trap: false
   },
@@ -2773,12 +2776,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA desarrolla \'habilidades y conocimientos críticos en los equipos\'?',
     options: [
-      'OT — Organizational Training',
-      'GOV — Governance',
       'PAD — Process Asset Development',
-      'MPM — Managing Performance & Measurement'
+      'GOV — Governance',
+      'MPM — Managing Performance & Measurement',
+      'OT — Organizational Training'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'OT (Organizational Training) se encarga de desarrollar habilidades y conocimientos críticos en los equipos para soportar los procesos.',
     trap: false
   },
@@ -2787,12 +2790,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PAs incluye el Nivel 3 (Definido) en el modelo Staged?',
     options: [
-      'OPP, QPM',
       'DR, TS, VAL, VER, PI, IPM, DAR, OPD, OPF, OT, RISQM',
       'REQM, PP, PMC, PPQA, MA, CM, SAM',
-      'OPM, CAR'
+      'OPM, CAR',
+      'OPP, QPM'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Nivel 3 (Definido): DR, TS, VAL, VER, PI, IPM, DAR, OPD, OPF, OT, RISQM. Es el nivel con más PAs y el que suele requerirse en contratos públicos. Incluye la calidad en la construcción del software.',
     trap: false
   },
@@ -2801,12 +2804,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué técnicas de auditoría se usan en SCAMPI?',
     options: [
+      'Solo auditorías financieras',
       'Solo encuestas online',
       'Entrevistas y revisión documental',
-      'Solo auditorías financieras',
       'Solo análisis de código fuente'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'Las técnicas de auditoría SCAMPI incluyen entrevistas (para recoger afirmaciones) y revisión documental (para verificar artefactos). Ambas son necesarias según la regla de oro.',
     trap: false
   },
@@ -2827,12 +2830,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la principal diferencia entre \'Área de Proceso\' (V1.3) y \'Área de Práctica\' (V2.0)?',
     options: [
-      'V2.0 elimina todas las áreas de práctica',
       'Solo cambió el nombre, son idénticas',
       'En V1.3 usa SG/SP/GG/GP; en V2.0 usa Practice Groups (PG) con Practices',
+      'V2.0 elimina todas las áreas de práctica',
       'V1.3 no tiene áreas de proceso'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'En V1.3, un \'Área de Proceso\' usa SG (Specific Goals), SP (Specific Practices), GG y GP. En V2.0, un \'Área de Práctica\' usa Practice Groups (PG) numerados 1-5, cada uno con Practices concretas. Las GG/GP desaparecen y se centralizan en GOV e II.',
     trap: false
   },
@@ -2867,12 +2870,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA establece \'métricas de rendimiento y objetivos empresariales\' y analiza datos para mejora continua?',
     options: [
-      'PQA — Process Quality Assurance',
-      'MC — Monitor and Control',
       'CAR — Causal Analysis & Resolution',
-      'MPM — Managing Performance & Measurement'
+      'MPM — Managing Performance & Measurement',
+      'PQA — Process Quality Assurance',
+      'MC — Monitor and Control'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'MPM (Managing Performance & Measurement) establece métricas de rendimiento y objetivos empresariales, y analiza datos para mejora continua. Es una de las pocas PAs que alcanzan CL5.',
     trap: false
   },
@@ -2881,12 +2884,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué dominio de CMMI V3.0 cubre el \'Trabajo en equipos distribuidos o virtuales\'?',
     options: [
-      'VRT (Virtual/Remote Work)',
-      'PPL (People)',
       'SVC (Services)',
-      'SPM (Supplier Management)'
+      'SPM (Supplier Management)',
+      'VRT (Virtual/Remote Work)',
+      'PPL (People)'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'VRT (Virtual/Remote Work) cubre el trabajo en equipos distribuidos o virtuales. Su PA asociada es EVW. PPL cubre gestión de personas en general, no específicamente el trabajo remoto.',
     trap: false
   },
@@ -2895,12 +2898,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la equivalencia de los tipos de evaluación entre V1.3 y V2.0?',
     options: [
-      'V2.0 elimina todos los tipos de SCAMPI',
-      'SCAMPI A ≈ Evaluation, SCAMPI B ≈ Benchmark',
       'SCAMPI A ≈ Benchmark, SCAMPI B/C ≈ Evaluation, nuevo: Sustainment',
-      'Son idénticos, no hay cambios'
+      'Son idénticos, no hay cambios',
+      'V2.0 elimina todos los tipos de SCAMPI',
+      'SCAMPI A ≈ Evaluation, SCAMPI B ≈ Benchmark'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'En V2.0: Benchmark ≈ SCAMPI A (oficial, diploma, 3 años). Sustainment es NUEVO (mantener, +2 años, máx 3). Evaluation ≈ SCAMPI B/C (foto rápida, sin diploma).',
     trap: false
   },
@@ -2935,12 +2938,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué nivel de madurez es requerido frecuentemente en contratos públicos?',
     options: [
-      'Nivel 1 — Inicial',
       'Nivel 3 — Definido',
       'Nivel 5 — Optimizado',
+      'Nivel 1 — Inicial',
       'Nivel 2 — Gestionado'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'El Nivel 3 (Definido) es frecuentemente requerido en contratos públicos. Es el nivel donde la organización tiene procesos estandarizados para la construcción del software (TS, VER, VAL, PI).',
     trap: false
   },
@@ -2976,12 +2979,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las dos dimensiones de SPICE?',
     options: [
+      'Modelo de calidad (ISO 9001) y Modelo de certificación (ISO 17021)',
       'Modelo de procesos (ISO 12207) y Modelo de evaluación (ISO 15504)',
-      'Modelo de desarrollo (CMMI) y Modelo de servicios (ITIL)',
       'Modelo técnico y Modelo organizativo',
-      'Modelo de calidad (ISO 9001) y Modelo de certificación (ISO 17021)'
+      'Modelo de desarrollo (CMMI) y Modelo de servicios (ITIL)'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'SPICE tiene dos dimensiones: el Modelo de procesos (¿Qué procesos hay? → ISO 12207 para software) y el Modelo de evaluación (¿Cómo se valoran? → ISO 15504, sustituida por ISO 33000).',
     trap: false
   },
@@ -3008,12 +3011,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántas partes tiene la norma ISO/IEC 15504?',
     options: [
-      '7 partes',
       '3 partes',
-      '10 partes',
-      '5 partes'
+      '7 partes',
+      '5 partes',
+      '10 partes'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'ISO/IEC 15504 tiene 7 partes: 1-Conceptos y vocabulario, 2-Realización de la evaluación, 3-Guía de evaluación, 4-Guía de mejora, 5-Ejemplo de modelo de evaluación, 6-Ejemplo de evaluación del ciclo de vida, 7-Evaluación de la madurez.',
     trap: false
   },
@@ -3045,12 +3048,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos procesos evalúa el esquema AENOR en cada nivel? (mnemónico clave)',
     options: [
-      '3 / 7 / 11',
-      '5 / 10 / 15',
       '2 / 5 / 8',
-      '4 / 8 / 12'
+      '4 / 8 / 12',
+      '5 / 10 / 15',
+      '3 / 7 / 11'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'Mnemónico clave: 3 procesos en nivel 1, 7 en nivel 2, 11 en nivel 3. Es un dato que suele caer en examen.',
     trap: false
   },
@@ -3060,8 +3063,8 @@ let QUESTIONS = [
     question: '¿Cuáles son los 3 procesos del Nivel 1 del esquema AENOR?',
     options: [
       'RQU, RQSIS, MED',
-      'ACS, GC, MED',
       'PP, ECP, GC',
+      'ACS, GC, MED',
       'SUM, MCV, GCS'
     ],
     correct: 3,
@@ -3073,12 +3076,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 7 procesos del Nivel 2 del esquema AENOR?',
     options: [
-      'RQU, RQSIS, PP, ECP, GC, MED, ACS',
-      'Análisis, Diseño, Integración, Verificación, Validación, Gestión, Riesgos',
       'SUM, MCV, GCS, PP, ECP, GC, MED',
-      'Todos los del nivel 1 más 4 adicionales'
+      'RQU, RQSIS, PP, ECP, GC, MED, ACS',
+      'Todos los del nivel 1 más 4 adicionales',
+      'Análisis, Diseño, Integración, Verificación, Validación, Gestión, Riesgos'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'Nivel 2: RQU (Definición de Requisitos de Usuario), RQSIS (Análisis de Requisitos del Sistema), PP (Planificación del Proyecto), ECP (Evaluación y Control del Proyecto), GC (Gestión de la Configuración), MED (Medición), ACS (Aseguramiento de la Calidad Software).',
     trap: false
   },
@@ -3096,12 +3099,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué norma ha sustituido a ISO 15504 como modelo de evaluación?',
     options: [
+      'ISO 9001',
       'ISO 33000',
       'ISO 25000',
-      'ISO 9001',
       'ISO 27000'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'ISO 15504 ha sido sustituida por la familia ISO 33000 como modelo de evaluación de procesos. MMIS V.2 ya utiliza ISO 33000 en lugar de ISO 15504.',
     trap: false
   },
@@ -3139,9 +3142,9 @@ let QUESTIONS = [
     question: '¿Cuántos procesos define ISO/IEC 12207:2017 que usa MMIS V.2?',
     options: [
       '21 procesos',
-      '11 procesos',
       '25 procesos',
-      '16 procesos'
+      '16 procesos',
+      '11 procesos'
     ],
     correct: 0,
     justification: 'ISO/IEC 12207:2017 define 21 procesos, que MMIS V.2 usa como modelo de procesos (la dimensión "qué procesos hay").',
@@ -3153,9 +3156,9 @@ let QUESTIONS = [
     question: '¿Cuáles son los componentes de ISO 33000 que usa MMIS V.2?',
     options: [
       'ISO 33002 (proceso de evaluación), ISO 33003 (requisitos de medición), ISO 33020 (marco de medición)',
-      'Solo ISO 33000 como norma única',
       'ISO 33100, ISO 33200, ISO 33300',
-      'ISO 33001, ISO 33010, ISO 33050'
+      'ISO 33001, ISO 33010, ISO 33050',
+      'Solo ISO 33000 como norma única'
     ],
     correct: 0,
     justification: 'MMIS V.2 usa tres componentes de ISO 33000: ISO 33002 (proceso de evaluación), ISO 33003 (requisitos de medición) e ISO 33020 (marco de medición — métricas para valorar evidencias).',
@@ -3166,12 +3169,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos niveles de madurez tiene MMIS V.2?',
     options: [
+      '4 niveles',
       '5 niveles (Básico, Gestionado, Establecido, Predecible, Innovado)',
       '6 niveles',
-      '3 niveles',
-      '4 niveles'
+      '3 niveles'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'MMIS V.2 tiene 5 niveles de madurez: 1-Básico, 2-Gestionado, 3-Establecido, 4-Predecible, 5-Innovado. Usa una estructura de "capas de cebolla": niveles de madurez (organización) + niveles de capacidad (por proceso).',
     trap: false
   },
@@ -3180,12 +3183,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué estructura tiene MMIS V.2 para combinar niveles de madurez y capacidad?',
     options: [
-      'Estructura de "capas de cebolla": niveles de madurez (organización) + niveles de capacidad (por proceso)',
       'Estructura piramidal (como CMMI Staged)',
+      'Estructura matricial 2D',
       'Estructura plana sin niveles',
-      'Estructura matricial 2D'
+      'Estructura de "capas de cebolla": niveles de madurez (organización) + niveles de capacidad (por proceso)'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'MMIS V.2 utiliza una estructura de "capas de cebolla" que combina niveles de madurez (a nivel de organización) con niveles de capacidad (por proceso individual).',
     trap: false
   },
@@ -3231,9 +3234,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las 3 áreas que evalúa ITmark?',
     options: [
+      'Producto, Proyecto, Proceso',
       'Calidad, Coste, Tiempo',
       'Desarrollo, Testing, Despliegue',
-      'Producto, Proyecto, Proceso',
       'Procesos de gestión y desarrollo de software (CMMI-DEV), Gestión del negocio (EFQM/ISO 9000), Gestión de la seguridad (ISO 27000)'
     ],
     correct: 3,
@@ -3286,12 +3289,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'ITmark sirve como…',
     options: [
-      'Modelo exclusivo para el sector público',
       'Alternativa a ISO 9001 en auditorías oficiales',
-      'Sustituto definitivo de CMMI',
-      'Pasarela previa a CMMI: ITmark primero, CMMI después'
+      'Pasarela previa a CMMI: ITmark primero, CMMI después',
+      'Modelo exclusivo para el sector público',
+      'Sustituto definitivo de CMMI'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'ITmark sirve como pasarela previa a CMMI: primero se obtiene ITmark y después se puede avanzar hacia CMMI. Es un reconocimiento de Excelencia en TI diseñado para PYMEs.',
     trap: false
   },
@@ -3300,12 +3303,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En concursos públicos que piden "nivel 3 CMMI o equivalente", ¿qué papel juega ITmark Élite?',
     options: [
-      'Puede aceptarse como equivalente, pero NO es acreditación CMMI oficial',
-      'Solo sirve para empresas con más de 100 empleados',
       'Es exactamente igual que CMMI nivel 3',
-      'No puede usarse en ningún caso'
+      'Solo sirve para empresas con más de 100 empleados',
+      'No puede usarse en ningún caso',
+      'Puede aceptarse como equivalente, pero NO es acreditación CMMI oficial'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'ITmark Élite PUEDE aceptarse como equivalente en concursos públicos que piden "nivel 3 CMMI o equivalente", pero NO es una acreditación CMMI oficial. Son modelos independientes y complementarios.',
     trap: false
   },
@@ -3399,12 +3402,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la diferencia entre "Métrica" e "Indicador"?',
     options: [
-      'La métrica es la FÓRMULA; el indicador es la métrica + criterios de análisis (interpretación y acciones)',
       'Son sinónimos, no hay diferencia',
       'La métrica es cualitativa; el indicador es cuantitativo',
-      'El indicador es la fórmula; la métrica incluye la interpretación'
+      'El indicador es la fórmula; la métrica incluye la interpretación',
+      'La métrica es la FÓRMULA; el indicador es la métrica + criterios de análisis (interpretación y acciones)'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'Métrica = la FÓRMULA que describe un atributo (ej: "25% de desviación"). Indicador = métrica + criterios de análisis (ej: "25% desviación; si <20% continuar, 20–50% replanificar, >50% cancelar").',
     trap: false
   },
@@ -3424,8 +3427,8 @@ let QUESTIONS = [
     question: '¿Cuáles son las 4 escalas de medida?',
     options: [
       'Alta, Media, Baja, Nula',
-      'Binaria, Decimal, Hexadecimal, Octal',
       'Continua, Discreta, Categórica, Temporal',
+      'Binaria, Decimal, Hexadecimal, Octal',
       'Nominal, Ordinal, Intervalo, Razón (Ratio)'
     ],
     correct: 3,
@@ -3437,12 +3440,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué operaciones permite la escala Nominal?',
     options: [
-      'Todas: =, ≠, <, >, +, −, ×, ÷',
       '=, ≠, <, > (orden)',
       'Solo = y ≠ (igualdad y desigualdad)',
-      '=, ≠, +, − (suma y resta)'
+      '=, ≠, +, − (suma y resta)',
+      'Todas: =, ≠, <, >, +, −, ×, ÷'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'La escala Nominal solo permite clasificar en categorías exclusivas con operaciones = y ≠ (igualdad y desigualdad). No hay orden ni operaciones matemáticas. Ej: tipo de ciclo (Scrum/Waterfall).',
     trap: false
   },
@@ -3451,12 +3454,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué operaciones permite la escala Ordinal?',
     options: [
-      'Solo = y ≠',
       '=, ≠, <, > (orden, pero NO suma ni resta)',
-      'Todas las operaciones',
-      '=, ≠, +, − (suma y resta)'
+      'Solo = y ≠',
+      '=, ≠, +, − (suma y resta)',
+      'Todas las operaciones'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'La escala Ordinal permite: =, ≠, <, > (orden). NO permite operaciones matemáticas como suma o resta. No se puede afirmar que CMMI4−CMMI3 = CMMI5−CMMI4. Ej: niveles CMMI 1<2<3<4<5.',
     trap: false
   },
@@ -3506,12 +3509,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué escala de medida representan los niveles de CMMI (1, 2, 3, 4, 5)?',
     options: [
+      'Nominal (solo categorías)',
       'Ordinal (hay orden pero no se pueden sumar/restar niveles)',
-      'Razón (0 absoluto y todas las operaciones)',
       'Intervalo (se pueden sumar y restar)',
-      'Nominal (solo categorías)'
+      'Razón (0 absoluto y todas las operaciones)'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'Los niveles CMMI son escala ORDINAL: hay un orden (1<2<3<4<5) pero NO se pueden hacer operaciones matemáticas. No se puede afirmar que la diferencia entre nivel 4 y 3 sea igual que entre nivel 5 y 4.',
     trap: false
   },
@@ -3521,9 +3524,9 @@ let QUESTIONS = [
     question: '¿Qué es un catálogo de métricas?',
     options: [
       'Una colección organizada de las métricas que usa una organización, típicamente en categorías Producto/Proyecto/Proceso',
+      'Un estándar ISO que obliga a usar métricas específicas',
       'Un listado de certificaciones de calidad',
-      'Una base de datos de errores del software',
-      'Un estándar ISO que obliga a usar métricas específicas'
+      'Una base de datos de errores del software'
     ],
     correct: 0,
     justification: 'Un catálogo de métricas es una colección organizada de las métricas que usa la organización. La organización habitual es en 3 categorías (Producto/Proyecto/Proceso), pero NO es obligatoria: cada empresa decide cómo organizarlo.',
@@ -3580,12 +3583,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué es un Cuadro de Mando integral (Balanced Scorecard)?',
     options: [
-      'Una herramienta que monitoriza, controla y gestiona procesos a través de KPIs',
-      'Un documento de requisitos del software',
       'Un informe de auditoría externa',
-      'Un certificado de calidad ISO'
+      'Un documento de requisitos del software',
+      'Un certificado de calidad ISO',
+      'Una herramienta que monitoriza, controla y gestiona procesos a través de KPIs'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'El Cuadro de Mando integral (Balanced Scorecard) monitoriza, controla y gestiona procesos a través de KPIs. En empresas de software suele ser un proyecto interno hecho a medida.',
     trap: false
   },
@@ -3608,12 +3611,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia hay entre una métrica directa y una indirecta?',
     options: [
-      'Directa es para productos; indirecta es para procesos',
       'Directa no depende de otras métricas y se mide directamente; indirecta es combinación matemática de varias directas',
+      'Directa es para productos; indirecta es para procesos',
       'Directa es objetiva; indirecta es subjetiva',
       'Directa se mide en campo; indirecta se calcula en oficina'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Directa (simple): no depende de otras métricas, se mide directamente (ej: LOC, nº requisitos). Indirecta (compuesta): combinación matemática de varias directas (ej: Satisfacción = f(tiempo + quejas + clientes perdidos)).',
     trap: false
   },
@@ -3622,8 +3625,8 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia hay entre una métrica estática y una dinámica?',
     options: [
-      'No hay diferencia, son sinónimos',
       'Estática cambia con el tiempo; dinámica no',
+      'No hay diferencia, son sinónimos',
       'Estática es para código; dinámica es para procesos',
       'Estática mide un atributo en un momento específico; dinámica mide el cambio de una cantidad por unidad de otra variable'
     ],
@@ -3654,12 +3657,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia hay entre "Ratio" y "Proporción" (ambas estáticas)?',
     options: [
+      'En un Ratio, numerador y denominador son EXCLUYENTES; en una Proporción, el numerador es PARTE del denominador',
       'Ratio es directa; Proporción es indirecta',
       'Ratio se mide en %; Proporción en números enteros',
-      'En un Ratio, numerador y denominador son EXCLUYENTES; en una Proporción, el numerador es PARTE del denominador',
       'Son sinónimos'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Ratio: numerador y denominador son EXCLUYENTES (sin intersección), NO se convierte en %. Ej: personas en pruebas / personas en desarrollo. Proporción: numerador es PARTE del denominador, SÍ se puede expresar en %. Ej: clientes satisfechos / total clientes.',
     trap: false
   },
@@ -3686,12 +3689,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de estos es un ejemplo de métrica directa?',
     options: [
-      'LOC (líneas de código) — se mide directamente sin depender de otras',
       'DRE (Defect Removal Efficiency)',
       'Densidad de defectos (defectos / KLOC)',
-      'Satisfacción del cliente (combinación de encuesta + quejas + fidelización)'
+      'Satisfacción del cliente (combinación de encuesta + quejas + fidelización)',
+      'LOC (líneas de código) — se mide directamente sin depender de otras'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'LOC es una métrica directa (simple): se mide directamente sin depender de otras métricas. Las demás opciones son indirectas (compuestas): combinan varias métricas directas mediante fórmulas.',
     trap: false
   },
@@ -3700,12 +3703,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿A qué se dedica ISO 25000 (SQuaRE)?',
     options: [
-      'Es un estándar de seguridad informática',
-      'Define procesos de gestión de proyectos',
+      'Define métricas para medir la calidad del PRODUCTO software (no proceso, no proyecto)',
       'Define métricas de calidad del proceso de desarrollo',
-      'Define métricas para medir la calidad del PRODUCTO software (no proceso, no proyecto)'
+      'Es un estándar de seguridad informática',
+      'Define procesos de gestión de proyectos'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'ISO 25000 (SQuaRE = System and Software Quality Requirements and Evaluation) define métricas para medir la calidad del PRODUCTO software. Es evolución de ISO 9126 e ISO 14598. No mide procesos ni proyectos.',
     trap: false
   },
@@ -3867,12 +3870,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de estas afirmaciones es CORRECTA?',
     options: [
+      'ITmark cubre solo desarrollo',
       'SPICE es específico para software',
-      'MMIS V.2 reemplaza ISO 15504 por ISO 33000',
       'ISO 25000 define métricas de calidad del proceso',
-      'ITmark cubre solo desarrollo'
+      'MMIS V.2 reemplaza ISO 15504 por ISO 33000'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'MMIS V.2 efectivamente reemplaza ISO 15504 por ISO 33000. Las demás son falsas: SPICE es genérico, ITmark cubre 3 áreas, e ISO 25000 define métricas del PRODUCTO (no proceso).',
     trap: true
   },
@@ -3881,12 +3884,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de estas afirmaciones sobre escalas de medida es FALSA?',
     options: [
-      'Nominal solo permite = y ≠',
-      'Intervalo: el 0 es un valor real',
+      'Ratio: el 0 es un valor real (no ausencia)',
       'Ordinal permite <, > pero no suma/resta',
-      'Ratio: el 0 es un valor real (no ausencia)'
+      'Intervalo: el 0 es un valor real',
+      'Nominal solo permite = y ≠'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'En Ratio el 0 indica AUSENCIA de valor (0 absoluto), no es "un valor real". El 0 como valor real es propio de la escala de Intervalo (ej: 0°C existe como temperatura).',
     trap: true
   },
@@ -3895,12 +3898,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Un profesor dice: "nº de errores en pruebas = 0". ¿Qué escala usa si 0 = pruebas ejecutadas sin errores?',
     options: [
-      'Intervalo (0 = resultado válido, pruebas ejecutadas)',
-      'Ordinal',
       'Ratio (0 = ausencia, pruebas no ejecutadas)',
+      'Ordinal',
+      'Intervalo (0 = resultado válido, pruebas ejecutadas)',
       'Nominal'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Si 0 = pruebas ejecutadas sin errores, el 0 es un RESULTADO VÁLIDO → escala de Intervalo. Si 0 = pruebas aún no ejecutadas (ausencia), sería Ratio. Confundir esto puede ser desastroso.',
     trap: true
   },
@@ -3921,12 +3924,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué verifica una auditoría interna?',
     options: [
+      'Que se siguen los procesos, procedimientos, plantillas y registros del SGC.',
       'Que el código cumple con los estándares de codificación.',
       'Que las pruebas unitarias tienen cobertura suficiente.',
-      'Que se siguen los procesos, procedimientos, plantillas y registros del SGC.',
       'Que el producto software no tiene defectos técnicos.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Una auditoría interna verifica que se siguen los procesos, procedimientos, plantillas y registros del SGC. Es aseguramiento de calidad, no control de calidad. No comprueba la calidad técnica del producto.',
     trap: false
   },
@@ -3935,12 +3938,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las dos modalidades de auditoría interna?',
     options: [
-      'Auditoría técnica y Auditoría administrativa.',
-      'Auditoría de certificación y Auditoría de seguimiento.',
       'Auditoría interna y Auditoría externa.',
-      'Verificación de fase (VF) y Auditoría general (AG).'
+      'Verificación de fase (VF) y Auditoría general (AG).',
+      'Auditoría de certificación y Auditoría de seguimiento.',
+      'Auditoría técnica y Auditoría administrativa.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Las dos modalidades complementarias son: Verificación de fase (VF), que cubre fases del ciclo de vida de un proyecto, y Auditoría general (AG), que cubre áreas/departamentos fuera de los proyectos (marketing, RRHH, compras...).',
     trap: false
   },
@@ -3967,12 +3970,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué tipo de auditoría interna cubre las fases del ciclo de vida de un proyecto?',
     options: [
-      'Verificación de fase (VF).',
       'Auditoría de certificación.',
+      'Auditoría de seguimiento.',
       'Auditoría general (AG).',
-      'Auditoría de seguimiento.'
+      'Verificación de fase (VF).'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'La Verificación de fase (VF) cubre las fases del ciclo de vida de un proyecto software. La Auditoría general (AG), en cambio, cubre áreas o departamentos fuera de los proyectos.',
     trap: false
   },
@@ -3981,12 +3984,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué tipo de auditoría interna cubre áreas como RRHH, marketing o compras?',
     options: [
-      'Verificación de fase (VF).',
-      'Auditoría de procesos.',
       'Auditoría de producto.',
-      'Auditoría general (AG).'
+      'Auditoría general (AG).',
+      'Verificación de fase (VF).',
+      'Auditoría de procesos.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'La Auditoría general (AG) cubre áreas/departamentos fuera de los proyectos, como marketing, RRHH o compras. La VF se centra en las fases del ciclo de vida de los proyectos software.',
     trap: false
   },
@@ -4008,12 +4011,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 5 criterios que debe cumplir cualquier auditor interno?',
     options: [
-      'Independencia, objetividad, experiencia auditando, competencia técnica y experiencia en el área.',
       'Competencia técnica, experiencia laboral, certificación oficial, antigüedad y liderazgo.',
       'Independencia, formación universitaria, certificación ISO, experiencia de gestión y objetividad.',
+      'Independencia, objetividad, experiencia auditando, competencia técnica y experiencia en el área.',
       'Certificación ISO, experiencia laboral, independencia, formación y liderazgo.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Los 5 criterios son: (1) Ser independiente del área/proyecto/proceso que va a auditar, (2) Ser objetivo (juicio basado en evidencias), (3) Tener experiencia auditando, (4) Ser competente en el ámbito técnico/funcional que va a auditar, (5) Tener experiencia en el área que va a evaluar.',
     trap: false
   },
@@ -4040,12 +4043,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué significa "ser objetivo" como criterio del auditor?',
     options: [
-      'No tener relación personal con el auditado.',
-      'Juicio basado en evidencias, sin sesgo ni interés en el resultado.',
+      'Haber realizado auditorías previamente.',
       'Tener conocimientos técnicos del área auditada.',
-      'Haber realizado auditorías previamente.'
+      'No tener relación personal con el auditado.',
+      'Juicio basado en evidencias, sin sesgo ni interés en el resultado.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Ser objetivo significa que el juicio debe estar basado en evidencias, sin sesgo ni interés personal en el resultado de la auditoría.',
     trap: false
   },
@@ -4063,12 +4066,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la forma corta (3 características) de los requisitos del auditor, tal como ha caído en examen?',
     options: [
-      'Externo, imparcial y competente.',
       'Ajeno al área auditada, conocimientos y experiencia en auditar, conocimientos y experiencia en lo auditado.',
       'Formado, experimentado y objetivo.',
-      'Independiente, certificado y técnico.'
+      'Independiente, certificado y técnico.',
+      'Externo, imparcial y competente.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'La forma corta (3 características) que ha caído en examen es: (1) Ajeno al área/fase/proyecto auditado, (2) Conocimientos y experiencia EN AUDITAR, (3) Conocimientos y experiencia EN LO AUDITADO.',
     trap: false
   },
@@ -4086,12 +4089,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia de perfil existe entre el auditor de VF y el de AG?',
     options: [
+      'El de VF necesita conocimientos en desarrollo software; el de AG necesita conocimientos del área que audita (no necesariamente software).',
       'El de AG siempre debe ser externo a la empresa; el de VF es interno.',
       'Ambos necesitan exactamente los mismos conocimientos técnicos.',
-      'El de VF necesita conocimientos en desarrollo software; el de AG necesita conocimientos del área que audita (no necesariamente software).',
       'El de VF no necesita ser técnico; el de AG sí necesita ser ingeniero.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'El Auditor Técnico de VF debe tener conocimientos en desarrollo software. El Auditor de Sistemas (AG) necesita conocimientos del área que audita (RRHH, contabilidad, etc.), pero no necesita saber de software.',
     trap: false
   },
@@ -4104,12 +4107,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién aprueba el programa anual de auditorías?',
     options: [
+      'El Jefe de Proyecto.',
       'El Director General.',
       'El Auditor de Sistemas.',
-      'El Jefe de Proyecto.',
       'El Responsable de Calidad.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El Director General aprueba el programa anual de auditorías, así como las versiones y modificaciones del PAI, y asegura la disponibilidad de recursos.',
     trap: false
   },
@@ -4132,9 +4135,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién designa al auditor garantizando su independencia?',
     options: [
+      'El Jefe de Proyecto.',
       'El Director General.',
       'El propio auditor se autodesigna.',
-      'El Jefe de Proyecto.',
       'El Responsable de Calidad.'
     ],
     correct: 3,
@@ -4146,12 +4149,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién revisa y aprueba el informe de auditoría (tanto VF como AG)?',
     options: [
-      'El Jefe de Proyecto.',
       'El Director General.',
       'El Responsable de Calidad.',
-      'El Auditor que realizó la auditoría.'
+      'El Auditor que realizó la auditoría.',
+      'El Jefe de Proyecto.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'El Responsable de Calidad revisa y aprueba el informe de auditoría. El auditor lo elabora y lo remite al RC, pero no lo aprueba. El RC también envía copia al destinatario.',
     trap: false
   },
@@ -4169,8 +4172,8 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién realiza el seguimiento y cierre formal de las acciones correctivas?',
     options: [
-      'El Auditor que detectó la no conformidad.',
       'El Director General.',
+      'El Auditor que detectó la no conformidad.',
       'El Responsable de Calidad (en ambos casos, VF y AG).',
       'El Jefe de Proyecto (solo en VF).'
     ],
@@ -4183,12 +4186,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién incluye las verificaciones de fase en el plan de proyecto con fechas?',
     options: [
-      'El Director Técnico.',
-      'El Auditor Técnico.',
+      'El Jefe de Proyecto.',
       'El Responsable de Calidad.',
-      'El Jefe de Proyecto.'
+      'El Director Técnico.',
+      'El Auditor Técnico.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'El Jefe de Proyecto incluye las VFs en el plan de proyecto con fechas concretas. También facilita acceso a documentación y personal, y acuerda acciones correctivas con el Auditor Técnico.',
     trap: false
   },
@@ -4197,12 +4200,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién convoca y dirige la reunión inicial y final en una AG?',
     options: [
+      'El Director General.',
       'El Auditor de Sistemas.',
       'El responsable del área auditada.',
-      'El Director General.',
       'El Responsable de Calidad.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El Auditor de Sistemas convoca y dirige la reunión inicial y final en las auditorías generales. Presenta objetivo, alcance, técnicas, pasos y calendario en la reunión inicial.',
     trap: false
   },
@@ -4221,8 +4224,8 @@ let QUESTIONS = [
     question: '¿Quién supervisa la ejecución de acciones correctivas en una verificación de fase?',
     options: [
       'El Responsable de Calidad.',
-      'El Auditor Técnico.',
       'El Director General.',
+      'El Auditor Técnico.',
       'El Jefe de Proyecto.'
     ],
     correct: 3,
@@ -4234,12 +4237,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién acuerda las acciones correctivas con el Auditor de Sistemas en una AG?',
     options: [
-      'El Jefe de Proyecto.',
-      'El Responsable del área auditada.',
       'El Director General.',
-      'El Responsable de Calidad.'
+      'El Jefe de Proyecto.',
+      'El Responsable de Calidad.',
+      'El Responsable del área auditada.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'En AG, el Auditor de Sistemas acuerda acciones correctivas con el Responsable del área auditada (en la reunión final). En VF, es el Auditor Técnico con el Jefe de Proyecto.',
     trap: false
   },
@@ -4294,12 +4297,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el mínimo de VFs para proyectos pequeños?',
     options: [
-      'Ninguna, están exentos.',
-      '1 VF al cierre.',
       '4 VFs (sin excepción).',
-      '2 VFs (una en cada mitad del ciclo).'
+      '1 VF al cierre.',
+      '2 VFs (una en cada mitad del ciclo).',
+      'Ninguna, están exentos.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Para proyectos pequeños, el mínimo es 2 VFs (una en cada mitad del ciclo). Debe justificarse en el plan de proyecto y aprobarlo el Responsable de Calidad.',
     trap: false
   },
@@ -4354,12 +4357,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el paso 6 del flujo completo de una VF?',
     options: [
-      'Acuerdo entre Auditor Técnico y Jefe de Proyecto sobre acciones correctivas, responsables y fechas límite.',
       'El Auditor Técnico elabora el informe de VF.',
-      'El RC envía copia al JP.',
-      'El Responsable de Calidad designa al Auditor Técnico.'
+      'Acuerdo entre Auditor Técnico y Jefe de Proyecto sobre acciones correctivas, responsables y fechas límite.',
+      'El Responsable de Calidad designa al Auditor Técnico.',
+      'El RC envía copia al JP.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El paso 6 del flujo de VF es que el Auditor Técnico acuerda con el Jefe de Proyecto las acciones correctivas, responsables y fechas límite para cada no conformidad detectada.',
     trap: false
   },
@@ -4391,12 +4394,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién recibe la copia del informe de VF aprobado?',
     options: [
-      'El Jefe de Proyecto.',
       'El responsable del área auditada.',
+      'El Jefe de Proyecto.',
       'El Auditor Técnico.',
       'El Director General.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'En VF, la copia del informe aprobado va al Jefe de Proyecto. En AG, va al Responsable del área auditada.',
     trap: false
   },
@@ -4423,12 +4426,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Con cuánta antelación se comunica la fecha de AG al responsable del área?',
     options: [
-      '1 semana de antelación.',
-      'No requiere antelación, puede ser por sorpresa.',
       '1 mes de antelación.',
-      '1 día de antelación.'
+      '1 día de antelación.',
+      '1 semana de antelación.',
+      'No requiere antelación, puede ser por sorpresa.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'El RC comunica la fecha al responsable del área con 1 semana de antelación. Si la fecha no conviene, se acuerda otra entre ambos.',
     trap: false
   },
@@ -4497,8 +4500,8 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué técnicas de obtención de evidencias usa el Auditor de Sistemas en el trabajo de campo?',
     options: [
-      'Solo inspección visual de las instalaciones.',
       'Solo revisión de los informes financieros.',
+      'Solo inspección visual de las instalaciones.',
       'Solo entrevistas al responsable del área.',
       'Examen de documentación y registros, entrevistas al personal y observación directa.'
     ],
@@ -4511,12 +4514,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién supervisa que el equipo ejecute las acciones correctivas en una AG?',
     options: [
-      'El Auditor de Sistemas.',
-      'El Responsable del área auditada.',
       'El Director General.',
-      'El Responsable de Calidad.'
+      'El Auditor de Sistemas.',
+      'El Responsable de Calidad.',
+      'El Responsable del área auditada.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'En AG, el Responsable del área supervisa que su equipo ejecute las acciones correctivas. El Responsable de Calidad hace el seguimiento y cierre formal.',
     trap: false
   },
@@ -4539,12 +4542,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿A quién se envía la copia del informe de AG aprobado?',
     options: [
+      'Al Director General.',
       'Al responsable del área auditada.',
       'Al Jefe de Proyecto.',
-      'Al Auditor de Sistemas.',
-      'Al Director General.'
+      'Al Auditor de Sistemas.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'En AG, la copia del informe aprobado se envía al responsable del área auditada. En VF, se envía al Jefe de Proyecto.',
     trap: false
   },
@@ -4571,12 +4574,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué es una No Conformidad (NC) Leve?',
     options: [
-      'Un incumplimiento que paraliza el proyecto.',
       'Un incumplimiento que no compromete directamente el SGC y se corrige en plazo sin paralización.',
       'Un error en el informe de auditoría.',
+      'Un incumplimiento que paraliza el proyecto.',
       'Una sugerencia de mejora.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'NC Leve: incumplimiento que no compromete directamente el SGC. Consecuencia: corrección en plazo establecido. Sin paralización.',
     trap: false
   },
@@ -4594,12 +4597,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué consecuencia tiene una NC Grave?',
     options: [
-      'Notificación al Director General sin más.',
-      'Solo corrección en plazo establecido sin paralización.',
       'Paralización del proyecto o actividad hasta resolverla + acciones correctivas inmediatas.',
-      'Pérdida inmediata de la certificación ISO.'
+      'Pérdida inmediata de la certificación ISO.',
+      'Notificación al Director General sin más.',
+      'Solo corrección en plazo establecido sin paralización.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Una NC Grave implica paralización del proyecto o actividad hasta resolverla, más acciones correctivas inmediatas. Es el nivel más crítico de hallazgo.',
     trap: false
   },
@@ -4649,12 +4652,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la diferencia entre acción correctiva y acción preventiva?',
     options: [
-      'Correctiva se aplica antes y preventiva después.',
+      'Correctiva: ataja la no conformidad real detectada. Preventiva: ataja la causa raíz / problema potencial.',
       'Correctiva: ataja la causa raíz. Preventiva: ataja la no conformidad.',
       'Son sinónimos con distinto nombre.',
-      'Correctiva: ataja la no conformidad real detectada. Preventiva: ataja la causa raíz / problema potencial.'
+      'Correctiva se aplica antes y preventiva después.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'Correctiva: origen en no conformidad REAL detectada en auditoría, ataja la NC en sí. Preventiva: origen en problema POTENCIAL (sugerencias, estadísticas, quejas), ataja la CAUSA RAÍZ. En 2015, la preventiva se sustituye por gestión de riesgos.',
     trap: false
   },
@@ -4676,12 +4679,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el código del formulario del informe de Verificación de Fase?',
     options: [
-      'PAI-F03.',
-      'PAI-F02.',
       'PAI-F01.',
-      'PAI-F04.'
+      'PAI-F04.',
+      'PAI-F02.',
+      'PAI-F03.'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'El Informe de Verificación de Fase es el formulario PAI-F03. El Informe de Auditoría General es el PAI-F04.',
     trap: false
   },
@@ -4690,12 +4693,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el código del formulario del informe de Auditoría General?',
     options: [
-      'PAI-F03.',
-      'PAI-F02.',
       'PAI-F01.',
-      'PAI-F04.'
+      'PAI-F04.',
+      'PAI-F02.',
+      'PAI-F03.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'El Informe de Auditoría General es el formulario PAI-F04. El Informe de Verificación de Fase es el PAI-F03.',
     trap: false
   },
@@ -4704,12 +4707,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué contenido mínimo tiene el informe PAI-F03 (VF) que NO tiene el PAI-F04 (AG)?',
     options: [
-      'Actas de reunión inicial y final.',
       'Fases del ciclo de vida comprendidas en el bloque.',
+      'Actas de reunión inicial y final.',
       'Nombre del responsable del área.',
       'El nombre del auditor de sistemas.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'El informe de VF (PAI-F03) incluye las fases del ciclo de vida comprendidas en el bloque, dato que no aparece en el informe de AG (PAI-F04), ya que las AG no se organizan por fases del ciclo de vida.',
     trap: false
   },
@@ -4718,12 +4721,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué campos comunes tienen los informes PAI-F03 y PAI-F04?',
     options: [
-      'Solo las no conformidades.',
-      'Identificación del proyecto/área, nombre del responsable, fecha, nombre del auditor, NCs con clasificación y acciones correctivas.',
       'Solo el nombre del auditor.',
-      'Solo la fecha de realización.'
+      'Solo las no conformidades.',
+      'Solo la fecha de realización.',
+      'Identificación del proyecto/área, nombre del responsable, fecha, nombre del auditor, NCs con clasificación y acciones correctivas.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Ambos informes comparten: identificación (proyecto o área), nombre del responsable (JP o del área), fecha, nombre del auditor, NCs con clasificación (grave/leve) y acciones correctivas con responsable y fecha límite.',
     trap: false
   },
@@ -4741,12 +4744,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué contiene el informe de VF (PAI-F03)?',
     options: [
-      'Solo la firma del Director General.',
-      'Solo las NCs detectadas.',
       'Solo las métricas del proyecto.',
-      'Identificación del proyecto, JP, fecha, auditor técnico, fases comprendidas, NCs con clasificación y acciones correctivas.'
+      'Solo la firma del Director General.',
+      'Identificación del proyecto, JP, fecha, auditor técnico, fases comprendidas, NCs con clasificación y acciones correctivas.',
+      'Solo las NCs detectadas.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'PAI-F03 contiene: identificación del proyecto auditado, nombre del JP, fecha, nombre del auditor técnico, fases del ciclo comprendidas, NCs con clasificación (grave/leve) y acciones correctivas con responsable y fecha límite.',
     trap: false
   },
@@ -4768,12 +4771,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de las siguientes es una ENTRADA del proceso de auditoría interna?',
     options: [
-      'Informe de auditoría.',
       'Resultados de auditorías anteriores.',
-      'Plan de acciones correctivas.',
-      'Acta de reunión final.'
+      'Informe de auditoría.',
+      'Acta de reunión final.',
+      'Plan de acciones correctivas.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Las entradas incluyen: norma ISO 9001 vigente, programa anual aprobado, resultados de auditorías anteriores, documentación del SGC, NCs abiertas de períodos anteriores y retroalimentación de clientes.',
     trap: false
   },
@@ -4782,12 +4785,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de las siguientes es una SALIDA del proceso de auditoría interna?',
     options: [
-      'Norma ISO 9001 vigente.',
       'Plan de acciones correctivas con responsables y plazos.',
       'Retroalimentación de clientes.',
+      'Norma ISO 9001 vigente.',
       'Documentación del SGC.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Las salidas incluyen: informe de auditoría, registro de NCs, plan de acciones correctivas con responsables y plazos, programa anual actualizado, actas de reunión (solo AG) e información para la revisión por la dirección.',
     trap: false
   },
@@ -4796,8 +4799,8 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué entrada del proceso incluye "no conformidades abiertas de períodos anteriores"?',
     options: [
-      'Es una salida del proceso.',
       'Es un mecanismo de control.',
+      'Es una salida del proceso.',
       'No forma parte del proceso de auditorías.',
       'Es una entrada del proceso de auditoría interna.'
     ],
@@ -4819,12 +4822,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la fórmula de "% de auditorías ejecutadas vs planificadas"?',
     options: [
-      'Planificadas / Ejecutadas × 100.',
-      'Ejecutadas / Planificadas × 100.',
       '(Planificadas − Ejecutadas) / Planificadas × 100.',
-      'Ejecutadas − Planificadas.'
+      'Ejecutadas − Planificadas.',
+      'Ejecutadas / Planificadas × 100.',
+      'Planificadas / Ejecutadas × 100.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'La métrica "% de auditorías ejecutadas vs planificadas" se calcula como: auditorías ejecutadas / auditorías planificadas × 100.',
     trap: false
   },
@@ -4833,12 +4836,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se calcula el "Nº de NC por auditoría"?',
     options: [
-      'Auditorías realizadas / NC detectadas.',
+      'NC detectadas / Auditorías realizadas.',
       'NC graves / NC leves.',
       'NC detectadas × Auditorías realizadas.',
-      'NC detectadas / Auditorías realizadas.'
+      'Auditorías realizadas / NC detectadas.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'El indicador "Nº de NC por auditoría" se calcula como: NC detectadas / auditorías realizadas. Es un indicador de rendimiento del proceso de auditoría.',
     trap: false
   },
@@ -4847,12 +4850,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se calcula el "Tiempo medio de cierre de acciones correctivas"?',
     options: [
-      'Fecha_cierre − fecha_apertura × 100.',
-      'Nº NC / tiempo total × 100.',
+      'Nº NC cerradas / Nº NC abiertas.',
       'Σ(fecha_cierre − fecha_apertura) / nº NC.',
-      'Nº NC cerradas / Nº NC abiertas.'
+      'Nº NC / tiempo total × 100.',
+      'Fecha_cierre − fecha_apertura × 100.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'El tiempo medio de cierre se calcula como: Σ(fecha_cierre − fecha_apertura) / nº NC. Mide la agilidad del proceso de resolución de hallazgos.',
     trap: false
   },
@@ -4861,12 +4864,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se calcula la "Tasa de NC recurrentes"?',
     options: [
-      'NC repetidas / NC totales × 100.',
       'NC nuevas / NC totales × 100.',
       'NC graves / NC totales × 100.',
-      'NC cerradas / NC totales × 100.'
+      'NC cerradas / NC totales × 100.',
+      'NC repetidas / NC totales × 100.'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'La tasa de NC recurrentes se calcula como: NC repetidas / NC totales × 100. Un valor alto indica que las acciones correctivas no están siendo efectivas.',
     trap: false
   },
@@ -4875,12 +4878,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de las siguientes NO es una métrica del PAI?',
     options: [
-      'Tasa de NC recurrentes.',
-      'Nº de NC por auditoría.',
       '% auditorías ejecutadas vs planificadas.',
-      'Densidad de defectos por KLOC.'
+      'Tasa de NC recurrentes.',
+      'Densidad de defectos por KLOC.',
+      'Nº de NC por auditoría.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'La densidad de defectos por KLOC es una métrica de producto/calidad de software, NO una métrica del PAI. Las métricas del PAI son: % ejecutadas vs planificadas, Nº NC por auditoría, tiempo medio de cierre y tasa de NC recurrentes.',
     trap: false
   },
@@ -4902,12 +4905,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién planifica las VF y quién planifica las AG?',
     options: [
-      'VF: Responsable de Calidad. AG: Jefe de Proyecto.',
       'Ambas las planifica el Jefe de Proyecto.',
-      'Ambas las planifica el Responsable de Calidad.',
-      'VF: Jefe de Proyecto (plan de proyecto). AG: Responsable de Calidad (programa anual).'
+      'VF: Jefe de Proyecto (plan de proyecto). AG: Responsable de Calidad (programa anual).',
+      'VF: Responsable de Calidad. AG: Jefe de Proyecto.',
+      'Ambas las planifica el Responsable de Calidad.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Diferencia clave de examen: las VF las planifica el Jefe de Proyecto (en el plan de proyecto). Las AG las planifica el Responsable de Calidad (en el programa anual).',
     trap: false
   },
@@ -4916,12 +4919,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Quién acuerda las acciones correctivas en VF y en AG?',
     options: [
-      'En ambos: el Responsable de Calidad.',
-      'VF: Auditor Técnico + JP. AG: Auditor de Sistemas + Responsable del área.',
+      'VF: RC + JP. AG: RC + Responsable del área.',
       'En ambos: el Auditor con el Director General.',
-      'VF: RC + JP. AG: RC + Responsable del área.'
+      'En ambos: el Responsable de Calidad.',
+      'VF: Auditor Técnico + JP. AG: Auditor de Sistemas + Responsable del área.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'En VF, las acciones correctivas las acuerdan el Auditor Técnico y el Jefe de Proyecto. En AG, las acuerdan el Auditor de Sistemas y el Responsable del área (en la reunión final).',
     trap: false
   },
@@ -4931,11 +4934,11 @@ let QUESTIONS = [
     question: '¿Quién supervisa la ejecución de acciones correctivas en VF y en AG?',
     options: [
       'VF: Auditor Técnico. AG: Auditor de Sistemas.',
-      'En ambos: el Responsable de Calidad.',
       'VF: Jefe de Proyecto. AG: Responsable del área.',
+      'En ambos: el Responsable de Calidad.',
       'En ambos: el Director General.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Diferencia clave: en VF, el JP supervisa la ejecución. En AG, el Responsable del área supervisa. El seguimiento y cierre formal en AMBOS casos es del RC.',
     trap: false
   },
@@ -5009,11 +5012,11 @@ let QUESTIONS = [
     question: 'En una VF, la copia del informe va al ___. En una AG, va al ___.',
     options: [
       'En ambos: al Director General.',
-      'VF: Responsable del área. AG: Jefe de Proyecto.',
       'VF: Jefe de Proyecto. AG: Responsable del área auditada.',
+      'VF: Responsable del área. AG: Jefe de Proyecto.',
       'En ambos: al Responsable de Calidad.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'La copia del informe va al principal interesado: en VF es el Jefe de Proyecto, y en AG es el Responsable del área auditada.',
     trap: false
   },
@@ -5040,10 +5043,10 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿En qué caso se generan actas de reunión inicial y final?',
     options: [
-      'En ambos tipos de auditoría.',
+      'En ningún tipo de auditoría interna.',
       'Solo en Verificaciones de Fase (VF).',
       'Solo en Auditorías Generales (AG).',
-      'En ningún tipo de auditoría interna.'
+      'En ambos tipos de auditoría.'
     ],
     correct: 2,
     justification: 'Las actas de reunión inicial y final se generan SOLO en las AG. Las VF no tienen reuniones formales.',
@@ -5054,12 +5057,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'El informe de auditoría lo elabora el ___ y lo revisa/aprueba el ___.',
     options: [
+      'El Responsable de Calidad lo elabora. El Director General lo aprueba.',
       'El auditor (Técnico o de Sistemas) lo elabora. El Responsable de Calidad lo revisa y aprueba.',
-      'El Jefe de Proyecto lo elabora. El auditor lo aprueba.',
       'El Director General lo elabora y aprueba.',
-      'El Responsable de Calidad lo elabora. El Director General lo aprueba.'
+      'El Jefe de Proyecto lo elabora. El auditor lo aprueba.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El informe lo ELABORA el auditor (no Calidad) y lo REMITE al RC para revisión y aprobación. El auditor no lo firma junto a Calidad — lo elabora solo.',
     trap: false
   },
@@ -5151,9 +5154,9 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En el apartado 7.2 (Procesos relacionados con el cliente), ¿cuáles de los siguientes requisitos se deben cumplir siempre, aunque el cliente no los haya pedido explícitamente?',
     options: [
-      'El uso del lenguaje de programación favorito del cliente.',
-      'Los requisitos legales y reglamentarios (ej. LOPD, normativas de seguridad).',
       'El diseño de interfaz más moderno del mercado.',
+      'Los requisitos legales y reglamentarios (ej. LOPD, normativas de seguridad).',
+      'El uso del lenguaje de programación favorito del cliente.',
       'Las preferencias estéticas del director comercial.'
     ],
     correct: 1,
@@ -5174,9 +5177,9 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Según el apartado 7.5 (Producción y prestación del servicio), ¿cuándo es obligatoria la "validación" de un proceso en lugar de sólo su "verificación"?',
     options: [
-      'Únicamente cuando el cliente es de la administración pública.',
       'Siempre, en todo proceso que desarrolle software.',
       'Nunca, la verificación es siempre suficiente.',
+      'Únicamente cuando el cliente es de la administración pública.',
       'Cuando el resultado del proceso NO se puede verificar mediante seguimiento o medición antes de la entrega.'
     ],
     correct: 3,
@@ -5189,11 +5192,11 @@ let QUESTIONS = [
     question: '¿Qué tres condiciones debe cumplir obligatoriamente un auditor interno (apartado 8.2.2)?',
     options: [
       'Pertenecer al departamento de calidad, tener un máster oficial y 5 años de experiencia.',
-      'Externo al área auditada, conocimientos/experiencia en lo que audita y conocimientos/experiencia en cómo auditar.',
+      'Ser técnico desarrollador, conocer al cliente y ser imparcial.',
       'Ser externo a la empresa, certificado por AENOR y conocer el proyecto.',
-      'Ser técnico desarrollador, conocer al cliente y ser imparcial.'
+      'Externo al área auditada, conocimientos/experiencia en lo que audita y conocimientos/experiencia en cómo auditar.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Un auditor interno (según ISO) debe ser: 1. Externo/independiente al área auditada. 2. Tener conocimientos teóricos y experiencia práctica en LO QUE audita. 3. Tener conocimientos y experiencia en CÓMO auditar.',
     trap: false
   },
@@ -5240,10 +5243,10 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué es una desviación concertada y dónde se documenta?',
     options: [
-      'Es un cambio en la normativa ISO documentado en el Manual de Procedimientos.',
+      'Es un error de programación documentado en el SIE.',
       'Es una no conformidad del cliente documentada en el Manual de Calidad.',
       'Es un cambio autorizado sobre los procedimientos estándar del SGC para un proyecto en particular, y se documenta en el Plan de Calidad (o Plan de Realización) de ese proyecto.',
-      'Es un error de programación documentado en el SIE.'
+      'Es un cambio en la normativa ISO documentado en el Manual de Procedimientos.'
     ],
     correct: 2,
     justification: 'Las desviaciones concertadas son excepciones autorizadas al SGC (por ejemplo, usar herramientas impuestas por el cliente) y deben constar en el Plan de Calidad del proyecto.',
@@ -5278,11 +5281,11 @@ let QUESTIONS = [
     question: 'En un mapa de procesos orientado según la norma IDEF0 (usado en SGCS), ¿qué representan las entradas, salidas, controles y mecanismos (perfil)?',
     options: [
       'Arriba = entradas. Abajo = salidas. Izquierda = proceso. Derecha = responsable.',
-      'No hay una estructura fija, siempre que se ponga texto explicativo está bien.',
       'Izquierda = entradas. Derecha = salidas. Arriba = controles/estándares. Abajo = mecanismos/perfil responsable.',
+      'No hay una estructura fija, siempre que se ponga texto explicativo está bien.',
       'Caja central = entrada. Izquierda = proceso. Derecha = salidas. Abajo = controles.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'El esquema clásico: ENTRADAS por la izquierda, SALIDAS por la derecha, CONTROLES (políticas, directrices) por arriba y MECANISMOS (perfil responsable, herramientas, checklists) por abajo.',
     trap: false
   },
@@ -5318,12 +5321,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En el ciclo operativo de desarrollo, ¿cuáles son los 3 niveles de flexibilidad que se pueden contemplar para adaptarse al proyecto?',
     options: [
-      'Nivel de madurez, nivel de capacidad y nivel de optimización.',
-      'Por presupuesto, por plazos, y por tamaño de equipo.',
       'Verificación, Validación y Auditoría.',
-      'Por fase, por salida/entregable, y por revisión formal obligatoria u opcional.'
+      'Nivel de madurez, nivel de capacidad y nivel de optimización.',
+      'Por fase, por salida/entregable, y por revisión formal obligatoria u opcional.',
+      'Por presupuesto, por plazos, y por tamaño de equipo.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'El SGCS prevé flexibilidad: 1) Por fase (puede omitirse una fase entera si no aplica), 2) Por salida (un entregable puede ser opcional dentro de una fase), 3) Por revisión (un entregable puede no requerir revisión formal).',
     trap: false
   },
@@ -5332,12 +5335,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué justificación económica/práctica se le da a un auditor para NO registrar los errores de pruebas unitarias y de integración en el SIE de una PYME?',
     options: [
+      'La relación coste/beneficio es mala; cuesta más el esfuerzo de documentarlos formalmente que el beneficio obtenido de analizarlos a tan bajo nivel.',
       'El cliente no quiere ver esos errores.',
       'Los programadores se negarían a hacerlo por privacidad.',
-      'La norma prohíbe documentar errores antes de la fase de sistema.',
-      'La relación coste/beneficio es mala; cuesta más el esfuerzo de documentarlos formalmente que el beneficio obtenido de analizarlos a tan bajo nivel.'
+      'La norma prohíbe documentar errores antes de la fase de sistema.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'Para una PYME, documentar cada punto y coma fallido o cada error de tipado (unitarias) en un SIE formal genera una burocracia inasumible. El auditor acepta esto si se justifica por mala relación coste/beneficio.',
     trap: false
   },
@@ -5346,12 +5349,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las únicas pruebas obligatorias explícitamente por ISO 9001 y por qué?',
     options: [
-      'Las pruebas de sistema, porque establecen la línea base del producto.',
       'Las pruebas de aceptación, porque corresponden al principio de que el cliente es el rey.',
-      'Las pruebas de integración, porque verifican la arquitectura del software.',
-      'Las pruebas unitarias, porque son la base de la calidad técnica.'
+      'Las pruebas unitarias, porque son la base de la calidad técnica.',
+      'Las pruebas de sistema, porque establecen la línea base del producto.',
+      'Las pruebas de integración, porque verifican la arquitectura del software.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Las de aceptación son las únicas obligatorias porque corresponden al primer principio de la calidad ("el cliente es el rey"). El resto se hacen por sentido común técnico (coste/beneficio).',
     trap: false
   },
@@ -5361,9 +5364,9 @@ let QUESTIONS = [
     question: '¿En qué momento se establece habitualmente la línea base de producto?',
     options: [
       'Al finalizar las pruebas unitarias y de integración.',
-      'En la fase de diseño de bajo nivel.',
+      'Al firmar el contrato inicial con el cliente.',
       'Al pasar satisfactoriamente las pruebas de sistema.',
-      'Al firmar el contrato inicial con el cliente.'
+      'En la fase de diseño de bajo nivel.'
     ],
     correct: 2,
     justification: 'Se establece al pasar satisfactoriamente las pruebas de sistema. A partir de este momento, cualquier cambio requiere la involucración del cliente y el jefe de proyecto.',
@@ -5393,8 +5396,8 @@ let QUESTIONS = [
     question: 'En el procedimiento de Compras (apartado 7.4), ¿qué tipo de criterios es obligatorio definir para la Base de Datos de Proveedores?',
     options: [
       'No hay criterios obligatorios si el proveedor es muy conocido (ej. Microsoft).',
-      'Criterios de auditoría, certificación ISO y proximidad geográfica.',
       'Criterios económicos, técnicos y comerciales.',
+      'Criterios de auditoría, certificación ISO y proximidad geográfica.',
       'Criterios de entrada, de mantenimiento y de salida.'
     ],
     correct: 3,
@@ -5415,12 +5418,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué 3 características de gestión definen formalmente a un "Proyecto"?',
     options: [
+      'Es discreto (inicio y fin), no rutinario y complejo.',
       'Tiene un plazo, un coste y un esfuerzo determinados.',
       'Requiere un equipo de personas, un presupuesto y objetivos medibles.',
-      'Es discreto (inicio y fin), no rutinario y complejo.',
       'Se basa en tecnología, es innovador y satisface al cliente.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Atención a esta trampa: tiempo/coste/esfuerzo son atributos, no características. Las 3 características de un proyecto son: discreto (con inicio/fin claro), no rutinario (no es operación de cadena de montaje) y complejo.',
     trap: true
   },
@@ -5449,12 +5452,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En el ciclo en V, ¿cuándo se preparan los planes de pruebas?',
     options: [
-      'Al hacer diseño Alto Nivel se preparan las unitarias; al hacer diseño Bajo Nivel se preparan las de integración.',
-      'Al hacer diseño Alto Nivel se preparan las de integración; al hacer diseño Bajo Nivel se preparan las unitarias.',
       'En la fase de requisitos se preparan todos los planes de prueba.',
-      'Al finalizar la programación se preparan todas las pruebas juntas.'
+      'Al finalizar la programación se preparan todas las pruebas juntas.',
+      'Al hacer diseño Alto Nivel se preparan las de integración; al hacer diseño Bajo Nivel se preparan las unitarias.',
+      'Al hacer diseño Alto Nivel se preparan las unitarias; al hacer diseño Bajo Nivel se preparan las de integración.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'En V: Diseño Alto Nivel (arquitectura) -> Pruebas de Integración. Diseño Bajo Nivel (módulos) -> Pruebas Unitarias. "El mejor momento para pensar cómo probar algo es cuando lo acabas de hacer".',
     trap: false
   },
@@ -5472,12 +5475,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En el procedimiento de Control de Documentación del SGC, ¿qué soporte tecnológico aconseja el profesor por ser barato y cumplir la norma?',
     options: [
-      'Una herramienta comercial certificada tipo ISO Tools o KM Tools.',
       'Subir los documentos a un repositorio público en GitHub.',
       'PC reciclado + carpetas + permisos (Responsable de Calidad único con escritura) + carpeta histórico offline.',
+      'Una herramienta comercial certificada tipo ISO Tools o KM Tools.',
       'Imprimir todo y guardarlo bajo llave en la oficina del Responsable de Calidad.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'El profesor propone: PC reciclado + sistema de carpetas + permisos (solo Responsable de Calidad escribe en /Calidad/) + histórico offline. Garantiza 24/7, acceso de solo lectura y control de obsoletos.',
     trap: false
   },
@@ -5486,12 +5489,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En la Gestión de Configuración de Software (GCS), ¿cuántas y cuáles son las líneas base habituales según el profesor?',
     options: [
-      'Sólo 1: Línea base de código fuente.',
       'Sólo 2: Línea base de requisitos y Línea base de producto.',
       '4: Requisitos, Diseño, Código y Pruebas.',
-      '3: Línea base de diseño, de programación y de pruebas.'
+      '3: Línea base de diseño, de programación y de pruebas.',
+      'Sólo 1: Línea base de código fuente.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'NO INVENTAR. El profesor martillea que sólo hay 2: Línea base de requisitos (el cliente la modifica) y Línea base de producto (se establece al pasar pruebas de sistema; requiere cliente + JP para cambios).',
     trap: false
   },
@@ -5740,11 +5743,11 @@ let QUESTIONS = [
     question: '¿Cuál es el orden secuencial correcto de las partes (fases) de un proyecto clásico en el ciclo de vida en V?',
     options: [
       'Contrato, Oferta, Requisitos, Diseño BN, Diseño AN, Programación, Pruebas Unitarias, Integración, Sistema, Aceptación, Cierre',
-      'Oferta, Requisitos, Contrato, Diseño AN, Programación, Diseño BN, Pruebas Unitarias, Integración, Sistema, Aceptación, Cierre',
       'Oferta, Contrato, Requisitos, Diseño AN, Diseño BN, Programación, Pruebas unitarias, Pruebas integración, Pruebas sistema, Pruebas aceptación, Despliegue / Cierre',
+      'Oferta, Requisitos, Contrato, Diseño AN, Programación, Diseño BN, Pruebas Unitarias, Integración, Sistema, Aceptación, Cierre',
       'Requisitos, Oferta, Contrato, Programación, Diseño AN, Diseño BN, Pruebas Unitarias, Integración, Sistema, Aceptación, Cierre'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'La secuencia lógica comienza con la Oferta y el Contrato, seguidos del desglose en V: Requisitos, Diseño AN, Diseño BN, Programación, y la subida con Pruebas Unitarias, Integración, Sistema, Aceptación y Cierre.',
     trap: false
   },
@@ -5756,9 +5759,9 @@ let QUESTIONS = [
     question: 'En CMMI-DEV, ¿qué área de proceso (PA) se encarga del aspecto del ciclo de vida consistente en asegurar que el producto cumple con su intención de uso en el entorno real por parte del cliente?',
     options: [
       'Validación (VAL).',
-      'Verificación (VER).',
       'Solución Técnica (TS).',
-      'Aseguramiento de Calidad del Proceso y Producto (PPQA).'
+      'Aseguramiento de Calidad del Proceso y Producto (PPQA).',
+      'Verificación (VER).'
     ],
     correct: 0,
     justification: 'La Validación (VAL) comprueba que se construye el producto CORRECTO para el usuario. La Verificación (VER) comprueba que se construye BIEN según especificaciones técnicas.',
@@ -5770,12 +5773,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué áreas de proceso en CMMI se dedican específicamente al ciclo de vida del producto en sus fases de diseño y construcción (ingeniería)?',
     options: [
-      'Medición y Análisis (MA) y Gestión de Configuración (CM).',
       'Planificación de Proyecto (PP) y Monitorización (PMC).',
+      'Desarrollo de Requisitos (RD), Solución Técnica (TS) e Integración del Producto (PI).',
       'Análisis de Decisiones y Resolución (DAR) y Gestión de Riesgos (RSKM).',
-      'Desarrollo de Requisitos (RD), Solución Técnica (TS) e Integración del Producto (PI).'
+      'Medición y Análisis (MA) y Gestión de Configuración (CM).'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'RD (requisitos), TS (arquitectura/diseño) y PI (ensamblaje/integración) son las PAs de Ingeniería orientadas puramente a la construcción del software.',
     trap: false
   },
@@ -5787,12 +5790,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Según el modelo ITmark para PYMEs, ¿cuáles son las tres áreas principales de gestión que se evalúan?',
     options: [
-      'Desarrollo de software (CMMI), Recursos Humanos (People CMM) y Riesgos Financieros (ISO 31000).',
       'Desarrollo ágil (Scrum), Gestión del negocio (EFQM) y Mantenimiento (ITIL).',
       'Desarrollo de software (CMMI), Gestión del negocio (EFQM/ISO 9000) y Seguridad de la información (ISO 27000).',
-      'Calidad del producto (ISO 25000), Gestión del negocio (ISO 9000) y Seguridad (ISO 27000).'
+      'Calidad del producto (ISO 25000), Gestión del negocio (ISO 9000) y Seguridad (ISO 27000).',
+      'Desarrollo de software (CMMI), Recursos Humanos (People CMM) y Riesgos Financieros (ISO 31000).'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'ITmark evalúa desarrollo (basado en CMMI), negocio (EFQM/ISO 9000) y seguridad de la información (ISO 27000).',
     trap: false
   },
@@ -5802,12 +5805,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los tres niveles de certificación que propone el modelo ITmark en orden ascendente?',
     options: [
+      'Básico, Premium y Élite.',
       'Plata, Oro y Platino.',
       'Inicial, Gestionado y Optimizado.',
-      'Básico, Premium y Élite.',
       'Nivel 1, Nivel 2 y Nivel 3.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'ITmark tiene tres niveles: Básico (I.T. Mark), Premium y Élite.',
     trap: false
   },
@@ -5817,12 +5820,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 4 objetivos fundamentales de la medición en ingeniería del software?',
     options: [
-      'Medir, Auditar, Certificar y Facturar.',
+      'Analizar, Codificar, Testear y Desplegar.',
       'Planificar, Hacer, Verificar y Actuar (PDCA).',
-      'Analizar, Controlar, Predecir y Mejorar.',
-      'Analizar, Codificar, Testear y Desplegar.'
+      'Medir, Auditar, Certificar y Facturar.',
+      'Analizar, Controlar, Predecir y Mejorar.'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'Los 4 objetivos según Deming/PSM son: Analizar, Controlar, Predecir (estimar) y Mejorar.',
     trap: false
   },
@@ -5833,11 +5836,11 @@ let QUESTIONS = [
     question: '¿Cuáles son las 4 escalas de medida estandarizadas en orden de menor a mayor capacidad matemática?',
     options: [
       'Discreta, Continua, Estática y Dinámica.',
-      'Absoluta, Relativa, Porcentual y Fraccionaria.',
+      'Nominal, Ordinal, Intervalo y Razón (Ratio).',
       'Numérica, Alfabética, Binaria y Compleja.',
-      'Nominal, Ordinal, Intervalo y Razón (Ratio).'
+      'Absoluta, Relativa, Porcentual y Fraccionaria.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Nominal (sólo igualdad), Ordinal (orden), Intervalo (restas, el 0 es real), Razón/Ratio (división, el 0 es ausencia absoluta).',
     trap: false
   },
@@ -5929,10 +5932,10 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En el apartado 7.2 (Procesos relacionados con el cliente), ¿cuáles de los siguientes requisitos se deben cumplir siempre, aunque el cliente no los haya pedido explícitamente?',
     options: [
-      'Las preferencias estéticas del director comercial.',
+      'El uso del lenguaje de programación favorito del cliente.',
       'Los requisitos legales y reglamentarios (ej. LOPD, normativas de seguridad).',
-      'El diseño de interfaz más moderno del mercado.',
-      'El uso del lenguaje de programación favorito del cliente.'
+      'Las preferencias estéticas del director comercial.',
+      'El diseño de interfaz más moderno del mercado.'
     ],
     correct: 1,
     justification: 'Los requisitos legales y reglamentarios (como leyes de protección de datos) aplican siempre y de forma obligatoria, los pida o no el cliente explícitamente.',
@@ -5952,12 +5955,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'Según el apartado 7.5 (Producción y prestación del servicio), ¿cuándo es obligatoria la "validación" de un proceso en lugar de sólo su "verificación"?',
     options: [
-      'Nunca, la verificación es siempre suficiente.',
-      'Únicamente cuando el cliente es de la administración pública.',
       'Cuando el resultado del proceso NO se puede verificar mediante seguimiento o medición antes de la entrega.',
-      'Siempre, en todo proceso que desarrolle software.'
+      'Siempre, en todo proceso que desarrolle software.',
+      'Nunca, la verificación es siempre suficiente.',
+      'Únicamente cuando el cliente es de la administración pública.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'La validación de procesos es obligatoria para aquellos procesos cuyos resultados no pueden verificarse mediante seguimiento o medición previa a la entrega (ej. software de vuelo espacial o algoritmos de alta complejidad no simulables 100%).',
     trap: false
   },
@@ -5966,9 +5969,9 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué tres condiciones debe cumplir obligatoriamente un auditor interno (apartado 8.2.2)?',
     options: [
-      'Ser externo a la empresa, certificado por AENOR y conocer el proyecto.',
-      'Ser técnico desarrollador, conocer al cliente y ser imparcial.',
       'Pertenecer al departamento de calidad, tener un máster oficial y 5 años de experiencia.',
+      'Ser técnico desarrollador, conocer al cliente y ser imparcial.',
+      'Ser externo a la empresa, certificado por AENOR y conocer el proyecto.',
       'Externo al área auditada, conocimientos/experiencia en lo que audita y conocimientos/experiencia en cómo auditar.'
     ],
     correct: 3,
@@ -6019,11 +6022,11 @@ let QUESTIONS = [
     question: '¿Qué es una desviación concertada y dónde se documenta?',
     options: [
       'Es una no conformidad del cliente documentada en el Manual de Calidad.',
-      'Es un error de programación documentado en el SIE.',
       'Es un cambio en la normativa ISO documentado en el Manual de Procedimientos.',
-      'Es un cambio autorizado sobre los procedimientos estándar del SGC para un proyecto en particular, y se documenta en el Plan de Calidad (o Plan de Realización) de ese proyecto.'
+      'Es un cambio autorizado sobre los procedimientos estándar del SGC para un proyecto en particular, y se documenta en el Plan de Calidad (o Plan de Realización) de ese proyecto.',
+      'Es un error de programación documentado en el SIE.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Las desviaciones concertadas son excepciones autorizadas al SGC (por ejemplo, usar herramientas impuestas por el cliente) y deben constar en el Plan de Calidad del proyecto.',
     trap: false
   },
@@ -6042,9 +6045,9 @@ let QUESTIONS = [
     question: 'En Gestión de Proyectos, ¿cuál es el ÚNICO entregable de gestión que tiene un control estricto de VERSIONES a lo largo del proyecto?',
     options: [
       'El Plan de Proyecto.',
+      'El Informe de Cierre.',
       'El Informe de Seguimiento.',
-      'Las Actas de Reunión.',
-      'El Informe de Cierre.'
+      'Las Actas de Reunión.'
     ],
     correct: 0,
     justification: 'El Plan de Proyecto es la línea base que se va actualizando mediante versiones cuando hay replanificaciones. Los informes de seguimiento o actas no tienen "versiones" de sí mismos, son reportes puntuales (únicos).',
@@ -6055,12 +6058,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En un mapa de procesos orientado según la norma IDEF0 (usado en SGCS), ¿qué representan las entradas, salidas, controles y mecanismos (perfil)?',
     options: [
-      'Caja central = entrada. Izquierda = proceso. Derecha = salidas. Abajo = controles.',
-      'No hay una estructura fija, siempre que se ponga texto explicativo está bien.',
+      'Arriba = entradas. Abajo = salidas. Izquierda = proceso. Derecha = responsable.',
       'Izquierda = entradas. Derecha = salidas. Arriba = controles/estándares. Abajo = mecanismos/perfil responsable.',
-      'Arriba = entradas. Abajo = salidas. Izquierda = proceso. Derecha = responsable.'
+      'No hay una estructura fija, siempre que se ponga texto explicativo está bien.',
+      'Caja central = entrada. Izquierda = proceso. Derecha = salidas. Abajo = controles.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'El esquema clásico: ENTRADAS por la izquierda, SALIDAS por la derecha, CONTROLES (políticas, directrices) por arriba y MECANISMOS (perfil responsable, herramientas, checklists) por abajo.',
     trap: false
   },
@@ -6096,12 +6099,12 @@ let QUESTIONS = [
     type: 'multi',
     question: 'En el ciclo operativo de desarrollo, ¿cuáles son los 3 niveles de flexibilidad que se pueden contemplar para adaptarse al proyecto?',
     options: [
-      'Por presupuesto, por plazos, y por tamaño de equipo.',
       'Por fase, por salida/entregable, y por revisión formal obligatoria u opcional.',
       'Nivel de madurez, nivel de capacidad y nivel de optimización.',
-      'Verificación, Validación y Auditoría.'
+      'Verificación, Validación y Auditoría.',
+      'Por presupuesto, por plazos, y por tamaño de equipo.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'El SGCS prevé flexibilidad: 1) Por fase (puede omitirse una fase entera si no aplica), 2) Por salida (un entregable puede ser opcional dentro de una fase), 3) Por revisión (un entregable puede no requerir revisión formal).',
     trap: false
   },
@@ -6110,12 +6113,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué justificación económica/práctica se le da a un auditor para NO registrar los errores de pruebas unitarias y de integración en el SIE de una PYME?',
     options: [
-      'Los programadores se negarían a hacerlo por privacidad.',
       'La relación coste/beneficio es mala; cuesta más el esfuerzo de documentarlos formalmente que el beneficio obtenido de analizarlos a tan bajo nivel.',
-      'La norma prohíbe documentar errores antes de la fase de sistema.',
-      'El cliente no quiere ver esos errores.'
+      'El cliente no quiere ver esos errores.',
+      'Los programadores se negarían a hacerlo por privacidad.',
+      'La norma prohíbe documentar errores antes de la fase de sistema.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Para una PYME, documentar cada punto y coma fallido o cada error de tipado (unitarias) en un SIE formal genera una burocracia inasumible. El auditor acepta esto si se justifica por mala relación coste/beneficio.',
     trap: false
   },
@@ -6124,12 +6127,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las únicas pruebas obligatorias explícitamente por ISO 9001 y por qué?',
     options: [
-      'Las pruebas de sistema, porque establecen la línea base del producto.',
       'Las pruebas de aceptación, porque corresponden al principio de que el cliente es el rey.',
-      'Las pruebas de integración, porque verifican la arquitectura del software.',
-      'Las pruebas unitarias, porque son la base de la calidad técnica.'
+      'Las pruebas unitarias, porque son la base de la calidad técnica.',
+      'Las pruebas de sistema, porque establecen la línea base del producto.',
+      'Las pruebas de integración, porque verifican la arquitectura del software.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Las de aceptación son las únicas obligatorias porque corresponden al primer principio de la calidad ("el cliente es el rey"). El resto se hacen por sentido común técnico (coste/beneficio).',
     trap: false
   },
@@ -6138,12 +6141,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿En qué momento se establece habitualmente la línea base de producto?',
     options: [
-      'Al firmar el contrato inicial con el cliente.',
-      'Al finalizar las pruebas unitarias y de integración.',
       'En la fase de diseño de bajo nivel.',
-      'Al pasar satisfactoriamente las pruebas de sistema.'
+      'Al pasar satisfactoriamente las pruebas de sistema.',
+      'Al finalizar las pruebas unitarias y de integración.',
+      'Al firmar el contrato inicial con el cliente.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Se establece al pasar satisfactoriamente las pruebas de sistema. A partir de este momento, cualquier cambio requiere la involucración del cliente y el jefe de proyecto.',
     trap: false
   },
@@ -6171,11 +6174,11 @@ let QUESTIONS = [
     question: 'En el procedimiento de Compras (apartado 7.4), ¿qué tipo de criterios es obligatorio definir para la Base de Datos de Proveedores?',
     options: [
       'No hay criterios obligatorios si el proveedor es muy conocido (ej. Microsoft).',
+      'Criterios económicos, técnicos y comerciales.',
       'Criterios de entrada, de mantenimiento y de salida.',
-      'Criterios de auditoría, certificación ISO y proximidad geográfica.',
-      'Criterios económicos, técnicos y comerciales.'
+      'Criterios de auditoría, certificación ISO y proximidad geográfica.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'La norma exige mantener evaluados a los proveedores. Hay que tener 3 criterios definidos: de entrada (cómo ser admitido), de mantenimiento (cómo se revisa en cada pedido) y de salida (qué penalización causa expulsión).',
     trap: false
   },
@@ -6193,12 +6196,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Qué 3 características de gestión definen formalmente a un "Proyecto"?',
     options: [
+      'Es discreto (inicio y fin), no rutinario y complejo.',
       'Tiene un plazo, un coste y un esfuerzo determinados.',
       'Requiere un equipo de personas, un presupuesto y objetivos medibles.',
-      'Es discreto (inicio y fin), no rutinario y complejo.',
       'Se basa en tecnología, es innovador y satisface al cliente.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Atención a esta trampa: tiempo/coste/esfuerzo son atributos, no características. Las 3 características de un proyecto son: discreto (con inicio/fin claro), no rutinario (no es operación de cadena de montaje) y complejo.',
     trap: true
   },
@@ -6218,8 +6221,8 @@ let QUESTIONS = [
     question: '¿Cuál es la definición oficial de "Calidad" según la norma ISO 9000?',
     options: [
       'El grado en que un conjunto de características inherentes de un objeto cumple con los requisitos.',
-      'La ausencia total de defectos en un producto final.',
       'El cumplimiento exclusivo de los plazos y presupuestos del proyecto.',
+      'La ausencia total de defectos en un producto final.',
       'La satisfacción del cliente a cualquier coste.'
     ],
     correct: 0,
@@ -6242,12 +6245,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se define "Auditoría" en el contexto de los sistemas de gestión de calidad?',
     options: [
-      'Proceso sistemático, independiente y documentado para obtener evidencias y evaluarlas de forma objetiva.',
-      'Revisión informal realizada por el jefe de proyecto para comprobar el estado de las tareas.',
       'Inspección de código línea por línea por parte de un equipo externo.',
-      'Evaluación financiera obligatoria de los gastos de un proyecto informático.'
+      'Proceso sistemático, independiente y documentado para obtener evidencias y evaluarlas de forma objetiva.',
+      'Evaluación financiera obligatoria de los gastos de un proyecto informático.',
+      'Revisión informal realizada por el jefe de proyecto para comprobar el estado de las tareas.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'La auditoría es un proceso sistemático, independiente y documentado diseñado para obtener evidencias objetivas y evaluar en qué medida se cumplen los criterios acordados.',
     trap: false
   },
@@ -6267,12 +6270,12 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la definición formal de "Proyecto" en ingeniería?',
     options: [
-      'Esfuerzo temporal, discreto, no rutinario y complejo llevado a cabo para crear un producto, servicio o resultado único.',
-      'Conjunto de tareas repetitivas que realiza una organización de manera continua.',
+      'Proceso de negocio que nunca tiene una fecha de finalización definida.',
       'Actividad orientada a la reducción de costes de un producto existente.',
-      'Proceso de negocio que nunca tiene una fecha de finalización definida.'
+      'Esfuerzo temporal, discreto, no rutinario y complejo llevado a cabo para crear un producto, servicio o resultado único.',
+      'Conjunto de tareas repetitivas que realiza una organización de manera continua.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Un proyecto tiene tres características fundamentales: es discreto (temporal, con inicio y fin), no rutinario (es único) y complejo.',
     trap: false
   },
@@ -6282,14 +6285,580 @@ let QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se define una "Métrica" en Ingeniería del Software?',
     options: [
-      'Una medida cuantitativa del grado en que un sistema, componente o proceso posee un atributo dado.',
-      'Un diagrama cualitativo de la estructura del software.',
+      'Una estimación del coste futuro de desarrollo de una aplicación web.',
       'El peso en bytes del código fuente compilado exclusivamente.',
-      'Una estimación del coste futuro de desarrollo de una aplicación web.'
+      'Un diagrama cualitativo de la estructura del software.',
+      'Una medida cuantitativa del grado en que un sistema, componente o proceso posee un atributo dado.'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'Una métrica en IS es una medida siempre CUANTITATIVA que permite evaluar un atributo específico (esfuerzo, complejidad, densidad de defectos, etc.).',
     trap: false
+  },
+
+  {
+    isEnumeration: true,
+    category: 'iso-estructura',
+    type: 'multi',
+    question: '¿Cuáles son las 3 restricciones que se imponen obligatoriamente al concepto de calidad en ingeniería del software para que sea un parámetro válido?',
+    options: [
+      'Por anticipado, cuantificable y verificable.',
+      'Medible, temporal y con coste cero.',
+      'Documentado, verificable y con firma del cliente.',
+      'Flexible, subjetivo y medible.'
+    ],
+    correct: 0,
+    justification: 'Para no dejar la calidad a la subjetividad, sus parámetros deben fijarse ANTES (por anticipado), ser números (cuantificables) y comprobables por un tercero (verificables).',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'qa-qc',
+    type: 'multi',
+    question: '¿Cuál es la definición estricta de Verificación en el contexto de V&V?',
+    options: [
+      'La firma del contrato de aceptación por parte del usuario final.',
+      'El proceso de evaluar un sistema al final del proceso de desarrollo para asegurar que cumple con los requisitos del cliente.',
+      'El proceso de evaluar un sistema o componente para determinar si los productos de una fase satisfacen las condiciones impuestas al comienzo de esa fase.',
+      'La evaluación financiera de los costes del proyecto.'
+    ],
+    correct: 2,
+    justification: 'La verificación responde a "¿se está construyendo el producto correctamente?" asegurando que las salidas de cada fase cumplen las restricciones impuestas por las entradas.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'qa-qc',
+    type: 'multi',
+    question: '¿Cuál es la definición estricta de Validación en el contexto de V&V?',
+    options: [
+      'El cálculo de la complejidad ciclomática del software entregado.',
+      'El proceso de evaluar un sistema al final del proceso de desarrollo para asegurar que cumple con los requisitos del cliente.',
+      'El proceso de evaluar un sistema o componente durante una fase para determinar si cumple las condiciones impuestas al inicio de la misma.',
+      'La validación técnica del código fuente contra estándares de programación.'
+    ],
+    correct: 1,
+    justification: 'La validación responde a "¿se ha construido el producto correcto?" comprobando el producto final frente a las necesidades reales del usuario (pruebas de aceptación).',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'vf',
+    question: 'Un "Hallazgo" de auditoría se define siempre como el descubrimiento de un incumplimiento flagrante de la norma.',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. Un hallazgo es el resultado de comparar la evidencia con los criterios. Puede ser un hallazgo positivo (conformidad) o negativo (no conformidad).',
+    trap: true
+  },
+  {
+    isEnumeration: true,
+    category: 'iso-familia',
+    type: 'multi',
+    question: '¿Cuáles son los 8 Principios de Gestión de Calidad en los que se basaba históricamente la familia ISO 9000?',
+    options: [
+      'Planificación, diseño, desarrollo, pruebas, implantación, soporte, mantenimiento, retirada.',
+      'Enfoque al cliente, liderazgo, participación del personal, enfoque de procesos, enfoque de sistema, mejora continua, decisiones basadas en hechos, relaciones con proveedores.',
+      'Aseguramiento, control, métricas, modelos, metodologías, V&V, ISO, CMMI.',
+      'Rentabilidad, auditoría interna, auditoría externa, certificación, calidad técnica, codificación, pruebas, despliegue.'
+    ],
+    correct: 1,
+    justification: 'Estos son los 8 principios fundamentales que articulan la filosofía de ISO 9000 (actualizados a 7 en versiones posteriores, agrupando sistema y procesos).',
+    trap: false
+  },
+
+
+
+  {
+    isEnumeration: true,
+    category: 'estructura',
+    type: 'multi',
+    question: '¿Cuáles son las 4 categorías en las que se agrupan las Áreas de Proceso (PAs) en CMMI V1.3?',
+    options: [
+      'Planificación, Ejecución, Control, Cierre.',
+      'Nivel 2, Nivel 3, Nivel 4, Nivel 5.',
+      'Requisitos, Diseño, Codificación, Pruebas.',
+      'Gestión de Proyectos, Ingeniería, Soporte, Gestión de Procesos.'
+    ],
+    correct: 3,
+    justification: 'Las 22 PAs de CMMI se organizan en estas 4 categorías temáticas principales.',
+    trap: false
+  },
+  {
+    isEnumeration: true,
+    category: 'cmmi-intro',
+    type: 'multi',
+    question: 'Enumere los 5 niveles de madurez de la representación escalonada de CMMI en orden.',
+    options: [
+      '1 Ad-hoc, 2 Repetible, 3 Definido, 4 Medido, 5 Optimizado.',
+      '1 Inicial, 2 Gestionado, 3 Definido, 4 Gestionado Cuantitativamente, 5 En Optimización.',
+      '1 Básico, 2 Intermedio, 3 Avanzado, 4 Experto, 5 Máster.',
+      '1 Caótico, 2 Disciplinado, 3 Estándar, 4 Predecible, 5 Innovador.'
+    ],
+    correct: 1,
+    justification: 'Los 5 niveles oficiales de madurez (Maturity Levels) en la representación Staged.',
+    trap: false
+  },
+  {
+    isEnumeration: true,
+    category: 'scampi',
+    type: 'multi',
+    question: '¿Cuáles son los 3 tipos de evaluación SCAMPI?',
+    options: [
+      'Interna, Externa y de Certificación.',
+      'Clase A (evaluación oficial completa), Clase B (identificación de mejoras), Clase C (análisis rápido de carencias o gap analysis).',
+      'Técnica, de Gestión y Financiera.',
+      'Nivel 2, Nivel 3 y Nivel 4/5.'
+    ],
+    correct: 1,
+    justification: 'Las evaluaciones SCAMPI se dividen en clases A (la única que otorga nivel), B y C (cada vez más ligeras y menos formales).',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'estructura',
+    type: 'multi',
+    question: '¿Cuál es la definición de "Práctica Específica" (SP) en el modelo CMMI?',
+    options: [
+      'Un rol dentro del equipo de desarrollo de software.',
+      'Un requisito legal de obligado cumplimiento para obtener un contrato público.',
+      'Una plantilla de código fuente obligatoria para la certificación.',
+      'Actividad esperada que se considera importante para alcanzar la Meta Específica asociada a un Área de Proceso.'
+    ],
+    correct: 3,
+    justification: 'Las Prácticas Específicas (SP) son componentes esperados que ayudan a alcanzar una Meta Específica (SG).',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'scampi',
+    type: 'vf',
+    question: 'En CMMI, el término "Institutionalization" (Institucionalización) se define como el proceso de asegurar que un proceso se ejecuta como una parte inherente del trabajo diario de la organización.',
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
+    justification: 'VERDADERO. Institucionalizar un proceso significa que arraiga en la cultura de la empresa y no se abandona bajo estrés. Esto se logra cumpliendo las Metas Genéricas (GG).',
+    trap: false
+  },
+
+
+
+  {
+    isEnumeration: true,
+    category: 'criterios',
+    type: 'multi',
+    question: '¿Cuáles son las 3 características imprescindibles que debe cumplir cualquier auditor según la teoría?',
+    options: [
+      'Debe tener un título universitario, 5 años de experiencia, y cobrar del Estado.',
+      'Debe ser ajeno a lo auditado, conocer las técnicas de auditoría, y tener conocimiento y experiencia en lo que audita.',
+      'Debe ser estricto, documentar cada error, y reportar directamente al CEO.',
+      'Debe saber programar, saber documentar y saber certificar ISO.'
+    ],
+    correct: 1,
+    justification: 'Independencia (no audita su propio trabajo), capacitación en auditoría, y capacitación técnica en la materia auditada.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'multi',
+    question: '¿Cuál es la definición exacta de "Evidencia Objetiva" en el contexto de una auditoría?',
+    options: [
+      'El manual de calidad guardado en la intranet.',
+      'Los rumores recogidos en el departamento de desarrollo.',
+      'Las sospechas fundadas del auditor jefe.',
+      'Registros, declaraciones de hechos o cualquier otra información pertinente que sea verificable.'
+    ],
+    correct: 3,
+    justification: 'La evidencia debe ser un rastro inmutable (registro, acta, firma) que demuestre de forma verificable si se ha cumplido o no el criterio.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'nc',
+    type: 'multi',
+    question: '¿Cómo define la norma una "Corrección" o "Reparación", a diferencia de una Acción Correctiva?',
+    options: [
+      'El proceso de auditar de nuevo tras un fallo.',
+      'Acción tomada para eliminar una no conformidad detectada, sin actuar necesariamente sobre la causa raíz.',
+      'Un castigo impuesto al empleado que cometió el error.',
+      'Acción tomada para prevenir que ocurra una no conformidad potencial.'
+    ],
+    correct: 1,
+    justification: 'La corrección apaga el fuego inmediato (ej: arreglar el bug). La acción correctiva investiga y elimina la CAUSA para que no vuelva a ocurrir.',
+    trap: false
+  },
+
+
+
+  {
+    isEnumeration: true,
+    category: 'vf',
+    type: 'multi',
+    question: 'Enumere las 4 Verificaciones de Fase típicas en el ciclo en V estándar propuesto en clase.',
+    options: [
+      'Unidad, Integración, Sistema, Aceptación.',
+      'Kick-off, Daily, Sprint Review, Retrospective.',
+      'Verificación de Oferta, Verificación de Contrato, Verificación de Diseño AN/BN, Verificación de Pruebas de Integración y Sistema.',
+      'Planificación, Análisis, Diseño, Codificación.'
+    ],
+    correct: 2,
+    justification: 'Estas son las cuatro reuniones hito formales de V&V que separan las grandes fases del ciclo de vida en V propuesto por el profesor.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'multi',
+    question: '¿Qué se define como "Línea Base" (Baseline) en gestión de proyectos y calidad?',
+    options: [
+      'El nivel más bajo de madurez CMMI.',
+      'Una especificación o producto formalmente revisado y acordado, que sirve como base para desarrollo posterior y que sólo puede cambiarse mediante control formal de cambios.',
+      'El presupuesto mínimo aceptable para ganar dinero en una licitación.',
+      'La primera línea de código escrita en el proyecto.'
+    ],
+    correct: 1,
+    justification: 'Un baseline "congela" un estado del producto. Cualquier cambio posterior requiere una petición formal y análisis de impacto.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'multi',
+    question: '¿Cuál es la definición de "Registro de Calidad"?',
+    options: [
+      'Un software especializado para automatizar pruebas.',
+      'El listado de todos los clientes de la empresa.',
+      'Documento que presenta resultados obtenidos o proporciona evidencia de las actividades de calidad desempeñadas.',
+      'El currículum vitae del responsable de calidad.'
+    ],
+    correct: 2,
+    justification: 'Los registros son la evidencia inmutable (actas, checklists rellenos, logs de pruebas) de que el sistema de gestión se está aplicando.',
+    trap: false
+  },
+
+
+
+  {
+    isEnumeration: true,
+    category: 'medicion',
+    type: 'multi',
+    question: 'Enumere los 20 campos que componen de forma completa una Ficha de Indicador (INCIBE o similar).',
+    options: [
+      'Nombre, Fórmula, Valor actual, Valor pasado.',
+      'Inicio, Fin, Coste, Esfuerzo, Calidad, Alcance, Riesgo, Beneficio.',
+      'ID, Nombre, Propósito, Dimensión, Tipo, Frecuencia, Fórmula, Variables, Fuentes, Umbral verde, Umbral amarillo, Umbral rojo, Meta, Responsable recogida, Responsable análisis, Responsable acción, Unidad, Histórico, Observaciones, Audiencia.',
+      'Líneas de código, Defectos, Esfuerzo en horas, Documentación en páginas.'
+    ],
+    correct: 2,
+    justification: 'Estos 20 campos estructuran de forma profesional y completa cualquier métrica que se defina en un SGCS, como enseñó el profesor basándose en el modelo INCIBE.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'gqm-psm',
+    type: 'multi',
+    question: '¿Qué es el marco GQM (Goal-Question-Metric)?',
+    options: [
+      'Un paradigma de medición que vincula los Objetivos del negocio con Preguntas concretas, que a su vez se responden mediante Métricas cuantitativas.',
+      'Una herramienta software de gestión de incidencias.',
+      'Una certificación internacional para empresas que venden software comercial.',
+      'Un método de diseño orientado a objetos.'
+    ],
+    correct: 0,
+    justification: 'GQM, propuesto por Basili, asume que la medición siempre debe tener un propósito (Goal), desglosado en preguntas evaluables (Question) que se nutren de datos (Metric).',
+    trap: false
+  },
+
+  {
+    isEnumeration: true,
+    category: 'qa-qc',
+    type: 'multi',
+    question: '¿Cuáles son los 4 niveles clásicos de pruebas de software, ordenados desde el código hacia el usuario?',
+    options: [
+      'Unitarias, de Integración, de Sistema y de Aceptación.',
+      'De Caja Blanca, de Caja Negra, de Regresión y de Rendimiento.',
+      'Verificación, Validación, Aseguramiento y Control.',
+      'Alfa, Beta, Release Candidate y Producción.'
+    ],
+    correct: 0,
+    justification: 'Estos son los 4 niveles de pruebas estándar. Recuerda que las tres primeras son verificación, y solo la de Aceptación es validación.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'seccion7',
+    type: 'vf',
+    question: 'Según la definición de ISO 9001, un "Producto Adquirido" implica obligatoriamente que ha existido un intercambio económico con el proveedor (compra).',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. El concepto de "producto adquirido" incluye también el software gratuito, freeware o código libre descargado de internet. Todo debe ser controlado y su "proveedor" validado.',
+    trap: true
+  },
+
+
+
+  {
+    isDefinition: true,
+    category: 'medicion',
+    type: 'multi',
+    question: '¿Cuál es la diferencia conceptual entre "Medición", "Medida" y "Métrica" en ingeniería?',
+    options: [
+      'No hay diferencia, la ISO 9000 los utiliza como sinónimos absolutos.',
+      'La métrica es el proceso de medir; la medida es la herramienta usada; y la medición es el informe.',
+      'La medición es el proceso; la medida es el dato bruto resultante; y la métrica es el dato procesado que evalúa un atributo.',
+      'La medida se aplica al producto; la métrica al proceso; y la medición a las personas.'
+    ],
+    correct: 2,
+    justification: 'Medición (Measurement) es la acción. Medida (Measure) es el valor directo obtenido (ej. 300 horas). Métrica (Metric) es una medida cuantitativa derivada que da contexto (ej. 5 defectos/KLOC).',
+    trap: false
+  },
+
+
+
+  {
+    isDefinition: true,
+    category: 'procedimientos',
+    type: 'multi',
+    question: '¿Cuál es la diferencia fundamental en la definición y propósito entre el "Manual de Calidad" y el "Manual de Procedimientos"?',
+    options: [
+      'Ambos son idénticos, solo que el de Calidad es para ISO 9001 y el de Procedimientos para CMMI.',
+      'El Manual de Calidad es privado y técnico; el de Procedimientos es comercial y público.',
+      'El Manual de Calidad lo escribe el cliente; el de Procedimientos lo escribe el equipo de desarrollo.',
+      'El Manual de Calidad es un documento público que dice QUÉ hace la empresa; el de Procedimientos es privado e interno e indica CÓMO lo hace.'
+    ],
+    correct: 3,
+    justification: 'El Manual de Calidad es el "escaparate" normativo público (política, alcance). El de Procedimientos es el "know-how" interno de la empresa y debe ser estrictamente privado.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'conceptos',
+    type: 'multi',
+    question: '¿Qué es y qué NO es un "Plan de Proyecto" según la teoría de gestión impartida?',
+    options: [
+      'Es el conjunto de actas de reunión acumuladas durante la fase de análisis.',
+      'Es el documento principal de gestión que detalla cómo se ejecutará y controlará el proyecto; no es un simple diagrama de Gantt, y es el único entregable de gestión sometido a control de versiones.',
+      'Es un documento estático redactado por el comercial antes de la firma del contrato y que no puede ser alterado.',
+      'Es un cronograma de fechas de entrega que sirve exclusivamente para informar al cliente.'
+    ],
+    correct: 1,
+    justification: 'El profe insiste: un Plan de Proyecto NO es un Gantt (eso es solo la planificación temporal). Además, es el único entregable de gestión que sufre evolución y control formal de versiones (baseline).',
+    trap: false
+  },
+
+  {
+    isEnumeration: true,
+    category: 'crisis',
+    type: 'multi',
+    question: 'Enumere las 4 "P" o enfoques históricos utilizados para intentar atajar la Crisis del Software, en orden cronológico.',
+    options: [
+      'Producto, Proceso, Personas, Problema/Conceptualización.',
+      'Planificación, Programación, Pruebas, Puesta en producción.',
+      'Prevención, Predicción, Parametrización, Perfeccionamiento.',
+      'Prototipado, Peer-review, Procedimientos, Proyectos.'
+    ],
+    correct: 0,
+    justification: 'Históricamente, la industria intentó resolver la crisis evaluando el Producto, luego mejorando el Proceso, luego capacitando a las Personas, y finalmente centrándose en entender el Problema real.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'certificacion',
+    type: 'multi',
+    question: '¿Cuál es la diferencia definitoria entre auditorías de primera, segunda y tercera parte?',
+    options: [
+      '1ª parte: A proveedores; 2ª parte: Interna; 3ª parte: De certificación oficial.',
+      '1ª parte: Del cliente; 2ª parte: Del jefe de proyecto; 3ª parte: De los programadores.',
+      '1ª parte: ISO 9001; 2ª parte: CMMI; 3ª parte: ITmark.',
+      '1ª parte: Interna; 2ª parte: A proveedores (Externa); 3ª parte: De certificación oficial (Independiente).'
+    ],
+    correct: 3,
+    justification: 'Primera parte es la auditoría interna de la propia empresa. Segunda parte la hace un cliente a su proveedor. Tercera parte la hace un organismo certificador independiente (AENOR, BSI).',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'iso-familia',
+    type: 'multi',
+    question: 'Defina y diferencie las normas ISO 9000, ISO 9001 e ISO 90003.',
+    options: [
+      'ISO 9000: Metodología; ISO 9001: Modelo; ISO 90003: Estándar.',
+      'ISO 9000: Vocabulario y fundamentos; ISO 9001: Requisitos certificables; ISO 90003: Guía de interpretación para software.',
+      'ISO 9000: Requisitos certificables; ISO 9001: Guía de software; ISO 90003: Vocabulario.',
+      'ISO 9000: Certificación para PYMEs; ISO 9001: Certificación para multinacionales; ISO 90003: Modelo descatalogado.'
+    ],
+    correct: 1,
+    justification: 'Esta es la estructura exacta de la familia: la 9000 define términos, la 9001 es la única por la que te auditan/certifican, y la 90003 (antes 9003) solo es una guía de ayuda para el sector TIC.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'iso-estructura',
+    type: 'multi',
+    question: 'En el contexto de ISO 9001, ¿qué es una "Exclusión" (2008) o "Aplicabilidad" (2015)?',
+    options: [
+      'La retirada oficial del certificado de calidad por incumplimiento reiterado.',
+      'La justificación documentada de que un requisito del apartado 7 no aplica a la empresa, siempre que no afecte a la satisfacción del cliente ni a la legalidad.',
+      'La exención de tener que redactar el Manual de Calidad.',
+      'El proceso de excluir a un auditor interno por conflicto de intereses.'
+    ],
+    correct: 1,
+    justification: 'Ambos términos se refieren a lo mismo: poder saltarse un requisito (como Diseño y Desarrollo si la empresa solo fabrica sobre planos del cliente), si está justificado.',
+    trap: false
+  },
+
+
+
+  {
+    isEnumeration: true,
+    category: 'staged-cont',
+    type: 'multi',
+    question: 'Enumere las 2 modalidades oficiales de representación del modelo CMMI.',
+    options: [
+      'Ágil (Agile) y Cascada (Waterfall).',
+      'Interna y Externa.',
+      'Continua (Continuous) y Escalonada (Staged).',
+      'Teórica y Práctica.'
+    ],
+    correct: 2,
+    justification: 'La representación continua da un "Perfil de Capacidad" área por área. La escalonada da un "Nivel de Madurez" global de la organización del 1 al 5.',
+    trap: false
+  },
+  {
+    isEnumeration: true,
+    category: 'scampi',
+    type: 'multi',
+    question: '¿Cuáles son los 4 tipos de evidencias que se recopilan durante una evaluación SCAMPI?',
+    options: [
+      'Evidencia financiera, Evidencia técnica, Evidencia temporal, Evidencia legal.',
+      'Auditorías internas, Auditorías externas, Revisiones por la dirección, Acciones correctivas.',
+      'Artefactos directos, Artefactos indirectos, Afirmaciones de ejecutores, Afirmaciones de responsables.',
+      'Código fuente, Manuales de usuario, Casos de prueba, Contratos.'
+    ],
+    correct: 2,
+    justification: 'El SCAMPI busca corroborar las prácticas de estas cuatro formas: viendo el resultado directo (documento), el resultado indirecto (un correo, un acta), lo que dicen quienes lo hacen, y lo que dicen los jefes.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'scampi',
+    type: 'vf',
+    question: 'La evaluación SCAMPI A es la única que utiliza un enfoque riguroso "Bottom-Up", partiendo de las evidencias recogidas para ir consolidando la consecución de prácticas y finalmente de metas.',
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
+    justification: 'VERDADERO. A diferencia de las auditorías clásicas (Top-Down), un SCAMPI A busca primero las evidencias a nivel base, y si todas las SP se cumplen, da por cumplida la SG correspondiente (Bottom-Up).',
+    trap: false
+  },
+
+
+
+  {
+    isEnumeration: true,
+    category: 'roles',
+    type: 'multi',
+    question: 'Enumere los 3 roles o partes involucradas en la realización de cualquier auditoría.',
+    options: [
+      'El Proveedor, el Intermediario y el Consumidor.',
+      'El Jefe de Proyecto, el Programador y el Analista de Calidad.',
+      'La Dirección, RRHH y el Departamento de Calidad.',
+      'El Cliente, el Auditor (o equipo auditor) y el Auditado.'
+    ],
+    correct: 3,
+    justification: 'El Cliente es quien solicita la auditoría (puede ser la dirección interna). El Auditor es quien la ejecuta de forma independiente. El Auditado es el área o equipo sometido a examen.',
+    trap: false
+  },
+  {
+    isEnumeration: true,
+    category: 'ag',
+    type: 'multi',
+    question: '¿Cuáles son las 4 etapas o fases formales en el ciclo de una Auditoría (PAI)?',
+    options: [
+      'Inicio, Entrevistas, Evaluación y Despido.',
+      'Definición de alcance, Checklists, Entrevistas, Reunión de cierre.',
+      'Análisis, Diseño, Implementación y Pruebas.',
+      'Planificación, Ejecución, Elaboración del Informe y Seguimiento.'
+    ],
+    correct: 3,
+    justification: 'Toda auditoría debe planificarse, ejecutarse (trabajo de campo), reportarse (informe) y, si hay No Conformidades, requiere una fase de seguimiento posterior para cerrarlas.',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'nc',
+    type: 'multi',
+    question: '¿Cuál es la definición exacta de "No Conformidad" según la terminología ISO?',
+    options: [
+      'Un error de compilación en el código fuente.',
+      'El incumplimiento de un requisito.',
+      'Una queja formal del cliente interpuesta en el juzgado.',
+      'Un retraso superior al 10% en el cronograma del proyecto.'
+    ],
+    correct: 1,
+    justification: 'Es la definición más escueta y directa: una NC es simplemente el "incumplimiento de un requisito" (ya sea legal, de la norma, del cliente o interno).',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'informes',
+    type: 'multi',
+    question: 'En la teoría del SGCS, ¿qué diferencia estructural clave existe entre el Informe de Verificación de Fase (PAI-F03) y el Informe de Auditoría General (PAI-F04)?',
+    options: [
+      'El PAI-F03 es público para el cliente; el PAI-F04 es confidencial.',
+      'El PAI-F04 incluye listas de fortalezas, debilidades y plan de acciones correctivas; el PAI-F03 es más simple, centrado en defectos técnicos y un dictamen Apto/No Apto.',
+      'El PAI-F04 es para proyectos software; el PAI-F03 es para auditorías financieras.',
+      'No hay diferencias; son exactamente la misma plantilla con distinto nombre.'
+    ],
+    correct: 1,
+    justification: 'El informe de Verificación (F03) es un hito técnico rápido de paso/no paso. El informe General (F04) es una auditoría profunda a un departamento, e incluye secciones formales de mejora y planes correctivos.',
+    trap: false
+  },
+
+
+
+  {
+    isEnumeration: true,
+    category: 'itmark',
+    type: 'multi',
+    question: 'Enumere las 3 áreas troncales que evalúa el modelo ITmark para PYMEs.',
+    options: [
+      'Frontend, Backend y Bases de Datos.',
+      'Gestión del Negocio (modelo 10-Squared), Desarrollo de Software e Ingeniería de Sistemas (CMMI), y Gestión de la Seguridad de la Información (ISO 27001).',
+      'Finanzas, Recursos Humanos y Marketing.',
+      'Coste, Tiempo y Esfuerzo.'
+    ],
+    correct: 1,
+    justification: 'ITmark está diseñado como una evaluación "tres en uno" enfocada en las necesidades reales de una PYME TIC: negocio, producción y seguridad.',
+    trap: false
+  },
+  {
+    isEnumeration: true,
+    category: 'gqm-psm',
+    type: 'multi',
+    question: 'Enumere las 3 partes estructurales del marco de medición GQM (Goal-Question-Metric).',
+    options: [
+      'Gestión, Quality, Mantenimiento.',
+      'Global, Quantitativo, Medible.',
+      'Goal (Objetivo), Question (Pregunta) y Metric (Métrica).',
+      'Generate, Query, Modify.'
+    ],
+    correct: 2,
+    justification: 'Propuesto por V. Basili. Todo empieza con un objetivo organizativo (Goal), que se descompone en preguntas evaluables (Question), y cada pregunta se responde recogiendo métricas concretas (Metric).',
+    trap: false
+  },
+  {
+    isDefinition: true,
+    category: 'swtqm',
+    type: 'multi',
+    question: '¿Qué es y de qué está compuesto el modelo SwTQM?',
+    options: [
+      'Es un estándar obsoleto de encriptación de datos del Departamento de Defensa.',
+      'Es una herramienta de automatización de pruebas unitarias en Java.',
+      'Es un modelo para PYMEs que integra el EFQM (para la gestión del negocio/calidad total) y CMMI (para la ingeniería de software).',
+      'Es una variante de ISO 9001 exclusiva para la industria automovilística.'
+    ],
+    correct: 2,
+    justification: 'SwTQM (Software Total Quality Management) es un enfoque que aúna las mejores prácticas corporativas del modelo europeo EFQM con las técnicas de desarrollo de CMMI.',
+    trap: false
   }
+
 
 ];

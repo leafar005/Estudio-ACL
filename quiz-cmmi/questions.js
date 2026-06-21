@@ -72,12 +72,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el ROI medio reportado por las organizaciones que implementan CMMI?',
     options: [
-      '1:1',
-      '10:1',
       '4:1',
-      '2:1'
+      '1:1',
+      '2:1',
+      '10:1'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'El ROI medio de CMMI es de 4:1, con un incremento de productividad del 10-50%. Esto significa que por cada euro invertido en la mejora, se recuperan 4 euros.',
     trap: false
   },
@@ -86,12 +86,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué guía CMMI a las organizaciones a mejorar?',
     options: [
-      'Exclusivamente los procesos de recursos humanos',
-      'Los procesos de contabilidad y finanzas',
       'Los procesos asociados al desarrollo y mantenimiento de software',
+      'Los procesos de contabilidad y finanzas',
+      'Exclusivamente los procesos de recursos humanos',
       'Los procesos de marketing y ventas'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'CMMI guía a las organizaciones en cómo mejorar los procesos asociados al desarrollo y mantenimiento de software. Aunque existen vistas para servicios (SVC) y gestión de proveedores (SPM), su origen y foco principal es el desarrollo de software.',
     trap: false
   },
@@ -152,12 +152,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántas prácticas en total tiene CMMI V1.3?',
     options: [
-      '325',
       '196',
-      '500',
-      '431'
+      '325',
+      '431',
+      '500'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'CMMI V1.3 contiene 431 prácticas en total. La V2.0 redujo este número a 196 prácticas, simplificando significativamente el modelo.',
     trap: false
   },
@@ -178,12 +178,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién compró el CMMI Institute para crear la V2.0?',
     options: [
-      'ISACA',
       'Microsoft',
+      'IEEE',
       'ISO',
-      'IEEE'
+      'ISACA'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'ISACA (Information Systems Audit and Control Association) compró el CMMI Institute. Bajo ISACA se creó un modelo único con arquitectura flexible, eliminando las constelaciones separadas de V1.3.',
     trap: false
   },
@@ -206,9 +206,9 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PAs añade CMMI-DEV (V1.3) sobre las 16 PAs base?',
     options: [
-      'CAR, DAR, MPM, OT',
-      'PI, RD, SAM, TS, VAL, VER',
       'CM, MC, PQA, PR',
+      'PI, RD, SAM, TS, VAL, VER',
+      'CAR, DAR, MPM, OT',
       'GOV, II, EST, PLAN'
     ],
     correct: 1,
@@ -222,8 +222,8 @@ const QUESTIONS = [
     options: [
       '10',
       '16',
-      '22',
-      '20'
+      '20',
+      '22'
     ],
     correct: 1,
     justification: 'V1.3 tiene 16 PAs base compartidas por todas las constelaciones (DEV, ACQ, SVC). Cada constelación añade PAs específicas adicionales.',
@@ -247,11 +247,11 @@ const QUESTIONS = [
     question: '¿Qué dominios introduce CMMI V3.0?',
     options: [
       'DEV, ACQ, SVC (igual que V1.3)',
-      'DATA, DEV, PPL, SAF, SEC, SVC, SPM, VRT',
       'Solo DEV y SVC',
+      'DATA, DEV, PPL, SAF, SEC, SVC, SPM, VRT',
       'DEV, QA, PM, HR'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'V3.0 introduce 8 dominios o dimensiones: DATA (Data Management), DEV (Development), PPL (People), SAF (Safety), SEC (Security), SVC (Services), SPM (Supplier Management) y VRT (Virtual/Remote Work).',
     trap: false
   },
@@ -260,12 +260,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué nuevas PAs introduce el dominio DATA en V3.0?',
     options: [
+      'EVW y WE',
       'TS y PI',
       'ESEC y MST',
-      'DM y DQ',
-      'EVW y WE'
+      'DM y DQ'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'El dominio DATA introduce DM (Data Management) y DQ (Data Quality). SEC introduce ESEC y MST, SAF introduce ESAF, VRT introduce EVW, y PPL introduce WE.',
     trap: false
   },
@@ -286,12 +286,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las vistas predefinidas de V2.0 para evaluación?',
     options: [
-      'CMMI-DEV, CMMI-SVC, CMMI-SPM, CMMI-PPL',
       'Solo CMMI-DEV',
-      'DATA, SEC, SAF, VRT',
-      'DEV, ACQ, SVC (como V1.3)'
+      'CMMI-DEV, CMMI-SVC, CMMI-SPM, CMMI-PPL',
+      'DEV, ACQ, SVC (como V1.3)',
+      'DATA, SEC, SAF, VRT'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'V2.0 tiene vistas predefinidas: CMMI-DEV (desarrollo), CMMI-SVC (servicios), CMMI-SPM (gestión de proveedores) y CMMI-PPL (People Management). La vista CMMI-DEV contiene 20 PAs.',
     trap: false
   },
@@ -312,12 +312,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántas PAs contiene la vista CMMI-DEV en V2.0?',
     options: [
-      '25 PAs',
-      '20 PAs',
+      '16 PAs',
       '18 PAs',
-      '16 PAs'
+      '20 PAs',
+      '25 PAs'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'La vista CMMI-DEV en V2.0 contiene 20 PAs. Del total de 25 PAs, 18 son comunes (Core) a todas las vistas, y la vista DEV añade TS y PI.',
     trap: false
   },
@@ -376,12 +376,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué tipo de elemento es la \'Declaración del propósito\' de una PA?',
     options: [
-      'Obligatorio',
       'Requerido',
       'Esperado',
-      'Informativo'
+      'Informativo',
+      'Obligatorio'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'La Declaración del propósito es un elemento INFORMATIVO. Describe para qué sirve la PA pero no es obligatorio cumplirlo literalmente. Requeridos = metas, Esperados = prácticas, Informativos = todo lo demás.',
     trap: false
   },
@@ -390,12 +390,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En el diagrama de estructura de una PA, ¿qué formas geométricas representan cada tipo de elemento?',
     options: [
-      'Todos se representan con rectángulos',
-      'Requerido = elipse, Esperado = rectángulo, Informativo = diamante',
+      'Requerido = rectángulo, Esperado = diamante, Informativo = elipse',
       'Requerido = diamante, Esperado = elipse, Informativo = rectángulo',
-      'Requerido = rectángulo, Esperado = diamante, Informativo = elipse'
+      'Requerido = elipse, Esperado = rectángulo, Informativo = diamante',
+      'Todos se representan con rectángulos'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'La leyenda del diagrama es: Requerido = rectángulo, Esperado = diamante, Informativo = elipse. Esto ayuda a identificar visualmente la importancia de cada componente.',
     trap: false
   },
@@ -430,12 +430,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En V2.0/V3.0, ¿cómo se estructura internamente una PA?',
     options: [
-      'PA → GG → GP',
       'SG → SP → Subprácticas (igual que V1.3)',
+      'PA → Practice Group (PG) → Practice',
       'PA → Módulos → Tareas',
-      'PA → Practice Group (PG) → Practice'
+      'PA → GG → GP'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'En V2.0/V3.0, cada PA se divide en Practice Groups (PG) numerados del 1 al 5, y cada PG contiene Practices (prácticas concretas). Se eliminan SG/GG/SP/GP de V1.3, y las genéricas se centralizan en GOV e II.',
     trap: false
   },
@@ -456,12 +456,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos niveles de madurez tiene el modelo Staged?',
     options: [
-      '6 niveles (0-5)',
-      '3 niveles (1-3)',
       '4 niveles (1-4)',
-      '5 niveles (1-5)'
+      '5 niveles (1-5)',
+      '3 niveles (1-3)',
+      '6 niveles (0-5)'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'El modelo Staged tiene 5 niveles de madurez: 1-Inicial, 2-Gestionado, 3-Definido, 4-Gestionado Cuantitativamente, 5-Optimizado. No hay nivel 0 en Staged (eso es del modelo Continuous).',
     trap: false
   },
@@ -482,12 +482,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué resultado produce el modelo Staged?',
     options: [
-      'Un nivel de madurez global de la organización',
       'Un porcentaje de cumplimiento',
+      'Un nivel de madurez global de la organización',
       'Un perfil de CLs por PA',
       'Una lista de prácticas implementadas'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El modelo Staged produce un nivel de madurez GLOBAL de la organización (del 1 al 5). En cambio, el modelo Continuous produce un PERFIL de niveles de capacidad (CLs) por PA.',
     trap: false
   },
@@ -508,12 +508,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las PAs del Nivel 2 (Gestionado) en el modelo Staged?',
     options: [
-      'OPM, CAR',
       'DR, TS, VAL, VER, PI, IPM, DAR',
       'REQM, PP, PMC, PPQA, MA, CM, SAM',
+      'OPM, CAR',
       'OPP, QPM'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Nivel 2 (Gestionado): REQM (Requirements Management), PP (Project Planning), PMC (Project Monitoring and Control), PPQA (Process and Product Quality Assurance), MA (Measurement and Analysis), CM (Configuration Management), SAM (Supplier Agreement Management).',
     trap: false
   },
@@ -522,12 +522,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PAs corresponden al Nivel 4 (Gestionado Cuantitativamente) en Staged?',
     options: [
-      'REQM, PP, PMC',
       'OPP, QPM',
+      'OPM, CAR',
       'DR, TS, VAL, VER',
-      'OPM, CAR'
+      'REQM, PP, PMC'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Nivel 4 (Gestionado Cuantitativamente): OPP (Organizational Process Performance) y QPM (Quantitative Project Management). Son solo 2 PAs centradas en técnicas cuantitativas/estadísticas.',
     trap: false
   },
@@ -536,12 +536,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PAs corresponden al Nivel 5 (Optimizado) en Staged?',
     options: [
-      'REQM, PP, PMC',
       'OPP, QPM',
+      'OPM, CAR',
       'DR, TS, VAL, VER',
-      'OPM, CAR'
+      'REQM, PP, PMC'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Nivel 5 (Optimizado): OPM (Organizational Performance Management) y CAR (Causal Analysis and Resolution). Se centran en la mejora continua y la prevención de defectos.',
     trap: false
   },
@@ -562,12 +562,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué riesgo principal tiene el modelo Staged según la profesora?',
     options: [
+      'No permite evaluación',
       'La \'titulitis\': mejorar áreas no críticas solo para subir de nivel',
       'Es demasiado caro',
-      'Es demasiado simple',
-      'No permite evaluación'
+      'Es demasiado simple'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El modelo Staged puede provocar \'titulitis\': mejorar áreas no críticas solo para subir de nivel, ignorando los problemas reales. La profesora lo compara con \'tratar una pierna rota haciéndose la manicura\'.',
     trap: false
   },
@@ -588,12 +588,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué ventaja principal tiene el modelo Continuous sobre el Staged?',
     options: [
-      'Produce un nivel de madurez global',
+      'Permite elegir qué PAs mejorar según la necesidad real del negocio',
       'Es más barato de implementar',
-      'Tiene menos niveles',
-      'Permite elegir qué PAs mejorar según la necesidad real del negocio'
+      'Produce un nivel de madurez global',
+      'Tiene menos niveles'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'El modelo Continuous permite a la organización elegir qué PAs mejorar y hasta qué CL, según la necesidad real del negocio. Esto evita la \'titulitis\' del modelo Staged y ofrece un enfoque más flexible.',
     trap: false
   },
@@ -614,9 +614,9 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el primer nivel de madurez con reconocimiento de calidad (diploma)?',
     options: [
-      'Nivel 4 — Gestionado Cuantitativamente',
-      'Nivel 1 — Inicial',
       'Nivel 3 — Definido',
+      'Nivel 1 — Inicial',
+      'Nivel 4 — Gestionado Cuantitativamente',
       'Nivel 2 — Gestionado'
     ],
     correct: 3,
@@ -640,9 +640,9 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué cubre la PA \'RDM\' (Requirements Development & Management)?',
     options: [
-      'Supervisar resultados reales vs planes',
-      'Extracción, análisis, trazabilidad bidireccional y control de requisitos',
       'Control de versiones e integridad de productos',
+      'Extracción, análisis, trazabilidad bidireccional y control de requisitos',
+      'Supervisar resultados reales vs planes',
       'Diseño y construcción de la solución técnica'
     ],
     correct: 1,
@@ -668,12 +668,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia hay entre VER (Verification) y VAL (Validation)?',
     options: [
+      'VER es para documentos; VAL es para código',
       'Son sinónimos, no hay diferencia',
-      'VER comprueba que los requisitos se implementan correctamente; VAL que la solución funciona en su entorno de destino',
       'VER comprueba requisitos del cliente; VAL comprueba que funciona en su entorno',
-      'VER es para documentos; VAL es para código'
+      'VER comprueba que los requisitos se implementan correctamente; VAL que la solución funciona en su entorno de destino'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'VER (Verification) comprueba que los requisitos se implementan correctamente (\'¿estamos construyendo el producto correctamente?\'). VAL (Validation) verifica que la solución funciona en su entorno de destino (\'¿estamos construyendo el producto correcto?\'). En V2.0 se unificaron en VV.',
     trap: false
   },
@@ -694,12 +694,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA se encarga de \'Ensamblar componentes, gestionar interfaces y entregar la solución integrada\'?',
     options: [
-      'CM — Configuration Management',
       'VV — Verification and Validation',
       'PI — Product Integration',
-      'TS — Technical Solution'
+      'TS — Technical Solution',
+      'CM — Configuration Management'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'PI (Product Integration) se encarga de ensamblar componentes, gestionar interfaces y entregar la solución integrada al cliente. TS se ocupa del diseño y construcción, PI de la integración.',
     trap: false
   },
@@ -722,12 +722,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA se describe como \'la fábrica\' (crear y mantener activos de procesos organizacionales)?',
     options: [
-      'PAD — Process Asset Development',
       'PCM — Process Management',
+      'GOV — Governance',
       'OT — Organizational Training',
-      'GOV — Governance'
+      'PAD — Process Asset Development'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'PAD (Process Asset Development) es \la fábrica\: crea y mantiene los activos de procesos organizacionales. PCM (Process Management) es \la estrategia\: planificación e implementación de mejoras.',
     trap: false
   },
@@ -749,11 +749,11 @@ const QUESTIONS = [
     question: '¿Qué PA se encarga del \'Análisis Causal y Resolución\' (identificar causas raíz de defectos)?',
     options: [
       'PQA — Process Quality Assurance',
+      'DAR — Decision Analysis & Resolution',
       'CAR — Causal Analysis & Resolution',
-      'RSK — Risk Opportunity Management',
-      'DAR — Decision Analysis & Resolution'
+      'RSK — Risk Opportunity Management'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'CAR (Causal Analysis & Resolution) identifica causas raíz de defectos y problemas para prevenirlos en el futuro. DAR (Decision Analysis & Resolution) es para toma de decisiones formales con criterios y alternativas.',
     trap: false
   },
@@ -762,8 +762,8 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA cubre el \'Control de versiones, líneas base, control de cambios y auditorías de configuración\'?',
     options: [
-      'PQA — Process Quality Assurance',
       'MC — Monitor and Control',
+      'PQA — Process Quality Assurance',
       'GOV — Governance',
       'CM — Configuration Management'
     ],
@@ -776,12 +776,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA realiza \'Evaluaciones objetivas del cumplimiento de procesos y productos respecto a estándares\'?',
     options: [
-      'PQA — Process Quality Assurance',
-      'CM — Configuration Management',
+      'GOV — Governance',
       'PR — Peer Reviews',
-      'GOV — Governance'
+      'CM — Configuration Management',
+      'PQA — Process Quality Assurance'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'PQA (Process Quality Assurance) realiza evaluaciones objetivas del cumplimiento de procesos y productos respecto a los estándares establecidos. PQA es aseguramiento (QA), no control (QC).',
     trap: false
   },
@@ -791,11 +791,11 @@ const QUESTIONS = [
     question: '¿Qué PA cubre la \'Gestión de Riesgos y Oportunidades\' a lo largo de todo el proyecto?',
     options: [
       'PLAN — Planning',
+      'MC — Monitor and Control',
       'RSK — Risk Opportunity Management',
-      'DAR — Decision Analysis & Resolution',
-      'MC — Monitor and Control'
+      'DAR — Decision Analysis & Resolution'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'RSK (Risk Opportunity Management) identifica, registra, analiza y mitiga riesgos y oportunidades a lo largo de todo el proyecto.',
     trap: false
   },
@@ -816,12 +816,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA se encarga de la \'Responsabilidad y patrocinio de la alta dirección en los procesos de mejora\'?',
     options: [
+      'GOV — Governance',
       'II — Implementation Infrastructure',
       'PCM — Process Management',
-      'GOV — Governance',
       'MPM — Managing Performance & Measurement'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'GOV (Governance) se ocupa de la responsabilidad y patrocinio de la alta dirección en los procesos de mejora. II (Implementation Infrastructure) aporta herramientas y recursos para la implementación.',
     trap: false
   },
@@ -842,12 +842,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué significan las siglas SCAMPI?',
     options: [
-      'Software Capability Maturity Process Inspection',
+      'Standard CMMI Analysis Method for Process Integration',
       'Systematic Capability Assessment for Model Performance Indicators',
-      'Standard CMMI Appraisal Method for Process Improvement',
-      'Standard CMMI Analysis Method for Process Integration'
+      'Software Capability Maturity Process Inspection',
+      'Standard CMMI Appraisal Method for Process Improvement'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'SCAMPI = Standard CMMI Appraisal Method for Process Improvement. Es el método oficial de evaluación de CMMI. Existen 3 tipos (A, B, C) según el momento del programa de mejora.',
     trap: false
   },
@@ -856,12 +856,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos tipos de SCAMPI existen?',
     options: [
-      '2 tipos (A y B)',
-      '4 tipos (A, B, C, D)',
       '1 solo tipo',
-      '3 tipos (A, B, C)'
+      '3 tipos (A, B, C)',
+      '2 tipos (A y B)',
+      '4 tipos (A, B, C, D)'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Existen 3 tipos de SCAMPI: A (Benchmark), B (Sustainment) y C (Evaluation). Se aplican en diferentes momentos del programa de mejora y tienen diferente rigor y coste.',
     trap: false
   },
@@ -910,12 +910,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuánto tiempo es válido el diploma del SCAMPI A?',
     options: [
-      '3 años',
+      '1 año',
       '2 años',
-      '5 años',
-      '1 año'
+      '3 años',
+      '5 años'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'El diploma del SCAMPI A es válido 3 años. Se puede extender con SCAMPI B (Sustainment) que añade +2 años cada uno, con un máximo de 3 SCAMPI B antes de necesitar un nuevo SCAMPI A.',
     trap: false
   },
@@ -936,10 +936,10 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos SCAMPI B se pueden hacer como máximo antes de necesitar un nuevo SCAMPI A?',
     options: [
-      'Sin límite',
+      '1',
       '3',
       '2',
-      '1'
+      'Sin límite'
     ],
     correct: 1,
     justification: 'Se pueden hacer un máximo de 3 SCAMPI B antes de necesitar un nuevo SCAMPI A. Cada SCAMPI B extiende el resultado de A por +2 años.',
@@ -1010,12 +1010,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué es un \'Proyecto objetivo\' en la muestra de evaluación?',
     options: [
+      'Un proyecto que solo aporta evidencia de alguna PA',
       'Un proyecto que ha terminado satisfactoriamente',
-      'Un proyecto que proporciona evidencia para TODAS las PAs a evaluar',
       'Un proyecto que se creó específicamente para la evaluación',
-      'Un proyecto que solo aporta evidencia de alguna PA'
+      'Un proyecto que proporciona evidencia para TODAS las PAs a evaluar'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Un proyecto objetivo proporciona evidencia para TODAS las PAs a evaluar. No importa si ha terminado o no. Se requiere al menos 1 proyecto objetivo. Los proyectos no objetivos aportan evidencia de solo algunas PAs.',
     trap: false
   },
@@ -1026,10 +1026,10 @@ const QUESTIONS = [
     options: [
       'Documentos y entrevistas',
       'Métricas y certificados',
-      'Informes y auditorías',
-      'Artefactos y Afirmaciones'
+      'Artefactos y Afirmaciones',
+      'Informes y auditorías'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Los dos tipos de evidencia objetiva son: Artefactos (salidas directas o indirectas de la implementación de prácticas, recogidos pre on-site) y Afirmaciones (confirmaciones verbales o escritas en entrevistas, recogidas on-site).',
     trap: false
   },
@@ -1040,8 +1040,8 @@ const QUESTIONS = [
     options: [
       'Solo se necesita una Afirmación positiva',
       'Artefacto AND Afirmación positiva',
-      'Solo se necesita un Artefacto directo',
-      'Artefacto OR Afirmación positiva'
+      'Artefacto OR Afirmación positiva',
+      'Solo se necesita un Artefacto directo'
     ],
     correct: 1,
     justification: 'La regla de oro para validar una practice es: Artefacto AND Afirmación positiva. No basta con solo uno de los dos. Se necesitan ambos tipos de evidencia para confirmar la implementación.',
@@ -1076,12 +1076,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué significa FI (Fully Implemented) en la calificación de una practice?',
     options: [
-      'Sin evidencia alguna',
-      'Artefactos directos presentes con debilidades significativas',
       'Artefactos directos inadecuados o inexistentes',
-      'Artefactos directos presentes y adecuados, apoyados por evidencias, sin debilidades significativas'
+      'Artefactos directos presentes y adecuados, apoyados por evidencias, sin debilidades significativas',
+      'Sin evidencia alguna',
+      'Artefactos directos presentes con debilidades significativas'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'FI (Fully Implemented): Artefactos directos presentes y adecuados, apoyados por artefactos indirectos y/o afirmaciones. No se detectan debilidades significativas.',
     trap: false
   },
@@ -1090,9 +1090,9 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia hay entre FI y LI?',
     options: [
-      'No hay diferencia, son sinónimos',
       'FI es para artefactos; LI es para afirmaciones',
       'FI es parcial; LI es completo',
+      'No hay diferencia, son sinónimos',
       'FI no tiene debilidades significativas; LI tiene una o más debilidades'
     ],
     correct: 3,
@@ -1106,8 +1106,8 @@ const QUESTIONS = [
     options: [
       'Sin evidencia alguna',
       'Artefactos directos inadecuados o inexistentes, pero evidencia parcial de implementación',
-      'Artefactos directos presentes sin debilidades',
-      'Artefactos directos presentes con debilidades menores'
+      'Artefactos directos presentes con debilidades menores',
+      'Artefactos directos presentes sin debilidades'
     ],
     correct: 1,
     justification: 'PI (Partially Implemented): Artefactos directos inadecuados o inexistentes. Artefactos indirectos y/o afirmaciones indican que PARTE de la práctica ha sido implementada.',
@@ -1166,12 +1166,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuánto dura aproximadamente la fase Pre On-Site?',
     options: [
-      '1 mes',
-      '6 meses (aproximadamente)',
       '1 año',
-      '2 meses'
+      '1 mes',
+      '2 meses',
+      '6 meses (aproximadamente)'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'La fase Pre On-Site comienza al menos 6 meses antes de la evaluación. Incluye: Presentar (6m antes), Planificar (4m antes) y Preparar (4m a 2 semanas antes).',
     trap: false
   },
@@ -1206,12 +1206,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué es la BDEO?',
     options: [
+      'Base de Datos de Evaluadores Oficiales',
       'Base de Datos de Evaluación Organizacional',
       'Base de Datos de Estándares Operativos',
-      'Base de Datos de Evidencias Objetivas',
-      'Base de Datos de Evaluadores Oficiales'
+      'Base de Datos de Evidencias Objetivas'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'BDEO = Base de Datos de Evidencias Objetivas. Contiene los artefactos (directos e indirectos) que evidencian la implementación de las prácticas. Se completa durante el Pre On-Site y se copia a un repositorio aislado durante el On-Site.',
     trap: false
   },
@@ -1390,12 +1390,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Un evaluador encuentra que en un PG hay 8 practices: 5 son FI, 2 son LI y 1 es PI. ¿Está satisfecho el PG?',
     options: [
+      'No, porque hay practices en LI',
       'Sí, porque la mayoría (7 de 8) son FI o LI',
       'No, porque hay 1 practice en PI',
-      'Sí, porque al menos el 50% son FI',
-      'No, porque hay practices en LI'
+      'Sí, porque al menos el 50% son FI'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'NO está satisfecho. Si ALGUNA practice es PI o NI, el PG automáticamente no está satisfecho. No importa que 7 de 8 sean FI o LI: con solo 1 PI, el PG falla. TODAS deben ser FI o LI.',
     trap: true
   },
@@ -1404,12 +1404,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En una evaluación CMMI, la empresa presenta un documento creado el día anterior al On-Site para completar evidencias. ¿Es válido?',
     options: [
-      'Siempre es válido si existe antes del On-Site',
-      'No, si fue creado específicamente para la evaluación y no refleja la práctica real',
       'Sí, si el evaluador lo solicita',
-      'Sí, porque lo creó antes del On-Site'
+      'Siempre es válido si existe antes del On-Site',
+      'Sí, porque lo creó antes del On-Site',
+      'No, si fue creado específicamente para la evaluación y no refleja la práctica real'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Los artefactos deben ser salidas REALES de la implementación de las prácticas, no documentos creados ad hoc para la evaluación. Un documento creado el día anterior podría no ser válido si no refleja la práctica habitual de la organización.',
     trap: true
   },
@@ -1418,12 +1418,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué sucede si durante el On-Site se detecta que la empresa ha creado documentación nueva?',
     options: [
+      'Se ignora pero la evaluación continúa normalmente',
       'Se acepta como evidencia adicional',
       'Puede causar el FIN de la evaluación',
-      'Se ignora pero la evaluación continúa normalmente',
       'Se le da una advertencia sin consecuencias'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'El incumplimiento de la regla de \'no añadir nueva documentación durante el On-Site\' puede causar el FIN de la evaluación. Solo se puede añadir información que ya existía previamente.',
     trap: true
   },
@@ -1499,11 +1499,11 @@ const QUESTIONS = [
     question: '¿Qué PA aporta \'herramientas y recursos para soportar la implementación de los procesos\'?',
     options: [
       'GOV — Governance',
+      'PAD — Process Asset Development',
       'OT — Organizational Training',
-      'II — Implementation Infrastructure',
-      'PAD — Process Asset Development'
+      'II — Implementation Infrastructure'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'II (Implementation Infrastructure) aporta herramientas y recursos para soportar la implementación de los procesos. GOV se centra en la responsabilidad y patrocinio de la alta dirección.',
     trap: false
   },
@@ -1512,12 +1512,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA desarrolla \'habilidades y conocimientos críticos en los equipos\'?',
     options: [
-      'OT — Organizational Training',
-      'GOV — Governance',
       'PAD — Process Asset Development',
-      'MPM — Managing Performance & Measurement'
+      'GOV — Governance',
+      'MPM — Managing Performance & Measurement',
+      'OT — Organizational Training'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'OT (Organizational Training) se encarga de desarrollar habilidades y conocimientos críticos en los equipos para soportar los procesos.',
     trap: false
   },
@@ -1526,12 +1526,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PAs incluye el Nivel 3 (Definido) en el modelo Staged?',
     options: [
-      'OPP, QPM',
       'DR, TS, VAL, VER, PI, IPM, DAR, OPD, OPF, OT, RISQM',
       'REQM, PP, PMC, PPQA, MA, CM, SAM',
-      'OPM, CAR'
+      'OPM, CAR',
+      'OPP, QPM'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Nivel 3 (Definido): DR, TS, VAL, VER, PI, IPM, DAR, OPD, OPF, OT, RISQM. Es el nivel con más PAs y el que suele requerirse en contratos públicos. Incluye la calidad en la construcción del software.',
     trap: false
   },
@@ -1540,12 +1540,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué técnicas de auditoría se usan en SCAMPI?',
     options: [
+      'Solo auditorías financieras',
       'Solo encuestas online',
       'Entrevistas y revisión documental',
-      'Solo auditorías financieras',
       'Solo análisis de código fuente'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'Las técnicas de auditoría SCAMPI incluyen entrevistas (para recoger afirmaciones) y revisión documental (para verificar artefactos). Ambas son necesarias según la regla de oro.',
     trap: false
   },
@@ -1566,12 +1566,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la principal diferencia entre \'Área de Proceso\' (V1.3) y \'Área de Práctica\' (V2.0)?',
     options: [
-      'V2.0 elimina todas las áreas de práctica',
       'Solo cambió el nombre, son idénticas',
       'En V1.3 usa SG/SP/GG/GP; en V2.0 usa Practice Groups (PG) con Practices',
+      'V2.0 elimina todas las áreas de práctica',
       'V1.3 no tiene áreas de proceso'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'En V1.3, un \'Área de Proceso\' usa SG (Specific Goals), SP (Specific Practices), GG y GP. En V2.0, un \'Área de Práctica\' usa Practice Groups (PG) numerados 1-5, cada uno con Practices concretas. Las GG/GP desaparecen y se centralizan en GOV e II.',
     trap: false
   },
@@ -1606,12 +1606,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué PA establece \'métricas de rendimiento y objetivos empresariales\' y analiza datos para mejora continua?',
     options: [
-      'PQA — Process Quality Assurance',
-      'MC — Monitor and Control',
       'CAR — Causal Analysis & Resolution',
-      'MPM — Managing Performance & Measurement'
+      'MPM — Managing Performance & Measurement',
+      'PQA — Process Quality Assurance',
+      'MC — Monitor and Control'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'MPM (Managing Performance & Measurement) establece métricas de rendimiento y objetivos empresariales, y analiza datos para mejora continua. Es una de las pocas PAs que alcanzan CL5.',
     trap: false
   },
@@ -1620,12 +1620,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué dominio de CMMI V3.0 cubre el \'Trabajo en equipos distribuidos o virtuales\'?',
     options: [
-      'VRT (Virtual/Remote Work)',
-      'PPL (People)',
       'SVC (Services)',
-      'SPM (Supplier Management)'
+      'SPM (Supplier Management)',
+      'VRT (Virtual/Remote Work)',
+      'PPL (People)'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'VRT (Virtual/Remote Work) cubre el trabajo en equipos distribuidos o virtuales. Su PA asociada es EVW. PPL cubre gestión de personas en general, no específicamente el trabajo remoto.',
     trap: false
   },
@@ -1634,12 +1634,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la equivalencia de los tipos de evaluación entre V1.3 y V2.0?',
     options: [
-      'V2.0 elimina todos los tipos de SCAMPI',
-      'SCAMPI A ≈ Evaluation, SCAMPI B ≈ Benchmark',
       'SCAMPI A ≈ Benchmark, SCAMPI B/C ≈ Evaluation, nuevo: Sustainment',
-      'Son idénticos, no hay cambios'
+      'Son idénticos, no hay cambios',
+      'V2.0 elimina todos los tipos de SCAMPI',
+      'SCAMPI A ≈ Evaluation, SCAMPI B ≈ Benchmark'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'En V2.0: Benchmark ≈ SCAMPI A (oficial, diploma, 3 años). Sustainment es NUEVO (mantener, +2 años, máx 3). Evaluation ≈ SCAMPI B/C (foto rápida, sin diploma).',
     trap: false
   },
@@ -1674,12 +1674,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué nivel de madurez es requerido frecuentemente en contratos públicos?',
     options: [
-      'Nivel 1 — Inicial',
       'Nivel 3 — Definido',
       'Nivel 5 — Optimizado',
+      'Nivel 1 — Inicial',
       'Nivel 2 — Gestionado'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'El Nivel 3 (Definido) es frecuentemente requerido en contratos públicos. Es el nivel donde la organización tiene procesos estandarizados para la construcción del software (TS, VER, VAL, PI).',
     trap: false
   },
@@ -1691,9 +1691,9 @@ const QUESTIONS = [
     question: 'En CMMI-DEV, ¿qué área de proceso (PA) se encarga del aspecto del ciclo de vida consistente en asegurar que el producto cumple con su intención de uso en el entorno real por parte del cliente?',
     options: [
       'Validación (VAL).',
-      'Verificación (VER).',
       'Solución Técnica (TS).',
-      'Aseguramiento de Calidad del Proceso y Producto (PPQA).'
+      'Aseguramiento de Calidad del Proceso y Producto (PPQA).',
+      'Verificación (VER).'
     ],
     correct: 0,
     justification: 'La Validación (VAL) comprueba que se construye el producto CORRECTO para el usuario. La Verificación (VER) comprueba que se construye BIEN según especificaciones técnicas.',
@@ -1705,12 +1705,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué áreas de proceso en CMMI se dedican específicamente al ciclo de vida del producto en sus fases de diseño y construcción (ingeniería)?',
     options: [
-      'Medición y Análisis (MA) y Gestión de Configuración (CM).',
       'Planificación de Proyecto (PP) y Monitorización (PMC).',
+      'Desarrollo de Requisitos (RD), Solución Técnica (TS) e Integración del Producto (PI).',
       'Análisis de Decisiones y Resolución (DAR) y Gestión de Riesgos (RSKM).',
-      'Desarrollo de Requisitos (RD), Solución Técnica (TS) e Integración del Producto (PI).'
+      'Medición y Análisis (MA) y Gestión de Configuración (CM).'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'RD (requisitos), TS (arquitectura/diseño) y PI (ensamblaje/integración) son las PAs de Ingeniería orientadas puramente a la construcción del software.',
     trap: false
   },

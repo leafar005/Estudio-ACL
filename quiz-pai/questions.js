@@ -36,12 +36,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué verifica una auditoría interna?',
     options: [
+      'Que se siguen los procesos, procedimientos, plantillas y registros del SGC.',
       'Que el código cumple con los estándares de codificación.',
       'Que las pruebas unitarias tienen cobertura suficiente.',
-      'Que se siguen los procesos, procedimientos, plantillas y registros del SGC.',
       'Que el producto software no tiene defectos técnicos.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Una auditoría interna verifica que se siguen los procesos, procedimientos, plantillas y registros del SGC. Es aseguramiento de calidad, no control de calidad. No comprueba la calidad técnica del producto.',
     trap: false
   },
@@ -50,12 +50,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las dos modalidades de auditoría interna?',
     options: [
-      'Auditoría técnica y Auditoría administrativa.',
-      'Auditoría de certificación y Auditoría de seguimiento.',
       'Auditoría interna y Auditoría externa.',
-      'Verificación de fase (VF) y Auditoría general (AG).'
+      'Verificación de fase (VF) y Auditoría general (AG).',
+      'Auditoría de certificación y Auditoría de seguimiento.',
+      'Auditoría técnica y Auditoría administrativa.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Las dos modalidades complementarias son: Verificación de fase (VF), que cubre fases del ciclo de vida de un proyecto, y Auditoría general (AG), que cubre áreas/departamentos fuera de los proyectos (marketing, RRHH, compras...).',
     trap: false
   },
@@ -82,12 +82,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué tipo de auditoría interna cubre las fases del ciclo de vida de un proyecto?',
     options: [
-      'Verificación de fase (VF).',
       'Auditoría de certificación.',
+      'Auditoría de seguimiento.',
       'Auditoría general (AG).',
-      'Auditoría de seguimiento.'
+      'Verificación de fase (VF).'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'La Verificación de fase (VF) cubre las fases del ciclo de vida de un proyecto software. La Auditoría general (AG), en cambio, cubre áreas o departamentos fuera de los proyectos.',
     trap: false
   },
@@ -96,12 +96,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué tipo de auditoría interna cubre áreas como RRHH, marketing o compras?',
     options: [
-      'Verificación de fase (VF).',
-      'Auditoría de procesos.',
       'Auditoría de producto.',
-      'Auditoría general (AG).'
+      'Auditoría general (AG).',
+      'Verificación de fase (VF).',
+      'Auditoría de procesos.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'La Auditoría general (AG) cubre áreas/departamentos fuera de los proyectos, como marketing, RRHH o compras. La VF se centra en las fases del ciclo de vida de los proyectos software.',
     trap: false
   },
@@ -123,12 +123,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 5 criterios que debe cumplir cualquier auditor interno?',
     options: [
-      'Independencia, objetividad, experiencia auditando, competencia técnica y experiencia en el área.',
       'Competencia técnica, experiencia laboral, certificación oficial, antigüedad y liderazgo.',
       'Independencia, formación universitaria, certificación ISO, experiencia de gestión y objetividad.',
+      'Independencia, objetividad, experiencia auditando, competencia técnica y experiencia en el área.',
       'Certificación ISO, experiencia laboral, independencia, formación y liderazgo.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Los 5 criterios son: (1) Ser independiente del área/proyecto/proceso que va a auditar, (2) Ser objetivo (juicio basado en evidencias), (3) Tener experiencia auditando, (4) Ser competente en el ámbito técnico/funcional que va a auditar, (5) Tener experiencia en el área que va a evaluar.',
     trap: false
   },
@@ -155,12 +155,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué significa "ser objetivo" como criterio del auditor?',
     options: [
-      'No tener relación personal con el auditado.',
-      'Juicio basado en evidencias, sin sesgo ni interés en el resultado.',
+      'Haber realizado auditorías previamente.',
       'Tener conocimientos técnicos del área auditada.',
-      'Haber realizado auditorías previamente.'
+      'No tener relación personal con el auditado.',
+      'Juicio basado en evidencias, sin sesgo ni interés en el resultado.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Ser objetivo significa que el juicio debe estar basado en evidencias, sin sesgo ni interés personal en el resultado de la auditoría.',
     trap: false
   },
@@ -178,12 +178,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la forma corta (3 características) de los requisitos del auditor, tal como ha caído en examen?',
     options: [
-      'Externo, imparcial y competente.',
       'Ajeno al área auditada, conocimientos y experiencia en auditar, conocimientos y experiencia en lo auditado.',
       'Formado, experimentado y objetivo.',
-      'Independiente, certificado y técnico.'
+      'Independiente, certificado y técnico.',
+      'Externo, imparcial y competente.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'La forma corta (3 características) que ha caído en examen es: (1) Ajeno al área/fase/proyecto auditado, (2) Conocimientos y experiencia EN AUDITAR, (3) Conocimientos y experiencia EN LO AUDITADO.',
     trap: false
   },
@@ -201,12 +201,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué diferencia de perfil existe entre el auditor de VF y el de AG?',
     options: [
+      'El de VF necesita conocimientos en desarrollo software; el de AG necesita conocimientos del área que audita (no necesariamente software).',
       'El de AG siempre debe ser externo a la empresa; el de VF es interno.',
       'Ambos necesitan exactamente los mismos conocimientos técnicos.',
-      'El de VF necesita conocimientos en desarrollo software; el de AG necesita conocimientos del área que audita (no necesariamente software).',
       'El de VF no necesita ser técnico; el de AG sí necesita ser ingeniero.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'El Auditor Técnico de VF debe tener conocimientos en desarrollo software. El Auditor de Sistemas (AG) necesita conocimientos del área que audita (RRHH, contabilidad, etc.), pero no necesita saber de software.',
     trap: false
   },
@@ -219,12 +219,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién aprueba el programa anual de auditorías?',
     options: [
+      'El Jefe de Proyecto.',
       'El Director General.',
       'El Auditor de Sistemas.',
-      'El Jefe de Proyecto.',
       'El Responsable de Calidad.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El Director General aprueba el programa anual de auditorías, así como las versiones y modificaciones del PAI, y asegura la disponibilidad de recursos.',
     trap: false
   },
@@ -247,9 +247,9 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién designa al auditor garantizando su independencia?',
     options: [
+      'El Jefe de Proyecto.',
       'El Director General.',
       'El propio auditor se autodesigna.',
-      'El Jefe de Proyecto.',
       'El Responsable de Calidad.'
     ],
     correct: 3,
@@ -261,12 +261,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién revisa y aprueba el informe de auditoría (tanto VF como AG)?',
     options: [
-      'El Jefe de Proyecto.',
       'El Director General.',
       'El Responsable de Calidad.',
-      'El Auditor que realizó la auditoría.'
+      'El Auditor que realizó la auditoría.',
+      'El Jefe de Proyecto.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'El Responsable de Calidad revisa y aprueba el informe de auditoría. El auditor lo elabora y lo remite al RC, pero no lo aprueba. El RC también envía copia al destinatario.',
     trap: false
   },
@@ -284,8 +284,8 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién realiza el seguimiento y cierre formal de las acciones correctivas?',
     options: [
-      'El Auditor que detectó la no conformidad.',
       'El Director General.',
+      'El Auditor que detectó la no conformidad.',
       'El Responsable de Calidad (en ambos casos, VF y AG).',
       'El Jefe de Proyecto (solo en VF).'
     ],
@@ -298,12 +298,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién incluye las verificaciones de fase en el plan de proyecto con fechas?',
     options: [
-      'El Director Técnico.',
-      'El Auditor Técnico.',
+      'El Jefe de Proyecto.',
       'El Responsable de Calidad.',
-      'El Jefe de Proyecto.'
+      'El Director Técnico.',
+      'El Auditor Técnico.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'El Jefe de Proyecto incluye las VFs en el plan de proyecto con fechas concretas. También facilita acceso a documentación y personal, y acuerda acciones correctivas con el Auditor Técnico.',
     trap: false
   },
@@ -312,12 +312,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién convoca y dirige la reunión inicial y final en una AG?',
     options: [
+      'El Director General.',
       'El Auditor de Sistemas.',
       'El responsable del área auditada.',
-      'El Director General.',
       'El Responsable de Calidad.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El Auditor de Sistemas convoca y dirige la reunión inicial y final en las auditorías generales. Presenta objetivo, alcance, técnicas, pasos y calendario en la reunión inicial.',
     trap: false
   },
@@ -336,8 +336,8 @@ const QUESTIONS = [
     question: '¿Quién supervisa la ejecución de acciones correctivas en una verificación de fase?',
     options: [
       'El Responsable de Calidad.',
-      'El Auditor Técnico.',
       'El Director General.',
+      'El Auditor Técnico.',
       'El Jefe de Proyecto.'
     ],
     correct: 3,
@@ -349,12 +349,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién acuerda las acciones correctivas con el Auditor de Sistemas en una AG?',
     options: [
-      'El Jefe de Proyecto.',
-      'El Responsable del área auditada.',
       'El Director General.',
-      'El Responsable de Calidad.'
+      'El Jefe de Proyecto.',
+      'El Responsable de Calidad.',
+      'El Responsable del área auditada.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'En AG, el Auditor de Sistemas acuerda acciones correctivas con el Responsable del área auditada (en la reunión final). En VF, es el Auditor Técnico con el Jefe de Proyecto.',
     trap: false
   },
@@ -409,12 +409,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el mínimo de VFs para proyectos pequeños?',
     options: [
-      'Ninguna, están exentos.',
-      '1 VF al cierre.',
       '4 VFs (sin excepción).',
-      '2 VFs (una en cada mitad del ciclo).'
+      '1 VF al cierre.',
+      '2 VFs (una en cada mitad del ciclo).',
+      'Ninguna, están exentos.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Para proyectos pequeños, el mínimo es 2 VFs (una en cada mitad del ciclo). Debe justificarse en el plan de proyecto y aprobarlo el Responsable de Calidad.',
     trap: false
   },
@@ -469,12 +469,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el paso 6 del flujo completo de una VF?',
     options: [
-      'Acuerdo entre Auditor Técnico y Jefe de Proyecto sobre acciones correctivas, responsables y fechas límite.',
       'El Auditor Técnico elabora el informe de VF.',
-      'El RC envía copia al JP.',
-      'El Responsable de Calidad designa al Auditor Técnico.'
+      'Acuerdo entre Auditor Técnico y Jefe de Proyecto sobre acciones correctivas, responsables y fechas límite.',
+      'El Responsable de Calidad designa al Auditor Técnico.',
+      'El RC envía copia al JP.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El paso 6 del flujo de VF es que el Auditor Técnico acuerda con el Jefe de Proyecto las acciones correctivas, responsables y fechas límite para cada no conformidad detectada.',
     trap: false
   },
@@ -506,12 +506,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién recibe la copia del informe de VF aprobado?',
     options: [
-      'El Jefe de Proyecto.',
       'El responsable del área auditada.',
+      'El Jefe de Proyecto.',
       'El Auditor Técnico.',
       'El Director General.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'En VF, la copia del informe aprobado va al Jefe de Proyecto. En AG, va al Responsable del área auditada.',
     trap: false
   },
@@ -538,12 +538,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Con cuánta antelación se comunica la fecha de AG al responsable del área?',
     options: [
-      '1 semana de antelación.',
-      'No requiere antelación, puede ser por sorpresa.',
       '1 mes de antelación.',
-      '1 día de antelación.'
+      '1 día de antelación.',
+      '1 semana de antelación.',
+      'No requiere antelación, puede ser por sorpresa.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'El RC comunica la fecha al responsable del área con 1 semana de antelación. Si la fecha no conviene, se acuerda otra entre ambos.',
     trap: false
   },
@@ -612,8 +612,8 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué técnicas de obtención de evidencias usa el Auditor de Sistemas en el trabajo de campo?',
     options: [
-      'Solo inspección visual de las instalaciones.',
       'Solo revisión de los informes financieros.',
+      'Solo inspección visual de las instalaciones.',
       'Solo entrevistas al responsable del área.',
       'Examen de documentación y registros, entrevistas al personal y observación directa.'
     ],
@@ -626,12 +626,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién supervisa que el equipo ejecute las acciones correctivas en una AG?',
     options: [
-      'El Auditor de Sistemas.',
-      'El Responsable del área auditada.',
       'El Director General.',
-      'El Responsable de Calidad.'
+      'El Auditor de Sistemas.',
+      'El Responsable de Calidad.',
+      'El Responsable del área auditada.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'En AG, el Responsable del área supervisa que su equipo ejecute las acciones correctivas. El Responsable de Calidad hace el seguimiento y cierre formal.',
     trap: false
   },
@@ -654,12 +654,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿A quién se envía la copia del informe de AG aprobado?',
     options: [
+      'Al Director General.',
       'Al responsable del área auditada.',
       'Al Jefe de Proyecto.',
-      'Al Auditor de Sistemas.',
-      'Al Director General.'
+      'Al Auditor de Sistemas.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'En AG, la copia del informe aprobado se envía al responsable del área auditada. En VF, se envía al Jefe de Proyecto.',
     trap: false
   },
@@ -686,12 +686,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué es una No Conformidad (NC) Leve?',
     options: [
-      'Un incumplimiento que paraliza el proyecto.',
       'Un incumplimiento que no compromete directamente el SGC y se corrige en plazo sin paralización.',
       'Un error en el informe de auditoría.',
+      'Un incumplimiento que paraliza el proyecto.',
       'Una sugerencia de mejora.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'NC Leve: incumplimiento que no compromete directamente el SGC. Consecuencia: corrección en plazo establecido. Sin paralización.',
     trap: false
   },
@@ -709,12 +709,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué consecuencia tiene una NC Grave?',
     options: [
-      'Notificación al Director General sin más.',
-      'Solo corrección en plazo establecido sin paralización.',
       'Paralización del proyecto o actividad hasta resolverla + acciones correctivas inmediatas.',
-      'Pérdida inmediata de la certificación ISO.'
+      'Pérdida inmediata de la certificación ISO.',
+      'Notificación al Director General sin más.',
+      'Solo corrección en plazo establecido sin paralización.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Una NC Grave implica paralización del proyecto o actividad hasta resolverla, más acciones correctivas inmediatas. Es el nivel más crítico de hallazgo.',
     trap: false
   },
@@ -764,12 +764,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la diferencia entre acción correctiva y acción preventiva?',
     options: [
-      'Correctiva se aplica antes y preventiva después.',
+      'Correctiva: ataja la no conformidad real detectada. Preventiva: ataja la causa raíz / problema potencial.',
       'Correctiva: ataja la causa raíz. Preventiva: ataja la no conformidad.',
       'Son sinónimos con distinto nombre.',
-      'Correctiva: ataja la no conformidad real detectada. Preventiva: ataja la causa raíz / problema potencial.'
+      'Correctiva se aplica antes y preventiva después.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'Correctiva: origen en no conformidad REAL detectada en auditoría, ataja la NC en sí. Preventiva: origen en problema POTENCIAL (sugerencias, estadísticas, quejas), ataja la CAUSA RAÍZ. En 2015, la preventiva se sustituye por gestión de riesgos.',
     trap: false
   },
@@ -791,12 +791,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el código del formulario del informe de Verificación de Fase?',
     options: [
-      'PAI-F03.',
-      'PAI-F02.',
       'PAI-F01.',
-      'PAI-F04.'
+      'PAI-F04.',
+      'PAI-F02.',
+      'PAI-F03.'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'El Informe de Verificación de Fase es el formulario PAI-F03. El Informe de Auditoría General es el PAI-F04.',
     trap: false
   },
@@ -805,12 +805,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es el código del formulario del informe de Auditoría General?',
     options: [
-      'PAI-F03.',
-      'PAI-F02.',
       'PAI-F01.',
-      'PAI-F04.'
+      'PAI-F04.',
+      'PAI-F02.',
+      'PAI-F03.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'El Informe de Auditoría General es el formulario PAI-F04. El Informe de Verificación de Fase es el PAI-F03.',
     trap: false
   },
@@ -819,12 +819,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué contenido mínimo tiene el informe PAI-F03 (VF) que NO tiene el PAI-F04 (AG)?',
     options: [
-      'Actas de reunión inicial y final.',
       'Fases del ciclo de vida comprendidas en el bloque.',
+      'Actas de reunión inicial y final.',
       'Nombre del responsable del área.',
       'El nombre del auditor de sistemas.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'El informe de VF (PAI-F03) incluye las fases del ciclo de vida comprendidas en el bloque, dato que no aparece en el informe de AG (PAI-F04), ya que las AG no se organizan por fases del ciclo de vida.',
     trap: false
   },
@@ -833,12 +833,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué campos comunes tienen los informes PAI-F03 y PAI-F04?',
     options: [
-      'Solo las no conformidades.',
-      'Identificación del proyecto/área, nombre del responsable, fecha, nombre del auditor, NCs con clasificación y acciones correctivas.',
       'Solo el nombre del auditor.',
-      'Solo la fecha de realización.'
+      'Solo las no conformidades.',
+      'Solo la fecha de realización.',
+      'Identificación del proyecto/área, nombre del responsable, fecha, nombre del auditor, NCs con clasificación y acciones correctivas.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Ambos informes comparten: identificación (proyecto o área), nombre del responsable (JP o del área), fecha, nombre del auditor, NCs con clasificación (grave/leve) y acciones correctivas con responsable y fecha límite.',
     trap: false
   },
@@ -856,12 +856,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué contiene el informe de VF (PAI-F03)?',
     options: [
-      'Solo la firma del Director General.',
-      'Solo las NCs detectadas.',
       'Solo las métricas del proyecto.',
-      'Identificación del proyecto, JP, fecha, auditor técnico, fases comprendidas, NCs con clasificación y acciones correctivas.'
+      'Solo la firma del Director General.',
+      'Identificación del proyecto, JP, fecha, auditor técnico, fases comprendidas, NCs con clasificación y acciones correctivas.',
+      'Solo las NCs detectadas.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'PAI-F03 contiene: identificación del proyecto auditado, nombre del JP, fecha, nombre del auditor técnico, fases del ciclo comprendidas, NCs con clasificación (grave/leve) y acciones correctivas con responsable y fecha límite.',
     trap: false
   },
@@ -883,12 +883,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de las siguientes es una ENTRADA del proceso de auditoría interna?',
     options: [
-      'Informe de auditoría.',
       'Resultados de auditorías anteriores.',
-      'Plan de acciones correctivas.',
-      'Acta de reunión final.'
+      'Informe de auditoría.',
+      'Acta de reunión final.',
+      'Plan de acciones correctivas.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Las entradas incluyen: norma ISO 9001 vigente, programa anual aprobado, resultados de auditorías anteriores, documentación del SGC, NCs abiertas de períodos anteriores y retroalimentación de clientes.',
     trap: false
   },
@@ -897,12 +897,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de las siguientes es una SALIDA del proceso de auditoría interna?',
     options: [
-      'Norma ISO 9001 vigente.',
       'Plan de acciones correctivas con responsables y plazos.',
       'Retroalimentación de clientes.',
+      'Norma ISO 9001 vigente.',
       'Documentación del SGC.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Las salidas incluyen: informe de auditoría, registro de NCs, plan de acciones correctivas con responsables y plazos, programa anual actualizado, actas de reunión (solo AG) e información para la revisión por la dirección.',
     trap: false
   },
@@ -911,8 +911,8 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué entrada del proceso incluye "no conformidades abiertas de períodos anteriores"?',
     options: [
-      'Es una salida del proceso.',
       'Es un mecanismo de control.',
+      'Es una salida del proceso.',
       'No forma parte del proceso de auditorías.',
       'Es una entrada del proceso de auditoría interna.'
     ],
@@ -934,12 +934,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la fórmula de "% de auditorías ejecutadas vs planificadas"?',
     options: [
-      'Planificadas / Ejecutadas × 100.',
-      'Ejecutadas / Planificadas × 100.',
       '(Planificadas − Ejecutadas) / Planificadas × 100.',
-      'Ejecutadas − Planificadas.'
+      'Ejecutadas − Planificadas.',
+      'Ejecutadas / Planificadas × 100.',
+      'Planificadas / Ejecutadas × 100.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'La métrica "% de auditorías ejecutadas vs planificadas" se calcula como: auditorías ejecutadas / auditorías planificadas × 100.',
     trap: false
   },
@@ -948,12 +948,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se calcula el "Nº de NC por auditoría"?',
     options: [
-      'Auditorías realizadas / NC detectadas.',
+      'NC detectadas / Auditorías realizadas.',
       'NC graves / NC leves.',
       'NC detectadas × Auditorías realizadas.',
-      'NC detectadas / Auditorías realizadas.'
+      'Auditorías realizadas / NC detectadas.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'El indicador "Nº de NC por auditoría" se calcula como: NC detectadas / auditorías realizadas. Es un indicador de rendimiento del proceso de auditoría.',
     trap: false
   },
@@ -962,12 +962,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se calcula el "Tiempo medio de cierre de acciones correctivas"?',
     options: [
-      'Fecha_cierre − fecha_apertura × 100.',
-      'Nº NC / tiempo total × 100.',
+      'Nº NC cerradas / Nº NC abiertas.',
       'Σ(fecha_cierre − fecha_apertura) / nº NC.',
-      'Nº NC cerradas / Nº NC abiertas.'
+      'Nº NC / tiempo total × 100.',
+      'Fecha_cierre − fecha_apertura × 100.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'El tiempo medio de cierre se calcula como: Σ(fecha_cierre − fecha_apertura) / nº NC. Mide la agilidad del proceso de resolución de hallazgos.',
     trap: false
   },
@@ -976,12 +976,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se calcula la "Tasa de NC recurrentes"?',
     options: [
-      'NC repetidas / NC totales × 100.',
       'NC nuevas / NC totales × 100.',
       'NC graves / NC totales × 100.',
-      'NC cerradas / NC totales × 100.'
+      'NC cerradas / NC totales × 100.',
+      'NC repetidas / NC totales × 100.'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'La tasa de NC recurrentes se calcula como: NC repetidas / NC totales × 100. Un valor alto indica que las acciones correctivas no están siendo efectivas.',
     trap: false
   },
@@ -990,12 +990,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál de las siguientes NO es una métrica del PAI?',
     options: [
-      'Tasa de NC recurrentes.',
-      'Nº de NC por auditoría.',
       '% auditorías ejecutadas vs planificadas.',
-      'Densidad de defectos por KLOC.'
+      'Tasa de NC recurrentes.',
+      'Densidad de defectos por KLOC.',
+      'Nº de NC por auditoría.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'La densidad de defectos por KLOC es una métrica de producto/calidad de software, NO una métrica del PAI. Las métricas del PAI son: % ejecutadas vs planificadas, Nº NC por auditoría, tiempo medio de cierre y tasa de NC recurrentes.',
     trap: false
   },
@@ -1017,12 +1017,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién planifica las VF y quién planifica las AG?',
     options: [
-      'VF: Responsable de Calidad. AG: Jefe de Proyecto.',
       'Ambas las planifica el Jefe de Proyecto.',
-      'Ambas las planifica el Responsable de Calidad.',
-      'VF: Jefe de Proyecto (plan de proyecto). AG: Responsable de Calidad (programa anual).'
+      'VF: Jefe de Proyecto (plan de proyecto). AG: Responsable de Calidad (programa anual).',
+      'VF: Responsable de Calidad. AG: Jefe de Proyecto.',
+      'Ambas las planifica el Responsable de Calidad.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Diferencia clave de examen: las VF las planifica el Jefe de Proyecto (en el plan de proyecto). Las AG las planifica el Responsable de Calidad (en el programa anual).',
     trap: false
   },
@@ -1031,12 +1031,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Quién acuerda las acciones correctivas en VF y en AG?',
     options: [
-      'En ambos: el Responsable de Calidad.',
-      'VF: Auditor Técnico + JP. AG: Auditor de Sistemas + Responsable del área.',
+      'VF: RC + JP. AG: RC + Responsable del área.',
       'En ambos: el Auditor con el Director General.',
-      'VF: RC + JP. AG: RC + Responsable del área.'
+      'En ambos: el Responsable de Calidad.',
+      'VF: Auditor Técnico + JP. AG: Auditor de Sistemas + Responsable del área.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'En VF, las acciones correctivas las acuerdan el Auditor Técnico y el Jefe de Proyecto. En AG, las acuerdan el Auditor de Sistemas y el Responsable del área (en la reunión final).',
     trap: false
   },
@@ -1046,11 +1046,11 @@ const QUESTIONS = [
     question: '¿Quién supervisa la ejecución de acciones correctivas en VF y en AG?',
     options: [
       'VF: Auditor Técnico. AG: Auditor de Sistemas.',
-      'En ambos: el Responsable de Calidad.',
       'VF: Jefe de Proyecto. AG: Responsable del área.',
+      'En ambos: el Responsable de Calidad.',
       'En ambos: el Director General.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Diferencia clave: en VF, el JP supervisa la ejecución. En AG, el Responsable del área supervisa. El seguimiento y cierre formal en AMBOS casos es del RC.',
     trap: false
   },
@@ -1124,11 +1124,11 @@ const QUESTIONS = [
     question: 'En una VF, la copia del informe va al ___. En una AG, va al ___.',
     options: [
       'En ambos: al Director General.',
-      'VF: Responsable del área. AG: Jefe de Proyecto.',
       'VF: Jefe de Proyecto. AG: Responsable del área auditada.',
+      'VF: Responsable del área. AG: Jefe de Proyecto.',
       'En ambos: al Responsable de Calidad.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'La copia del informe va al principal interesado: en VF es el Jefe de Proyecto, y en AG es el Responsable del área auditada.',
     trap: false
   },
@@ -1155,10 +1155,10 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿En qué caso se generan actas de reunión inicial y final?',
     options: [
-      'En ambos tipos de auditoría.',
+      'En ningún tipo de auditoría interna.',
       'Solo en Verificaciones de Fase (VF).',
       'Solo en Auditorías Generales (AG).',
-      'En ningún tipo de auditoría interna.'
+      'En ambos tipos de auditoría.'
     ],
     correct: 2,
     justification: 'Las actas de reunión inicial y final se generan SOLO en las AG. Las VF no tienen reuniones formales.',
@@ -1169,12 +1169,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'El informe de auditoría lo elabora el ___ y lo revisa/aprueba el ___.',
     options: [
+      'El Responsable de Calidad lo elabora. El Director General lo aprueba.',
       'El auditor (Técnico o de Sistemas) lo elabora. El Responsable de Calidad lo revisa y aprueba.',
-      'El Jefe de Proyecto lo elabora. El auditor lo aprueba.',
       'El Director General lo elabora y aprueba.',
-      'El Responsable de Calidad lo elabora. El Director General lo aprueba.'
+      'El Jefe de Proyecto lo elabora. El auditor lo aprueba.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'El informe lo ELABORA el auditor (no Calidad) y lo REMITE al RC para revisión y aprobación. El auditor no lo firma junto a Calidad — lo elabora solo.',
     trap: false
   },
@@ -1285,12 +1285,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se define "Auditoría" en el contexto de los sistemas de gestión de calidad?',
     options: [
-      'Evaluación financiera obligatoria de los gastos de un proyecto informático.',
+      'Inspección de código línea por línea por parte de un equipo externo.',
       'Revisión informal realizada por el jefe de proyecto para comprobar el estado de las tareas.',
-      'Proceso sistemático, independiente y documentado para obtener evidencias y evaluarlas de forma objetiva.',
-      'Inspección de código línea por línea por parte de un equipo externo.'
+      'Evaluación financiera obligatoria de los gastos de un proyecto informático.',
+      'Proceso sistemático, independiente y documentado para obtener evidencias y evaluarlas de forma objetiva.'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'La auditoría es un proceso sistemático, independiente y documentado diseñado para obtener evidencias objetivas y evaluar en qué medida se cumplen los criterios acordados.',
     trap: false
   },

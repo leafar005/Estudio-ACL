@@ -25,9 +25,9 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la definición de calidad según ISO 9000:2015?',
     options: [
-      'La satisfacción subjetiva del cliente con el producto.',
-      'El grado en que un conjunto de características inherentes de un objeto cumple con los requisitos.',
       'El cumplimiento de todos los estándares internacionales aplicables.',
+      'El grado en que un conjunto de características inherentes de un objeto cumple con los requisitos.',
+      'La satisfacción subjetiva del cliente con el producto.',
       'La ausencia total de defectos en un producto.'
     ],
     correct: 1,
@@ -72,11 +72,11 @@ const QUESTIONS = [
     question: '¿Cuál de los siguientes NO es un ejemplo válido de parámetro de calidad en software?',
     options: [
       'Tiempo medio transcurrido entre fallos (MTBF).',
-      'Opinión personal del programador sobre la elegancia del código.',
       'Número de errores incluidos.',
+      'Opinión personal del programador sobre la elegancia del código.',
       'Satisfacción del usuario con la funcionalidad.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'La opinión personal del programador no es un parámetro cuantificable ni verificable. Los parámetros válidos incluyen satisfacción del usuario, número de errores y MTBF, que sí pueden medirse objetivamente.',
     trap: false
   },
@@ -85,12 +85,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cómo debe situarse la función de calidad dentro de una organización?',
     options: [
-      'Externalizada siempre a una empresa auditora.',
-      'Bajo el responsable de producción para mayor eficiencia.',
+      'Integrada dentro del equipo de desarrollo, sin independencia.',
       'Como un staff directamente vinculado a dirección, con visión independiente.',
-      'Integrada dentro del equipo de desarrollo, sin independencia.'
+      'Bajo el responsable de producción para mayor eficiencia.',
+      'Externalizada siempre a una empresa auditora.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'La función de calidad debe ser un staff directamente vinculado a dirección y dependiente exclusivamente de ella, con una visión independiente. Su función es velar por el buen hacer según el sistema de calidad.',
     trap: false
   },
@@ -108,12 +108,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Según ISO 8402, la calidad es:',
     options: [
+      'La capacidad de un producto para funcionar sin errores durante un año.',
       'Conjunto de propiedades y características que confieren aptitud para satisfacer necesidades explícitas o implícitas.',
       'La conformidad con los requisitos legales del país de producción.',
-      'La capacidad de un producto para funcionar sin errores durante un año.',
       'El nivel de satisfacción alcanzado por los usuarios finales.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'ISO 8402 define calidad como "conjunto de propiedades y características de un producto o servicio que le confieren aptitud para satisfacer unas necesidades explícitas o implícitas".',
     trap: false
   },
@@ -137,11 +137,11 @@ const QUESTIONS = [
     question: '¿Cuál es la diferencia entre "eficaz" y "eficiente"?',
     options: [
       'Eficiente logra el objetivo y eficaz optimiza recursos.',
-      'Eficaz se refiere a procesos y eficiente a productos.',
+      'Eficaz logra el objetivo (sin importar coste). Eficiente logra el objetivo con uso óptimo de recursos.',
       'Eficaz y eficiente significan lo mismo.',
-      'Eficaz logra el objetivo (sin importar coste). Eficiente logra el objetivo con uso óptimo de recursos.'
+      'Eficaz se refiere a procesos y eficiente a productos.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'Eficaz = logra el objetivo (sin importar coste). Eficiente = eficaz + uso óptimo de recursos. ISO 9001 se centra en la eficacia, mientras que ISO 9004 se centra en la eficiencia.',
     trap: false
   },
@@ -172,12 +172,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la pregunta clave que define el Aseguramiento de Calidad (QA)?',
     options: [
-      '¿Se está siguiendo el proceso?',
-      '¿Se ha desarrollado el producto correcto?',
+      '¿Se han cumplido los plazos?',
       '¿El producto está bien hecho?',
-      '¿Se han cumplido los plazos?'
+      '¿Se está siguiendo el proceso?',
+      '¿Se ha desarrollado el producto correcto?'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'QA se pregunta "¿Se está siguiendo el proceso?". Asegura que se sigue el proceso definido y verifica que se usan los estándares y herramientas marcados. Es preventivo y no requiere técnico especializado (basta con checklist).',
     trap: false
   },
@@ -186,12 +186,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la pregunta clave que define el Control de Calidad (QC)?',
     options: [
-      '¿Se han respetado los estándares?',
       '¿El producto está bien hecho?',
       '¿El cliente está satisfecho?',
+      '¿Se han respetado los estándares?',
       '¿Se está siguiendo el proceso?'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'QC se pregunta "¿El producto está bien hecho?". Controla la calidad técnica de los productos obtenidos, revisando entregables. Es detectivo y SÍ requiere técnico especializado.',
     trap: false
   },
@@ -242,11 +242,11 @@ const QUESTIONS = [
     question: '¿Cuál es la pregunta clave de la verificación?',
     options: [
       '¿Se ha desarrollado el producto correcto?',
+      '¿Se están siguiendo los estándares?',
       '¿Se está desarrollando el producto correctamente?',
-      '¿El cliente está satisfecho con el producto?',
-      '¿Se están siguiendo los estándares?'
+      '¿El cliente está satisfecho con el producto?'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'Verificación: "¿Se está desarrollando el producto correctamente?". Garantiza consistencia interna: que el resultado de cada fase corresponde con las entradas. Ejemplo: revisión del diseño vs ERS.',
     trap: false
   },
@@ -256,11 +256,11 @@ const QUESTIONS = [
     question: '¿Cuál es la pregunta clave de la validación?',
     options: [
       '¿Se está desarrollando el producto correctamente?',
-      '¿Se han seguido todos los procedimientos?',
       '¿Se ha desarrollado el producto correcto?',
+      '¿Se han seguido todos los procedimientos?',
       '¿Se han documentado todos los requisitos?'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Validación: "¿Se ha desarrollado el producto correcto?". Asegura que el software corresponde con los requisitos del cliente. Se realiza sobre el producto terminado (pruebas de aceptación).',
     trap: false
   },
@@ -293,8 +293,8 @@ const QUESTIONS = [
     question: '¿Qué niveles de pruebas son verificación y cuáles validación?',
     options: [
       'Unitarias, integración y sistema = verificación. Aceptación = validación.',
-      'Todas las pruebas son validación.',
       'Todas las pruebas son verificación.',
+      'Todas las pruebas son validación.',
       'Unitarias = verificación. Integración, sistema y aceptación = validación.'
     ],
     correct: 0,
@@ -306,12 +306,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cómo se insertan QA y QC en el ciclo de desarrollo?',
     options: [
+      'Ambas son transversales a todo el ciclo.',
       'QA se aplica solo al final. QC se aplica al principio.',
       'QA es transversal/horizontal (todo el ciclo). QC es vertical sobre cada salida de fase.',
-      'QA solo se aplica en las fases de pruebas.',
-      'Ambas son transversales a todo el ciclo.'
+      'QA solo se aplica en las fases de pruebas.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'QA es transversal/horizontal: abarca todo el ciclo de desarrollo. QC es vertical: se aplica sobre cada salida de fase (pruebas, inspecciones, revisiones de entregables).',
     trap: false
   },
@@ -320,12 +320,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Una auditoría de fin de fase es un ejemplo de:',
     options: [
-      'Aseguramiento de Calidad (QA).',
-      'Certificación.',
+      'Control de Calidad (QC).',
       'Validación.',
-      'Control de Calidad (QC).'
+      'Aseguramiento de Calidad (QA).',
+      'Certificación.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Una auditoría de fin de fase es QA. Regla de oro: "auditoría = aseguramiento de la calidad". Ejemplo de QA: ¿se usó Erwin?, ¿lo revisó el director técnico? Ejemplo de QC: revisión peer-to-peer, formas normales.',
     trap: false
   },
@@ -352,12 +352,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Según el informe Standish Chaos de 1994, ¿qué porcentaje de proyectos fueron exitosos?',
     options: [
-      '35%',
-      '5%',
       '28%',
-      '16%'
+      '5%',
+      '16%',
+      '35%'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Standish Chaos 1994: 16% exitosos, 31% completamente fallidos. Mejoró a 28% en 2000 y 35% en 2006.',
     trap: false
   },
@@ -366,9 +366,9 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántos defectos comete un programador experto por cada KLOC?',
     options: [
-      '~10 defectos',
       '~200 defectos',
       '~50 defectos',
+      '~10 defectos',
       '~100 defectos'
     ],
     correct: 3,
@@ -398,12 +398,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las "4 Ps" para salir de la crisis del software?',
     options: [
-      'Proceso, Pruebas, Personas, Planificación.',
-      'Producto, Programación, Proceso, Pruebas.',
       'Producto, Proceso, Personas, Problema.',
-      'Planificación, Producción, Pruebas, Presupuesto.'
+      'Planificación, Producción, Pruebas, Presupuesto.',
+      'Proceso, Pruebas, Personas, Planificación.',
+      'Producto, Programación, Proceso, Pruebas.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Las 4 Ps: Producto (métricas, metodologías), Proceso (CMM/CMMI, SPICE, ISO 9000-3), Personas (formación, capacidad) y Problema (conceptualizar lo que hay que hacer). Apostar por el Proceso es la estrategia principal.',
     trap: false
   },
@@ -414,8 +414,8 @@ const QUESTIONS = [
     options: [
       'Proceso — un buen proceso implica un buen producto.',
       'Producto — centrarse en el software como producto.',
-      'Problema — entender perfectamente lo que hay que hacer.',
-      'Personas — la formación es lo más importante.'
+      'Personas — la formación es lo más importante.',
+      'Problema — entender perfectamente lo que hay que hacer.'
     ],
     correct: 0,
     justification: 'La estrategia principal es mejorar el Proceso. Hipótesis: un buen proceso → un buen producto (no demostrada pero asumida). De aquí surgieron CMM/CMMI, SPICE, ISO 9000-3.',
@@ -426,10 +426,10 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Según Herbsleb et al. (1994), ¿cuál era el ROI por cada dólar invertido en mejora?',
     options: [
+      '~1.5$ por cada 1$ invertido.',
       '~10$ por cada 1$ invertido.',
-      '~2$ por cada 1$ invertido.',
       '~5$ por cada 1$ invertido.',
-      '~1.5$ por cada 1$ invertido.'
+      '~2$ por cada 1$ invertido.'
     ],
     correct: 2,
     justification: 'ROI ~5:1. Incremento anual de productividad ~35%. Reducción "time to market" ~20%. Reducción de errores ~40%. Inversión por ingeniero ~1.300$. Años mejorando ~3.',
@@ -450,8 +450,8 @@ const QUESTIONS = [
     question: '¿Dónde y cuándo se acuñó el término "crisis del software"?',
     options: [
       'Garmisch (Alemania), conferencia de la OTAN, 1967-1968.',
-      'Tokio (Japón), conferencia ISO, 1980.',
       'Silicon Valley (EEUU), conferencia ACM, 1975.',
+      'Tokio (Japón), conferencia ISO, 1980.',
       'Londres (UK), conferencia IEEE, 1970.'
     ],
     correct: 0,
@@ -463,12 +463,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Según el Standish Chaos 2006, ¿qué porcentaje de proyectos fueron exitosos?',
     options: [
-      '50% exitosos, 30% challenged, 20% fallidos.',
-      '16% exitosos, 53% challenged, 31% fallidos.',
       '35% exitosos, 46% challenged, 19% fallidos.',
-      '28% exitosos, 49% challenged, 23% fallidos.'
+      '50% exitosos, 30% challenged, 20% fallidos.',
+      '28% exitosos, 49% challenged, 23% fallidos.',
+      '16% exitosos, 53% challenged, 31% fallidos.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Standish Chaos 2006: 35% exitosos, 46% challenged, 19% fallidos. Mejora progresiva desde 1994 (16%). Conclusión: "There is less chaos in software development today."',
     trap: false
   },
@@ -572,12 +572,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son los 7 principios de ISO 9001:2015?',
     options: [
+      'Eficiencia, Liderazgo, Compromiso, Procesos, Mejora, Evidencia, Comunicación.',
       'Planificación, Ejecución, Control, Mejora, Liderazgo, Documentación, Satisfacción.',
       'Enfoque al cliente, Liderazgo, Compromiso de las personas, Enfoque de procesos, Mejora, Toma de decisiones basada en evidencia, Gestión de relaciones.',
-      'Enfoque al cliente, Liderazgo, Trabajo en equipo, Enfoque de procesos, Mejora continua, Documentación, Gestión de relaciones.',
-      'Eficiencia, Liderazgo, Compromiso, Procesos, Mejora, Evidencia, Comunicación.'
+      'Enfoque al cliente, Liderazgo, Trabajo en equipo, Enfoque de procesos, Mejora continua, Documentación, Gestión de relaciones.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'Los 7 principios: (1) Enfoque al cliente, (2) Liderazgo, (3) Compromiso de las personas, (4) Enfoque de procesos, (5) Mejora, (6) Toma de decisiones basada en la evidencia, (7) Gestión de las relaciones.',
     trap: false
   },
@@ -587,9 +587,9 @@ const QUESTIONS = [
     question: '¿Qué principios se fusionaron en ISO 9001:2015?',
     options: [
       '"Enfoque basado en procesos" y "Enfoque de sistema para la gestión" → "Enfoque de procesos".',
-      '"Enfoque al cliente" y "Gestión de relaciones" → "Gestión de stakeholders".',
+      '"Mejora continua" y "Toma de decisiones" → "Mejora basada en evidencia".',
       '"Liderazgo" y "Compromiso de las personas" → "Liderazgo comprometido".',
-      '"Mejora continua" y "Toma de decisiones" → "Mejora basada en evidencia".'
+      '"Enfoque al cliente" y "Gestión de relaciones" → "Gestión de stakeholders".'
     ],
     correct: 0,
     justification: 'Se fusionaron los principios 4º ("Enfoque basado en procesos") y 5º ("Enfoque de sistema para la gestión") en uno: "Enfoque de procesos".',
@@ -600,12 +600,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál fue el cambio más importante de la revisión ISO 9001:2000?',
     options: [
-      'Incorporación de gestión de riesgos.',
       'Eliminación del Manual de Calidad.',
+      'Enfoque por procesos (PDCA).',
       'Reducción de 8 a 7 principios.',
-      'Enfoque por procesos (PDCA).'
+      'Incorporación de gestión de riesgos.'
     ],
-    correct: 3,
+    correct: 1,
     justification: 'La revisión 2000 introdujo el enfoque por procesos (PDCA). Los otros cambios corresponden a la versión 2015.',
     trap: false
   },
@@ -615,8 +615,8 @@ const QUESTIONS = [
     question: '¿En qué año se publicó la primera versión de la familia ISO 9000?',
     options: [
       '1994.',
-      '2000.',
       '1979.',
+      '2000.',
       '1987.'
     ],
     correct: 3,
@@ -628,12 +628,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué modelo de calidad fue la respuesta europea a CMM?',
     options: [
-      'TickIT.',
-      'SPICE / ISO 15504.',
       'Bootstrap.',
-      'ISO 90003.'
+      'ISO 90003.',
+      'SPICE / ISO 15504.',
+      'TickIT.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'Bootstrap fue la respuesta europea a CMM, alineado con ISO 9000. SPICE/ISO 15504 surgió después para unificar CMM, Trillium, TickIT y Bootstrap.',
     trap: false
   },
@@ -643,11 +643,11 @@ const QUESTIONS = [
     question: '¿Cuál es la estrategia habitual para implantar modelos de calidad en Europa?',
     options: [
       'Solo SPICE.',
-      'Solo ISO 90003.',
       'Primero ISO 9000, luego CMMI.',
+      'Solo ISO 90003.',
       'Primero CMMI, luego ISO 9000.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Estrategia habitual: primero certificación ISO 9001 (binaria, ~8.000€) → luego progresar a CMMI (escala 1-5). ISO 9000 se usó más en Europa, CMMI más en EE.UU.',
     trap: false
   },
@@ -683,12 +683,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué época se asocia con el "Aseguramiento de calidad" como concepto?',
     options: [
-      '1900–1950: organización taylorista.',
-      'Años 60: Total Quality Management.',
       'Años 50: normas y estándares en el entorno militar de EE.UU.',
-      'Siglo XVIII: artesanos.'
+      'Siglo XVIII: artesanos.',
+      'Años 60: Total Quality Management.',
+      '1900–1950: organización taylorista.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'El aseguramiento de calidad surge en los años 50, con normas y estándares en el entorno militar de EE.UU. La calidad se centró en el proceso.',
     trap: false
   },
@@ -697,12 +697,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué caracteriza al TQM (Total Quality Management)?',
     options: [
-      'Se basa únicamente en el control estadístico.',
+      'Solo el departamento de calidad es responsable.',
       'Se centra exclusivamente en el producto final.',
-      'Todos los departamentos tienen responsabilidad en alcanzar la calidad; se centra en todo el sistema empresarial.',
-      'Solo el departamento de calidad es responsable.'
+      'Se basa únicamente en el control estadístico.',
+      'Todos los departamentos tienen responsabilidad en alcanzar la calidad; se centra en todo el sistema empresarial.'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'TQM (desde los años 60): todos los departamentos son responsables de la calidad. Se centra en todo el sistema empresarial para eliminar derroches y minimizar costes.',
     trap: false
   },
@@ -724,12 +724,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué exige el apartado 4 de ISO 9001 (Sistema de gestión de la calidad)?',
     options: [
-      'Recursos humanos, infraestructura y ambiente de trabajo.',
       'Identificar procesos del SGC, su secuencia e interacción, documentación y control de documentos/registros.',
+      'Recursos humanos, infraestructura y ambiente de trabajo.',
       'Auditorías internas y mejora continua.',
       'Compromiso de la dirección y política de calidad.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'Apartado 4: procesos del SGC, mapa de procesos, documentación (política, manual, procedimientos, registros) y mecanismos de control de documentos y registros.',
     trap: false
   },
@@ -756,12 +756,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué apartado de ISO 9001 es el más importante?',
     options: [
-      'Apartado 5 — Responsabilidad de la dirección.',
       'Apartado 8 — Medición, análisis y mejora.',
+      'Apartado 7 — Realización del producto (el más extenso, pero no el más importante).',
       'Apartado 4 — Sistema de gestión de la calidad.',
-      'Apartado 7 — Realización del producto (el más extenso, pero no el más importante).'
+      'Apartado 5 — Responsabilidad de la dirección.'
     ],
-    correct: 1,
+    correct: 0,
     justification: 'El apartado 8 (Medición, análisis y mejora) es el más importante. El apartado 7 es el más extenso, pero no el más importante. Cuidado con esta trampa.',
     trap: true
   },
@@ -770,12 +770,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué exige el apartado 8 de ISO 9001?',
     options: [
-      'Auditorías internas, seguimiento/medición de procesos y productos, control de no conformidades, acciones correctivas/preventivas, mejora continua.',
       'Planificación y procesos con el cliente.',
-      'Documentación del SGC y política de calidad.',
-      'Recursos humanos con competencia adecuada.'
+      'Auditorías internas, seguimiento/medición de procesos y productos, control de no conformidades, acciones correctivas/preventivas, mejora continua.',
+      'Recursos humanos con competencia adecuada.',
+      'Documentación del SGC y política de calidad.'
     ],
-    correct: 0,
+    correct: 1,
     justification: 'Apartado 8: auditorías internas, seguimiento y medición, control de no conformidades, acciones correctivas y preventivas, satisfacción del cliente y mejora continua.',
     trap: false
   },
@@ -784,10 +784,10 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué es el ciclo PDCA (ciclo de Deming)?',
     options: [
-      'Produce-Document-Check-Archive.',
+      'Process-Design-Control-Audit.',
       'Plan-Do-Check-Act: planificar, realizar, comprobar y actuar para mejorar continuamente.',
-      'Plan-Develop-Certify-Approve.',
-      'Process-Design-Control-Audit.'
+      'Produce-Document-Check-Archive.',
+      'Plan-Develop-Certify-Approve.'
     ],
     correct: 1,
     justification: 'PDCA: Plan (planificar), Do (realizar), Check (comprobar resultados), Act (actuar para modificar y replanificar). Es la base de la mejora continua del SGC. Si se viola el principio, te quitan el certificado.',
@@ -862,12 +862,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Según ISO 9001, ¿cuáles son las únicas pruebas obligatorias?',
     options: [
-      'No se exigen pruebas específicas.',
       'Pruebas unitarias, de integración y de sistema.',
       'Solo las pruebas de aceptación.',
+      'No se exigen pruebas específicas.',
       'Todas las pruebas son obligatorias.'
     ],
-    correct: 2,
+    correct: 1,
     justification: 'Las únicas pruebas obligatorias por ISO 9001 son las de aceptación. El resto de pruebas (unitarias, integración, sistema) se justifican por análisis de coste/beneficio.',
     trap: true
   },
@@ -894,12 +894,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Con qué se manejan las 3 opciones ante un producto no conforme (apartado 8.3)?',
     options: [
-      'Solo se puede desechar el producto.',
       'Se archiva y se ignora.',
       'Se devuelve automáticamente al proveedor.',
-      'Acciones correctivas para arreglarlo, entrega con autorización del cliente y empresa, o inhabilitar lo que da problemas.'
+      'Acciones correctivas para arreglarlo, entrega con autorización del cliente y empresa, o inhabilitar lo que da problemas.',
+      'Solo se puede desechar el producto.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'Ante producto no conforme (8.3): (1) acciones correctivas para arreglarlo, (2) entrega/uso con autorización explícita del cliente Y la empresa, (3) inhabilitar lo que da problemas.',
     trap: false
   },
@@ -908,10 +908,10 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la diferencia entre acción correctiva y acción preventiva?',
     options: [
+      'Correctiva viene de auditorías, preventiva viene de pruebas.',
       'Correctiva: ataja la causa raíz. Preventiva: ataja la no conformidad.',
-      'Son lo mismo, solo cambia el momento de aplicación.',
       'Correctiva: ataja la no conformidad real. Preventiva: ataja la causa raíz / problema potencial.',
-      'Correctiva viene de auditorías, preventiva viene de pruebas.'
+      'Son lo mismo, solo cambia el momento de aplicación.'
     ],
     correct: 2,
     justification: 'Correctiva: origen en no conformidad REAL detectada en auditoría, ataja la NC en sí. Preventiva: origen en problema POTENCIAL (sugerencias, estadísticas, quejas), ataja la CAUSA RAÍZ. En 2015, la preventiva se sustituye por gestión de riesgos.',
@@ -972,12 +972,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuáles son las 3 fases del proceso de certificación ISO 9001?',
     options: [
-      'Auditoría de evaluación previa (opcional), auditoría de certificación (obligatoria), auditorías de seguimiento (obligatorias).',
-      'Evaluación interna, evaluación externa y renovación.',
       'Documentación, implementación y verificación.',
+      'Evaluación interna, evaluación externa y renovación.',
+      'Auditoría de evaluación previa (opcional), auditoría de certificación (obligatoria), auditorías de seguimiento (obligatorias).',
       'Planificación, ejecución y cierre.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Las 3 fases: (1) Auditoría de evaluación previa (OPCIONAL, 2-3 meses antes), (2) Auditoría de certificación (OBLIGATORIA, auditores externos), (3) Auditorías de seguimiento (OBLIGATORIAS, cada 6-12 meses, ciclo 3 años).',
     trap: false
   },
@@ -1004,12 +1004,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuánto dura el ciclo completo de certificación ISO 9001?',
     options: [
-      '3 años.',
-      '5 años.',
+      '1 año.',
       '2 años.',
-      '1 año.'
+      '5 años.',
+      '3 años.'
     ],
-    correct: 0,
+    correct: 3,
     justification: 'Ciclo de 3 años con auditorías de seguimiento cada 6-12 meses. Tras 3 años: renovación completa o se pierde el certificado.',
     trap: false
   },
@@ -1018,12 +1018,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuál es la misión de ENAC?',
     options: [
-      'Certificar directamente a las empresas con ISO 9001.',
       'Desarrollar las normas ISO para España.',
-      'Acreditar la competencia técnica de entidades para certificar o inspeccionar.',
-      'Formar auditores de calidad.'
+      'Certificar directamente a las empresas con ISO 9001.',
+      'Formar auditores de calidad.',
+      'Acreditar la competencia técnica de entidades para certificar o inspeccionar.'
     ],
-    correct: 2,
+    correct: 3,
     justification: 'ENAC acredita certificadoras (no certifica empresas, no emite normas). Supervisada por la Administración según Ley de Industria 21/1992.',
     trap: false
   },
@@ -1050,12 +1050,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué entidades pueden certificar con ISO 9001? Ejemplos:',
     options: [
-      'Solo AENOR.',
-      'Solo ENAC puede certificar.',
+      'AENOR, Lloyd\'s Register (LRQA), Bureau Veritas (BVQI).',
       'El Ministerio de Industria.',
-      'AENOR, Lloyd\'s Register (LRQA), Bureau Veritas (BVQI).'
+      'Solo AENOR.',
+      'Solo ENAC puede certificar.'
     ],
-    correct: 3,
+    correct: 0,
     justification: 'Certifican: AENOR, LRQA, BVQI, entre otras. ENAC no certifica: acredita a las certificadoras. AENOR fue designada por el Ministerio de Industria y Energía.',
     trap: false
   },
@@ -1064,10 +1064,10 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuántas fases tiene la auditoría de certificación?',
     options: [
+      '2 fases.',
       '4 fases.',
-      '3 fases.',
       '6 fases: plan, documentación, reunión inaugural, realización, reunión de clausura, informe.',
-      '2 fases.'
+      '3 fases.'
     ],
     correct: 2,
     justification: '6 fases: (1) Plan de auditoría, (2) Auditoría de documentación, (3) Reunión inaugural, (4) Realización (entrevistas, observación, evidencias), (5) Reunión de clausura, (6) Informe (2-4 semanas después).',
@@ -1078,12 +1078,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Cuándo se recibe el informe formal de la auditoría de certificación?',
     options: [
-      '6 meses después.',
-      'Inmediatamente al finalizar.',
       'Dentro de 24 horas.',
-      '2-4 semanas después de la reunión de clausura.'
+      '6 meses después.',
+      '2-4 semanas después de la reunión de clausura.',
+      'Inmediatamente al finalizar.'
     ],
-    correct: 3,
+    correct: 2,
     justification: 'El informe formal se recibe 2-4 semanas después de la reunión de clausura, con la decisión de certificación.',
     trap: false
   },
@@ -1092,12 +1092,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué plazo tiene una empresa para resolver no conformidades mayores?',
     options: [
-      '6 meses.',
       '1 mes.',
-      '3 meses.',
-      '12 meses.'
+      '12 meses.',
+      '6 meses.',
+      '3 meses.'
     ],
-    correct: 0,
+    correct: 2,
     justification: 'Las no conformidades mayores deben resolverse en un plazo de 6 meses. Las menores se revisan en el próximo seguimiento.',
     trap: false
   },
@@ -1156,12 +1156,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué aspectos se auditan en TODAS las auditorías de seguimiento?',
     options: [
-      'Solo la documentación del SGC.',
-      'Solo la satisfacción del cliente.',
       'Revisiones por la dirección, auditorías internas, acciones correctivas/preventivas, reclamaciones del cliente, control de documentos, impacto de cambios, uso de certificados.',
-      'Solo las métricas de producto.'
+      'Solo la satisfacción del cliente.',
+      'Solo las métricas de producto.',
+      'Solo la documentación del SGC.'
     ],
-    correct: 2,
+    correct: 0,
     justification: 'En TODAS las auditorías de seguimiento se auditan: revisiones por la dirección, auditorías internas, acciones correctivas/preventivas, reclamaciones, control de documentos, impacto de cambios en SGC, uso adecuado de certificados.',
     trap: false
   },
@@ -1197,12 +1197,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué 5 áreas deben cubrir las métricas para una PYME con ISO 9000?',
     options: [
+      'Personal, Infraestructura, Documentación, Software y Hardware.',
       'Planificación, Diseño, Codificación, Pruebas y Entrega.',
       'Proyecto, Producto, Proceso, Cliente y Mantenimiento.',
-      'Coste, Tiempo, Alcance, Calidad y Riesgo.',
-      'Personal, Infraestructura, Documentación, Software y Hardware.'
+      'Coste, Tiempo, Alcance, Calidad y Riesgo.'
     ],
-    correct: 1,
+    correct: 2,
     justification: 'Las 5 áreas: Proyecto, Producto, Proceso, Cliente y Mantenimiento. Estrategia PYME: métricas baratas, automatizables, alineadas con el apartado 8.',
     trap: false
   },
@@ -1211,12 +1211,12 @@ const QUESTIONS = [
     type: 'multi',
     question: '¿Qué métrica mide la eficacia del SGC en resolución de hallazgos?',
     options: [
+      'Satisfacción del cliente.',
       '% de hitos cumplidos.',
       'Densidad de defectos.',
-      '% de no conformidades cerradas a tiempo.',
-      'Satisfacción del cliente.'
+      '% de no conformidades cerradas a tiempo.'
     ],
-    correct: 2,
+    correct: 3,
     justification: '% de NCs cerradas a tiempo: Nº NCs cerradas en plazo / Nº total × 100. Criterio: ≥ 90% eficaz, 70-89% revisar, < 70% problema sistémico → escalar a dirección.',
     trap: false
   },
@@ -1225,8 +1225,8 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Al recomendar métricas a una PYME para ISO 9000, ¿qué estrategia seguir?',
     options: [
-      'Métricas complejas y exhaustivas.',
       'Métricas exclusivamente técnicas sin relación con ISO.',
+      'Métricas complejas y exhaustivas.',
       'Solo métricas financieras.',
       'Métricas baratas de recoger, automatizables, alineadas con el apartado 8 de ISO 9001.'
     ],
@@ -1239,12 +1239,12 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Para la métrica "Tasa de defectos en pruebas de sistema", ¿cuál es el criterio?',
     options: [
-      '≤ 5 defectos/KLOC = aceptable; > 5 = fuera de control → análisis de causa raíz.',
-      '0 defectos/KLOC.',
       '≤ 10 defectos/KLOC = aceptable.',
+      '0 defectos/KLOC.',
+      '≤ 5 defectos/KLOC = aceptable; > 5 = fuera de control → análisis de causa raíz.',
       'No existe criterio estándar.'
     ],
-    correct: 0,
+    correct: 2,
     justification: '≤ 5 defectos/KLOC = aceptable. > 5 defectos/KLOC = fuera de control → análisis de causa raíz y revisión de fases previas.',
     trap: false
   },
@@ -1309,9 +1309,9 @@ const QUESTIONS = [
     type: 'multi',
     question: 'En el apartado 7.2 (Procesos relacionados con el cliente), ¿cuáles de los siguientes requisitos se deben cumplir siempre, aunque el cliente no los haya pedido explícitamente?',
     options: [
-      'El uso del lenguaje de programación favorito del cliente.',
-      'Los requisitos legales y reglamentarios (ej. LOPD, normativas de seguridad).',
       'El diseño de interfaz más moderno del mercado.',
+      'Los requisitos legales y reglamentarios (ej. LOPD, normativas de seguridad).',
+      'El uso del lenguaje de programación favorito del cliente.',
       'Las preferencias estéticas del director comercial.'
     ],
     correct: 1,
@@ -1332,9 +1332,9 @@ const QUESTIONS = [
     type: 'multi',
     question: 'Según el apartado 7.5 (Producción y prestación del servicio), ¿cuándo es obligatoria la "validación" de un proceso en lugar de sólo su "verificación"?',
     options: [
-      'Únicamente cuando el cliente es de la administración pública.',
       'Siempre, en todo proceso que desarrolle software.',
       'Nunca, la verificación es siempre suficiente.',
+      'Únicamente cuando el cliente es de la administración pública.',
       'Cuando el resultado del proceso NO se puede verificar mediante seguimiento o medición antes de la entrega.'
     ],
     correct: 3,
@@ -1347,11 +1347,11 @@ const QUESTIONS = [
     question: '¿Qué tres condiciones debe cumplir obligatoriamente un auditor interno (apartado 8.2.2)?',
     options: [
       'Pertenecer al departamento de calidad, tener un máster oficial y 5 años de experiencia.',
-      'Externo al área auditada, conocimientos/experiencia en lo que audita y conocimientos/experiencia en cómo auditar.',
+      'Ser técnico desarrollador, conocer al cliente y ser imparcial.',
       'Ser externo a la empresa, certificado por AENOR y conocer el proyecto.',
-      'Ser técnico desarrollador, conocer al cliente y ser imparcial.'
+      'Externo al área auditada, conocimientos/experiencia en lo que audita y conocimientos/experiencia en cómo auditar.'
     ],
-    correct: 1,
+    correct: 3,
     justification: 'Un auditor interno (según ISO) debe ser: 1. Externo/independiente al área auditada. 2. Tener conocimientos teóricos y experiencia práctica en LO QUE audita. 3. Tener conocimientos y experiencia en CÓMO auditar.',
     trap: false
   },
@@ -1436,9 +1436,9 @@ const QUESTIONS = [
     question: '¿Cuál es la definición oficial de "Calidad" según la norma ISO 9000?',
     options: [
       'El grado en que un conjunto de características inherentes de un objeto cumple con los requisitos.',
-      'El cumplimiento exclusivo de los plazos y presupuestos del proyecto.',
+      'La satisfacción del cliente a cualquier coste.',
       'La ausencia total de defectos en un producto final.',
-      'La satisfacción del cliente a cualquier coste.'
+      'El cumplimiento exclusivo de los plazos y presupuestos del proyecto.'
     ],
     correct: 0,
     justification: 'La ISO 9000 define la calidad como el "grado en que un conjunto de características inherentes de un objeto cumple con los requisitos".',
