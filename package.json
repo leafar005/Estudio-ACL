@@ -1,0 +1,35 @@
+{
+  "name": "quiz-acl-desktop",
+  "version": "1.0.0",
+  "description": "Portal interactivo diseñado para facilitar el estudio de la asignatura ACL - Versión Escritorio",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --linux AppImage",
+    "build-deb": "electron-builder --linux deb"
+  },
+  "build": {
+    "appId": "com.acl.quiz",
+    "productName": "Portal de Encuestas ACL",
+    "directories": {
+      "output": "dist"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Education"
+    }
+  },
+  "author": {
+    "name": "Rafael Casado",
+    "email": "rafael.casado@example.com"
+  },
+  "homepage": "https://github.com/leafar005/Quiz-ACL",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3"
+  }
+}
