@@ -202,17 +202,20 @@
     const cat = CATEGORIES.find(c => c.id === q.category);
     $('#question-category').textContent = cat ? `${cat.icon} ${cat.name}` : q.category;
 
-    const typeLabel = q.type === 'vf' ? 'V / F' : 'Opción múltiple';
+    let typeLabel = q.type === 'vf' ? 'V / F' : 'Opción múltiple';
     const typeEl = $('#question-type');
-    typeEl.textContent = typeLabel;
     if (q.trap) {
-      typeEl.textContent += ' ⚠️ Trampa';
+      typeLabel += ' ⚠️ Trampa';
       typeEl.style.background = 'rgba(239, 68, 68, 0.12)';
       typeEl.style.color = '#ef4444';
     } else {
       typeEl.style.background = '';
       typeEl.style.color = '';
     }
+    if (q.isEnumeration) {
+      typeLabel += ' 📋 Enumeración';
+    }
+    typeEl.textContent = typeLabel;
 
     // Question text
     $('#question-text').textContent = q.question;

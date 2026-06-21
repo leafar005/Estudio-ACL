@@ -61,11 +61,26 @@
       margin-bottom: 50px;
     }
 
+
     .quiz-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 1fr;
       gap: 24px;
+    }
+    
+    .banco-card {
+      grid-column: 2;
+    }
+    @media (max-width: 850px) {
+      .banco-card {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 600px) {
+      .banco-card {
+        grid-column: 1;
+      }
     }
     @media (max-width: 850px) {
       .quiz-grid {
@@ -221,7 +236,6 @@
         <h2 class="quiz-title">Calidad e ISO 9000</h2>
         <p class="quiz-desc">Cuestionario sobre Calidad del Software, normativa ISO 9001:2015 y procesos de Certificación.</p>
       </a>
-      
       <a href="quiz-cmmi/index.html" class="quiz-card">
         <div class="icon">🏛️</div>
         <h2 class="quiz-title">CMMI Modelo + Eval.</h2>
@@ -232,6 +246,13 @@
         <div class="icon">📐</div>
         <h2 class="quiz-title">Otros Modelos + Medición</h2>
         <p class="quiz-desc">Cuestionario sobre SPICE, MMIS, ITmark, SwTQM, Métricas, GQM y PSM.</p>
+      </a>
+
+
+      <a href="quiz-sgcs/index.html" class="quiz-card">
+        <div class="icon">⚙️</div>
+        <h2 class="quiz-title">SGCS Práctica</h2>
+        <p class="quiz-desc">Procedimientos operativos, Mapas IDEF0, procesos colaterales, pruebas y SIE.</p>
       </a>
 
       <a href="quiz-pai/index.html" class="quiz-card">
@@ -254,7 +275,7 @@
         </select>
       </div>
 
-      <a href="banco-preguntas/index.html" class="quiz-card" style="border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);">
+      <a href="banco-preguntas/index.html" class="quiz-card banco-card" style="border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);">
         <div class="icon">📚</div>
         <h2 class="quiz-title">Banco de Preguntas</h2>
         <p class="quiz-desc">Lista completa de todas las preguntas con sus soluciones, ordenadas por temario.</p>

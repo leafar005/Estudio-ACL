@@ -275,6 +275,25 @@
       font-size: 1.2rem;
     }
     
+
+    body.light-theme {
+      --bg-primary: #f0f4f8;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f9fafb;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --border-subtle: rgba(0, 0, 0, 0.1);
+      --justification-bg: rgba(99, 102, 241, 0.05);
+    }
+
+    body.light-theme .option-item {
+      background: #f9fafb;
+    }
+    body.light-theme .category-title {
+      background: #e0e7ff;
+      color: #111827;
+    }
     @media (max-width: 600px) {
       .header {
         flex-direction: column;
@@ -283,7 +302,7 @@
       }
     }
   </style>
-  <style> .theme-toggle { display: none !important; } </style>
+  
 </head>
 <body>
   <a href="../index.html" class="back-to-portal">← Volver al portal</a>
@@ -327,6 +346,7 @@
         { name: "⚡ Calidad e ISO 9000", categories: CATEGORIES.slice(0, 7) },
         { name: "🏛️ CMMI Modelo + Eval.", categories: CATEGORIES.slice(7, 15) },
         { name: "📐 Otros Modelos + Medición", categories: CATEGORIES.slice(15, 23) },
+        { name: "⚙️ SGCS Práctica", categories: CATEGORIES.slice(32, 37) },
         { name: "📋 Auditorías Internas (PAI)", categories: CATEGORIES.slice(23, 32) }
       ];
 
@@ -391,7 +411,9 @@
             const card = document.createElement('div');
             card.className = 'question-card';
             
-            const typeLabel = q.type === 'multi' ? 'Múltiple' : 'V/F';
+            let typeLabel = q.type === 'multi' ? 'Múltiple' : 'V/F';
+            if (q.trap) typeLabel += ' ⚠️ Trampa';
+            if (q.isEnumeration) typeLabel += ' 📋 Enumeración';
             const typeClass = q.type === 'multi' ? 'badge-multi' : 'badge-vf';
             
             let optionsHtml = '';
