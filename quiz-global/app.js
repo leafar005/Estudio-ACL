@@ -135,8 +135,18 @@
 
       if (mode === 'random') {
         const urlParams = new URLSearchParams(window.location.search);
+        
+        const filterType = urlParams.get('type') || 'all';
+        if (filterType === 'enum') {
+          pool = pool.filter(q => q.isEnumeration);
+        } else if (filterType === 'def') {
+          pool = pool.filter(q => q.isDefinition);
+        } else if (filterType === 'rest') {
+          pool = pool.filter(q => !q.isEnumeration && !q.isDefinition);
+        }
+
         const numQuestions = parseInt(urlParams.get('num')) || 50;
-        pool = pool.slice(0, numQuestions);
+        pool = pool.slice(0, Math.min(numQuestions, pool.length));
       }
 
       state.questions = pool;
