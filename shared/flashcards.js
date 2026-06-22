@@ -193,3 +193,4 @@ document.addEventListener('DOMContentLoaded', () => {
   
   renderCard();
 });
+// Slider code is intact
