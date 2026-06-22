@@ -27,15 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (window.FlashcardsData && !topic) {
     cards = [];
     Object.keys(window.FlashcardsData).forEach(t => {
-      window.FlashcardsData[t].forEach(c => cards.push({ ...c, topic: t }));
+      let topicCards = window.FlashcardsData[t].map(c => ({ ...c, topic: t }));
+      cards = cards.concat(topicCards);
     });
     titleEl.textContent = 'Flashcards: Todos los temas';
   } else {
     cards = [{q: "Cargando flashcards o no hay disponibles para este tema...", a: ""}];
   }
   
-  // Shuffle cards only if it's the global flashcards view
-  if (!topic) {
+  if (topic) {
     cards = cards.sort(() => Math.random() - 0.5);
   }
   
@@ -50,6 +50,62 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnNext = document.getElementById('btn-next');
   
   totalEl.textContent = cards.length;
+  
+  const scrollbarWrapper = document.getElementById('scrollbar-wrapper');
+  const sliderEl = document.getElementById('card-slider');
+  const markersEl = document.getElementById('scrollbar-markers');
+  const labelsEl = document.getElementById('scrollbar-labels');
+
+  if (scrollbarWrapper && cards.length > 0) {
+    scrollbarWrapper.style.display = 'block';
+    sliderEl.max = cards.length - 1;
+    sliderEl.value = 0;
+    
+    sliderEl.addEventListener('input', (e) => {
+      currentIndex = parseInt(e.target.value);
+      renderCard();
+    });
+
+    if (!topic && Object.keys(window.FlashcardsData).length > 0) {
+      markersEl.style.display = 'flex';
+      labelsEl.style.display = 'block';
+      
+      const topicColors = {
+        'iso9000': '#ef4444',
+        'cmmi': '#3b82f6',
+        'otros-modelos': '#10b981',
+        'sgcs': '#f59e0b',
+        'pai': '#8b5cf6'
+      };
+      
+      let currentOffset = 0;
+      Object.keys(window.FlashcardsData).forEach(t => {
+        const count = window.FlashcardsData[t].length;
+        if(count === 0) return;
+        const percentage = (count / cards.length) * 100;
+        
+        const segment = document.createElement('div');
+        segment.style.width = `${percentage}%`;
+        segment.style.height = '100%';
+        segment.style.backgroundColor = topicColors[t] || 'var(--accent-primary)';
+        segment.title = titles[t] || t;
+        markersEl.appendChild(segment);
+        
+        const labelText = (titles[t] || t).split(' ')[0];
+        const label = document.createElement('div');
+        label.textContent = labelText;
+        label.style.position = 'absolute';
+        label.style.left = `${(currentOffset / cards.length) * 100}%`;
+        label.style.transform = currentOffset === 0 ? 'none' : 'translateX(-50%)';
+        labelsEl.appendChild(label);
+        
+        currentOffset += count;
+      });
+    } else {
+      labelsEl.style.display = 'none';
+      // markersEl acts as the grey track background, so we don't hide it
+    }
+  }
   
   function renderCard() {
     cardEl.classList.remove('flipped');
@@ -92,6 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
       btnNext.disabled = currentIndex === cards.length - 1;
       btnPrev.style.opacity = btnPrev.disabled ? '0.5' : '1';
       btnNext.style.opacity = btnNext.disabled ? '0.5' : '1';
+      
+      if (sliderEl) {
+        sliderEl.value = currentIndex;
+      }
     }, 150); // wait for flip animation to hide content if it was flipped
   }
   

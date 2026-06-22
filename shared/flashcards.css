@@ -325,3 +325,39 @@ body.light-theme .card-badges .topic-badge {
   color: #4f46e5;
   border-color: rgba(99, 102, 241, 0.2);
 }
+
+/* Custom Slider Styles */
+.custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  outline: none;
+}
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  border: 2px solid var(--accent-primary);
+  cursor: pointer;
+  margin-top: -5px;
+  box-shadow: 0 0 10px var(--accent-primary-glow);
+  transition: transform 0.1s;
+}
+.custom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+.custom-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 3px;
+}
+body.light-theme .custom-slider::-webkit-slider-runnable-track {
+  background: transparent;
+}
+

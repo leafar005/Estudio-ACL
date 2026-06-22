@@ -2027,6 +2027,41 @@ window.FlashcardsData = {
       "q": "¿Cuáles son los errores típicos al mapear procesos de auditoría en exámenes (Semana 10)?",
       "a": "Confundir aseguramiento con control, proponer auditorías sorpresa, copiar-pegar VF sobre AG sin ajustar el origen ni la reunión inicial, anotar NC sin evidencia objetiva, y trazar flechas entre acciones correctivas y preventivas.",
       "category": "conceptos"
+    },
+    {
+      "q": "¿Qué 3 características debe cumplir un trabajador para actuar como auditor interno 'en prácticas' (no 'sénior')?",
+      "a": "**1.** Ser independiente del trabajo que se va a auditar.\n\n**2.** Haber superado la formación teórica correspondiente (p.ej. un curso de auditor).\n\n**3.** Realizar la auditoría in situ acompañado y supervisado por un auditor sénior.",
+      "category": "roles"
+    },
+    {
+      "q": "Respecto al Aseguramiento de la Calidad (QA): i) Qué es, ii) A qué se orienta, iii) Qué perfil lo hace, iv) Un ejemplo en software.",
+      "a": "**i)** Son las actividades planificadas y sistemáticas implementadas en el SGC para dar confianza de que se cumplen los requisitos de calidad.\n\n**ii)** Se orienta al *Proceso* (evaluar cómo se hacen las cosas).\n\n**iii)** Lo realiza un perfil independiente, como QA o Auditor, no el propio desarrollador.\n\n**iv)** Ejemplo: Una auditoría o Verificación de Fase.",
+      "category": "qa-qc"
+    },
+    {
+      "q": "¿Cuáles son los 3 tipos de auditorías o evaluaciones CMMI existentes y sus propósitos?",
+      "a": "**1. Benchmark:** Evaluación rigurosa para obtener un nivel de madurez o capacidad válido por 3 años.\n\n**2. Sustainment:** Evaluación reducida para extender la validez de un Benchmark previo (+2 años).\n\n**3. Evaluation:** Evaluación informal y flexible para identificar áreas de mejora o deficiencias frente al modelo, sin otorgar un nivel oficial.",
+      "category": "evaluacion"
+    },
+    {
+      "q": "¿Qué 2 tipos de evidencias objetivas se analizan obligatoriamente en una auditoría CMMI (regla de oro)?",
+      "a": "**1. Afirmaciones (Affirmations):** Evidencia verbal o escrita obtenida a través de entrevistas al personal.\n\n**2. Artefactos (Artifacts):** Evidencia documental, registros o productos de trabajo generados durante la ejecución del proceso.",
+      "category": "evaluacion"
+    },
+    {
+      "q": "Indica 3 ejemplos de evidencias que presentarías como prueba para la PA de Solución Técnica (TS) en CMMI.",
+      "a": "**1.** Documento de Arquitectura y Diseño del Sistema.\n\n**2.** Matrices de decisión o estudios de alternativas técnicas.\n\n**3.** Código fuente desarrollado, diagramas UML o guías de instalación y usuario.",
+      "category": "pas"
+    },
+    {
+      "q": "En un proyecto bajo ISO 9001, ¿qué dos motivos fundamentan el levantamiento de una No Conformidad (NC) en una verificación de fase?",
+      "a": "**1.** No cumplir con lo establecido en el Sistema de Gestión de Calidad (SGC) de la empresa.\n\n**2.** Que dicha desviación no estuviese indicada, justificada y aprobada por anticipado en el plan de proyecto (como desviación concertada).",
+      "category": "nc"
+    },
+    {
+      "q": "Si en un proyecto bajo tu jefatura se detecta una no-conformidad en una verificación de fase, ¿cómo actuarías y qué responsabilidad tendrías?",
+      "a": "Actuaría acordando la NC con el auditor. Mi responsabilidad como Jefe de Proyecto sería **plantear una Acción Correctiva** para subsanar la causa raíz de la NC, asignar un responsable (yo mismo o alguien de mi equipo), establecer una fecha límite, y asegurarme de su correcta ejecución.",
+      "category": "roles"
     }
   ]
 };

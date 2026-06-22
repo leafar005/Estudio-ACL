@@ -29,6 +29,16 @@
     </header>
 
     <main class="quiz-body" style="display:flex; justify-content:center; align-items:center; height: calc(100vh - 80px); flex-direction: column; position: relative;">
+      
+      <div id="scrollbar-wrapper" style="width: 100%; max-width: 700px; margin-bottom: 20px; padding: 0 20px; box-sizing: border-box; display: none;">
+        <div id="scrollbar-labels" style="display: flex; width: 100%; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 5px; position: relative; height: 15px;"></div>
+        
+        <div style="position: relative; height: 16px; display: flex; align-items: center;">
+          <div id="scrollbar-markers" style="position: absolute; left: 0; right: 0; height: 6px; border-radius: 3px; overflow: hidden; background: var(--bg-option); display: flex;"></div>
+          <input type="range" id="card-slider" min="0" max="0" value="0" style="width: 100%; cursor: pointer; position: absolute; left: 0; right: 0; margin: 0; z-index: 2;" class="custom-slider">
+        </div>
+      </div>
+
       <div class="flashcard-container" id="flashcard">
         <div class="flashcard-inner">
           <div class="flashcard-front">

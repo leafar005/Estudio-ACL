@@ -6858,7 +6858,140 @@ let QUESTIONS = [
     correct: 2,
     justification: 'SwTQM (Software Total Quality Management) es un enfoque que aúna las mejores prácticas corporativas del modelo europeo EFQM con las técnicas de desarrollo de CMMI.',
     trap: false
+  },
+  // =============================================
+  // ===== NUEVAS PREGUNTAS (EXAMEN) =====
+  // =============================================
+  {
+    category: 'calidad',
+    type: 'vf',
+    question: 'Para establecer lo que se entiende por calidad en una empresa es suficiente con indicar los parámetros considerados desde el punto de vista escogido y que estos sean cuantificables y verificables.',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. Los parámetros, además de ser cuantificables y verificables, deben establecerse "por anticipado".',
+    trap: true
+  },
+  {
+    category: 'iso-estructura',
+    type: 'vf',
+    question: 'La norma UNE-EN ISO 9001:2015 exige que el Responsable de Calidad sea miembro de la Dirección de la empresa.',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. La versión 2015 eliminó la exigencia formal de un "representante de la dirección" que tuviera que ser miembro de la misma.',
+    trap: true
+  },
+  {
+    category: 'seccion7',
+    type: 'vf',
+    question: 'La norma ISO 90003 no aclara si el software gratuito (freeware/shareware) se considera o no producto adquirido a los efectos del apartado "7. Realización del producto. Compras".',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. La norma ISO 90003 SÍ aclara explícitamente que el software gratuito se considera producto adquirido y, por tanto, se le debe aplicar control de compras.',
+    trap: true
+  },
+  {
+    category: 'certificacion',
+    type: 'vf',
+    question: 'AENOR acredita en España la competencia técnica de una entidad para certificar.',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. Es ENAC (Entidad Nacional de Acreditación) quien acredita en España. AENOR certifica, pero no acredita.',
+    trap: true
+  },
+  {
+    category: 'estructura',
+    type: 'vf',
+    question: 'En CMMI 3.0, se definen los niveles de capacidad del 1 al 5 para todas las PAs del modelo.',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. No todas las Áreas de Práctica (PAs) llegan hasta el nivel de capacidad 5.',
+    trap: true
+  },
+  {
+    category: 'pas',
+    type: 'vf',
+    question: 'Las únicas PAs que son propias del dominio de Desarrollo en CMMI 3.0 son Solución Técnica (TS) e Integración del Producto (PI).',
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
+    justification: 'VERDADERO. Estas dos áreas son específicas del dominio "Development".',
+    trap: false
+  },
+  {
+    category: 'evaluacion',
+    type: 'vf',
+    question: 'El certificado CMMI resultante de una auditoría de certificación lo emite ISACA (actual propietario de CMMI).',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. CMMI no emite "certificados" formales como tal. Los resultados del Appraisal se publican en el sistema PARS, y es el Lead Appraiser quien firma el reporte.',
+    trap: true
+  },
+  {
+    category: 'metricas',
+    type: 'vf',
+    question: 'Un catálogo de métricas debe definir 3 categorías de métricas: Proyecto, Proceso y Producto.',
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
+    justification: 'VERDADERO. Estas son las tres categorías clásicas para clasificar las métricas en un catálogo.',
+    trap: false
+  },
+  {
+    category: 'metricas',
+    type: 'vf',
+    question: 'La norma ISO/IEC 25000 define un conjunto de métricas estándar para evaluar la calidad del producto software.',
+    options: ['Verdadero', 'Falso'],
+    correct: 0,
+    justification: 'VERDADERO. La familia SQuaRE (ISO 25000) define modelos y métricas para la calidad del producto y calidad en uso.',
+    trap: false
+  },
+  {
+    category: 'spice',
+    type: 'vf',
+    question: 'El modelo de calidad MMIS V2 es la evolución de SPICE aplicada específicamente al campo de la Ingeniería del Software.',
+    options: ['Verdadero', 'Falso'],
+    correct: 1,
+    justification: 'FALSO. La evolución de SPICE es la norma ISO/IEC 15504 (y posteriormente ISO/IEC 33000).',
+    trap: true
+  },
+  {
+    category: 'vf',
+    type: 'multi',
+    question: 'En un proyecto bajo norma ISO 9001, las verificaciones de fase se consideran:',
+    options: [
+      'Actividades de control de calidad, porque revisan los entregables.',
+      'Actividades de aseguramiento de calidad, porque evalúan el proceso seguido y no el producto en sí.',
+      'Actividades externas, porque las realiza un auditor de ENAC.',
+      'Actividades opcionales según el criterio del Jefe de Proyecto.'
+    ],
+    correct: 1,
+    justification: 'Las verificaciones de fase son actividades de aseguramiento de calidad porque evalúan si el proyecto está siguiendo los procedimientos del SGC planificados.',
+    trap: false
+  },
+  {
+    category: 'nc',
+    type: 'multi',
+    question: '¿Qué dos motivos fundamentan una No Conformidad (NC) en una verificación de fase?',
+    options: [
+      'No cumplir el SGC y que dicha desviación no esté indicada por anticipado en el plan de proyecto.',
+      'Falta de presupuesto y retraso en el cronograma.',
+      'Código con más de 10 defectos e incumplimiento de requisitos funcionales.',
+      'Que el cliente no esté satisfecho y que el software falle.'
+    ],
+    correct: 0,
+    justification: 'Se pone una NC cuando no se cumple un procedimiento del SGC y no se había declarado una "desviación concertada" previamente aprobada en el plan.',
+    trap: false
+  },
+  {
+    category: 'roles',
+    type: 'multi',
+    question: 'Si se detectase en un proyecto bajo su jefatura una no-conformidad en una verificación de fase, ¿cómo actuaría el Jefe de Proyecto?',
+    options: [
+      'Aceptaría la NC, propondría una Acción Correctiva, y sería el principal responsable de implementarla.',
+      'Rechazaría la NC y apelaría a Dirección.',
+      'Delegaría la NC al Responsable de Calidad.',
+      'Cancelarían la fase del proyecto inmediatamente.'
+    ],
+    correct: 0,
+    justification: 'El auditado (Jefe de Proyecto) debe acordar la NC, plantear una Acción Correctiva adecuada, fijar una fecha y asignarse (o a alguien de su equipo) la responsabilidad de ejecutarla.',
+    trap: false
   }
-
-
 ];
