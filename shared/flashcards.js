@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (window.FlashcardsData && !topic) {
     cards = [];
     Object.keys(window.FlashcardsData).forEach(t => {
-      let topicCards = window.FlashcardsData[t].map(c => ({ ...c, topic: t }));
-      cards = cards.concat(topicCards);
+      window.FlashcardsData[t].forEach(c => cards.push({ ...c, topic: t }));
     });
     titleEl.textContent = 'Flashcards: Todos los temas';
   } else {

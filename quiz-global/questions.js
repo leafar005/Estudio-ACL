@@ -4253,20 +4253,6 @@ let QUESTIONS = [
   {
     category: 'vf',
     type: 'multi',
-    question: '¿Cuántas verificaciones de fase establece YOMALUSAKE por proyecto?',
-    options: [
-      '1 verificación al final del proyecto.',
-      '2 verificaciones de fase.',
-      '13 verificaciones (una por cada fase).',
-      '4 verificaciones de fase.'
-    ],
-    correct: 3,
-    justification: 'YOMALUSAKE establece 4 verificaciones de fase por proyecto: VF-1 (Requisitos), VF-2 (Tras pruebas unitarias), VF-3 (Tras pruebas de sistema), VF-4 (Cierre del proyecto).',
-    trap: false
-  },
-  {
-    category: 'vf',
-    type: 'multi',
     question: '¿En qué momento se realiza la VF-1?',
     options: [
       'Tras las pruebas de sistema.',
