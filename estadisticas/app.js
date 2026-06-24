@@ -1,169 +1,155 @@
-function initEstadisticas() {
-  if (!window.QuizStats) {
-    setTimeout(initEstadisticas, 50);
-    return;
-  }
-  setTimeout(renderPage, 0);
+/**
+ * Estadísticas App — Estudio ACL
+ */
+(function() {
+  'use strict';
 
-  // Tabs logic
-  const tabs = document.querySelectorAll('.tab-btn');
-  const contents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Update buttons
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      
-      // Update content
-      contents.forEach(c => c.classList.remove('active'));
-      document.getElementById(tab.dataset.target).classList.add('active');
-      
-      // Update URL silently
-      window.history.replaceState({}, '', '?tab=' + tab.dataset.target);
-    });
-  });
-
-  // Check URL params
-  const params = new URLSearchParams(window.location.search);
-  const requestedTab = params.get('tab');
-  if (requestedTab) {
-    const targetBtn = document.querySelector(`.tab-btn[data-target="${requestedTab}"]`);
-    if (targetBtn) targetBtn.click();
-  }
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initEstadisticas);
-} else {
-  initEstadisticas();
-}
-
-
-
-function formatDate(ms) {
-  const d = new Date(ms);
-  return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-}
-
-function formatTime(secs) {
-  if (secs < 60) return secs + 's';
-  const m = Math.floor(secs / 60);
-  const s = secs % 60;
-  return m + 'm ' + s + 's';
-}
-
-function renderPage() {
-  const stats = window.QuizStats;
-  if (!stats) return;
-
-  const data = stats.data;
-
-  // Render Tests
-  const testsList = document.getElementById('tests-list');
-  if (data.historyQuizzes && data.historyQuizzes.length > 0) {
-    testsList.innerHTML = data.historyQuizzes.map(q => `
-      <div class="history-card" style="flex-direction: column; align-items: stretch; gap: 10px;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div class="history-info">
-            <span class="history-title">${q.quizName || 'Simulacro'} • <span style="font-size: 0.85em; color: var(--text-secondary);">${q.topic.toUpperCase()}</span></span>
-            <span class="history-date">${formatDate(q.date)} • ⏱️ ${formatTime(q.elapsed)}</span>
-            <span class="history-date" style="margin-top: 5px;">Aciertos: <span style="color:var(--correct)">${q.correct}</span> / ${q.total}</span>
-          </div>
-          <div class="history-stats">
-            <div class="history-pct">${q.pct}%</div>
-          </div>
-        </div>
-        ${q.questions && q.questions.length > 0 ? `
-        <details class="history-details" style="margin-top: 10px; font-size: 0.9rem;">
-          <summary style="cursor: pointer; color: var(--accent); font-weight: 600; padding: 5px 0;">Ver preguntas del test</summary>
-          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;">
-            ${q.questions.map(question => `
-              <div style="padding: 10px; background: rgba(0,0,0,0.1); border-radius: 8px; border-left: 2px solid ${question.isCorrect ? 'var(--correct)' : 'var(--wrong)'};">
-                <div style="display: flex; justify-content: space-between; gap: 10px; margin-bottom: 5px;">
-                  <span style="font-weight: 600;">${question.text || 'Pregunta desconocida'}</span>
-                  <span>${question.isCorrect ? '✅' : '❌'}</span>
-                </div>
-                ${question.justification ? `
-                  <div style="margin-top: 8px; font-size: 0.85rem; padding-top: 8px; border-top: 1px solid var(--border-subtle);">
-                    <div style="margin-bottom: 4px;"><strong>Respuesta correcta:</strong> ${question.correctAnswer || 'No disponible'}</div>
-                    <div style="color: var(--text-secondary); line-height: 1.4;">${question.justification}</div>
-                  </div>
-                ` : ''}
-              </div>
-            `).join('')}
-          </div>
-        </details>
-        ` : ''}
-      </div>
-    `).join('');
-  } else {
-    testsList.innerHTML = '<div class="empty-state">No has completado ningún simulacro todavía.</div>';
-  }
-
-  // Render Preguntas
-  const pregList = document.getElementById('preguntas-list');
-  if (data.historyQuestions && data.historyQuestions.length > 0) {
-    pregList.innerHTML = data.historyQuestions.map((q, idx) => `
-      <div class="history-card ${q.isCorrect ? 'correct-border' : 'wrong-border'}" style="flex-direction: column; align-items: stretch; gap: 10px;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-          <div class="history-info">
-            <span class="history-date">${formatDate(q.date)} • ${q.topic.toUpperCase()}</span>
-            <span class="history-title" style="font-size: 0.95rem; margin-top: 5px;">${q.text || 'Pregunta desconocida'}</span>
-          </div>
-          <div class="history-stats">
-            <span style="font-size: 1.5rem;">${q.isCorrect ? '✅' : '❌'}</span>
-          </div>
-        </div>
-        ${q.justification ? `
-        <details class="history-details" style="margin-top: 10px; font-size: 0.9rem;">
-          <summary style="cursor: pointer; color: var(--accent); font-weight: 600; padding: 5px 0;">Ver respuesta y justificación</summary>
-          <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.1); border-radius: 8px; border-left: 2px solid ${q.isCorrect ? 'var(--correct)' : 'var(--wrong)'};">
-            <div style="margin-bottom: 8px;"><strong>Respuesta correcta:</strong> ${q.correctAnswer || 'No disponible'}</div>
-            <div style="color: var(--text-secondary); line-height: 1.5;">${q.justification}</div>
-          </div>
-        </details>
-        ` : ''}
-      </div>
-    `).join('');
-  } else {
-    pregList.innerHTML = '<div class="empty-state">No has contestado ninguna pregunta todavía.</div>';
-  }
-
-  // Render Logros
-  const logrosList = document.getElementById('logros-list');
-  const allAch = Object.values(stats.ACHIEVEMENTS);
-  logrosList.innerHTML = allAch.map(a => {
-    const isUnlocked = data.achievements.includes(a.id);
-    return `
-      <div class="ach-card ${isUnlocked ? '' : 'locked'}">
-        <div class="ach-icon">${a.icon}</div>
-        <div class="ach-title">${a.title}</div>
-        <div class="ach-desc">${isUnlocked ? a.desc : '???'}</div>
-        ${isUnlocked ? '<div style="margin-top:10px;font-size:0.8rem;color:var(--correct)">Desbloqueado</div>' : ''}
-      </div>
-    `;
-  }).join('');
-  
-  // Add Reset Stats Button at the end of the container if it doesn't exist
-  if (!document.getElementById('reset-stats-container')) {
-    const container = document.querySelector('.container');
-    const resetHtml = `
-      <div id="reset-stats-container" style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-subtle);">
-        <button id="reset-stats-btn" style="background: transparent; border: 1px solid var(--wrong); color: var(--wrong); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s;">
-          ⚠️ Reiniciar todas las estadísticas
-        </button>
-      </div>
-    `;
-    container.insertAdjacentHTML('beforeend', resetHtml);
+  function init() {
+    window.QuizStats.load();
     
-    document.getElementById('reset-stats-btn').addEventListener('click', () => {
-      if (confirm('¿Estás totalmente seguro de que quieres borrar todos tus tests, historial y logros conseguidos? Esta acción no se puede deshacer.')) {
-        if (window.QuizStats) {
-          window.QuizStats.reset();
-          location.reload();
-        }
-      }
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+    if (tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      const targetBtn = document.querySelector(`.tab-btn[data-target="${tab}"]`);
+      const targetContent = document.getElementById(tab);
+      if (targetBtn) targetBtn.classList.add('active');
+      if (targetContent) targetContent.classList.add('active');
+    }
+
+    renderTests();
+    renderPreguntas();
+    renderLogros();
+    bindTabs();
+    bindReset();
+  }
+
+  function renderTests() {
+    const container = document.getElementById('tests-list');
+    const quizzes = window.QuizStats.data.historyQuizzes || [];
+    
+    if (quizzes.length === 0) {
+      container.innerHTML = '<p class="empty-state">Aún no has completado ningún simulacro. ¡Empieza uno!</p>';
+      return;
+    }
+
+    container.innerHTML = '';
+    quizzes.forEach(quiz => {
+      const date = new Date(quiz.date);
+      const dateStr = date.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+      const borderClass = quiz.pct >= 50 ? 'correct-border' : 'wrong-border';
+      
+      const card = document.createElement('div');
+      card.className = `history-card ${borderClass}`;
+      card.innerHTML = `
+        <div class="history-info">
+          <span class="history-date">${dateStr}</span>
+          <span class="history-title">${quiz.quizName || 'Simulacro'}</span>
+          <span style="font-size: 0.85rem; color: var(--text-secondary);">${quiz.correct || 0}/${quiz.total || 0} correctas · ${formatTime(quiz.elapsed || 0)}</span>
+        </div>
+        <div class="history-stats">
+          <div class="history-pct">${quiz.pct}%</div>
+        </div>
+      `;
+      container.appendChild(card);
     });
   }
-}
+
+  function renderPreguntas() {
+    const container = document.getElementById('preguntas-list');
+    const questions = window.QuizStats.data.historyQuestions || [];
+    
+    if (questions.length === 0) {
+      container.innerHTML = '<p class="empty-state">Aún no has respondido ninguna pregunta.</p>';
+      return;
+    }
+
+    container.innerHTML = '';
+    questions.forEach(q => {
+      const date = new Date(q.date);
+      const dateStr = date.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+      const borderClass = q.isCorrect ? 'correct-border' : 'wrong-border';
+      
+      const card = document.createElement('div');
+      card.className = `history-card ${borderClass}`;
+      card.style.cursor = 'pointer';
+      card.innerHTML = `
+        <div class="history-info" style="flex: 1;">
+          <span class="history-date">${dateStr} · ${q.topic || 'general'}</span>
+          <span class="history-title" style="font-size: 0.95rem;">${q.isCorrect ? '✅' : '❌'} ${q.text || 'Pregunta'}</span>
+          <div class="question-detail" style="display:none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08);">
+            ${q.correctAnswer ? `<p style="font-size: 0.85rem; color: #10b981; margin-bottom: 4px;">✅ ${q.correctAnswer}</p>` : ''}
+            ${q.justification ? `<p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">${q.justification}</p>` : ''}
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', () => {
+        const detail = card.querySelector('.question-detail');
+        detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+      });
+      container.appendChild(card);
+    });
+  }
+
+  function renderLogros() {
+    const container = document.getElementById('logros-list');
+    const unlocked = window.QuizStats.data.achievements || [];
+    const allAchievements = window.QuizStats.ACHIEVEMENTS;
+    
+    container.innerHTML = '';
+    Object.values(allAchievements).forEach(ach => {
+      const isUnlocked = unlocked.includes(ach.id);
+      const card = document.createElement('div');
+      card.className = `ach-card ${isUnlocked ? '' : 'locked'}`;
+      card.innerHTML = `
+        <div class="ach-icon">${ach.icon}</div>
+        <div class="ach-title">${ach.title}</div>
+        <div class="ach-desc">${ach.desc}</div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function bindTabs() {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById(btn.dataset.target);
+        if (target) target.classList.add('active');
+      });
+    });
+  }
+
+  function bindReset() {
+    document.getElementById('btn-reset').addEventListener('click', () => {
+      window.showCustomModal({
+        title: '¿Resetear estadísticas?',
+        desc: 'Se borrarán todos los datos: historial de tests, preguntas y logros. Esta acción no se puede deshacer.',
+        buttons: [
+          {
+            text: 'Sí, borrar todo',
+            style: 'danger',
+            action: () => {
+              window.QuizStats.reset();
+              renderTests();
+              renderPreguntas();
+              renderLogros();
+            }
+          },
+          { text: 'Cancelar', style: 'secondary' }
+        ]
+      });
+    });
+  }
+
+  function formatTime(totalSeconds) {
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();

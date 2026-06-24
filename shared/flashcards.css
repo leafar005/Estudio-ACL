@@ -103,7 +103,7 @@ body {
   position: relative;
   width: 100%;
   max-width: 700px;
-  height: 450px;
+  height: 380px;
   margin-bottom: 30px;
   perspective: 1500px;
   display: flex;
@@ -134,7 +134,7 @@ body {
 
 .flashcard-container.card-prev {
   opacity: 0.4;
-  transform: translateX(-30%) scale(0.85) rotateY(5deg);
+  transform: translateX(-95%) scale(0.8) rotateY(5deg);
   pointer-events: auto;
   z-index: 2;
   filter: brightness(0.5);
@@ -142,7 +142,7 @@ body {
 
 .flashcard-container.card-next {
   opacity: 0.4;
-  transform: translateX(30%) scale(0.85) rotateY(-5deg);
+  transform: translateX(95%) scale(0.8) rotateY(-5deg);
   pointer-events: auto;
   z-index: 2;
   filter: brightness(0.5);
@@ -242,8 +242,8 @@ body {
 }
 
 .flashcard-controls {
-  position: absolute;
-  bottom: 30px;
+  position: relative;
+  margin-top: 20px;
   display: flex;
   gap: 20px;
   width: 100%;
@@ -322,12 +322,15 @@ button:disabled {
   .flashcard-container {
     padding: 0 10px;
   }
-  .flashcard-container.card-prev {
-    transform: translateX(-15%) scale(0.85);
-  }
+
+  .flashcard-container.card-prev,
   .flashcard-container.card-next {
-    transform: translateX(15%) scale(0.85);
-  }
+  opacity: 0.4;
+  transform: translateX(95%) scale(0.8) rotateY(-5deg);
+  pointer-events: auto;
+  z-index: 2;
+  filter: brightness(0.5);
+}
   .flashcard-front, .flashcard-back {
     padding: 15px 15px 30px 15px;
   }
@@ -391,17 +394,7 @@ button:disabled {
   border-color: rgba(99, 102, 241, 0.3);
 }
 
-body.light-theme .card-badges .badge {
-  background: rgba(0,0,0,0.05);
-  border-color: rgba(0,0,0,0.1);
-  color: #6b7280;
-}
 
-body.light-theme .card-badges .topic-badge {
-  background: rgba(99, 102, 241, 0.1);
-  color: #4f46e5;
-  border-color: rgba(99, 102, 241, 0.2);
-}
 
 /* Custom Slider Styles */
 .custom-slider {
@@ -414,13 +407,13 @@ body.light-theme .card-badges .topic-badge {
 .custom-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
   border-radius: 50%;
   background: var(--text-primary);
   border: 2px solid var(--accent-primary);
   cursor: pointer;
-  margin-top: -5px;
+  margin-top: -2px;
   box-shadow: 0 0 10px var(--accent-primary-glow);
   transition: transform 0.1s;
 }
@@ -434,7 +427,43 @@ body.light-theme .card-badges .topic-badge {
   background: transparent;
   border-radius: 3px;
 }
-body.light-theme .custom-slider::-webkit-slider-runnable-track {
-  background: transparent;
+
+
+
+.flashcard-container.card-hidden-left {
+  opacity: 0;
+  transform: translateX(-150%) scale(0.8);
+  pointer-events: none;
+  z-index: 1;
 }
 
+.flashcard-container.card-hidden-right {
+  opacity: 0;
+  transform: translateX(150%) scale(0.8);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Fix backface visibility issues due to transparency */
+/* Using a very fast crossfade right at the edge-on angle (0.25s - 0.35s) to prevent the blank frame flicker */
+.flashcard-back {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.1s 0.25s, visibility 0s 0.35s !important;
+}
+.flashcard-container.flipped .flashcard-back {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.1s 0.25s, visibility 0s 0s !important;
+}
+
+.flashcard-front {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.1s 0.25s, visibility 0s 0s !important;
+}
+.flashcard-container.flipped .flashcard-front {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.1s 0.25s, visibility 0s 0.35s !important;
+}

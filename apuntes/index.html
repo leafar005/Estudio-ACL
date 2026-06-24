@@ -98,7 +98,6 @@
     
     <button id="toggle-sidebar" class="toggle-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      Mostrar / Ocultar Índice
     </button>
     
     <div class="content-container">
@@ -109,7 +108,7 @@
       </div>
 
       <!-- TEMA 1: Calidad e ISO 9000 -->
-      <section class="theme-section">
+      <section class="theme-section" data-category="iso9000">
         <h2 class="theme-title" id="t-01" style="border-bottom-color: var(--c-iso); color: var(--c-iso);">1. Calidad del Software, QA vs QC y V&V</h2>
         
         <h3 class="subtheme-title" id="st-1-1">1. Definiciones Canónicas de Calidad</h3>
@@ -215,7 +214,7 @@
       </section>
 
       <!-- TEMA 2: ISO -->
-      <section class="theme-section">
+      <section class="theme-section" data-category="iso9000">
         <h2 class="theme-title" id="t-02" style="border-bottom-color: var(--c-iso); color: var(--c-iso);">2. Familia ISO 9000 y Norma ISO 9001</h2>
 
         <h3 class="subtheme-title" id="st-2-1">1. La Familia ISO 9000</h3>
@@ -270,7 +269,7 @@
       </section>
 
       <!-- TEMA 3: CERTIFICACIÓN -->
-      <section class="theme-section">
+      <section class="theme-section" data-category="iso9000">
         <h2 class="theme-title" id="t-03" style="border-bottom-color: #fb923c; color: #fb923c;">3. Certificación y Auditorías</h2>
         
         <h3 class="subtheme-title" id="st-3-1">1. Entidades de Certificación</h3>
@@ -316,7 +315,7 @@
       </section>
 
       <!-- TEMA 4: CMMI -->
-      <section class="theme-section">
+      <section class="theme-section" data-category="cmmi">
         <h2 class="theme-title" id="t-04" style="border-bottom-color: var(--c-cmmi); color: var(--c-cmmi);">4. Modelo CMMI (Madurez y Prácticas)</h2>
 
         <h3 class="subtheme-title" id="st-4-1">1. Paradigma CMMI y Dominios (v3.0)</h3>
@@ -392,7 +391,7 @@
       </section>
 
       <!-- TEMA 5: SCAMPI -->
-      <section class="theme-section">
+      <section class="theme-section" data-category="cmmi">
         <h2 class="theme-title" id="t-05" style="border-bottom-color: #d946ef; color: #d946ef;">5. Evaluación CMMI (SCAMPI)</h2>
 
         <h3 class="subtheme-title" id="st-5-1">1. Tipos de Appraisals y Fases</h3>
@@ -461,7 +460,7 @@
       </section>
 
       <!-- TEMA 6: OTROS Y MÉTRICAS -->
-      <section class="theme-section">
+      <section class="theme-section" data-category="otros-modelos">
         <h2 class="theme-title" id="t-06" style="border-bottom-color: var(--c-otros); color: var(--c-otros);">6. Otros Modelos y Medición</h2>
 
         <h3 class="subtheme-title" id="st-6-1">1. Modelos Secundarios</h3>
@@ -514,7 +513,7 @@
       </section>
 
       <!-- TEMA 7: SGCS -->
-      <section class="theme-section">
+      <section class="theme-section" data-category="sgcs">
         <h2 class="theme-title" id="t-07" style="border-bottom-color: var(--c-sgcs); color: var(--c-sgcs);">7. SGCS y Práctica Operativa</h2>
 
         <h3 class="subtheme-title" id="st-7-1">1. Jerarquía Documental</h3>
@@ -552,7 +551,7 @@
       </section>
 
       <!-- TEMA 8: AUDITORIAS INTERNAS -->
-      <section class="theme-section">
+      <section class="theme-section" data-category="pai">
         <h2 class="theme-title" id="t-08" style="border-bottom-color: var(--c-pai); color: var(--c-pai);">8. Auditorías Internas</h2>
 
         <h3 class="subtheme-title" id="st-8-1">1. VF vs AG (Nunca por sorpresa)</h3>
@@ -608,6 +607,19 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetCategory = urlParams.get('category');
+      
+      if (targetCategory && targetCategory !== 'global') {
+        document.querySelectorAll('.theme-section').forEach(section => {
+          section.style.display = 'none';
+        });
+        
+        document.querySelectorAll('.theme-section[data-category="' + targetCategory + '"]').forEach(targetSection => {
+          targetSection.style.display = 'block';
+        });
+      }
+
       const toggleBtn = document.getElementById("toggle-sidebar");
       const sidebar = document.getElementById("sidebar");
       toggleBtn.addEventListener("click", () => {
@@ -615,7 +627,11 @@
       });
 
       const navLinksContainer = document.getElementById("nav-links");
-      const headings = document.querySelectorAll("#main-content h2.theme-title, #main-content h3.subtheme-title");
+      let headings = Array.from(document.querySelectorAll("#main-content h2.theme-title, #main-content h3.subtheme-title"));
+      headings = headings.filter(h => {
+        const sec = h.closest('.theme-section');
+        return sec && sec.style.display !== 'none';
+      });
       
       headings.forEach((heading) => {
         const link = document.createElement("a");

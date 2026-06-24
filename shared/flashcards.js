@@ -4,11 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const titleEl = document.getElementById('topic-title');
   const titles = {
-    'iso9000': 'Calidad e ISO 9000',
-    'cmmi': 'CMMI Modelo + Evaluación',
-    'otros-modelos': 'Otros Modelos + Medición',
-    'sgcs': 'SGCS Práctica',
-    'pai': 'Auditorías Internas'
+    'catalogo': 'Catálogo',
+    'vistas': 'Vistas',
+    'integridade': 'Integridad',
+    'seguridade': 'Seguridad',
+    'activas': 'Triggers',
+    'oorm': 'Diseño Físico / OORM',
+    'optimizacion': 'Optimización',
+    'recuperacion': 'Recuperación',
+    'concurrencia': 'Concurrencia'
   };
   if(topic && titles[topic]) {
     titleEl.textContent = `Flashcards: ${titles[topic]}`;
@@ -27,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (window.FlashcardsData && !topic) {
     cards = [];
     Object.keys(window.FlashcardsData).forEach(t => {
-      window.FlashcardsData[t].forEach(c => cards.push({ ...c, topic: t }));
+      let topicCards = window.FlashcardsData[t].map(c => ({ ...c, topic: t }));
+      cards = cards.concat(topicCards);
     });
     titleEl.textContent = 'Flashcards: Todos los temas';
   } else {
@@ -68,11 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
       labelsEl.style.display = 'block';
       
       const topicColors = {
-        'iso9000': '#ef4444',
-        'cmmi': '#3b82f6',
-        'otros-modelos': '#10b981',
-        'sgcs': '#f59e0b',
-        'pai': '#8b5cf6'
+        'catalogo': '#3b82f6',
+        'vistas': '#8b5cf6',
+        'integridade': '#10b981',
+        'seguridade': '#ef4444',
+        'activas': '#f59e0b',
+        'oorm': '#6366f1',
+        'optimizacion': '#ec4899',
+        'recuperacion': '#14b8a6',
+        'concurrencia': '#f97316'
       };
       
       let currentOffset = 0;
@@ -93,7 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
         label.textContent = labelText;
         label.style.position = 'absolute';
         label.style.left = `${(currentOffset / cards.length) * 100}%`;
-        label.style.transform = currentOffset === 0 ? 'none' : 'translateX(-50%)';
+        label.style.transform = 'rotate(-35deg)';
+        label.style.transformOrigin = 'left bottom';
+        label.style.bottom = '0px';
+        label.style.whiteSpace = 'nowrap';
         labelsEl.appendChild(label);
         
         currentOffset += count;
@@ -160,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateCards() {
     const allCards = document.querySelectorAll('.flashcard-container');
     allCards.forEach((el, index) => {
-      el.classList.remove('card-active', 'card-prev', 'card-next');
+      el.classList.remove('card-active', 'card-prev', 'card-next', 'card-hidden-left', 'card-hidden-right');
       
       if (index === currentIndex) {
         el.classList.add('card-active');
@@ -170,7 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (index === currentIndex + 1) {
         el.classList.add('card-next');
         el.classList.remove('flipped');
+      } else if (index < currentIndex - 1) {
+        el.classList.add('card-hidden-left');
+        el.classList.remove('flipped');
       } else {
+        el.classList.add('card-hidden-right');
         el.classList.remove('flipped');
       }
     });

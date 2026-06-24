@@ -3,556 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banco de Preguntas | ACL 2026</title>
+  <title>Banco de Preguntas | Estudio ACL</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../shared/shared.css">
   <script src="../shared/shared.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
       --bg-primary: #0a0e1a;
       --bg-secondary: #111827;
       --bg-card: #1a1f35;
-      --bg-card-hover: #1e243d;
       --text-primary: #f3f4f6;
       --text-secondary: #9ca3af;
-      --accent: #6366f1;
-      --accent-hover: #4f46e5;
-      --correct: #10b981;
-      --correct-bg: rgba(16, 185, 129, 0.1);
-      --incorrect: #ef4444;
-      --justification-bg: rgba(99, 102, 241, 0.1);
+      --text-tertiary: #64748b;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59,130,246,0.15);
       --radius-md: 12px;
       --radius-lg: 16px;
       --border-subtle: rgba(255, 255, 255, 0.08);
+      --correct: #10b981;
+      --wrong: #ef4444;
     }
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
-      min-height: 100vh;
-      background-image: 
-        radial-gradient(circle at 15% 0%, rgba(99, 102, 241, 0.08), transparent 30%),
-        radial-gradient(circle at 85% 100%, rgba(167, 139, 250, 0.08), transparent 30%);
-      background-attachment: fixed;
     }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin: 0;
-      background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .back-to-portal {
-      position: fixed;
-      top: 30px;
-      left: 30px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 8px 16px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border-subtle);
-      transition: all 0.2s;
+    .top-bar {
+      position: sticky; top: 0;
+      background: rgba(17, 24, 39, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 15px 40px;
+      display: flex; justify-content: space-between; align-items: center;
       z-index: 100;
-    }
-    .back-to-portal:hover {
-      background: rgba(255,255,255,0.1);
-      color: var(--text-primary);
-      transform: translateX(-3px);
-    }
-    
-    .category-section {
-      margin-bottom: 60px;
-    }
-    .category-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #e5e7eb;
-      padding: 10px 20px;
-      background: rgba(255,255,255,0.03);
-      border-radius: var(--radius-md);
-      border-left: 4px solid var(--accent);
-    }
-    
-    .question-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .question-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 16px;
-      gap: 15px;
-    }
-    .question-text {
-      font-size: 1.1rem;
-      font-weight: 600;
-      line-height: 1.5;
-      margin: 0;
-    }
-    .question-type-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-    .badge-multi { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
-    .badge-vf { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
-    
-    .options-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 20px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .option-item {
-      padding: 12px 16px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      background: rgba(0,0,0,0.2);
-      font-size: 0.95rem;
-      line-height: 1.4;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .option-item.correct {
-      background: var(--correct-bg);
-      border-color: rgba(16, 185, 129, 0.3);
-      color: #fff;
-    }
-    .option-icon {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 0.7rem;
-    }
-    .option-item.correct .option-icon {
-      background: var(--correct);
-      color: #000;
-    }
-    .option-item.incorrect .option-icon {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-subtle);
-      color: transparent;
-    }
-    
-    .justification {
-      background: var(--justification-bg);
-      border-left: 3px solid var(--accent);
-      padding: 16px;
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #d1d5db;
-      display: flex;
-      gap: 12px;
-    }
-    .justification-icon {
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    
-    .toc {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      margin-bottom: 40px;
-    }
-    .toc h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-size: 1.1rem;
-      color: var(--text-primary);
-    }
-    .toc-module-group {
-      margin-bottom: 24px;
-      padding-bottom: 20px;
       border-bottom: 1px solid var(--border-subtle);
     }
-    .toc-module-group:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
+    .back-btn { display: flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; background: var(--bg-card); padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border-subtle); transition: all 0.2s; }
+    .back-btn:hover { background: var(--accent); border-color: var(--accent); }
+    .container {
+      max-width: 900px; margin: 0 auto; padding: 30px 20px;
     }
-    .toc-module-title {
-      font-size: 1.05rem;
-      color: var(--accent);
-      margin-top: 0;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-    .module-title {
-      font-size: 2rem;
-      font-weight: 800;
-      margin: 60px 0 30px 0;
-      padding-bottom: 15px;
-      border-bottom: 2px solid var(--accent);
-      color: #fff;
-    }
-    .toc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 12px;
-    }
-    .toc-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-      display: flex;
+    /* Filters */
+    .filters {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 24px;
       align-items: center;
-      gap: 8px;
-      transition: color 0.2s;
     }
-    .toc-link:hover {
-      color: var(--accent);
+    .filter-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
     }
-    
-    .search-container {
-      margin-bottom: 30px;
-      position: relative;
+    .filter-select option {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
     }
     .search-input {
-      width: 100%;
-      padding: 16px 20px 16px 50px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
+      flex: 1;
+      min-width: 200px;
       background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       color: var(--text-primary);
-      font-size: 1.05rem;
+      padding: 10px 16px;
+      border-radius: 8px;
       font-family: inherit;
-      box-sizing: border-box;
-      transition: all 0.2s;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
     }
     .search-input:focus {
-      outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
     }
-    .search-icon {
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
+    .search-input::placeholder {
+      color: var(--text-tertiary);
+    }
+    .count-badge {
+      font-size: 0.85rem;
       color: var(--text-secondary);
-      font-size: 1.2rem;
+      font-weight: 500;
     }
-    
+    /* Question cards */
+    .question-card-banco {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .question-card-banco:hover {
+      border-color: rgba(59,130,246,0.3);
+      transform: translateX(4px);
+    }
+    .qcb-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .qcb-num {
+      font-size: 0.75rem; color: var(--text-tertiary);
+      font-weight: 600; font-family: monospace;
+    }
+    .qcb-category {
+      font-size: 0.72rem; padding: 3px 10px;
+      border-radius: 50px;
+      background: var(--accent-soft);
+      color: #93c5fd;
+      font-weight: 600;
+    }
+    .qcb-type {
+      font-size: 0.72rem; padding: 3px 10px;
+      border-radius: 50px;
+      background: rgba(245,158,11,0.12);
+      color: #f59e0b;
+      font-weight: 600;
+    }
+    .qcb-trap {
+      font-size: 0.72rem; padding: 3px 10px;
+      border-radius: 50px;
+      background: rgba(239,68,68,0.12);
+      color: #ef4444;
+      font-weight: 600;
+    }
+    .qcb-text {
+      font-size: 0.95rem; line-height: 1.5;
+      color: var(--text-primary);
+    }
+    .qcb-detail {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .question-card-banco.expanded .qcb-detail {
+      display: block;
+    }
+    .qcb-options {
+      display: flex; flex-direction: column; gap: 6px;
+      margin-bottom: 12px;
+    }
+    .qcb-option {
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .qcb-option.correct {
+      background: rgba(16,185,129,0.08);
+      border-color: rgba(16,185,129,0.3);
+      color: var(--correct);
+    }
+    .qcb-option-letter {
+      font-weight: 700;
+      font-size: 0.8rem;
+      min-width: 24px;
+    }
+    .qcb-justification {
+      padding: 14px 16px;
+      background: rgba(59,130,246,0.06);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .qcb-text table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85rem; }
+    .qcb-text th { background: rgba(255,255,255,0.05); padding: 8px; text-align: left; border: 1px solid var(--border-subtle); font-weight: 600; }
+    .qcb-text td { padding: 8px; border: 1px solid var(--border-subtle); }
+    .qcb-text pre { background: rgba(0,0,0,0.3); padding: 12px; border-radius: 6px; border: 1px solid var(--border-subtle); overflow-x: auto; margin: 12px 0; }
+    .qcb-text code { font-family: monospace; background: rgba(0,0,0,0.2); padding: 2px 4px; border-radius: 4px; color: #93c5fd; }
+    .qcb-text p { margin-bottom: 8px; }
+    .qcb-text p:last-child { margin-bottom: 0; }
 
-    body.light-theme {
-      --bg-primary: #f0f4f8;
-      --bg-secondary: #ffffff;
-      --bg-card: #ffffff;
-      --bg-card-hover: #f9fafb;
-      --text-primary: #111827;
-      --text-secondary: #4b5563;
-      --border-subtle: rgba(0, 0, 0, 0.1);
-      --justification-bg: rgba(99, 102, 241, 0.05);
-    }
-
-    body.light-theme .option-item {
-      background: #f9fafb;
-    }
-    body.light-theme .category-title {
-      background: #e0e7ff;
-      color: #111827;
-    }
     @media (max-width: 600px) {
-      .header {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-      }
+      .top-bar { padding: 15px 20px; }
+      .filters { flex-direction: column; }
+      .search-input { min-width: unset; width: 100%; }
+      .question-card-banco { padding: 16px 18px; }
     }
   </style>
-  
 </head>
 <body>
-  <a href="../index.html" class="back-to-portal">← Volver al portal</a>
-  <div class="container">
-    <div class="header" style="justify-content: center;">
-      <h1>Banco de Preguntas</h1>
-    </div>
-
-    <div class="search-container">
-      <div class="search-icon">🔍</div>
-      <input type="text" id="search-input" class="search-input" placeholder="Buscar por palabra clave en la pregunta, opciones o justificación...">
-    </div>
-
-    <div id="toc-container" class="toc">
-      <h3>Temario</h3>
-      <!-- Modules will be inserted here -->
-    </div>
-
-    <div id="content">
-      <!-- Generated via JS -->
-    </div>
+  <div class="top-bar">
+    <a href="../index.html" class="back-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Volver al Portal
+    </a>
+    <h2 style="margin:0; font-size: 1.2rem;">Banco de Preguntas</h2>
+    <div style="width: 100px;"></div>
   </div>
 
-  <script src="../quiz-global/questions.js"></script>
+  <div class="container">
+    <div class="filters">
+      <select class="filter-select" id="filter-category">
+        <option value="all">Todos los temas</option>
+      </select>
+      <select class="filter-select" id="filter-type">
+        <option value="all">Todos los tipos</option>
+        <option value="multi">Opción múltiple</option>
+        <option value="vf">Verdadero / Falso</option>
+      </select>
+      <select class="filter-select" id="filter-trap">
+        <option value="all">Todas</option>
+        <option value="trap">Solo trampas</option>
+        <option value="normal">Sin trampas</option>
+      </select>
+      <input type="text" class="search-input" id="search-input" placeholder="🔍 Buscar pregunta...">
+    </div>
+    <div class="count-badge" id="count-badge"></div>
+    <div id="questions-list"></div>
+  </div>
+
+  <script src="../estudio-acl/questions.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const content = document.getElementById('content');
-      const searchInput = document.getElementById('search-input');
-      const tocContainer = document.getElementById('toc-container');
-      
-      // We assume CATEGORIES and QUESTIONS are defined globally by questions.js
-      if (typeof CATEGORIES === 'undefined' || typeof QUESTIONS === 'undefined') {
-        content.innerHTML = '<p>Error al cargar el banco de preguntas.</p>';
-        return;
-      }
-      
-      const searchData = [];
-      const normalizeText = (text) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-      const isoIds = ['calidad', 'qa-qc', 'crisis', 'iso-familia', 'iso-estructura', 'certificacion', 'metricas', 'familia', 'seccion7', 'seccion8'];
-      const cmmiIds = ['cmmi-intro', 'versiones', 'estructura', 'staged-cont', 'pas-ciclo', 'scampi', 'evaluacion', 'trampas', 'pas'];
-      const otrosIds = ['spice', 'mmis', 'itmark', 'swtqm', 'medicion', 'gqm-psm'];
-      const sgcsIds = ['procedimientos', 'mapas', 'ciclo-pruebas', 'colaterales', 'conceptos'];
-      const paiIds = ['criterios', 'roles', 'vf', 'ag', 'nc', 'informes', 'entradas-salidas', 'diferencias'];
-
-      const getCats = (ids) => {
-         // Some IDs are duplicated in CATEGORIES, we just take the first matching one
-         return ids.map(id => CATEGORIES.find(c => c.id === id)).filter(Boolean);
-      };
-
-      const modules = [
-        { name: "⚡ Calidad e ISO 9000", categories: getCats(isoIds) },
-        { name: "🏛️ CMMI Modelo + Eval.", categories: getCats(cmmiIds) },
-        { name: "📐 Otros Modelos + Medición", categories: getCats(otrosIds) },
-        { name: "⚙️ SGCS Práctica", categories: getCats(sgcsIds) },
-        { name: "📋 Auditorías Internas (PAI)", categories: getCats(paiIds) }
-      ];
-
-      // Because there are duplicate category IDs in the global file (like 'trampas'),
-      // we must distribute questions carefully or just filter by ID but only process them once.
-      // Since a duplicate ID means `QUESTIONS.filter` grabs both, we just rely on standard filtering
-      // and accept that "Trampas" might include both. 
-      // Actually, since we process by module, if a category ID is duplicate, it will render twice.
-      // We'll leave it as is since it reflects the data structure.
-
-      modules.forEach((mod, modIdx) => {
-        const categoriesWithQuestions = mod.categories.map(cat => {
-          const catQs = QUESTIONS.filter(q => q.category === cat.id);
-          return { ...cat, questions: catQs };
-        }).filter(cat => cat.questions.length > 0);
-
-        if (categoriesWithQuestions.length === 0) return;
-
-        const modUniqueId = `mod-${modIdx}`;
-        // TOC Group
-        const tocGroup = document.createElement('div');
-        tocGroup.className = 'toc-module-group';
-        tocGroup.innerHTML = `<a href="#${modUniqueId}" style="text-decoration: none; color: inherit; display: block; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"><h4 class="toc-module-title" style="cursor: pointer;">${mod.name}</h4></a><div class="toc-grid"></div>`;
-        const tocGrid = tocGroup.querySelector('.toc-grid');
-        tocContainer.appendChild(tocGroup);
-
-        // Content Section Group
-        const modSectionGroup = document.createElement('div');
-        modSectionGroup.className = 'module-section-group';
-        modSectionGroup.id = modUniqueId;
-        modSectionGroup.innerHTML = `<h1 class="module-title">${mod.name}</h1>`;
-        
-        categoriesWithQuestions.forEach((cat, catIdx) => {
-          // Unique ID for anchor due to duplicate IDs in original array
-          const uniqueId = `cat-${modIdx}-${catIdx}`;
-          
-          // Add to TOC
-          const tocLink = document.createElement('a');
-          tocLink.href = `#${uniqueId}`;
-          tocLink.className = 'toc-link';
-          tocLink.innerHTML = `<span>${cat.icon}</span> ${cat.name} <span style="opacity: 0.5; font-size: 0.8rem;">(${cat.questions.length})</span>`;
-          tocGrid.appendChild(tocLink);
-          
-          // Sort questions: multi first, then vf
-          cat.questions.sort((a, b) => {
-            if (a.type === b.type) return 0;
-            return a.type === 'multi' ? -1 : 1;
-          });
-          
-          // Create Section
-          const section = document.createElement('div');
-          section.className = 'category-section';
-          section.id = uniqueId;
-          
-          const title = document.createElement('h2');
-          title.className = 'category-title';
-          title.innerHTML = `<span>${cat.icon}</span> ${cat.name}`;
-          section.appendChild(title);
-          
-          // Add questions
-          cat.questions.forEach((q, index) => {
-            const card = document.createElement('div');
-            card.className = 'question-card';
-            
-            let typeLabel = q.type === 'multi' ? 'Múltiple' : 'V/F';
-            const typeClass = q.type === 'multi' ? 'badge-multi' : 'badge-vf';
-            let badgesHtml = `<span class="question-type-badge ${typeClass}">${typeLabel}</span>`;
-            if (q.trap) {
-              badgesHtml += `<span class="question-type-badge" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); ">⚠️ Trampa</span>`;
-            }
-            if (q.isEnumeration) {
-              badgesHtml += `<span class="question-type-badge" style="background: rgba(139, 92, 246, 0.12); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.3); ">📋 Enumeración</span>`;
-            }
-            if (q.isDefinition) {
-              badgesHtml += `<span class="question-type-badge" style="background: rgba(56, 189, 248, 0.12); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); ">📖 Definición</span>`;
-            }
-            
-            let optionsHtml = '';
-            q.options.forEach((opt, i) => {
-              const isCorrect = i === q.correct;
-              const itemClass = isCorrect ? 'option-item correct' : 'option-item incorrect';
-              const icon = isCorrect ? '✓' : '';
-              optionsHtml += `
-                <li class="${itemClass}">
-                  <div class="option-icon">${icon}</div>
-                  <div>${opt}</div>
-                </li>
-              `;
-            });
-            
-            card.innerHTML = `
-              <div class="question-header">
-                <h3 class="question-text">${index + 1}. ${q.question}</h3>
-                <div style="display: flex; gap: 8px; flex-wrap: wrap;">${badgesHtml}</div>
-              </div>
-              <ul class="options-list">
-                ${optionsHtml}
-              </ul>
-              <div class="justification">
-                <div class="justification-icon">💡</div>
-                <div>${q.justification || '<em>Sin justificación adicional.</em>'}</div>
-              </div>
-            `;
-            
-            section.appendChild(card);
-            
-            searchData.push({
-              card,
-              section,
-              searchableText: normalizeText(`${q.question} ${q.options.join(' ')} ${q.justification || ''}`)
-            });
-          });
-          
-          modSectionGroup.appendChild(section);
-        });
-        
-        content.appendChild(modSectionGroup);
+    (function() {
+      const catSelect = document.getElementById('filter-category');
+      CATEGORIES.forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat.id;
+        opt.textContent = `${cat.icon} ${cat.name}`;
+        catSelect.appendChild(opt);
       });
 
-      // Search functionality
-      searchInput.addEventListener('input', (e) => {
-        const query = normalizeText(e.target.value);
-        const sectionCounts = new Map();
-        
-        searchData.forEach(item => {
-          if (item.searchableText.includes(query)) {
-            item.card.style.display = '';
-            sectionCounts.set(item.section, (sectionCounts.get(item.section) || 0) + 1);
-          } else {
-            item.card.style.display = 'none';
-          }
-        });
-        
-        // Hide/show sections
-        document.querySelectorAll('.category-section').forEach(sec => {
-          if (sectionCounts.get(sec)) {
-            sec.style.display = '';
-          } else {
-            sec.style.display = 'none';
-          }
+      function render() {
+        const category = document.getElementById('filter-category').value;
+        const type = document.getElementById('filter-type').value;
+        const trap = document.getElementById('filter-trap').value;
+        const search = document.getElementById('search-input').value.toLowerCase().trim();
+
+        let filtered = QUESTIONS.filter(q => {
+          if (category !== 'all' && q.category !== category) return false;
+          if (type !== 'all' && q.type !== type) return false;
+          if (trap === 'trap' && !q.trap) return false;
+          if (trap === 'normal' && q.trap) return false;
+          if (search && !q.question.toLowerCase().includes(search) && !q.justification.toLowerCase().includes(search)) return false;
+          return true;
         });
 
-        // Hide/show module titles
-        document.querySelectorAll('.module-section-group').forEach(mod => {
-          const hasVisibleSections = Array.from(mod.querySelectorAll('.category-section')).some(sec => sec.style.display !== 'none');
-          mod.style.display = hasVisibleSections ? '' : 'none';
+        document.getElementById('count-badge').textContent = `${filtered.length} pregunta${filtered.length !== 1 ? 's' : ''} encontrada${filtered.length !== 1 ? 's' : ''}`;
+
+        const list = document.getElementById('questions-list');
+        list.innerHTML = '';
+        const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+        filtered.forEach((q, idx) => {
+          const cat = CATEGORIES.find(c => c.id === q.category);
+          const card = document.createElement('div');
+          card.className = 'question-card-banco';
+          card.innerHTML = `
+            <div class="qcb-header">
+              <span class="qcb-num">#${idx + 1}</span>
+              <span class="qcb-category">${cat ? cat.name : q.category}</span>
+              <span class="qcb-type">${q.type === 'vf' ? 'V/F' : 'Multi'}</span>
+              ${q.trap ? '<span class="qcb-trap">⚠️ Trampa</span>' : ''}
+            </div>
+            <div class="qcb-text">${window.marked ? marked.parse(q.question) : q.question}</div>
+            <div class="qcb-detail">
+              <div class="qcb-options">
+                ${q.options.map((opt, i) => `
+                  <div class="qcb-option ${i === q.correct ? 'correct' : ''}">
+                    <span class="qcb-option-letter">${letters[i]}</span>
+                    <span>${opt}</span>
+                    ${i === q.correct ? ' ✅' : ''}
+                  </div>
+                `).join('')}
+              </div>
+              <div class="qcb-justification">${q.justification}</div>
+            </div>
+          `;
+          card.addEventListener('click', () => card.classList.toggle('expanded'));
+          list.appendChild(card);
         });
-
-        if (query.length > 0) {
-          tocContainer.style.display = 'none';
-        } else {
-          tocContainer.style.display = '';
-        }
-      });
-    });
-
-    // --- Back to Top Button ---
-    const topBtn = document.createElement('button');
-    topBtn.innerHTML = '↑';
-    topBtn.title = 'Volver arriba';
-    topBtn.style.position = 'fixed';
-    topBtn.style.bottom = '24px';
-    topBtn.style.right = '24px';
-    topBtn.style.width = '50px';
-    topBtn.style.height = '50px';
-    topBtn.style.borderRadius = '50%';
-    topBtn.style.background = 'var(--accent, #6366f1)';
-    topBtn.style.color = '#fff';
-    topBtn.style.border = 'none';
-    topBtn.style.fontSize = '1.5rem';
-    topBtn.style.cursor = 'pointer';
-    topBtn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-    topBtn.style.opacity = '0';
-    topBtn.style.pointerEvents = 'none';
-    topBtn.style.transition = 'opacity 0.3s, transform 0.2s';
-    topBtn.style.zIndex = '9999';
-    topBtn.style.display = 'flex';
-    topBtn.style.alignItems = 'center';
-    topBtn.style.justifyContent = 'center';
-    
-    topBtn.onmouseover = () => topBtn.style.transform = 'translateY(-3px)';
-    topBtn.onmouseout = () => topBtn.style.transform = 'translateY(0)';
-    
-    topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.body.appendChild(topBtn);
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        topBtn.style.opacity = '1';
-        topBtn.style.pointerEvents = 'auto';
-      } else {
-        topBtn.style.opacity = '0';
-        topBtn.style.pointerEvents = 'none';
       }
-    });
+
+      document.getElementById('filter-category').addEventListener('change', render);
+      document.getElementById('filter-type').addEventListener('change', render);
+      document.getElementById('filter-trap').addEventListener('change', render);
+
+      let debounce;
+      document.getElementById('search-input').addEventListener('input', () => {
+        clearTimeout(debounce);
+        debounce = setTimeout(render, 200);
+      });
+
+      render();
+    })();
   </script>
 </body>
 </html>

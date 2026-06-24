@@ -7,32 +7,18 @@ window.showCustomModal = function(options) {
   const box = document.createElement('div');
   box.className = 'custom-modal-box';
   
-  const titleEl = document.createElement('h3');
-  if (options.title) {
-    titleEl.className = 'custom-modal-title';
-    titleEl.textContent = options.title;
-    box.appendChild(titleEl);
-  }
+  let html = '';
+  if (options.title) html += `<h3 class="custom-modal-title">${options.title}</h3>`;
+  if (options.desc) html += `<p class="custom-modal-desc">${options.desc}</p>`;
   
-  const descEl = document.createElement('p');
-  if (options.desc) {
-    descEl.className = 'custom-modal-desc';
-    descEl.textContent = options.desc;
-    box.appendChild(descEl);
-  }
-  
-  const actionsEl = document.createElement('div');
-  actionsEl.className = 'custom-modal-actions';
-  const uniqueId = Date.now() + Math.random().toString(36).substring(2, 11);
+  html += `<div class="custom-modal-actions">`;
+  const uniqueId = Date.now() + Math.random().toString(36).substr(2, 9);
   options.buttons.forEach((btn, i) => {
-    const btnEl = document.createElement('button');
-    btnEl.className = `custom-modal-btn ${btn.style || 'secondary'}`;
-    btnEl.id = `modal-btn-${uniqueId}-${i}`;
-    btnEl.textContent = btn.text;
-    actionsEl.appendChild(btnEl);
+    html += `<button class="custom-modal-btn ${btn.style || 'secondary'}" id="modal-btn-${uniqueId}-${i}">${btn.text}</button>`;
   });
-  box.appendChild(actionsEl);
+  html += `</div>`;
   
+  box.innerHTML = html;
   overlay.appendChild(box);
   document.body.appendChild(overlay);
   
@@ -65,30 +51,10 @@ window.showCustomModal = function(options) {
       else close();
     }
   };
-  // Use capture to ensure modal grabs escape first
   document.addEventListener('keydown', escapeHandler, true);
 };
 
-// --- THEME MANAGEMENT ---
-function initTheme() {
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-theme');
-  }
-  
-  // Add toggle button to body
-  const btn = document.createElement('button');
-  btn.className = 'theme-toggle';
-  btn.title = "Cambiar Tema";
-  btn.innerHTML = document.body.classList.contains('light-theme') ? '🌙' : '☀️';
-  btn.onclick = () => {
-    document.body.classList.toggle('light-theme');
-    const isLight = document.body.classList.contains('light-theme');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    btn.innerHTML = isLight ? '🌙' : '☀️';
-  };
-  document.body.appendChild(btn);
-}
+// --- THEME MANAGEMENT DELETED ---
 
 // --- STATS & ACHIEVEMENTS MANAGEMENT ---
 window.QuizStats = {
@@ -111,27 +77,28 @@ window.QuizStats = {
     TEN_QUIZZES: { id: 'TEN_QUIZZES', icon: '🔟', title: 'Constante', desc: 'Completa 10 simulacros.' },
     FIFTY_QUIZZES: { id: 'FIFTY_QUIZZES', icon: '🔥', title: 'Máquina', desc: 'Completa 50 simulacros.' },
     SNIPER: { id: 'SNIPER', icon: '🎯', title: 'Francotirador', desc: 'Acierta 50 preguntas en total.' },
-    SPEEDRUNNER: { id: 'SPEEDRUNNER', icon: '⚡', title: 'Speedrunner', desc: 'Completa un test de 10 preguntas o más en menos de 1 minuto.' },
-    NIGHT_OWL: { id: 'NIGHT_OWL', icon: '🦇', title: 'Búho Nocturno', desc: 'Completa un test entre la medianoche y las 5 AM.' },
-    CMMI_MASTER: { id: 'CMMI_MASTER', icon: '⚙️', title: 'Maestro CMMI', desc: 'Completa 5 tests sobre CMMI.' },
-    ISO_MASTER: { id: 'ISO_MASTER', icon: '📐', title: 'Gurú ISO 9000', desc: 'Completa 5 tests sobre ISO 9000.' }
+    SPEEDRUNNER: { id: 'SPEEDRUNNER', icon: '⚡', title: 'Speedrunner', desc: 'Completa un test de 10+ preguntas en menos de 1 minuto.' },
+    NIGHT_OWL: { id: 'NIGHT_OWL', icon: '🦇', title: 'Búho Nocturno', desc: 'Completa un test entre medianoche y las 5 AM.' },
+    CONCURRENCY_MASTER: { id: 'CONCURRENCY_MASTER', icon: '🔒', title: 'Maestro Concurrencia', desc: 'Completa 5 tests sobre Concurrencia.' },
+    OPTIMIZATION_MASTER: { id: 'OPTIMIZATION_MASTER', icon: '⚡', title: 'Gurú Optimización', desc: 'Completa 5 tests sobre Optimización.' },
+    SECURITY_MASTER: { id: 'SECURITY_MASTER', icon: '🛡️', title: 'Experto Seguridad', desc: 'Completa 5 tests sobre Seguridad.' },
+    RECOVERY_MASTER: { id: 'RECOVERY_MASTER', icon: '💾', title: 'Maestro Recuperación', desc: 'Completa 5 tests sobre Recuperación.' }
   },
 
   load() {
-    const saved = localStorage.getItem('quiz_stats');
+    const saved = localStorage.getItem('acl_quiz_stats');
     if (saved) {
       try {
         this.data = { ...this.data, ...JSON.parse(saved) };
-      } catch (e) { console.error('Stats corrupted, resetting', e); this.reset(); }
+      } catch (e) {}
     }
   },
 
   save() {
-    localStorage.setItem('quiz_stats', JSON.stringify(this.data));
+    localStorage.setItem('acl_quiz_stats', JSON.stringify(this.data));
   },
 
   addAnswer(payload) {
-    // support legacy signature
     let isCorrect, topic, text, justification, correctAnswer;
     if (typeof payload === 'boolean') {
       isCorrect = arguments[0];
@@ -156,17 +123,15 @@ window.QuizStats = {
     this.data.topics[topic].total++;
     if (isCorrect) this.data.topics[topic].correct++;
     
-    // add to history
     this.data.historyQuestions.unshift({ date: Date.now(), topic, isCorrect, text, justification, correctAnswer });
     if (this.data.historyQuestions.length > 50) this.data.historyQuestions.pop();
 
     this.save();
     
-    // Check achievements
-    if (this.data.questionsAnswered >= 1) this.unlock('FIRST_BLOOD');
+    if (this.data.questionsAnswered === 1) this.unlock('FIRST_BLOOD');
     if (this.data.correctAnswers >= 50) this.unlock('SNIPER');
-    if (this.data.questionsAnswered >= 100) this.unlock('CENTURION');
-    if (this.data.questionsAnswered >= 500) this.unlock('SCHOLAR');
+    if (this.data.questionsAnswered === 100) this.unlock('CENTURION');
+    if (this.data.questionsAnswered === 500) this.unlock('SCHOLAR');
   },
 
   addQuizCompleted(payload) {
@@ -191,21 +156,21 @@ window.QuizStats = {
 
     this.save();
     
-    if (this.data.quizzesCompleted >= 1) this.unlock('WARM_UP');
-    if (this.data.quizzesCompleted >= 10) this.unlock('TEN_QUIZZES');
-    if (this.data.quizzesCompleted >= 50) this.unlock('FIFTY_QUIZZES');
-    if (pct >= 100) this.unlock('PERFECT');
+    if (this.data.quizzesCompleted === 1) this.unlock('WARM_UP');
+    if (this.data.quizzesCompleted === 10) this.unlock('TEN_QUIZZES');
+    if (this.data.quizzesCompleted === 50) this.unlock('FIFTY_QUIZZES');
+    if (pct === 100) this.unlock('PERFECT');
     
-    // Time achievements
     if (total >= 10 && elapsed < 60) this.unlock('SPEEDRUNNER');
     
     const hour = new Date().getHours();
     if (hour >= 0 && hour < 5) this.unlock('NIGHT_OWL');
     
-    // Topic achievements
     const topicQuizzes = this.data.historyQuizzes.filter(q => q.topic === topic).length;
-    if (topic === 'cmmi' && topicQuizzes >= 5) this.unlock('CMMI_MASTER');
-    if (topic === 'iso9000' && topicQuizzes >= 5) this.unlock('ISO_MASTER');
+    if (topic === 'concorrencia' && topicQuizzes >= 5) this.unlock('CONCURRENCY_MASTER');
+    if (topic === 'optimizacion' && topicQuizzes >= 5) this.unlock('OPTIMIZATION_MASTER');
+    if (topic === 'seguridade' && topicQuizzes >= 5) this.unlock('SECURITY_MASTER');
+    if (topic === 'recuperacion' && topicQuizzes >= 5) this.unlock('RECOVERY_MASTER');
   },
 
   reset() {
@@ -232,28 +197,13 @@ window.QuizStats = {
   showToast(ach) {
     const toast = document.createElement('div');
     toast.className = 'achievement-toast';
-    
-    const iconSpan = document.createElement('span');
-    iconSpan.style.fontSize = '2rem';
-    iconSpan.textContent = ach.icon;
-    toast.appendChild(iconSpan);
-    
-    const textDiv = document.createElement('div');
-    const labelDiv = document.createElement('div');
-    labelDiv.style.cssText = 'font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;';
-    labelDiv.textContent = 'Logro Desbloqueado';
-    
-    const titleDiv = document.createElement('div');
-    titleDiv.style.fontSize = '1.1rem';
-    titleDiv.textContent = ach.title;
-    
-    textDiv.appendChild(labelDiv);
-    textDiv.appendChild(titleDiv);
-    toast.appendChild(textDiv);
-    
+    toast.innerHTML = `<span style="font-size: 2rem;">${ach.icon}</span> 
+      <div>
+        <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Logro Desbloqueado</div>
+        <div style="font-size: 1.1rem;">${ach.title}</div>
+      </div>`;
     document.body.appendChild(toast);
     
-    // Trigger animation
     setTimeout(() => toast.classList.add('show'), 100);
     setTimeout(() => {
       toast.classList.remove('show');
@@ -269,47 +219,35 @@ window.QuizStats = {
       ? Math.round((this.data.correctAnswers / this.data.questionsAnswered) * 100) 
       : 0;
 
-    container.innerHTML = '';
-    const widget = document.createElement('div');
-    widget.className = 'stats-widget';
-    
-    const createItem = (value, label, href, title) => {
-      const el = href ? document.createElement('a') : document.createElement('div');
-      el.className = 'stat-item';
-      if (href) { el.href = href; el.style.textDecoration = 'none'; }
-      if (title) { el.title = title; }
-      
-      const valSpan = document.createElement('span');
-      valSpan.className = 'stat-value';
-      valSpan.textContent = value;
-      
-      const lblSpan = document.createElement('span');
-      lblSpan.className = 'stat-label';
-      lblSpan.textContent = label;
-      
-      el.appendChild(valSpan);
-      el.appendChild(lblSpan);
-      return el;
-    };
-    
-    widget.appendChild(createItem(this.data.quizzesCompleted, 'Tests', 'estadisticas/index.html?tab=tests'));
-    widget.appendChild(createItem(this.data.questionsAnswered, 'Preguntas', 'estadisticas/index.html?tab=preguntas'));
-    widget.appendChild(createItem(`${accuracy}%`, 'Precisión'));
-    widget.appendChild(createItem(this.data.achievements.length, 'Logros 🏆', 'estadisticas/index.html?tab=logros', `${this.data.achievements.length} de ${Object.keys(this.ACHIEVEMENTS).length}`));
-    
-    container.appendChild(widget);
+    container.innerHTML = `
+      <div class="stats-widget">
+        <a href="estadisticas/index.html?tab=tests" class="stat-item" style="text-decoration:none;">
+          <span class="stat-value">${this.data.quizzesCompleted}</span>
+          <span class="stat-label">Tests</span>
+        </a>
+        <a href="estadisticas/index.html?tab=preguntas" class="stat-item" style="text-decoration:none;">
+          <span class="stat-value">${this.data.questionsAnswered}</span>
+          <span class="stat-label">Preguntas</span>
+        </a>
+        <div class="stat-item">
+          <span class="stat-value">${accuracy}%</span>
+          <span class="stat-label">Precisión</span>
+        </div>
+        <a href="estadisticas/index.html?tab=logros" class="stat-item" style="text-decoration:none;" title="${this.data.achievements.length} de ${Object.keys(this.ACHIEVEMENTS).length}">
+          <span class="stat-value">${this.data.achievements.length}</span>
+          <span class="stat-label">Logros 🏆</span>
+        </a>
+      </div>
+    `;
   }
 };
 
-// Initialize on load
-
 // --- PAUSED TEST MANAGEMENT ---
 function initResumeButton() {
-  const saved = localStorage.getItem('paused_test');
+  const saved = localStorage.getItem('acl_paused_test');
   if (saved) {
     try {
       const progress = JSON.parse(saved);
-      // Remove existing if any
       const existing = document.querySelector('.resume-test-btn');
       if (existing) existing.remove();
       
@@ -318,7 +256,6 @@ function initResumeButton() {
       btn.innerHTML = '▶️ Reanudar Test';
       btn.title = 'Reanudar el test pausado';
 
-      
       btn.onclick = () => {
         let basePath = window.location.pathname;
         if (basePath.endsWith('index.html')) {
@@ -337,7 +274,6 @@ function initResumeButton() {
         if (basePath === targetPath && typeof window.resumePausedTest === 'function') {
           window.resumePausedTest(progress.state);
         } else {
-          // Navigating to the paused test
           window.location.href = progress.path + '?resume=true';
         }
       };
@@ -353,9 +289,9 @@ function initResumeButton() {
 }
 
 function checkPausedTestOnLoad() {
-  const saved = localStorage.getItem('paused_test');
-  if (saved && !sessionStorage.getItem('prompted_resume') && !window.location.search.includes('resume=true')) {
-    sessionStorage.setItem('prompted_resume', 'true');
+  const saved = localStorage.getItem('acl_paused_test');
+  if (saved && !sessionStorage.getItem('acl_prompted_resume') && !window.location.search.includes('resume=true')) {
+    sessionStorage.setItem('acl_prompted_resume', 'true');
     try {
       const progress = JSON.parse(saved);
       window.showCustomModal({
@@ -384,7 +320,7 @@ function checkPausedTestOnLoad() {
             text: 'No, descartar',
             style: 'danger',
             action: () => {
-              localStorage.removeItem('paused_test');
+              localStorage.removeItem('acl_paused_test');
               const existing = document.querySelector('.resume-test-btn');
               if (existing) existing.remove();
             }
@@ -403,22 +339,6 @@ function checkPausedTestOnLoad() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initResumeButton();
-  initTheme();
   window.QuizStats.load();
   checkPausedTestOnLoad();
-});
-
-document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('format-btn')) {
-    const parent = e.target.closest('.category-format-switch');
-    if (parent) {
-      parent.querySelectorAll('.format-btn').forEach(btn => btn.classList.remove('active'));
-      e.target.classList.add('active');
-      if (typeof window.buildCategoryGrid === 'function') {
-        window.buildCategoryGrid();
-      } else if (typeof buildCategoryGrid === 'function') {
-        buildCategoryGrid();
-      }
-    }
-  }
 });

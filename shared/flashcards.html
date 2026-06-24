@@ -18,9 +18,9 @@
 
   <div id="app">
     <header class="quiz-header" style="justify-content: flex-start; padding: 20px;">
-      <a href="javascript:history.back()" class="btn-icon" title="Volver" style="text-decoration:none; color:white; display:flex; align-items:center; gap:10px; width: auto; padding: 0 15px; border-radius: 8px;">
+      <a href="../index.html" class="back-btn" title="Volver al Portal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>Volver</span>
+        <span>Volver al Portal</span>
       </a>
       <h2 style="margin: 0; margin-left: 20px; font-size: 1.2rem; opacity: 0.8;" id="topic-title">Flashcards</h2>
       <div style="margin-left: auto; font-size: 1.1rem; font-weight: bold;">
@@ -28,13 +28,13 @@
       </div>
     </header>
 
-    <main class="quiz-body" style="display:flex; justify-content:center; align-items:center; height: calc(100vh - 80px); flex-direction: column; position: relative;">
+    <main class="quiz-body" style="display:flex; justify-content:flex-start; padding-top: 30px; align-items:center; height: calc(100vh - 80px); flex-direction: column; position: relative; box-sizing: border-box;">
       
       <div id="scrollbar-wrapper" style="width: 100%; max-width: 700px; margin-bottom: 20px; padding: 0 20px; box-sizing: border-box; display: none;">
-        <div id="scrollbar-labels" style="display: flex; width: 100%; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 5px; position: relative; height: 15px;"></div>
+        <div id="scrollbar-labels" style="display: flex; width: 100%; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 5px; position: relative; height: 25px;"></div>
         
-        <div style="position: relative; height: 16px; display: flex; align-items: center;">
-          <div id="scrollbar-markers" style="position: absolute; left: 0; right: 0; height: 6px; border-radius: 3px; overflow: hidden; background: var(--bg-option); display: flex;"></div>
+        <div style="position: relative; height: 8px; display: flex; align-items: center;">
+          <div id="scrollbar-markers" style="position: absolute; left: 0; right: 0; height: 8px; border-radius: 4px; overflow: hidden; background: var(--bg-option); display: flex;"></div>
           <input type="range" id="card-slider" min="0" max="0" value="0" style="width: 100%; cursor: pointer; position: absolute; left: 0; right: 0; margin: 0; z-index: 2;" class="custom-slider">
         </div>
       </div>

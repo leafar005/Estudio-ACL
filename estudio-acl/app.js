@@ -1,5 +1,5 @@
 /**
- * QUIZ APP — CMMI Modelo + Evaluación
+ * QUIZ APP — Auditoría y Calidad del Software
  * Interactive quiz engine with justifications
  */
 
@@ -14,7 +14,7 @@
     categoryId: null,
     questions: [],
     currentIndex: 0,
-    answers: [],          // { questionIndex, selectedOption, isCorrect, displayOptions }
+    answers: [],
     currentDisplayOptions: [],
     correctCount: 0,
     wrongCount: 0,
@@ -38,22 +38,22 @@
   // INIT
   // ========================
   function init() {
-    updateCounts();
-    buildCategoryGrid();
-    bindLandingEvents();
     bindQuizEvents();
     bindResultsEvents();
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('resume') === 'true' && localStorage.getItem('paused_test')) {
-      try { const saved = JSON.parse(localStorage.getItem('paused_test')); window.resumePausedTest(saved.state); window.history.replaceState({}, document.title, window.location.pathname); } catch(e) { localStorage.removeItem('paused_test'); }
+    if (urlParams.get('resume') === 'true' && localStorage.getItem('acl_paused_test')) {
+      const saved = JSON.parse(localStorage.getItem('acl_paused_test'));
+      window.resumePausedTest(saved.state);
+      window.history.replaceState({}, document.title, window.location.pathname);
       return;
     }
-  }
-
-  function updateCounts() {
-    $('#count-all').textContent = `${QUESTIONS.length} preguntas`;
-    const trapCount = QUESTIONS.filter(q => q.trap).length;
-    $('#count-traps').textContent = `${trapCount} preguntas`;
+    const modeParam = urlParams.get('mode');
+    const catParam = urlParams.get('category');
+    if (modeParam) {
+      startQuiz(modeParam, catParam);
+    } else {
+      window.location.href = '../index.html';
+    }
   }
 
   // ========================
@@ -63,75 +63,15 @@
     Object.values(screens).forEach(s => { if (s) s.classList.remove('active') });
     if (screens[name]) screens[name].classList.add('active');
     window.scrollTo(0, 0);
-
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-      themeToggle.style.display = (name === 'landing') ? 'flex' : 'none';
-    }
-  }
-
-  // ========================
-  // LANDING
-  // ========================
-  window.buildCategoryGrid = function buildCategoryGrid() {
-    const grid = $('#category-grid');
-    grid.innerHTML = '';
-    
-    const activeFormatBtn = document.querySelector('.category-format-switch .format-btn.active');
-    const format = activeFormatBtn ? activeFormatBtn.dataset.format : 'quiz';
-    
-    CATEGORIES.forEach(cat => {
-      let countText = '';
-      if (format === 'flashcards') {
-         let cards = (window.FlashcardsData && window.FlashcardsData['cmmi']) ? window.FlashcardsData['cmmi'] : [];
-         let count = cards.filter(c => c.category === cat.id).length;
-         countText = count + (count === 1 ? ' flashcard' : ' flashcards');
-      } else {
-         let count = QUESTIONS.filter(q => q.category === cat.id).length;
-         countText = count + (count === 1 ? ' pregunta' : ' preguntas');
-      }
-      
-      const btn = document.createElement('button');
-      btn.className = 'category-btn';
-      btn.dataset.categoryId = cat.id;
-      btn.innerHTML = `
-        <span class="category-btn-icon">${cat.icon}</span>
-        <div class="category-btn-info">
-          <div class="category-btn-name">${cat.name}</div>
-          <div class="category-btn-count">${countText}</div>
-        </div>
-      `;
-      btn.addEventListener('click', () => {
-        const activeFormatBtn = document.querySelector('.category-format-switch .format-btn.active');
-        const format = activeFormatBtn ? activeFormatBtn.dataset.format : 'quiz';
-        if (format === 'flashcards') {
-          window.location.href = `../shared/flashcards.html?topic=cmmi&category=${encodeURIComponent(cat.id)}&catName=${encodeURIComponent(cat.name)}`;
-        } else {
-          startQuiz('category', cat.id);
-        }
-      });
-      grid.appendChild(btn);
-    });
-  }
-
-  function bindLandingEvents() {
-    $('#btn-mode-all').addEventListener('click', () => startQuiz('all'));
-    $('#btn-mode-traps').addEventListener('click', () => startQuiz('traps'));
-    $('#btn-mode-random').addEventListener('click', () => startQuiz('random'));
-    $('#btn-mode-category').addEventListener('click', () => {
-      document.querySelector('.mode-selector').style.display = 'none';
-      $('#category-picker').classList.remove('hidden');
-    });
-    $('#btn-back-categories').addEventListener('click', () => {
-      document.querySelector('.mode-selector').style.display = '';
-      $('#category-picker').classList.add('hidden');
-    });
   }
 
   // ========================
   // QUIZ START
   // ========================
   function startQuiz(mode, categoryId) {
+    // Si inicia un quiz explícitamente desde el portal, limpiamos el estado guardado automáticamente
+    localStorage.removeItem('acl_paused_test');
+
     const doStart = () => {
       state.mode = mode;
       state.categoryId = categoryId || null;
@@ -142,7 +82,6 @@
       state.answered = false;
       state.startTime = Date.now();
 
-      // Select questions
       let pool = [...QUESTIONS];
       if (mode === 'category' && categoryId) {
         pool = pool.filter(q => q.category === categoryId);
@@ -150,7 +89,6 @@
         pool = pool.filter(q => q.trap);
       }
 
-      // Shuffle
       pool = shuffle(pool);
 
       if (mode === 'random') {
@@ -169,36 +107,6 @@
       renderQuestion();
     };
 
-    if (localStorage.getItem('paused_test')) {
-      if (!document.getElementById('landing-screen') && document.getElementById('quiz-screen')) {
-        document.getElementById('quiz-screen').style.opacity = '0';
-      }
-      window.showCustomModal({
-        title: 'Tienes un test pausado',
-        desc: 'Si empiezas uno nuevo, perderás el progreso del test anterior. ¿Deseas empezar uno nuevo de todas formas?',
-        buttons: [
-          {
-            text: 'Empezar nuevo',
-            style: 'danger',
-            action: () => {
-              localStorage.removeItem('paused_test');
-              if (typeof initResumeButton === 'function') initResumeButton();
-              doStart();
-            }
-          },
-          {
-            text: 'Cancelar',
-            style: 'secondary',
-            action: () => {
-              if (!document.getElementById('landing-screen')) {
-                window.location.href = '../index.html';
-              }
-            }
-          }
-        ]
-      });
-      return;
-    }
     doStart();
   }
 
@@ -209,7 +117,6 @@
     const q = state.questions[state.currentIndex];
     state.answered = false;
 
-    // Update header
     $('#quiz-current').textContent = state.currentIndex + 1;
     $('#score-correct').textContent = state.correctCount;
     $('#score-wrong').textContent = state.wrongCount;
@@ -217,48 +124,27 @@
     const pct = ((state.currentIndex) / state.questions.length) * 100;
     $('#progress-bar').style.width = `${pct}%`;
 
-    // Category & type badges
     const cat = CATEGORIES.find(c => c.id === q.category);
     $('#question-category').textContent = cat ? `${cat.icon} ${cat.name}` : q.category;
 
-    const metaContainer = document.querySelector('.question-meta');
-    metaContainer.querySelectorAll('.extra-badge').forEach(el => el.remove());
-
-    let typeLabel = q.type === 'vf' ? 'V / F' : 'Opción múltiple';
+    const typeLabel = q.type === 'vf' ? 'V / F' : 'Opción múltiple';
     const typeEl = $('#question-type');
     typeEl.textContent = typeLabel;
-    typeEl.style.background = '';
-    typeEl.style.color = '';
-
     if (q.trap) {
-      const b = document.createElement('span');
-      b.className = 'question-type extra-badge';
-      b.textContent = '⚠️ Trampa';
-      b.style.background = 'rgba(239, 68, 68, 0.12)';
-      b.style.color = '#ef4444';
-      metaContainer.appendChild(b);
-    }
-    if (q.isEnumeration) {
-      const b = document.createElement('span');
-      b.className = 'question-type extra-badge';
-      b.textContent = '📋 Enumeración';
-      b.style.background = 'rgba(139, 92, 246, 0.12)';
-      b.style.color = '#c4b5fd';
-      metaContainer.appendChild(b);
-    }
-    if (q.isDefinition) {
-      const b = document.createElement('span');
-      b.className = 'question-type extra-badge';
-      b.textContent = '📖 Definición';
-      b.style.background = 'rgba(56, 189, 248, 0.12)';
-      b.style.color = '#7dd3fc';
-      metaContainer.appendChild(b);
+      typeEl.textContent += ' ⚠️ Trampa';
+      typeEl.style.background = 'rgba(239, 68, 68, 0.12)';
+      typeEl.style.color = '#ef4444';
+    } else {
+      typeEl.style.background = '';
+      typeEl.style.color = '';
     }
 
-    // Question text
-    $('#question-text').textContent = q.question;
+    if (window.marked) {
+      $('#question-text').innerHTML = marked.parse(q.question);
+    } else {
+      $('#question-text').textContent = q.question;
+    }
 
-    // Options
     const container = $('#options-container');
     container.innerHTML = '';
     const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -269,7 +155,6 @@
       isCorrect: i === q.correct
     }));
 
-    // Shuffle options if it's multiple choice
     if (q.type === 'multi') {
       displayOptions = shuffle(displayOptions);
     }
@@ -351,10 +236,9 @@
       $('#btn-next').style.display = 'none';
     }
 
-    // Re-animate card
     const card = $('#question-card');
     card.style.animation = 'none';
-    card.offsetHeight; // reflow
+    card.offsetHeight;
     card.style.animation = '';
   }
 
@@ -370,7 +254,6 @@
     const isCorrect = displayOptions[selectedIndex].isCorrect;
     const correctIndex = displayOptions.findIndex(o => o.isCorrect);
 
-    // Record
     state.answers.push({
       questionIndex: state.currentIndex,
       selectedOption: selectedIndex,
@@ -383,17 +266,15 @@
     
     window.QuizStats?.addAnswer({ 
       isCorrect, 
-      topic: 'cmmi', 
+      topic: q.category, 
       text: q.question,
       justification: q.justification,
       correctAnswer: displayOptions[correctIndex].text
     });
 
-    // Update scores in header
     $('#score-correct').textContent = state.correctCount;
     $('#score-wrong').textContent = state.wrongCount;
 
-    // Style options
     const optionBtns = $$('.option-btn');
     optionBtns.forEach((btn, i) => {
       btn.classList.add('answered');
@@ -406,7 +287,6 @@
       }
     });
 
-    // Show justification
     const panel = $('#justification-panel');
     const header = $('#justification-header');
     const icon = $('#justification-icon');
@@ -429,33 +309,23 @@
 
     text.innerHTML = formatJustification(q.justification);
 
-    // Show next button
     $('#btn-next').style.display = 'inline-block';
     $('#question-actions').classList.remove('hidden');
 
-    // Update progress
     const pctDone = ((state.currentIndex + 1) / state.questions.length) * 100;
     $('#progress-bar').style.width = `${pctDone}%`;
 
-    // Scroll justification into view
     setTimeout(() => {
       panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
   }
 
   function formatJustification(text) {
-    text = text.replace(/[&<>"']/g, m => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
-    }[m]));
-    // Bold key terms for CMMI
     return text
       .replace(/FALSO/g, '<strong style="color:#ef4444">FALSO</strong>')
       .replace(/VERDADERO/g, '<strong style="color:#10b981">VERDADERO</strong>')
-      .replace(/(CMMI[-\s]?(?:DEV|ACQ|SVC|SPM|PPL)?|SCAMPI\s*[ABC]?|SEI|ISACA|PARS|BDEO|SAS)/g, '<strong>$1</strong>')
-      .replace(/(V1\.3|V2\.0|V3\.0)/g, '<strong>$1</strong>')
-      .replace(/\b(FI|LI|PI|NI|NY|SG|SP|GG|GP|PG|PA|CL|ML)\b/g, '<strong>$1</strong>')
-      .replace(/\b(CAR|CM|DAR|EST|GOV|II|MC|MPM|OT|PAD|PCM|PLAN|PQA|PR|RDM|RSK|SAM|TS|VV|VER|VAL|OPP|QPM|OPM|REQM|PP|PMC|PPQA|MA|IPM|OPD|OPF|RSKM|DR|DM|DQ|ESEC|MST|ESAF|EVW|WE)\b/g, '<strong>$1</strong>')
-      .replace(/\b(ROI|DoD|QA|QC)\b/g, '<strong>$1</strong>');
+      .replace(/(SGBD|SQL|SXBD|DDL|DML|DCL|ACID|WAL|MVCC|2PL|CBO|RBO|IOT|OLTP|OLAP|DW|FK|PK|B-Tree|B\+|COMMIT|ROLLBACK|UNDO|REDO|CHECKPOINT|DEFERRABLE|NOT NULL|UNIQUE|PRIMARY KEY|FOREIGN KEY|CHECK|CASCADE|RESTRICT|NO ACTION|SET NULL|MATCH SIMPLE|MATCH PARTIAL|MATCH FULL|GRANT|REVOKE|PUBLIC|INFORMATION_SCHEMA|BEFORE|AFTER|INSTEAD OF|FOR EACH ROW|FOR EACH STATEMENT|ORA-04091|READ COMMITTED|SERIALIZABLE|READ UNCOMMITTED|REPEATABLE READ)/g, '<strong>$1</strong>')
+      .replace(/(Oracle|PostgreSQL)/g, '<strong>$1</strong>');
   }
 
   // ========================
@@ -495,7 +365,7 @@
                   path: window.location.pathname,
                   state: { ...state, accumulatedTime: (state.accumulatedTime || 0) + elapsed }
                 };
-                localStorage.setItem('paused_test', JSON.stringify(progress));
+                localStorage.setItem('acl_paused_test', JSON.stringify(progress));
                 resetToLanding();
               }
             },
@@ -503,7 +373,7 @@
               text: 'Salir sin guardar',
               style: 'danger',
               action: () => {
-                localStorage.removeItem('paused_test');
+                localStorage.removeItem('acl_paused_test');
                 resetToLanding();
               }
             },
@@ -518,11 +388,8 @@
       }
     });
 
-    // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
-      // Escape logic
       if (e.key === 'Escape') {
-        // If a modal is open, it's handled by shared.js escapeHandler
         if (document.querySelector('.custom-modal-overlay.show')) return;
         
         if (screens.quiz && screens.quiz.classList.contains('active')) {
@@ -534,18 +401,12 @@
            resetToLanding();
            return;
         } else if (screens.landing && screens.landing.classList.contains('active')) {
-           // Go back to previous menu
            e.preventDefault();
            if (!$('#category-picker').classList.contains('hidden')) {
               $('#btn-back-categories').click();
            } else {
               window.location.href = '../index.html';
            }
-           return;
-        } else if (window.location.pathname.includes('quiz-global')) {
-           // Special case for quiz-global which doesn't have a landing screen
-           e.preventDefault();
-           window.location.href = '../index.html';
            return;
         }
       }
@@ -562,7 +423,7 @@
       }
 
       if (!state.answered) {
-        const keyMap = { '1': 0, '2': 1, '3': 2, '4': 3, '5': 4, '6': 5, 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5 };
+        const keyMap = { '1': 0, '2': 1, '3': 2, '4': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3 };
         const idx = keyMap[e.key.toLowerCase()];
         if (idx !== undefined && idx < state.questions[state.currentIndex].options.length) {
           handleAnswer(idx);
@@ -585,13 +446,13 @@
     const correct = state.correctCount;
     const wrong = state.wrongCount;
     const pct = Math.round((correct / total) * 100);
-    const elapsed = Math.floor((Date.now() - state.startTime) / 1000) + Math.floor((state.accumulatedTime || 0) / 1000);
+    const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
     let quizName = 'Simulacro';
     if (state.mode === 'all') quizName = 'Completo';
     else if (state.mode === 'traps') quizName = 'Solo Trampas';
     else if (state.mode === 'random') quizName = 'Aleatorio';
     else if (state.mode === 'category') {
-      const cat = typeof CATEGORIES !== 'undefined' ? CATEGORIES.find(c => c.id === state.categoryId) : null;
+      const cat = CATEGORIES.find(c => c.id === state.categoryId);
       quizName = cat ? 'Categoría: ' + cat.name : 'Categoría';
     }
 
@@ -607,15 +468,15 @@
 
     window.QuizStats?.addQuizCompleted({ 
       pct, correct, total, elapsed, 
-      topic: 'cmmi',
+      topic: state.categoryId || 'global',
       quizName: quizName,
       questions: questionsList
     });
 
-    // Add SVG gradient if needed
+    localStorage.removeItem('acl_paused_test');
+
     addRingGradient();
 
-    // Animate score ring
     const circumference = 2 * Math.PI * 54;
     const offset = circumference - (circumference * pct / 100);
     const ringFill = $('#ring-fill');
@@ -625,10 +486,8 @@
       ringFill.style.strokeDashoffset = offset;
     }, 100);
 
-    // Animate percentage counter
     animateCounter($('#results-pct'), pct, '%');
 
-    // Title & subtitle
     let title = '';
     if (pct >= 90) title = '🏆 ¡Excelente!';
     else if (pct >= 70) title = '👏 ¡Muy bien!';
@@ -637,12 +496,10 @@
     $('#results-title').textContent = title;
     $('#results-subtitle').textContent = `Has acertado ${correct} de ${total} preguntas`;
 
-    // Stats
     $('#stat-correct').textContent = correct;
     $('#stat-wrong').textContent = wrong;
     $('#stat-time').textContent = formatTime(elapsed);
 
-    // Build review list
     buildReviewList('all');
     bindReviewFilters();
   }
@@ -660,10 +517,10 @@
 
     const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop1.setAttribute('offset', '0%');
-    stop1.setAttribute('stop-color', '#6366f1');
+    stop1.setAttribute('stop-color', '#3b82f6');
     const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop2.setAttribute('offset', '100%');
-    stop2.setAttribute('stop-color', '#a78bfa');
+    stop2.setAttribute('stop-color', '#60a5fa');
 
     gradient.appendChild(stop1);
     gradient.appendChild(stop2);
@@ -705,7 +562,7 @@
           <span class="review-item-num">#${idx + 1}</span>
           <span class="review-item-category">${cat ? cat.name : ''}</span>
         </div>
-        <div class="review-item-question">${q.question}</div>
+        <div class="review-item-question">${window.marked ? marked.parse(q.question) : q.question}</div>
         <div class="review-item-detail">
           ${!ans.isCorrect ? `
             <div class="review-detail-row">
@@ -735,8 +592,6 @@
 
   function bindReviewFilters() {
     $$('.review-filter').forEach(btn => {
-      if (btn.dataset.bound) return;
-      btn.dataset.bound = "true";
       btn.addEventListener('click', () => {
         $$('.review-filter').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -757,17 +612,7 @@
   }
 
   function resetToLanding() {
-    showScreen('landing');
-    // Reset category picker visibility
-    if (document.querySelector('.mode-selector')) {
-      document.querySelector('.mode-selector').style.display = '';
-    }
-    if ($('#category-picker')) {
-      $('#category-picker').classList.add('hidden');
-    }
-    if (typeof initResumeButton === 'function') {
-      initResumeButton();
-    }
+    window.location.href = '../index.html';
   }
 
   // ========================
@@ -791,21 +636,17 @@
   // ========================
   // RESUME
   // ========================
-
   window.resumePausedTest = function(savedState) {
     state = savedState;
     state.startTime = Date.now();
     
-    // Hide landing or other screens
     Object.values(screens).forEach(s => s?.classList?.remove('active'));
     if (screens.quiz) screens.quiz.classList.add('active');
     
-    // Consume the paused test
-    localStorage.removeItem('paused_test');
+    localStorage.removeItem('acl_paused_test');
     const existingBtn = document.querySelector('.resume-test-btn');
     if (existingBtn) existingBtn.remove();
     
-    // Resume UI
     $('#quiz-total').textContent = state.questions.length;
     renderQuestion();
   };
@@ -813,7 +654,6 @@
   // ========================
   // START
   // ========================
-  // Auto-save on page unload
   window.addEventListener('beforeunload', () => {
     if (state && state.questions && state.questions.length > 0 && typeof screens !== 'undefined' && screens.quiz && screens.quiz.classList.contains('active')) {
       const elapsed = Date.now() - (state.startTime || Date.now());
@@ -821,7 +661,7 @@
         path: window.location.pathname,
         state: { ...state, accumulatedTime: (state.accumulatedTime || 0) + elapsed }
       };
-      localStorage.setItem('paused_test', JSON.stringify(progress));
+      localStorage.setItem('acl_paused_test', JSON.stringify(progress));
     }
   });
 

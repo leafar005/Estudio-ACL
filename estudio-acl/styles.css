@@ -1,10 +1,10 @@
 /* =======================================
-   QUIZ ISO 9000 — Design System & Styles
+   ESTUDIO ACL — Design System & Styles
    ======================================= */
 
 /* --- CSS Custom Properties --- */
 :root {
-  /* Colors — Dark premium palette */
+  /* Colors — Dark premium palette (Database blue theme) */
   --bg-primary: #0a0e1a;
   --bg-secondary: #111827;
   --bg-card: #1a1f35;
@@ -13,11 +13,11 @@
   --bg-option: rgba(30, 38, 65, 0.6);
   --bg-option-hover: rgba(45, 55, 90, 0.8);
 
-  --accent-primary: #6366f1;
-  --accent-primary-soft: rgba(99, 102, 241, 0.15);
-  --accent-primary-glow: rgba(99, 102, 241, 0.35);
-  --accent-secondary: #8b5cf6;
-  --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+  --accent-primary: #3b82f6;
+  --accent-primary-soft: rgba(59, 130, 246, 0.15);
+  --accent-primary-glow: rgba(59, 130, 246, 0.35);
+  --accent-secondary: #60a5fa;
+  --accent-gradient: linear-gradient(135deg, #3b82f6, #1d4ed8, #60a5fa);
 
   --color-correct: #10b981;
   --color-correct-soft: rgba(16, 185, 129, 0.12);
@@ -31,7 +31,7 @@
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-tertiary: #64748b;
-  --text-accent: #a5b4fc;
+  --text-accent: #93c5fd;
 
   --border-subtle: rgba(148, 163, 184, 0.08);
   --border-medium: rgba(148, 163, 184, 0.15);
@@ -63,6 +63,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  background: var(--bg-primary);
 }
 
 body {
@@ -75,18 +76,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Animated Background --- */
-.bg-grid {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  z-index: 0;
-  pointer-events: none;
-}
-
+/* --- Static Background Glow --- */
 .bg-glow {
   position: fixed;
   border-radius: 50%;
@@ -94,42 +84,31 @@ body {
   opacity: 0.4;
   pointer-events: none;
   z-index: 0;
-  animation: float 15s ease-in-out infinite;
 }
 
 .bg-glow-1 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent 70%);
   top: -10%;
   right: -5%;
-  animation-delay: 0s;
 }
 
 .bg-glow-2 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent 70%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.2), transparent 70%);
   bottom: -5%;
   left: -5%;
-  animation-delay: -5s;
 }
 
 .bg-glow-3 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(167, 139, 250, 0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation-delay: -10s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(30px, -20px) scale(1.05); }
-  50% { transform: translate(-20px, 30px) scale(0.95); }
-  75% { transform: translate(20px, 20px) scale(1.02); }
 }
 
 /* --- App Container --- */
@@ -203,7 +182,7 @@ body {
 
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 20px var(--accent-primary-glow); }
-  50% { box-shadow: 0 0 40px var(--accent-primary-glow), 0 0 60px rgba(139, 92, 246, 0.15); }
+  50% { box-shadow: 0 0 40px var(--accent-primary-glow), 0 0 60px rgba(59, 130, 246, 0.15); }
 }
 
 .logo-icon {
@@ -215,7 +194,7 @@ body {
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #f1f5f9, #a5b4fc);
+  background: linear-gradient(135deg, #f1f5f9, #93c5fd);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -245,7 +224,7 @@ body {
   color: var(--text-accent);
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px solid rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.15);
   letter-spacing: 0.01em;
 }
 
@@ -1029,7 +1008,7 @@ body {
 .review-detail-justification {
   margin-top: 8px;
   padding: 12px 14px;
-  background: rgba(99, 102, 241, 0.06);
+  background: rgba(59, 130, 246, 0.06);
   border-radius: var(--radius-sm);
   font-size: 0.84rem;
   color: var(--text-secondary);
@@ -1096,7 +1075,53 @@ body {
   display: none !important;
 }
 
-/* SVG gradient for ring */
 .results-score-ring svg defs {
   display: block;
+}
+
+/* =========================
+   MARKDOWN RENDER STYLES
+   ========================= */
+.question-text table, .qcb-text table, .review-item-question table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.9rem;
+}
+
+.question-text th, .qcb-text th, .review-item-question th {
+  background: var(--bg-card-hover);
+  padding: 10px;
+  text-align: left;
+  border: 1px solid var(--border-medium);
+  font-weight: 600;
+}
+
+.question-text td, .qcb-text td, .review-item-question td {
+  padding: 10px;
+  border: 1px solid var(--border-medium);
+}
+
+.question-text pre, .qcb-text pre, .review-item-question pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.question-text code, .qcb-text code, .review-item-question code {
+  font-family: var(--font-mono);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-accent);
+}
+
+.question-text p, .qcb-text p, .review-item-question p {
+  margin-bottom: 12px;
+}
+.question-text p:last-child, .qcb-text p:last-child, .review-item-question p:last-child {
+  margin-bottom: 0;
 }

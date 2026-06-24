@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio ACL — Auditoría y Calidad del Software</title>
+  <meta name="description" content="Estudio interactivo de Auditoría y Calidad del Software. Practica con preguntas de examen sobre catálogo, vistas, integridad, seguridad, triggers, diseño físico, optimización, recuperación y concurrencia.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../shared/shared.css">
+  <script src="../shared/shared.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <!-- Background Glows -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div id="app">
+
+
+    <!-- ========================
+         QUIZ SCREEN
+         ======================== -->
+    <div id="quiz-screen" class="screen">
+      <!-- Header -->
+      <div class="quiz-header">
+        <div class="quiz-header-left">
+          <button class="btn-icon" id="btn-quit" title="Salir (Esc)">✕</button>
+          <span class="quiz-progress-info"><span id="quiz-current">1</span> / <span id="quiz-total">0</span></span>
+        </div>
+        <div class="quiz-header-center">
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+        <div class="score-display">
+          <span class="score-correct" id="score-correct">0</span>
+          <span class="score-sep">·</span>
+          <span class="score-wrong" id="score-wrong">0</span>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="quiz-body">
+        <div class="question-card" id="question-card">
+          <div class="question-meta">
+            <span class="question-category" id="question-category"></span>
+            <span class="question-type" id="question-type"></span>
+          </div>
+
+          <p class="question-text" id="question-text"></p>
+
+          <div class="options-container" id="options-container"></div>
+
+          <!-- Justification -->
+          <div class="justification-panel hidden" id="justification-panel">
+            <div class="justification-header" id="justification-header">
+              <span class="justification-icon" id="justification-icon"></span>
+              <span id="justification-label"></span>
+            </div>
+            <div class="justification-body">
+              <p class="justification-text" id="justification-text"></p>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="question-actions hidden" id="question-actions">
+            <button class="btn-secondary" id="btn-prev" style="display:none;">← Anterior</button>
+            <button class="btn-primary" id="btn-next" style="display:none;">Siguiente →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================
+         RESULTS SCREEN
+         ======================== -->
+    <div id="results-screen" class="screen">
+      <div class="results-content">
+        <div class="results-hero">
+          <div class="results-score-ring">
+            <svg class="score-ring-svg" viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="54"/>
+              <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="54"/>
+            </svg>
+            <div class="score-ring-text">
+              <span class="score-ring-pct" id="results-pct">0%</span>
+            </div>
+          </div>
+          <h2 class="results-title" id="results-title"></h2>
+          <p class="results-subtitle" id="results-subtitle"></p>
+        </div>
+
+        <div class="results-stats">
+          <div class="stat-card stat-correct">
+            <div class="stat-value" id="stat-correct">0</div>
+            <div class="stat-label">Correctas</div>
+          </div>
+          <div class="stat-card stat-wrong">
+            <div class="stat-value" id="stat-wrong">0</div>
+            <div class="stat-label">Incorrectas</div>
+          </div>
+          <div class="stat-card stat-time">
+            <div class="stat-value" id="stat-time">0:00</div>
+            <div class="stat-label">Tiempo</div>
+          </div>
+        </div>
+
+        <div class="results-review">
+          <h3 class="review-title">Repaso de Preguntas</h3>
+          <div class="review-filters">
+            <button class="review-filter active" data-filter="all">Todas</button>
+            <button class="review-filter" data-filter="correct">✅ Correctas</button>
+            <button class="review-filter" data-filter="wrong">❌ Incorrectas</button>
+          </div>
+          <div class="review-list" id="review-list"></div>
+        </div>
+
+        <div class="results-actions">
+          <button class="btn-primary" id="btn-retry">🔄 Repetir</button>
+          <button class="btn-secondary" id="btn-home">🏠 Volver al inicio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
